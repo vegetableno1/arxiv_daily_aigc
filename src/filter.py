@@ -86,7 +86,20 @@ def filter_papers_by_topic(papers: list, topic: str = "algorithmic trading, quan
         summary = paper.get('summary', 'N/A')
 
         # 构建 Prompt
-        prompt = f"Is the following paper primarily about '{topic}'? Answer with only 'yes' or 'no'.\n\nTitle: {title}\nAbstract: {summary}"
+        prompt = f"""You are evaluating academic papers for a quantitative trading research team.
+
+Determine if this paper has ANY relevance to: {topic}
+
+Consider it relevant if the paper:
+- Applies to algorithmic trading, quantitative finance, or financial markets
+- Uses methodologies (AI/ML, statistical, mathematical) that could be applied to trading
+- Deals with financial data, market analysis, or decision-making under uncertainty
+- Explores time series prediction, pattern recognition, or optimization
+
+Paper Title: {title}
+Abstract: {summary}
+
+Answer with ONLY 'yes' or 'no'."""
 
         # 调用封装好的 API 函数
         ai_response = call_openrouter_api(prompt, max_tokens=5)
