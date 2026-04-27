@@ -22,3 +22,4 @@ __pycache__/
 # dev files
 TODO.md
 project_introduction.md
+venv/
