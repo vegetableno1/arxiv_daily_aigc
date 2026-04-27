@@ -130,6 +130,7 @@ Otherwise, output the evaluation in the following JSON format:
   "data_sources": "<String: Data used in the paper, e.g., LOB data, earnings reports, price-volume data, alternative data, news sentiment, multi-modal data>",
   "alpha_potential": "<String: 1-sentence summary of the alpha source or strategy logic>",
   "tags": ["<Array of 2-4 string tags, e.g., 'momentum', 'GNN', 'alternative data', 'portfolio optimization'>"],
+  "title_cn": "<String: Chinese translation of the paper title>",
   "summary_cn": "<String: A high-quality Chinese summary under 100 words focusing on practical trading applications>"
 }
 
@@ -149,6 +150,10 @@ Otherwise, output the evaluation in the following JSON format:
 - Alpha Potential: Concisely explain the market inefficiency or signal source being exploited
 
 - Tags: Include 2-4 relevant keywords covering methodology, data type, and application area
+
+- Title Translation: Translate the paper title into professional, concise Chinese
+
+- Chinese Summary: Provide a high-quality Chinese translation in under 100 words, focusing on practical trading applications and methodologies
 """
 
 

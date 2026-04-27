@@ -214,6 +214,9 @@
             data-motion-element
         >
             <h2 class="paper-title">{{ paper.title }}</h2>
+            {% if paper.title_cn %}
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">{{ paper.title_cn }}</p>
+            {% endif %}
             <p class="paper-summary">{{ paper.summary }}</p>
 
             {# New Quant-Specific Fields #}
