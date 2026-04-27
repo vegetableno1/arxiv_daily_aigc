@@ -7,11 +7,15 @@ from typing import List, Dict, Optional, Any
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
 
-def fetch_cv_papers(category: str = 'cs.CV', max_results: int = 500, specified_date: Optional[date] = None) -> List[Dict[str, Any]]:
-    """Fetches papers from the specified category submitted on arXiv for a given date.
+def fetch_cv_papers(category: str = 'q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', max_results: int = 500, specified_date: Optional[date] = None) -> List[Dict[str, Any]]:
+    """Fetches quantitative finance and AI papers from arXiv for a given date.
+
+    Fetches papers from categories including q-fin.PM (Portfolio Management),
+    q-fin.TR (Trading), cs.LG (Learning), cs.AI (Artificial Intelligence),
+    and cs.CL (Computation and Language).
 
     Args:
-        category (str): The arXiv category (e.g., 'cs.CV', 'cs.AI').
+        category (str): The arXiv categories combined with OR logic (e.g., 'q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL').
         max_results (int): The maximum number of results to retrieve.
         specified_date (Optional[date]): The specific date to fetch papers for (UTC).
                                          Defaults to today UTC date.
@@ -38,8 +42,16 @@ def fetch_cv_papers(category: str = 'cs.CV', max_results: int = 500, specified_d
     start_time_str = start_time.strftime('%Y%m%d%H%M')
     end_time_str = specified_date.strftime('%Y%m%d%H%M')
 
-    # Construct the search query
-    query = f'cat:{category} AND submittedDate:[{start_time_str} TO {end_time_str}]'
+    # Construct the search query for multiple categories with OR logic
+    # Parse category if it contains ' OR ', otherwise treat as single category
+    if ' OR ' in category:
+        # Category is already formatted with OR logic
+        categories = category
+    else:
+        # Single category
+        categories = f'cat:{category}'
+
+    query = f'({categories}) AND submittedDate:[{start_time_str} TO {end_time_str}]'
     logging.info(f"Using arXiv query: {query}")
 
     client = arxiv.Client()
@@ -87,7 +99,7 @@ if __name__ == '__main__':
     example_date = date(2025, 4, 26) # Or a specific past date known to have papers
 
     logging.info(f"Fetching papers for {example_date.strftime('%Y-%m-%d')}...")
-    latest_papers = fetch_cv_papers(category='cs.CV', max_results=500, specified_date=example_date)
+    latest_papers = fetch_cv_papers(category='q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', max_results=500, specified_date=example_date)
 
     if latest_papers:
         logging.info(f"--- Found {len(latest_papers)} Papers ---")

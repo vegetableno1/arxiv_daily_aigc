@@ -62,12 +62,12 @@ def call_openrouter_api(prompt: str, max_tokens: int = 5) -> str | None:
         logging.error(f"调用 OpenRouter API 时发生意外错误: {e}", exc_info=True)
         return None
 
-def filter_papers_by_topic(papers: list, topic: str = "image or video or multimodal generation") -> list:
+def filter_papers_by_topic(papers: list, topic: str = "algorithmic trading, quantitative finance, or AI applied to financial markets") -> list:
     """使用 OpenRouter API 过滤论文列表，只保留与指定主题相关的论文。
 
     Args:
         papers (list): 包含论文信息的字典列表，每个字典应包含 'title' 和 'summary'。
-        topic (str): 需要过滤的主题，默认为 "image or video generation"。
+        topic (str): 需要过滤的主题，默认为 "algorithmic trading, quantitative finance, or AI applied to financial markets"。
 
     Returns:
         list: 只包含与主题相关论文的字典列表。
@@ -107,37 +107,48 @@ def filter_papers_by_topic(papers: list, topic: str = "image or video or multimo
 
 rating_prompt_template = """
 # Role Setting
-You are an experienced researcher in the field of Artificial Intelligence, skilled at quickly evaluating the potential value of research papers.
+You are a Senior Quantitative Researcher with expertise in algorithmic trading, quantitative finance, and AI applied to financial markets. You are skilled at quickly evaluating the practical value of research papers for real-world trading strategies.
 
 # Task
-Based on the following paper's title and abstract, please summarize it and score it across multiple dimensions (1-10 points, 1 being the lowest, 10 being the highest). Finally, provide an overall preliminary priority score.
+Based on the following paper's title and abstract, evaluate its relevance and potential for quantitative trading and financial applications. Return null if the paper is completely irrelevant to algorithmic trading, quantitative finance, or AI applied to markets.
 
 # Input
 Paper Title: %s
 Paper Abstract: %s
 
-# My Research Interests
-image generation, video generation, multimodal generation
+# Research Focus Areas
+Quantitative Finance: momentum strategies, dual momentum, barbell strategies, factor investing, arbitrage, portfolio optimization, market microstructure
+AI/ML Applications: LLMs, agents, RAG (Retrieval-Augmented Generation), Graph Neural Networks (GNN), Reinforcement Learning, Transformers applied to financial data
 
 # Output Requirements
 Output should always be in JSON format, strictly compliant with RFC8259.
-Please output the evaluation and explanations in the following JSON format:
+Return null if the paper is completely irrelevant to quantitative finance or AI in trading.
+Otherwise, output the evaluation in the following JSON format:
 {
-  "tldr": "<summary>", // Too Long; Didn't Read. Summarize the paper in one or two brief sentences.
-  "tldr_zh": "<summary>", // Too Long; Didn't Read. Summarize the paper in one or two brief sentences, in Chinese.
-  "relevance_score": <score>, // Relevance to my research interests
-  "novelty_claim_score": <score>, // Degree of novelty claimed in the abstract
-  "clarity_score": <score>, // Clarity and completeness of the abstract writing
-  "potential_impact_score": <score>, // Estimated potential impact based on abstract claims
-  "overall_priority_score": <score> // Preliminary reading priority score combining all factors above
+  "relevance_score": <Integer 1-10 indicating practical value for real-world trading>,
+  "core_methodology": "<String: The core algorithm or method, e.g., GNN, Transformer, Dual Momentum, RAG, Reinforcement Learning, Statistical Arbitrage>",
+  "data_sources": "<String: Data used in the paper, e.g., LOB data, earnings reports, price-volume data, alternative data, news sentiment, multi-modal data>",
+  "alpha_potential": "<String: 1-sentence summary of the alpha source or strategy logic>",
+  "tags": ["<Array of 2-4 string tags, e.g., 'momentum', 'GNN', 'alternative data', 'portfolio optimization'>"],
+  "summary_cn": "<String: A high-quality Chinese summary under 100 words focusing on practical trading applications>"
 }
 
 # Scoring Guidelines
-- Relevance: Focus on whether it is directly related to the research interests I provided.
-- Novelty: Evaluate the degree of innovation claimed in the abstract regarding the method or viewpoint compared to known work.
-- Clarity: Evaluate whether the abstract itself is easy to understand and complete with essential elements.
-- Potential Impact: Evaluate the importance of the problem it claims to solve and the potential application value of the results.
-- Overall Priority: Provide an overall score combining all the above factors. A high score indicates suggested priority for reading.
+- Relevance Score (1-10): Focus on practical applicability to real-world trading and quantitative finance
+  * 9-10: Directly applicable trading strategy with clear alpha potential
+  * 7-8: Strong methodology with clear path to trading applications
+  * 5-6: Relevant but theoretical or requires significant adaptation
+  * 3-4: Tangentially related to finance/trading
+  * 1-2: Minimal practical relevance
+  * Return null if completely unrelated to quantitative finance or AI in trading
+
+- Core Methodology: Identify the main algorithmic approach (e.g., GNN for relational data, Transformer for sequence modeling, Dual Momentum for trend following, RAG for knowledge-enhanced decisions)
+
+- Data Sources: Specify what market or alternative data is used (e.g., limit order book data, options flow, earnings call transcripts, satellite imagery, social media sentiment)
+
+- Alpha Potential: Concisely explain the market inefficiency or signal source being exploited
+
+- Tags: Include 2-4 relevant keywords covering methodology, data type, and application area
 """
 
 
@@ -146,7 +157,8 @@ def rate_papers(papers: list) -> list:
     Args:
         papers (list): 包含论文信息的字典列表，每个字典应包含 'title' 和'summary'。
     Returns:
-        list: 包含论文评分的字典列表，每个字典包含 'title', 'summary', 和 'rating'。
+        list: 包含论文评分的字典列表，每个字典包含 'title', 'summary', 和量化相关的评分字段。
+              对于完全不相关的论文，会被跳过。
     """
     if not OPENROUTER_API_KEY:
         logging.error("未设置 OPENROUTER_API_KEY 环境变量。无法进行评分。")
@@ -176,6 +188,15 @@ def rate_papers(papers: list) -> list:
                         ai_response = ai_response.split('```json')[1].split('```')[0]
                     # 2. json加载
                     rating_data = json.loads(ai_response)
+
+                    # Check if the paper was marked as irrelevant (null response)
+                    if rating_data is None or (isinstance(rating_data, dict) and not rating_data):
+                        logging.info(f"论文 {i+1}/{len(papers)} (尝试 {attempt+1}): '{title[:50]}...' - 标记为不相关，跳过")
+                        success = True
+                        # Mark this paper for removal
+                        papers[i]['_skip'] = True
+                        break # 成功获取并解析，跳出重试循环
+
                     logging.info(f"论文 {i+1}/{len(papers)} (尝试 {attempt+1}): '{title[:50]}...' - AI Rating: {rating_data}")
                     papers[i].update(rating_data)
                     success = True
@@ -199,8 +220,11 @@ def rate_papers(papers: list) -> list:
             logging.error(f"论文 {i+1}/{len(papers)}: 两次尝试均未能成功获取和解析 '{title[:50]}...' 的评分，跳过此论文。")
             continue # 跳过出错的论文
 
-    logging.info(f"评分完成。")
-    return papers
+    # Filter out papers marked as irrelevant or that failed to rate
+    filtered_papers = [paper for paper in papers if not paper.get('_skip', False)]
+
+    logging.info(f"评分完成。保留 {len(filtered_papers)} 篇相关论文。")
+    return filtered_papers
 
 
 # 可以在这里添加一些测试代码
@@ -209,16 +233,16 @@ if __name__ == '__main__':
     if OPENROUTER_API_KEY:
         test_papers = [
             {
-                'title': 'Generative Adversarial Networks for Image Synthesis ',
-                'summary': 'This paper introduces GANs, a framework for estimating generative models via an adversarial process... focusing on image creation.'
+                'title': 'Deep Reinforcement Learning for Portfolio Optimization',
+                'summary': 'This paper applies deep reinforcement learning to portfolio management, using price-volume data and achieving 15% annual returns...'
             },
             {
-                'title': 'Deep Learning for Natural Language Processing',
-                'summary': 'We explore various deep learning architectures like RNNs and Transformers for tasks such as machine translation and sentiment analysis.'
+                'title': 'Graph Neural Networks for Limit Order Book Modeling',
+                'summary': 'We propose a GNN architecture to model limit order book dynamics, achieving state-of-the-art results on high-frequency trading prediction tasks.'
             },
             {
-                'title': 'Video Generation using Diffusion Models',
-                'summary': 'A novel approach to generating high-fidelity video sequences using latent diffusion models.'
+                'title': 'Climate Change Effects on Crop Yields in Sub-Saharan Africa',
+                'summary': 'This study examines the impact of climate change on agricultural productivity using satellite imagery and weather data.'
             }
         ]
         logging.info("\n--- 开始测试 filter_papers_by_topic --- ")

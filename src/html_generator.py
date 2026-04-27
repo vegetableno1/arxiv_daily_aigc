@@ -17,8 +17,8 @@ def generate_html_from_json(json_file_path: str, template_dir: str, template_nam
     try:
         with open(json_file_path, 'r', encoding='utf-8') as f:
             papers = json.load(f)
-            # Sort papers by overall_priority_score in descending order
-            papers.sort(key=lambda x: x.get('overall_priority_score', 0), reverse=True)
+            # Sort papers by relevance_score in descending order (changed from overall_priority_score)
+            papers.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
     except FileNotFoundError:
         logging.error(f"JSON file not found at {json_file_path}")
         return
@@ -35,12 +35,12 @@ def generate_html_from_json(json_file_path: str, template_dir: str, template_nam
         date_str = filename.split('.')[0]
         report_date = date.fromisoformat(date_str)
         formatted_date = report_date.strftime("%Y_%m_%d")
-        page_title = f"ArXiv CS.CV Papers (Image/Video Generation) - {report_date.strftime('%B %d, %Y')}"
+        page_title = f"ArXiv Quantitative Finance & AI Papers - {report_date.strftime('%B %d, %Y')}"
     except (IndexError, ValueError):
         logging.warning(f"Could not extract date from filename {filename}. Using default.")
-        today = date.today()
-        formatted_date = today.strftime("%Y_%m_%d")
-        page_title = f"ArXiv CS.CV Papers (Image/Video Generation) - {today.strftime('%B %d, %Y')}"
+        report_date = date.today()
+        formatted_date = report_date.strftime("%Y_%m_%d")
+        page_title = f"ArXiv Quantitative Finance & AI Papers - {report_date.strftime('%B %d, %Y')}"
 
 
     generation_time = datetime.now(timezone.utc)
@@ -63,16 +63,28 @@ if __name__ == '__main__':
     # Create dummy data and directories for local testing
     dummy_papers = [
         {
-            "title": "Awesome Paper 1 on Image Generation",
-            "summary": "This paper introduces a revolutionary technique for generating images...",
+            "title": "Deep Reinforcement Learning for High-Frequency Trading",
+            "summary": "This paper introduces a novel DRL framework for optimizing execution algorithms in limit order books...",
             "authors": ["Author A", "Author B"],
-            "url": "https://arxiv.org/pdf/2301.00001"
+            "url": "https://arxiv.org/pdf/2301.00001",
+            "relevance_score": 8,
+            "core_methodology": "Deep Reinforcement Learning (PPO)",
+            "data_sources": "Limit Order Book data, price-volume data",
+            "alpha_potential": "Exploits microstructure patterns in order flow for optimal execution timing",
+            "tags": ["DRL", "HFT", "execution optimization", "LOB"],
+            "summary_cn": "本文提出了一种基于深度强化学习的高频交易执行算法框架，利用限价订单簿数据优化交易时机，在回测中显著降低了市场冲击成本。"
         },
         {
-            "title": "Video Generation with Diffusion Models",
-            "summary": "Exploring the use of diffusion models for high-fidelity video generation...",
+            "title": "Graph Neural Networks for Cross-Asset Momentum Strategies",
+            "summary": "We propose a GNN architecture to model relationships between assets for improved momentum prediction...",
             "authors": ["Author C"],
-            "url": "https://arxiv.org/pdf/2301.00002"
+            "url": "https://arxiv.org/pdf/2301.00002",
+            "relevance_score": 9,
+            "core_methodology": "Graph Neural Network (GNN)",
+            "data_sources": "Price-volume data across multiple assets, correlation matrices",
+            "alpha_potential": "Captures complex inter-asset dependencies to enhance traditional momentum strategies",
+            "tags": ["GNN", "momentum", "portfolio optimization", "cross-asset"],
+            "summary_cn": "本文提出了一种图神经网络架构，用于建模资产间的关系，从而改进动量策略。通过捕捉跨资产依赖关系，在多个市场上显著提升了传统动量策略的收益。"
         }
     ]
     project_root = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))

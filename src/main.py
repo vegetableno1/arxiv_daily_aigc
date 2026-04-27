@@ -39,9 +39,9 @@ def main(target_date: date):
     else:
         logging.info(f"未找到 JSON 文件: {json_filepath}。执行抓取和过滤。")
         # --- 1. 抓取论文 --- #
-        logging.info("步骤 1: 抓取 ArXiv cs.CV 论文...")
+        logging.info("步骤 1: 抓取 ArXiv 量化金融和AI 论文...")
         # 注意：fetch_cv_papers 内部默认使用 UTC 日期
-        raw_papers = fetch_cv_papers(category='cs.CV', specified_date=target_date)
+        raw_papers = fetch_cv_papers(category='q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', specified_date=target_date)
         if not raw_papers:
             logging.warning(f"在 {target_date.isoformat()} 未找到论文或抓取失败。")
             # 如果抓取失败且无 JSON 文件，则无法继续
@@ -49,12 +49,12 @@ def main(target_date: date):
         logging.info(f"抓取到 {len(raw_papers)} 篇原始论文。")
 
         # --- 2. 过滤论文、论文打分 --- #
-        logging.info("步骤 2: 使用 AI 过滤论文并打分 (主题: image/video/multimodal generation)...")
+        logging.info("步骤 2: 使用 AI 过滤论文并打分 (主题: algorithmic trading, quantitative finance, AI in markets)...")
         # 注意：filter_papers_by_topic 依赖 OPENROUTER_API_KEY 环境变量
-        filtered_papers = filter_papers_by_topic(raw_papers, topic="general image/video/multimodal generation or image/video editing")
+        filtered_papers = filter_papers_by_topic(raw_papers, topic="algorithmic trading, quantitative finance, or AI applied to financial markets")
         filtered_papers = rate_papers(filtered_papers)
-        # 将filtered_papers按照overall_priority_score降序排序
-        filtered_papers.sort(key=lambda x: x.get('overall_priority_score', 0), reverse=True)
+        # 将filtered_papers按照relevance_score降序排序
+        filtered_papers.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
         if not filtered_papers:
             logging.warning("没有论文通过过滤。将创建空的 JSON 文件。")
             # 创建一个空列表，以便后续保存为空 JSON
@@ -130,7 +130,7 @@ def main(target_date: date):
     logging.info(f"日期 {target_date.isoformat()} 的处理流程完成。")
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(description='抓取、过滤并生成 arXiv cs.CV 论文的每日报告。')
+    parser = argparse.ArgumentParser(description='抓取、过滤并生成 arXiv 量化金融与AI论文的每日报告。')
     parser.add_argument(
         '--date',
         type=str,
