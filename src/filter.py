@@ -57,7 +57,26 @@ def call_openrouter_api(prompt: str, max_tokens: int = 5) -> str | None:
             response.raise_for_status()
 
             result = response.json()
-            ai_response = result['choices'][0]['message']['content'].strip()
+
+            # 检查响应结构是否完整
+            if not result.get('choices') or len(result['choices']) == 0:
+                logging.error(f"API 响应中没有 choices 字段或为空")
+                if attempt < MAX_RETRIES - 1:
+                    continue
+                else:
+                    return None
+
+            content = result['choices'][0].get('message', {}).get('content')
+
+            # 检查 content 是否为 None 或空
+            if content is None:
+                logging.error(f"API 返回的 content 为 None（可能被内容过滤或模型拒绝回答）")
+                if attempt < MAX_RETRIES - 1:
+                    continue
+                else:
+                    return None
+
+            ai_response = content.strip()
             return ai_response
 
         except requests.exceptions.HTTPError as e:
