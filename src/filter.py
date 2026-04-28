@@ -146,7 +146,9 @@ Consider it relevant if the paper:
 Paper Title: {title}
 Abstract: {summary}
 
-Answer with ONLY 'yes' or 'no'."""
+IMPORTANT: Your response must be EXACTLY one word - either 'yes' or 'no' - with no additional text, explanation, or punctuation.
+yes
+no"""
 
         # 调用封装好的 API 函数（内部已包含重试机制）
         ai_response = call_openrouter_api(prompt, max_tokens=5)
