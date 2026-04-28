@@ -3,6 +3,7 @@ import requests
 import time
 import json
 import logging
+import random
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
@@ -17,8 +18,13 @@ OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 # 例如使用 'mistralai/mistral-7b-instruct:free'
 MODEL_NAME = "google/gemini-2.0-flash-001"
 
+# 速率限制配置
+REQUEST_DELAY = 2  # 每次请求之间的延迟（秒）
+MAX_RETRIES = 5   # 最大重试次数
+INITIAL_RETRY_DELAY = 10  # 429 错误后的初始重试延迟（秒）
+
 def call_openrouter_api(prompt: str, max_tokens: int = 5) -> str | None:
-    """调用 OpenRouter API 并返回模型的响应。
+    """调用 OpenRouter API 并返回模型的响应，带有重试和速率限制机制。
 
     Args:
         prompt (str): 发送给模型的提示。
@@ -44,23 +50,64 @@ def call_openrouter_api(prompt: str, max_tokens: int = 5) -> str | None:
         "max_tokens": max_tokens
     }
 
-    try:
-        response = requests.post(OPENROUTER_API_URL, headers=headers, json=data, timeout=30) # 设置超时
-        response.raise_for_status()  # 如果请求失败 (状态码 >= 400)，则抛出 HTTPError
+    # 指数退避重试机制
+    for attempt in range(MAX_RETRIES):
+        try:
+            response = requests.post(OPENROUTER_API_URL, headers=headers, json=data, timeout=60)
+            response.raise_for_status()
 
-        result = response.json()
-        ai_response = result['choices'][0]['message']['content'].strip()
-        return ai_response
+            result = response.json()
+            ai_response = result['choices'][0]['message']['content'].strip()
+            return ai_response
 
-    except requests.exceptions.RequestException as e:
-        logging.error(f"调用 OpenRouter API 时出错: {e}")
-        return None
-    except (KeyError, IndexError) as e:
-        logging.error(f"解析 OpenRouter API 响应时出错: {e}")
-        return None
-    except Exception as e:
-        logging.error(f"调用 OpenRouter API 时发生意外错误: {e}", exc_info=True)
-        return None
+        except requests.exceptions.HTTPError as e:
+            status_code = e.response.status_code
+
+            # 429 Too Many Requests - 速率限制，需要等待后重试
+            if status_code == 429:
+                if attempt < MAX_RETRIES - 1:
+                    # 指数退避：每次重试等待时间加倍
+                    retry_delay = INITIAL_RETRY_DELAY * (2 ** attempt) + random.uniform(0, 2)
+                    logging.warning(f"遇到 429 速率限制，等待 {retry_delay:.1f} 秒后重试 (尝试 {attempt + 1}/{MAX_RETRIES})...")
+                    time.sleep(retry_delay)
+                    continue
+                else:
+                    logging.error(f"达到最大重试次数，仍然遇到 429 错误: {e}")
+                    return None
+
+            # 504 Gateway Timeout - 服务器超时，重试
+            elif status_code == 504:
+                if attempt < MAX_RETRIES - 1:
+                    retry_delay = 5 + random.uniform(0, 3)
+                    logging.warning(f"遇到 504 超时，等待 {retry_delay:.1f} 秒后重试 (尝试 {attempt + 1}/{MAX_RETRIES})...")
+                    time.sleep(retry_delay)
+                    continue
+                else:
+                    logging.error(f"达到最大重试次数，仍然遇到 504 错误: {e}")
+                    return None
+
+            # 其他 HTTP 错误
+            else:
+                logging.error(f"调用 OpenRouter API 时出错: {e}")
+                return None
+
+        except requests.exceptions.RequestException as e:
+            logging.error(f"调用 OpenRouter API 时出错: {e}")
+            if attempt < MAX_RETRIES - 1:
+                retry_delay = 3 + random.uniform(0, 2)
+                logging.warning(f"等待 {retry_delay:.1f} 秒后重试...")
+                time.sleep(retry_delay)
+            else:
+                return None
+
+        except (KeyError, IndexError) as e:
+            logging.error(f"解析 OpenRouter API 响应时出错: {e}")
+            return None
+        except Exception as e:
+            logging.error(f"调用 OpenRouter API 时发生意外错误: {e}", exc_info=True)
+            return None
+
+    return None
 
 def filter_papers_by_topic(papers: list, topic: str = "algorithmic trading, quantitative finance, or AI applied to financial markets") -> list:
     """使用 OpenRouter API 过滤论文列表，只保留与指定主题相关的论文。
@@ -101,18 +148,22 @@ Abstract: {summary}
 
 Answer with ONLY 'yes' or 'no'."""
 
-        # 调用封装好的 API 函数
+        # 调用封装好的 API 函数（内部已包含重试机制）
         ai_response = call_openrouter_api(prompt, max_tokens=5)
 
         if ai_response is not None:
             logging.info(f"论文 {i+1}/{len(papers)}: '{title[:50]}...' - AI 回复: {ai_response}")
             if 'yes' in ai_response.lower():
                 filtered_papers.append(paper)
-            # OpenRouter 对免费模型的速率有限制，可以考虑在 call_openrouter_api 内部或外部添加延时
-            # time.sleep(1) # 暂停 1 秒
         else:
             logging.warning(f"无法获取论文 '{title[:50]}...' 的 AI 回复，跳过此论文。")
             continue # 跳过出错的论文
+
+        # 在每次请求后添加延迟，避免触发速率限制
+        # 第一个请求不需要延迟，后续每个请求后延迟
+        if i < len(papers) - 1:
+            jitter = random.uniform(0, 1)  # 添加随机抖动，避免多个请求同时发送
+            time.sleep(REQUEST_DELAY + jitter)
 
     logging.info(f"过滤完成，找到 {len(filtered_papers)} 篇与 '{topic}' 相关的论文。")
     return filtered_papers
@@ -194,7 +245,7 @@ def rate_papers(papers: list) -> list:
         # 添加重试逻辑 (最多尝试 2 次)
         success = False
         for attempt in range(2):
-            # 调用封装好的 API 函数
+            # 调用封装好的 API 函数（内部已包含重试机制）
             ai_response = call_openrouter_api(prompt, max_tokens=1000)
 
             if ai_response is not None:
@@ -237,6 +288,12 @@ def rate_papers(papers: list) -> list:
         if not success:
             logging.error(f"论文 {i+1}/{len(papers)}: 两次尝试均未能成功获取和解析 '{title[:50]}...' 的评分，跳过此论文。")
             continue # 跳过出错的论文
+
+        # 在每次成功请求后添加延迟，避免触发速率限制
+        # 最后一个请求不需要延迟
+        if i < len(papers) - 1:
+            jitter = random.uniform(0, 1)  # 添加随机抖动
+            time.sleep(REQUEST_DELAY + jitter)
 
     # Filter out papers marked as irrelevant or that failed to rate
     filtered_papers = [paper for paper in papers if not paper.get('_skip', False)]
