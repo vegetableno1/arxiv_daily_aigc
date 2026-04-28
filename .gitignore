@@ -23,3 +23,6 @@ __pycache__/
 TODO.md
 project_introduction.md
 venv/
+
+# test scripts
+test_openrouter.py
