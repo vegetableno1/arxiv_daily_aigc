@@ -19,7 +19,7 @@ OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 MODEL_NAME = "google/gemini-2.0-flash-001"
 
 # 速率限制配置
-REQUEST_DELAY = 2  # 每次请求之间的延迟（秒）
+REQUEST_DELAY = 10  # 每次请求之间的延迟（秒）
 MAX_RETRIES = 5   # 最大重试次数
 INITIAL_RETRY_DELAY = 10  # 429 错误后的初始重试延迟（秒）
 
