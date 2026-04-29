@@ -1,0 +1,677 @@
+[
+    {
+        "title": "FinGround: Detecting and Grounding Financial Hallucinations via Atomic Claim Verification",
+        "summary": "Financial AI systems must produce answers grounded in specific regulatory filings, yet current LLMs fabricate metrics, invent citations, and miscalculate derived quantities. These errors carry direct regulatory consequences as the EU AI Act's high-risk enforcement deadline approaches (August 2026). Existing hallucination detectors treat all claims uniformly, missing 43% of computational errors that require arithmetic re-verification against structured tables. We present FinGround, a three-stage verify-then-ground pipeline for financial document QA. Stage 1 performs finance-aware hybrid retrieval over text and tables. Stage 2 decomposes answers into atomic claims classified by a six-type financial taxonomy and verified with type-routed strategies including formula reconstruction. Stage 3 rewrites unsupported claims with paragraph- and table-cell-level citations. To cleanly isolate verification value from retrieval quality, we propose retrieval-equalized evaluation as standard methodology for RAG verification research: when all systems receive identical retrieval, FinGround still reduces hallucination rates by 68% over the strongest baseline ($p < 0.01$). The full pipeline achieves a 78% reduction relative to GPT-4o. An 8B distilled detector retains 91.4% F1 at 18x lower per-claim latency, enabling $0.003/query deployment, supported by qualitative signals from a four-week analyst pilot.",
+        "url": "http://arxiv.org/abs/2604.23588v1",
+        "published_date": "2026-04-26T07:52:59+00:00",
+        "updated_date": "2026-04-26T07:52:59+00:00",
+        "categories": [
+            "cs.AI",
+            "cs.CL",
+            "cs.IR"
+        ],
+        "authors": [
+            "Dongxin Guo",
+            "Jikun Wu",
+            "Siu Ming Yiu"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "RAG (Retrieval-Augmented Generation)",
+        "data_sources": "Financial regulatory filings, text and tables within financial documents",
+        "alpha_potential": "Improved accuracy in financial document Q&A can lead to better understanding of company performance and regulatory compliance, potentially revealing mispriced assets or identifying investment opportunities based on corrected financial data.",
+        "tags": [
+            "LLM",
+            "RAG",
+            "Financial Document Analysis",
+            "Hallucination Detection"
+        ],
+        "title_cn": "FinGround：通过原子声明验证检测并定位金融领域的幻觉",
+        "summary_cn": "该论文提出了FinGround，一个用于金融文档问答的三阶段验证流程，旨在减少大型语言模型（LLM）在处理财务数据时产生的幻觉问题，例如捏造指标和错误计算。 该方法通过财务感知的检索、原子声明分解和类型路由验证，显著提升了金融文档问答的准确性。降低部署成本。这种改进后的信息提取能力，可以应用于量化交易策略开发，例如通过更精准识别财报中的关键信息来发现投资机会。"
+    },
+    {
+        "title": "Information-Theoretic Measures in AI: A Practical Decision Guide",
+        "summary": "Information-theoretic (IT) measures are ubiquitous in artificial intelligence: entropy drives decision-tree splits and uncertainty quantification, cross-entropy is the default classification loss, mutual information underpins representation learning and feature selection, and transfer entropy reveals directed influence in dynamical systems.\n  A second, less consolidated family of measures, integrated information (Phi), effective information (EI), and autonomy, has emerged for characterizing agent complexity. Despite wide adoption, measure selection is often decoupled from estimator assumptions, failure modes, and safe inferential claims.\n  This paper provides a practical decision framework for all seven measures, organized around three prescriptive questions for each: (i) what question does the measure answer and in which AI context; (ii) which estimator is appropriate for the data type and dimensionality; and (iii) what is the most dangerous misuse. The framework is operationalized in two complementary artifacts: a measure-selection flowchart and a master decision table. We cover both AI/ML and decision-making agent application domains per measure, with standardized Bridge Boxes linking IT quantities to cognitive constructs. Three worked examples illustrate the framework on concrete practitioner scenarios spanning representation learning, temporal influence analysis, and evolved agent complexity.",
+        "url": "http://arxiv.org/abs/2604.23716v1",
+        "published_date": "2026-04-26T14:00:22+00:00",
+        "updated_date": "2026-04-26T14:00:22+00:00",
+        "categories": [
+            "cs.AI",
+            "cs.IT",
+            "cs.LG",
+            "cs.MA"
+        ],
+        "authors": [
+            "Nikolaos Al. Papadopoulos",
+            "Konstantinos E. Psannis"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Information Theory (Entropy, Mutual Information, Transfer Entropy)",
+        "data_sources": "Not applicable (framework for measure selection, not specific data usage)",
+        "alpha_potential": "Potentially useful for feature selection, representation learning, and causality analysis in financial time series data, which can lead to improved predictive models and trading signals. Identifying relevant features, building robust representations, and inferring causal relationships between market factors are key to generating alpha.",
+        "tags": [
+            "feature selection",
+            "causality analysis",
+            "information theory",
+            "representation learning"
+        ],
+        "title_cn": "AI中的信息论度量：实用决策指南",
+        "summary_cn": "本文提供AI中信息论度量（如熵，互信息，转移熵）的实用选择框架，对于量化交易的潜在应用在于提高特征选择、风险量化和因果关系分析的有效性。正确选择信息论度量可以帮助量化研究员从海量金融数据中提取关键特征，改进模型预测能力，最终提升交易策略表现。该框架指导选择合适的估计器，避免常见误用，并以实例展示在表示学习和时间序列影响分析中的应用。"
+    },
+    {
+        "title": "Causal Discovery as Dialectical Aggregation: A Quantitative Argumentation Framework",
+        "summary": "Constraint-based causal discovery is brittle in finite-sample regimes because erroneous conditional-independence (CI) decisions can cascade into substantial structural errors. We propose Quantitative Argumentation for Causal Discovery (QACD), a semantics-driven framework that represents CI outcomes as graded, defeasible arguments rather than irreversible constraints. QACD maps statistical test outcomes to argument strengths and aggregates conflicting evidence through connectivity-mediated witness propagation, producing a fixed-point acceptability labeling over candidate adjacencies. Experiments on standard benchmark Bayesian networks suggest that QACD improves structural coherence and interventional reliability in several noisy or inconsistent CI regimes, while remaining competitive with classical constraint-based, hybrid, and prior argumentation-based baselines.",
+        "url": "http://arxiv.org/abs/2604.23633v1",
+        "published_date": "2026-04-26T09:47:41+00:00",
+        "updated_date": "2026-04-26T09:47:41+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Sheng Wei",
+            "Yulin Chen",
+            "Beishui Liao"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Quantitative Argumentation",
+        "data_sources": "Benchmark Bayesian networks (simulated data)",
+        "alpha_potential": "The paper aims to improve causal discovery, which could be used to identify relationships between market variables and leading indicators, potentially revealing predictive signals.",
+        "tags": [
+            "causal inference",
+            "statistical modeling",
+            "signal processing",
+            "market dynamics"
+        ],
+        "title_cn": "因果发现作为辩证聚合：一种定量论证框架",
+        "summary_cn": "该论文提出了一种新的因果发现框架，旨在提高在噪声数据中的可靠性。 通过定量论证方法，该框架可以更好地识别市场变量之间的因果关系。 实践中， 这项研究可以帮助构建更稳健的预测模型，识别潜在的交易信号，并降低由于错误关联而导致的交易风险。"
+    },
+    {
+        "title": "Non-unique time and market incompleteness",
+        "summary": "Financial markets are often modelled as if time were unique and continuous across assets and markets. Financial markets are however asynchronous, order flow is event-driven, and waiting times between events are often random. Many of the most influential formulations of financial market models presuppose a unique global calendar time and advocate for this or that preferred single latent continuous-time price system. Here we critically contrast these assumptions with event-time, renewal, point-process, and order-flow descriptions. We revisit no-arbitrage, no-dynamic-arbitrage, and risk-neutral option pricing in settings where the market is represented as a discrete event system and where the continuum limit of a discrete-time random walk need not be unique. The central suggestion is then that such non-uniqueness points to a more foundational form of market incompleteness than is usually emphasized. This highlights the importance of operational time at the level of decision making but reminds market practitioners that managing risk itself often requires reconciling operational time with a global calendar time. At these longer time scales forms of effective or average completeness may still emerge at lower frequencies and remain useful for portfolio construction and risk management, even if high-frequency hedging and execution expose a clock mismatch between trading, pricing, and longer-horizon allocation.",
+        "url": "http://arxiv.org/abs/2604.23608v2",
+        "published_date": "2026-04-26T08:48:12+00:00",
+        "updated_date": "2026-04-28T10:54:14+00:00",
+        "categories": [
+            "q-fin.TR",
+            "q-fin.GN",
+            "q-fin.ST"
+        ],
+        "authors": [
+            "Chris Angstmann",
+            "Tim Gebbie"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Event-driven modeling of market microstructure",
+        "data_sources": "Order flow data, potentially high-frequency price data",
+        "alpha_potential": "Exploiting discrepancies between operational time (event-driven) and calendar time to identify short-term mispricings or inefficiencies in high-frequency trading strategies.",
+        "tags": [
+            "market microstructure",
+            "high-frequency trading",
+            "event-driven",
+            "risk management"
+        ],
+        "title_cn": "非唯一时间和市场不完备性",
+        "summary_cn": "该论文探讨了金融市场中事件驱动的本质，指出传统基于连续时间的模型可能忽略了市场微观结构中的重要信息。研究表明，操作时间与日历时间的不一致可能导致市场不完备性，为高频交易策略提供了潜在的套利机会。通过分析订单流和事件时间，可以更好地理解高频交易中的定价和风险管理问题，并在短期内发现定价偏差。"
+    },
+    {
+        "title": "RouteNLP: Closed-Loop LLM Routing with Conformal Cascading and Distillation Co-Optimization",
+        "summary": "Serving diverse NLP workloads with large language models is costly: at one enterprise partner, inference costs exceeded $200K/month despite over 70% of queries being routine tasks well within the capability of smaller models. We present RouteNLP, a closed-loop framework that routes queries across a tiered model portfolio to minimize cost while satisfying per-task quality constraints. The framework integrates three components: a difficulty-aware router with shared task-conditioned representations trained on preference data and quality signals; confidence-calibrated cascading that uses conformal prediction for distribution-free threshold initialization; and a distillation-routing co-optimization loop that clusters escalation failures, applies targeted knowledge distillation to cheaper models, and automatically retrains the router, yielding over twice the cost improvement of untargeted distillation. In an 8-week pilot deployment processing ~5K queries/day at an enterprise customer-service division, RouteNLP reduced inference costs by 58% while maintaining 91% response acceptance and reducing p99 latency from 1,847 ms to 387 ms. On a six-task benchmark spanning finance, customer service, and legal domains, the framework achieves 40-85% cost reduction while retaining 96-100% quality on structured tasks and 96-98% on generation tasks, with human evaluation confirming that 74.5% of routed generation outputs match or exceed frontier-model quality.",
+        "url": "http://arxiv.org/abs/2604.23577v1",
+        "published_date": "2026-04-26T07:34:36+00:00",
+        "updated_date": "2026-04-26T07:34:36+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.LG"
+        ],
+        "authors": [
+            "Dongxin Guo",
+            "Jikun Wu",
+            "Siu Ming Yiu"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "LLM Routing and Distillation",
+        "data_sources": "Customer service queries (potentially adaptable to financial textual data like news, earnings calls)",
+        "alpha_potential": "Optimizing the use of different LLMs based on task complexity and cost, potentially applicable for processing financial news feeds or analyst reports with varying degrees of sophistication and latency requirements to derive trading signals efficiently.",
+        "tags": [
+            "LLM",
+            "Natural Language Processing",
+            "Cost Optimization",
+            "Text Analysis"
+        ],
+        "title_cn": "RouteNLP: 基于保形级联和蒸馏协同优化的闭环LLM路由",
+        "summary_cn": "RouteNLP提出了一种闭环框架，通过分层模型组合路由查询，以在满足质量约束的前提下最小化成本。在金融领域，这可以应用于分析不同复杂度的文本数据（例如新闻、研报），利用小型模型处理简单任务，大型模型处理复杂任务，从而优化信息处理效率和交易信号提取成本。该方法可能降低算法交易中NLP任务的计算资源需求。"
+    },
+    {
+        "title": "High-dimensional Semi-supervised Classification via the Fermat Distance",
+        "summary": "Semi-supervised classification, where unlabeled data are massive but labeled data are limited, often arises in machine learning applications. We address this challenge under high-dimensional data by leveraging the manifold and cluster assumptions. Based on the Fermat distance, a density-sensitive metric that naturally encodes the cluster assumption, we propose the weighted $k$-nearest neighbors (NN) classifier and multidimensional scaling (MDS)-induced classifiers. The use of MDS with a large target dimension allows the effective application of linear classifiers to complex manifold data. Theoretically, we derive a sharp lower bound for the expected excess risk within clusters and prove that the weighted $k$-NN classifier utilizing the true Fermat distance is minimax optimal. Furthermore, we explicitly quantify the utility of unlabeled data by showing that the error arising from estimating the Fermat distance decays exponentially with the pooled sample size. Such a rate is much faster than the related rates in the literature. Extensive experiments on synthetic and real datasets demonstrate competitive or superior performance of our approaches compared to state-of-the-art graph-based semi-supervised classifiers.",
+        "url": "http://arxiv.org/abs/2604.23573v1",
+        "published_date": "2026-04-26T07:28:21+00:00",
+        "updated_date": "2026-04-26T07:28:21+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Ruoxu Tan",
+            "Yiming Zang"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Semi-supervised classification using Fermat distance and k-NN",
+        "data_sources": "Synthetic datasets, real datasets (unspecified in abstract)",
+        "alpha_potential": "Potential to improve classification accuracy with limited labeled data, possibly useful for situations with costly or scarce labels in financial markets like regime detection or anomaly detection.",
+        "tags": [
+            "semi-supervised learning",
+            "classification",
+            "high-dimensional data",
+            "Fermat distance"
+        ],
+        "title_cn": "基于费马距离的高维半监督分类",
+        "summary_cn": "本文提出了一种基于费马距离的半监督分类方法，旨在解决高维数据下标签数据稀缺的问题。该方法利用未标签数据提升分类性能，可能应用于金融市场中标签获取成本较高的场景，例如市场状态识别或异常交易检测。虽然实验验证了其优越性，但实际交易应用仍需进一步研究，例如具体应用于哪些金融数据和alpha生成。"
+    },
+    {
+        "title": "DLM: Unified Decision Language Models for Offline Multi-Agent Sequential Decision Making",
+        "summary": "Building scalable and reusable multi-agent decision policies from offline datasets remains a challenge in offline multi-agent reinforcement learning (MARL), as existing methods often rely on fixed observation formats and action spaces that limit generalization. In contrast, large language models (LLMs) offer a flexible modeling interface that can naturally accommodate heterogeneous observations and actions. Motivated by this, we propose the Decision Language Model (DLM), which formulates multi-agent decision making as a dialogue-style sequence prediction problem under the centralized training with decentralized execution paradigm. DLM is trained in two stages: a supervised fine-tuning phase, which leverages dialogue-style datasets for centralized training with inter-agent context and generates executable actions from offline trajectories, followed by a group relative policy optimization phase to enhance robustness to out-of-distribution actions through lightweight reward functions. Experiments on multiple benchmarks show that a unified DLM outperforms strong offline MARL baselines and LLM-based conversational decision-making methods, while demonstrating strong zero-shot generalization to unseen scenarios across tasks.",
+        "url": "http://arxiv.org/abs/2604.23557v1",
+        "published_date": "2026-04-26T06:34:21+00:00",
+        "updated_date": "2026-04-26T06:34:21+00:00",
+        "categories": [
+            "cs.MA",
+            "cs.AI"
+        ],
+        "authors": [
+            "Zhuohui Zhang",
+            "Bin Cheng",
+            "Bin He"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Reinforcement Learning",
+        "data_sources": "Offline trajectories (likely synthetic data or game data)",
+        "alpha_potential": "Potentially captures inter-agent dependencies to improve decision-making in multi-agent environments, which can be translated to markets with multiple interacting participants.",
+        "tags": [
+            "Reinforcement Learning",
+            "Multi-Agent Systems",
+            "Sequence Prediction",
+            "Decision Making"
+        ],
+        "title_cn": "DLM：用于离线多智能体序列决策的统一决策语言模型",
+        "summary_cn": "该论文提出了一种名为决策语言模型（DLM）的离线多智能体强化学习方法。其核心思想是将多智能体决策建模成对话式序列预测问题。DLM在训练过程中利用智能体间的上下文信息，增强了对异构观测和动作的适应性。该方法可能有潜力应用于高频交易或市场微观结构建模，特别是当需要考虑多个市场参与者之间的相互作用时。然而，该论文着重于通用性，需要根据具体金融市场的特性进行大量调整和实验。"
+    },
+    {
+        "title": "Autocorrelation Reintroduces Spectral Bias in KANs for Time Series Forecasting",
+        "summary": "Existing theory suggests that Kolmogorov-Arnold Networks (KANs) can overcome the spectral bias commonly observed in neural networks under the assumption that inputs are statistically independent. However, this assumption does not hold in time series forecasting (TSF), where inputs are lagged observations with strong temporal autocorrelation. Through theoretical analysis and empirical validation, we obtain an unexpected finding: temporal autocorrelation reintroduces spectral bias in KANs, and the bias becomes increasingly pronounced as the degree of autocorrelation increases. This suggests that standard KANs may face substantial difficulties in TSF with strongly autocorrelated inputs. To address this problem, we introduce the Discrete Cosine Transform (DCT) to reduce the correlations among the network inputs. As expected, experimental results reveal that DCT preprocessing substantially reduces the observed low-frequency preference in TSF. This result also corroborates that the spectral bias of KANs in TSF tasks is indeed induced by the autocorrelation among input variables.",
+        "url": "http://arxiv.org/abs/2604.23518v1",
+        "published_date": "2026-04-26T03:47:18+00:00",
+        "updated_date": "2026-04-26T03:47:18+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Chen Zeng",
+            "Jiahui Wang",
+            "Qiao Wang"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Kolmogorov-Arnold Networks (KANs) with Discrete Cosine Transform (DCT)",
+        "data_sources": "Time series data (unspecified, but presumed to be financial time series in context)",
+        "alpha_potential": "KANs, when properly preprocessed with DCT to reduce autocorrelation, can improve time series forecasting accuracy, potentially leading to enhanced predictive power for asset prices or other market variables.",
+        "tags": [
+            "time series forecasting",
+            "spectral bias",
+            "KAN",
+            "machine learning"
+        ],
+        "title_cn": "自相关性在时间序列预测中重新引入KAN的频谱偏差",
+        "summary_cn": "该研究表明，时间序列数据中的自相关性会影响Kolmogorov-Arnold Networks (KANs) 的预测效果。通过引入离散余弦变换 (DCT) 预处理降低输入变量之间的相关性，可以有效减少KANs的频谱偏差，提升时间序列预测的准确性。此方法可能用于改进量化交易中的价格预测模型，从而挖掘潜在的交易机会，例如高频交易或算法交易。"
+    },
+    {
+        "title": "GeoCert: Certified Geometric AI for Reliable Forecasting",
+        "summary": "Forecasting systems in science must be accurate, physically consistent, and certifiably reliable. Most existing models address prediction, constraint enforcement, and verification separately, limiting scalability and interpretability. We introduce GeoCert, a geometric AI framework that unifies forecasting, physical reasoning, and formal verification within a single differentiable computation. GeoCert formulates forecasting as evolution along a hyperbolic manifold, where negative curvature induces contraction dynamics, intrinsic robustness, and logarithmic-time certification. A hierarchical constraint architecture separates universal physical laws from domain-specific dynamics, enabling certified generalization across energy, climate, finance, and transportation systems. GeoCert achieves state-of-the-art accuracy while reducing computational cost by 97.5% and maintaining better certification rates. By embedding verification into the geometry of learning, GeoCert transforms forecasting from empirical approximation to formally verified inference, offering a scalable foundation for trustworthy, reproducible, and physically grounded scientific AI.",
+        "url": "http://arxiv.org/abs/2604.23474v1",
+        "published_date": "2026-04-25T23:54:41+00:00",
+        "updated_date": "2026-04-25T23:54:41+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Regina Zhang",
+            "Zongru Li",
+            "Honggang Wen",
+            "Xiaofeng Liu",
+            "Siu-Ming Yiu",
+            "Pietro Liò",
+            "Kwok-Yan Lam"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Geometric AI with hyperbolic manifold and hierarchical constraint architecture",
+        "data_sources": "Not explicitly specified in abstract, but potential for application to financial time series data.",
+        "alpha_potential": "Potentially exploits inefficiencies through robust and certifiably reliable forecasting by modeling financial time series as evolution along a hyperbolic manifold, inducing contraction dynamics.",
+        "tags": [
+            "forecasting",
+            "geometric AI",
+            "time series analysis",
+            "risk management"
+        ],
+        "title_cn": "GeoCert：面向可靠预测的认证几何人工智能",
+        "summary_cn": "GeoCert是一种几何人工智能框架，声称能提高预测的准确性和可靠性。其使用双曲流形对时间序列进行建模，利用负曲率诱导收缩动力学，以提高鲁棒性和实现快速验证。该框架或可应用于金融市场的时间序列预测，潜在用于开发更稳健的交易策略及风险管理模型。适用于对预测精度和模型可解释性要求高的场景。"
+    },
+    {
+        "title": "Escher-Loop: Mutual Evolution by Closed-Loop Self-Referential Optimization",
+        "summary": "While recent autonomous agents demonstrate impressive capabilities, they predominantly rely on manually scripted workflows and handcrafted heuristics, inherently limiting their potential for open-ended improvement. To address this, we propose Escher-Loop, a fully closed-loop framework that operationalizes the mutual evolution of two distinct populations: Task Agents that solve concrete problems, and Optimizer Agents that recursively refine both the task agents and themselves. To sustain this self-referential evolution, we propose a dynamic benchmarking mechanism that seamlessly reuses the empirical scores of newly generated task agents as relative win-loss signals to update optimizers' scores. This mechanism leverages the evolution of task agents as an inherent signal to drive the evaluation and refinement of optimizers without additional overhead. Empirical evaluations on mathematical optimization problems demonstrate that Escher-Loop effectively pushes past the performance ceilings of static baselines, achieving the highest absolute peak performance across all evaluated tasks under matched compute. Remarkably, we observe that the optimizer agents dynamically adapt their strategies to match the shifting demands of high-performing task agents, which explains the system's continuous improvement and superior late-stage performance.",
+        "url": "http://arxiv.org/abs/2604.23472v1",
+        "published_date": "2026-04-25T23:46:08+00:00",
+        "updated_date": "2026-04-25T23:46:08+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Ziyang Liu",
+            "Xinyan Guo",
+            "Xuchen Wei",
+            "Han Hao",
+            "Liu Yang"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Closed-loop self-referential optimization with co-evolutionary agents",
+        "data_sources": "Not specific to financial data; demonstration on mathematical optimization problems",
+        "alpha_potential": "The system has the potential to dynamically discover and adapt to changing market conditions by co-evolving trading strategies (Task Agents) and strategy optimizers (Optimizer Agents), which could lead to identifying profitable patterns earlier or adapting to market regime shifts faster than static strategies.",
+        "tags": [
+            "reinforcement learning",
+            "adaptive strategies",
+            "optimization",
+            "agent-based modeling"
+        ],
+        "title_cn": "埃舍尔循环：闭环自引用优化实现的相互演化",
+        "summary_cn": "该论文提出了一种闭环自优化框架，通过共同进化交易策略智能体（Task Agents）和策略优化器智能体（Optimizer Agents），有望动态适应不断变化的市场环境。 虽然论文主要在数学优化问题上进行了验证，但其核心思想，即通过智能体之间的相互演化来发现和改进策略，具有应用于量化交易的潜力。 如果能够成功应用于金融市场，该方法能够比传统策略更早地捕捉到潜在的盈利模式，或更快速地适应市场状态的转变。"
+    },
+    {
+        "title": "Inference of Online Newton Methods with Nesterov's Accelerated Sketching",
+        "summary": "Reliable decision-making with streaming data requires principled uncertainty quantification of online methods. While first-order methods enable efficient iterate updates, their inference procedures still require updating proper (covariance) matrices, incurring $O(d^2)$ time and memory complexity, and are sensitive to ill-conditioning and noise heterogeneity of the problem. This costly inference task offers an opportunity for more robust second-order methods, which are, however, bottlenecked by solving Newton systems with $O(d^3)$ complexity. In this paper, we address this gap by studying an online Newton method with Hessian averaging, where the Newton direction at each step is approximately computed using a sketch-and-project solver with Nesterov's acceleration, matching $O(d^2)$ complexity of first-order methods. For the proposed method, we quantify its uncertainty arising from both random data and randomized computation. Under standard smoothness and moment conditions, we establish global almost-sure convergence, prove asymptotic normality of the last iterate with a limiting covariance characterized by a Lyapunov equation, and develop a fully online covariance estimator with non-asymptotic convergence guarantees. We also connect the resulting uncertainty quantification to that of exact and sketched Newton methods without Nesterov's acceleration. Extensive experiments on regression models demonstrate the superiority of the proposed method for online inference.",
+        "url": "http://arxiv.org/abs/2604.23436v1",
+        "published_date": "2026-04-25T20:43:17+00:00",
+        "updated_date": "2026-04-25T20:43:17+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG",
+            "math.OC",
+            "stat.CO"
+        ],
+        "authors": [
+            "Haoxuan Wang",
+            "Xinchen Du",
+            "Sen Na"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Online Newton method with Nesterov's accelerated sketching",
+        "data_sources": "Regression models (simulated data, assumed relevant to market data)",
+        "alpha_potential": "Improved and faster uncertainty quantification in online learning can lead to better adaptation to changing market dynamics and improved risk management, allowing for quicker reactions to regime shifts and exploiting short-term opportunities.",
+        "tags": [
+            "online learning",
+            "risk management",
+            "algorithmic trading",
+            "Newton method"
+        ],
+        "title_cn": "基于Nesterov加速草图的在线牛顿法推断",
+        "summary_cn": "该论文研究了一种使用Nesterov加速草图法的在线牛顿法，旨在提高在线学习的不确定性量化效率。虽然它没有直接应用于金融市场，但可以用于改进算法交易中的风险管理。通过提升在线情境下参数不确定性的估计速度和准确性，策略可以更快地适应市场变化、规避风险，可能带来更好的交易表现。未来的工作可以将此方法应用到真实的金融时间序列数据上，验证其在量化交易中的实际效果。"
+    },
+    {
+        "title": "Necessary and sufficient conditions for universality of Kolmogorov-Arnold networks",
+        "summary": "We analyze the universal approximation property of Kolmogorov-Arnold Networks (KANs) in terms of their edge functions. If these functions are all affine, then universality clearly fails. How many non-affine functions are needed, in addition to affine ones, to ensure universality? We show that a single one suffices. More precisely, we prove that deep KANs in which all edge functions are either affine or equal to a fixed continuous function $σ$ are dense in $C(K)$ for every compact set $K\\subset\\mathbb{R}^n$ if and only if $σ$ is non-affine. In contrast, for KANs with exactly two hidden layers, universality holds if and only if $σ$ is nonpolynomial. We further show that the full class of affine functions is not required; it can be replaced by a finite set without affecting universality. In particular, in the nonpolynomial case, a fixed family of five affine functions suffices when the depth is arbitrary. More generally, for every continuous non-affine function $σ$, there exists a finite affine family $A_σ$ such that deep KANs with edge functions in $A_σ\\cup\\{σ\\}$ remain universal. We also prove that KANs with the spline-based edge parameterization introduced by Liu et al.~\\cite{Liu2024} are universal approximators in the classical sense, even when the spline degree and knot sequence are fixed in advance.",
+        "url": "http://arxiv.org/abs/2604.23765v1",
+        "published_date": "2026-04-26T15:31:51+00:00",
+        "updated_date": "2026-04-26T15:31:51+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.NE",
+            "math.FA"
+        ],
+        "authors": [
+            "Vugar Ismailov"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "Kolmogorov-Arnold Networks (KANs)",
+        "data_sources": "N/A (Theoretical Paper)",
+        "alpha_potential": "The paper investigates the theoretical underpinnings of KANs, potentially enabling more efficient and accurate function approximation for modeling complex financial relationships, which could lead to superior predictive models and alpha generation.",
+        "tags": [
+            "KANs",
+            "function approximation",
+            "neural networks",
+            "model architecture"
+        ],
+        "title_cn": "柯尔莫哥洛夫-阿诺德网络通用性的充要条件",
+        "summary_cn": "该论文研究柯尔莫哥洛夫-阿诺德网络(KANs)的通用逼近性质，探讨了网络边缘函数的必要条件。虽然是理论研究，但深入理解KANs的函数逼近能力，有助于构建更高效的金融预测模型。例如，可用于更精确地建模复杂市场关系或非线性因子，从而提升交易策略的预测能力并产生alpha。"
+    },
+    {
+        "title": "Partition-of-Unity Gaussian Kolmogorov-Arnold Networks",
+        "summary": "Gaussian basis functions provide an efficient and flexible alternative to spline activations in KANs. In this work, we introduce the partition-of-unity Gaussian KAN (PU-GKAN), a Shepard-type normalized Gaussian KAN in which the Gaussian basis values on each edge are divided by their local sum over fixed centers. This produces a partition-of-unity feature map with trainable coefficients, while preserving the standard edge-based KAN structure. The normalized construction gives exact constant reproduction at the edge level and admits an explicit finite-feature kernel interpretation.\n  We formulate both the standard Gaussian KAN (GKAN) and PU-GKAN from a finite-feature and additive-kernel viewpoint, making the induced layer kernels and empirical feature matrices explicit. Using the first-layer feature matrix as the reference object, we adopt a practical scale-selection interval for \\(ε\\), with the lower endpoint determined by adjacent-center overlap and the upper endpoint determined by a conservative conditioning threshold. Numerical experiments show that PU-GKAN reduces sensitivity to \\(ε\\), improves validation accuracy for most smooth and moderately non-smooth targets, and gives more stable training behavior. The benefit persists across sample-size and center-number sweeps, higher-dimensional architectures, Matérn RBF bases, and physics-informed examples involving Helmholtz and wave equations. These results indicate that Shepard-type partition-of-unity normalization is a simple and effective stabilization mechanism for RBF-based KANs.",
+        "url": "http://arxiv.org/abs/2604.23599v1",
+        "published_date": "2026-04-26T08:24:03+00:00",
+        "updated_date": "2026-04-26T08:24:03+00:00",
+        "categories": [
+            "cs.CE",
+            "cs.AI",
+            "math.AP"
+        ],
+        "authors": [
+            "Amir Nooeizadegan"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "Kolmogorov-Arnold Networks (KANs)",
+        "data_sources": "Not explicitly financial; uses examples related to physics-informed problems (Helmholtz and wave equations).",
+        "alpha_potential": "The paper focuses on improving the stability and accuracy of KANs, which *could* indirectly benefit models used in quantitative finance if KANs become a prevalent model choice. The improved stability and reduced sensitivity to hyperparameters may lead to more robust signal generation and prediction in financial time series data.",
+        "tags": [
+            "KAN",
+            "Neural Networks",
+            "Function Approximation",
+            "Regression"
+        ],
+        "title_cn": "单位分解高斯科莫格罗夫-阿诺德网络",
+        "summary_cn": "该论文提出了一种改进的科莫格罗夫-阿诺德网络(KAN)结构，称为单位分解高斯KAN(PU-GKAN)， 旨在提高模型的训练稳定性和对超参数的鲁棒性。尽管论文本身没有直接应用于金融市场，但其对KAN的改进可能间接提升金融时间序列预测、风险管理和定价模型的性能，尤其是在需要高精度函数逼近的场景中。然而，实际应用仍需验证其在金融数据上的有效性。"
+    },
+    {
+        "title": "ELSA: Exact Linear-Scan Attention for Fast and Memory-Light Vision Transformers",
+        "summary": "Existing attention accelerators often trade exact softmax semantics, depend on fused Tensor Core kernels, or incur sequential depth that limits FP32 throughput on long sequences. We present \\textbf{ELSA}, an algorithmic reformulation of online softmax attention that (i)~preserves exact softmax semantics in real arithmetic with a \\emph{provable} $\\mathcal{O}(u\\log n)$ FP32 relative error bound; (ii)~casts the online softmax update as a prefix scan over an associative monoid $(m,S,W)$, yielding $O(n)$ extra memory and $O(\\log n)$ parallel depth; and (iii)~is Tensor-Core independent, implemented in Triton and CUDA C++, and deployable as a \\emph{drop-in replacement} requiring no retraining or weight modification. Unlike FlashAttention-2/3, which rely on HMMA/GMMA Tensor Core instructions and provide no compatible FP32 path, ELSA operates identically on A100s and resource-constrained edge devices such as Jetson TX2 -- making it the only hardware-agnostic exact-attention kernel that reduces parallel depth to $O(\\log n)$ at full precision. On A100 FP32 benchmarks (1K--16K tokens), ELSA delivers $1.3$--$3.5\\times$ speedup over memory-efficient SDPA and $1.97$--$2.27\\times$ on BERT; on Jetson TX2, ELSA achieves $1.5$--$1.6\\times$ over Math (64--900 tokens), with $17.8$--$20.2\\%$ throughput gains under LLaMA-13B offloading at $\\ge$32K. In FP16, ELSA approaches hardware-fused baselines at long sequences while retaining full FP32 capability, offering a unified kernel for high-precision inference across platforms. Our code and implementation are available at https://github.com/ming053l/ELSA.",
+        "url": "http://arxiv.org/abs/2604.23798v1",
+        "published_date": "2026-04-26T16:41:30+00:00",
+        "updated_date": "2026-04-26T16:41:30+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.CV"
+        ],
+        "authors": [
+            "Chih-Chung Hsu",
+            "Xin-Di Ma",
+            "Wo-Ting Liao",
+            "Chia-Ming Lee"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Transformer optimization (attention mechanism)",
+        "data_sources": "Not applicable, focuses on algorithmic optimization.",
+        "alpha_potential": "Potentially indirect alpha through enabling faster and more efficient processing of financial time series data within transformer models, allowing for quicker reaction to market changes or more complex model architectures.",
+        "tags": [
+            "Transformers",
+            "Attention Mechanism",
+            "High-Frequency Trading",
+            "Algorithmic Optimization"
+        ],
+        "title_cn": "ELSA：用于快速、轻量级视觉 Transformer 的精确线性扫描注意力",
+        "summary_cn": "ELSA论文提出了一种优化Transformer注意力机制的算法，旨在提高计算速度和降低内存消耗。尽管该论文主要针对视觉Transformer，但其优化方法，如线性扫描注意力，可能间接提高金融时间序列数据处理的效率。通过更快的模型推理速度，交易者能够在高频交易环境中更快地响应市场变化，或在资源受限的环境中部署更复杂的模型。然而，其在金融领域的直接应用效果需要进一步研究。"
+    },
+    {
+        "title": "A General Representation-Based Approach to Multi-Source Domain Adaptation",
+        "summary": "A central problem in unsupervised domain adaptation is determining what to transfer from labeled source domains to an unlabeled target domain. To handle high-dimensional observations (e.g., images), a line of approaches use deep learning to learn latent representations of the observations, which facilitate knowledge transfer in the latent space. However, existing approaches often rely on restrictive assumptions to establish identifiability of the joint distribution in the target domain, such as independent latent variables or invariant label distributions, limiting their real-world applicability. In this work, we propose a general domain adaptation framework that learns compact latent representations to capture distribution shifts relative to the prediction task and address the fundamental question of what representations should be learned and transferred. Notably, we first demonstrate that learning representations based on all the predictive information, i.e., the label's Markov blanket in terms of the learned representations, is often underspecified in general settings. Instead, we show that, interestingly, general domain adaptation can be achieved by partitioning the representations of Markov blanket into those of the label's parents, children, and spouses. Moreover, its identifiability guarantee can be established. Building on these theoretical insights, we develop a practical, nonparametric approach for domain adaptation in a general setting, which can handle different types of distribution shifts.",
+        "url": "http://arxiv.org/abs/2604.23790v1",
+        "published_date": "2026-04-26T16:29:32+00:00",
+        "updated_date": "2026-04-26T16:29:32+00:00",
+        "categories": [
+            "cs.LG",
+            "stat.ML"
+        ],
+        "authors": [
+            "Ignavier Ng",
+            "Yan Li",
+            "Zijian Li",
+            "Yujia Zheng",
+            "Guangyi Chen",
+            "Kun Zhang"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Domain Adaptation using Latent Representations",
+        "data_sources": "Unspecified; general domain adaptation framework",
+        "alpha_potential": "Potentially useful for adapting trading strategies across different market regimes or asset classes where labeled data is limited, by learning invariant representations.",
+        "tags": [
+            "domain adaptation",
+            "representation learning",
+            "transfer learning",
+            "machine learning"
+        ],
+        "title_cn": "一种基于通用表征的多源域适应方法",
+        "summary_cn": "该论文提出了一种通用的领域自适应框架，旨在学习紧凑的潜在表征，以捕捉相对于预测任务的分布变化。潜在的应用包括将交易策略从历史数据迁移到实时市场，或从一个资产类别迁移到另一个资产类别。该方法通过划分马尔可夫毯来提高泛化性，但在金融领域的实际应用还需要进一步的研究，以确定其在特定市场结构或数据类型下的表现。"
+    },
+    {
+        "title": "Transformer as an Euler Discretization of Score-based Variational Flow",
+        "summary": "Despite the Transformer's dominance across machine learning, its architecture remains largely heuristic and lacks a unified theoretical foundation. We introduce Score-based Variational Flow (SVFlow), a continuous-time dynamical system for representation learning in which the state evolves according to a variational posterior-weighted average of conditional log-likelihood scores, and provide a principled basis for regularization through variational consistency. We show that forward Euler discretization of spherical SVFlow exactly recovers the Transformer architecture. Multi-head attention approximates SVFlow vector field via a vMF kernel-smoothed posterior, while MoE/FFN approximates it in a relaxed network-based way, and the residual-normalization block implements a relaxed retraction that maintains spherical geometry. This unification explains why attention trains stably without explicit regularization while MoE requires auxiliary balancing losses. Experiments on pre-trained language models with prefix shuffling show that SVFlow-induced metrics correlate with task performance, reveal depth-dependent sensitivity, and reflect the intrinsic dynamics of attention.",
+        "url": "http://arxiv.org/abs/2604.23740v1",
+        "published_date": "2026-04-26T14:36:31+00:00",
+        "updated_date": "2026-04-26T14:36:31+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Huadong Liao"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Transformer",
+        "data_sources": "Pre-trained language model data",
+        "alpha_potential": "Potentially provides a way to understand the inner workings of Transformers. This understanding can possibly lead to better architectures or training methods relevant to financial forecasting or sentiment analysis.",
+        "tags": [
+            "Transformer",
+            "NLP",
+            "language model"
+        ],
+        "title_cn": "Transformer作为基于分数的变分流的欧拉离散化",
+        "summary_cn": "本文将Transformer架构视为一种特殊的连续时间动态系统(Score-based Variational Flow, SVFlow)的离散化。通过理解Transformer不同组成部分与SVFlow的对应关系, 例如多头注意力机制和前馈网络, 或许可以帮助开发更有效或稳健的金融市场预测模型。该理论框架可能为改进金融领域Transformer模型的训练和架构设计提供新思路，但直接应用到量化交易的路径尚不明确。"
+    },
+    {
+        "title": "Scalable and Verifiable Federated Learning for Cross-Institution Financial Fraud Detection",
+        "summary": "The global financial ecosystem confronts a critical asymmetry: while fraud syndicates operate as borderless, distributed networks, banking institutions remain constrained by regulatory data silos, limiting visibility into cross-institutional threat patterns under strict privacy laws such as GDPR. Although Federated Learning (FL) enables collaborative training, existing protocols impose a trade-off among scalability, privacy, and integrity. Homomorphic encryption schemes are computationally expensive, while pairwise masking protocols require O(N^2) key exchanges and lack mechanisms to detect malformed updates. Existing defenses also remain vulnerable to gradient inversion attacks that can reconstruct sensitive transaction data.\n  To address these limitations, we propose Dynamic Sharded Federated Learning (DSFL), a verifiable secure aggregation framework for cross-institution financial fraud detection. DSFL replaces mesh topologies with Dynamic Stochastic Sharding, reducing communication complexity from O(N^2) to O(N m), where m is a fixed shard size, achieving linear scalability. To mitigate insider threats, we introduce Linear Integrity Tags, an additive-homomorphic commitment mechanism that enables probabilistic verification of submitted updates without the overhead of zero-knowledge proofs, while not enforcing semantic correctness. Additionally, the Active Neighborhood Recovery protocol ensures robust aggregation under participant dropouts. Empirical evaluation on the Credit Card Fraud Detection Dataset (ULB) demonstrates an approximately 33x latency reduction compared to Paillier-based secure aggregation, while maintaining strong resilience under simulated failures. These results position DSFL as a practical foundation for scalable and privacy-preserving collaborative fraud detection.",
+        "url": "http://arxiv.org/abs/2604.23437v1",
+        "published_date": "2026-04-25T20:49:22+00:00",
+        "updated_date": "2026-04-25T20:49:22+00:00",
+        "categories": [
+            "cs.CR",
+            "cs.LG"
+        ],
+        "authors": [
+            "Prajwal Panth",
+            "Nishant Nigam"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Federated Learning",
+        "data_sources": "Credit Card Fraud Detection Dataset (ULB)",
+        "alpha_potential": "This paper focuses on fraud detection and doesn't directly propose a trading strategy. However, advanced fraud detection can indirectly improve execution quality and reduce transaction costs for trading firms, offering a minor alpha.",
+        "tags": [
+            "Federated Learning",
+            "Fraud Detection",
+            "Risk Management",
+            "Privacy"
+        ],
+        "title_cn": "用于跨机构金融欺诈检测的可扩展且可验证的联邦学习",
+        "summary_cn": "该论文提出了一种名为动态分片联邦学习（DSFL）的安全聚合框架，用于跨机构金融欺诈检测。虽然其重点是欺诈检测而不是直接的交易策略，但更有效的欺诈检测可以降低交易成本并提高执行质量，间接为交易公司带来微弱的alpha。该方法在线性可扩展性和隐私保护方面有所创新。"
+    },
+    {
+        "title": "Learn&Drop: Fast Learning of CNNs based on Layer Dropping",
+        "summary": "This paper proposes a new method to improve the training efficiency of deep convolutional neural networks. During training, the method evaluates scores to measure how much each layer's parameters change and whether the layer will continue learning or not. Based on these scores, the network is scaled down such that the number of parameters to be learned is reduced, yielding a speed up in training. Unlike state-of-the-art methods that try to compress the network to be used in the inference phase or to limit the number of operations performed in the backpropagation phase, the proposed method is novel in that it focuses on reducing the number of operations performed by the network in the forward propagation during training. The proposed training strategy has been validated on two widely used architecture families: VGG and ResNet. Experiments on MNIST, CIFAR-10 and Imagenette show that, with the proposed method, the training time of the models is more than halved without significantly impacting accuracy. The FLOPs reduction in the forward propagation during training ranges from 17.83\\% for VGG-11 to 83.74\\% for ResNet-152. These results demonstrate the effectiveness of the proposed technique in speeding up learning of CNNs. The technique will be especially useful in applications where fine-tuning or online training of convolutional models is required, for instance because data arrive sequentially.",
+        "url": "http://arxiv.org/abs/2604.23403v1",
+        "published_date": "2026-04-25T18:39:00+00:00",
+        "updated_date": "2026-04-25T18:39:00+00:00",
+        "categories": [
+            "cs.CV",
+            "cs.AI",
+            "cs.NE"
+        ],
+        "authors": [
+            "Giorgio Cruciata",
+            "Luca Cruciata",
+            "Liliana Lo Presti",
+            "Jan Van Gemert",
+            "Marco La Cascia"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "CNN Layer Dropping",
+        "data_sources": "MNIST, CIFAR-10, Imagenette (image datasets)",
+        "alpha_potential": "While the paper focuses on efficient CNN training, the core idea of dynamically adapting the network architecture during training could be adapted to financial time series data to identify optimal feature sets and network complexity, potentially leading to more robust models and faster training for prediction tasks.",
+        "tags": [
+            "CNN",
+            "Model Optimization",
+            "Efficient Training",
+            "Feature Selection"
+        ],
+        "title_cn": "Learn&Drop：基于层丢弃的卷积神经网络快速学习",
+        "summary_cn": "该论文提出一种加速卷积神经网络训练的方法，通过在训练过程中评估每一层参数的变化程度，动态丢弃不重要的层，从而减少训练所需的计算量。 虽然原文使用图像数据证实了该方法的有效性，但此技术也可以应用于金融时间序列数据，以优化模型结构，并减少训练时间。动态调整网络结构，可能有助寻找更鲁棒的金融预测模型和特征组合。"
+    },
+    {
+        "title": "Reparameterization through Coverings and Topological Weight Priors",
+        "summary": "We generalise the reparameterization trick applied in variational autoencoders (VAEs) letting these have latent spaces of non-trivial topology - i.e. that of base manifolds covered with other ones, on which some technique for RT is available. That is possible since covering maps are measurable - moreover, in case of particular measure preservation property holding for the covering, one can establish an inequality on KL-divergence between pushforward (PF) densities on the base latent manifold, making the KL-term of VAE's ELBO analytically tractable, despite the topological non-triviality of the supporting latent manifold. Our development follows a route close but somewhat alternative to reparameterization on Lie groups, the latest proposal for which is to reparameterize PFs of normal densities from the Lie algebra - \"through\" the exponential map, seen by us as sometimes a particular case of what we propose to call reparameterization through a covering. Covering maps need not be global diffeomorphisms (although Lie-exp maps, in general, need not either, but, to date only smooth ones were considered in this context, to the best of our knowledge), which makes many non-trivial topologies tamable to our proposed technique, that we detail on a particular such example. We demonstrate the working of our approach by constructing a VAE with the latent space of Klein bottle (not a Lie group) topology, which we call KleinVAE, successfully learning an appropriate artificial dataset. We discuss potential applicability of such topology-informed generative models as weight priors in Bayesian learning, particularly for convolutional vision models, where said manifold was peculiarly shown to have some relevance.",
+        "url": "http://arxiv.org/abs/2604.23804v1",
+        "published_date": "2026-04-26T17:01:34+00:00",
+        "updated_date": "2026-04-26T17:01:34+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Maxim Beketov",
+            "Pavel Snopov"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Variational Autoencoder with topological priors",
+        "data_sources": "Artificial dataset (Klein bottle topology)",
+        "alpha_potential": "Using topology-informed generative models for weight priors could potentially improve generalization and robustness of trading models, although this paper doesn't demonstrate it directly.",
+        "tags": [
+            "Variational Autoencoders",
+            "Bayesian Learning",
+            "Weight Priors",
+            "Generative Models"
+        ],
+        "title_cn": "通过覆盖和拓扑权重先验的重参数化",
+        "summary_cn": "本文提出了一种使用拓扑信息改进变分自编码器VAE的方法，通过覆盖空间实现重参数化技巧。潜在的应用是将这种拓扑结构的生成模型作为贝叶斯学习中的权重先验，提升模型泛化能力。但该方法目前仅在人工数据集上进行了验证，离实际交易应用尚有距离，需要进一步研究其在金融数据上的有效性，例如提升卷积神经网络在量化策略中的表现。"
+    },
+    {
+        "title": "Fixed-Reservoir vs Variational Quantum Architectures for Chaotic Dynamics: Benchmarking QRC and QPINN on the Lorenz System",
+        "summary": "Deploying quantum machine learning on NISQ devices requires architectures where training overhead does not negate computational advantages. We systematically compare two quantum approaches for chaotic time-series prediction on the Lorenz system: a variational Quantum Physics-Informed Neural Network (QPINN) and a Quantum Reservoir Computing (QRC) framework utilizing a fixed transverse-field Ising Hamiltonian. Under matched resources ($4$--$5$ qubits, $2$--$3$ layers), QRC achieves an $81\\%$ lower mean-squared error (test MSE $3.2 \\pm 0.6$ vs. $47.9 \\pm 36.6$ for QPINN) while training $\\sim 52,000\\times$ faster ($0.2$\\,s vs. $\\sim 2.4$\\,h per seed). Drawing on the classical delay-embedding principle, we formalize a temporal windowing technique within the QRC pipeline that improves attractor reconstruction by providing bounded, structured input history. Analysis reveals that QPINN instability stems from capacity limitations and competing loss terms rather than barren plateaus; gradient norms remained large ($10^3$--$10^4$), ruling out exponential suppression at this scale. These failure modes are absent by construction in the non-variational QRC approach. We validate robustness across three canonical systems (Lorenz, Rössler, and Lorenz-96), where QRC consistently achieves low test MSE ($3.1 \\pm 0.6$, $1.8 \\pm 0.1$, and $12.4 \\pm 0.6$, respectively) with sub-second training. Our findings suggest the fixed-reservoir architecture is a primary driver of QRC's advantage at these scales, warranting further investigation at larger qubit counts and on hardware where quantum-specific advantages are expected to emerge.",
+        "url": "http://arxiv.org/abs/2604.23743v1",
+        "published_date": "2026-04-26T14:43:03+00:00",
+        "updated_date": "2026-04-26T14:43:03+00:00",
+        "categories": [
+            "quant-ph",
+            "cs.LG"
+        ],
+        "authors": [
+            "Tushar Pandey"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Quantum Reservoir Computing (QRC), Quantum Physics-Informed Neural Network (QPINN)",
+        "data_sources": "Simulated chaotic systems data (Lorenz, Rössler, Lorenz-96)",
+        "alpha_potential": "The paper explores quantum computing methods for chaotic time-series prediction, but uses simulated, non-financial data. Even if successful, transposing to real-world financial time series requires significant research and development, with no guarantee of finding consistent, exploitable alpha.",
+        "tags": [
+            "Quantum Computing",
+            "Time-Series Prediction",
+            "Machine Learning"
+        ],
+        "title_cn": "混沌动力系统的固定水库与变分量子架构：Lorenz系统的QRC和QPINN基准测试",
+        "summary_cn": "本文探讨了量子计算在混沌时间序列预测中的应用，比较了量子储备计算（QRC）和量子物理信息神经网络（QPINN）在预测Lorenz系统上的性能。虽然量子计算可能对复杂时间序列建模有潜力，但这项研究主要集中在理论层面，并且使用了模拟数据。将其应用于实际金融市场的时间序列预测，面临数据复杂性和策略执行等挑战，目前尚不具备直接的交易应用价值。"
+    },
+    {
+        "title": "ComplianceNLP: Knowledge-Graph-Augmented RAG for Multi-Framework Regulatory Gap Detection",
+        "summary": "Financial institutions must track over 60,000 regulatory events annually, overwhelming manual compliance teams; the industry has paid over USD 300 billion in fines and settlements since the 2008 financial crisis. We present ComplianceNLP, an end-to-end system that automatically monitors regulatory changes, extracts structured obligations, and identifies compliance gaps against institutional policies. The system integrates three components: (1) a knowledge-graph-augmented RAG pipeline grounding generations in a regulatory knowledge graph of 12,847 provisions across SEC, MiFID II, and Basel III; (2) multi-task obligation extraction combining NER, deontic classification, and cross-reference resolution over a shared LEGAL-BERT encoder; and (3) compliance gap analysis that maps obligations to internal policies with severity-aware scoring. On our benchmark, ComplianceNLP achieves 87.7 F1 on gap detection, outperforming GPT-4o+RAG by +3.5 F1, with 94.2% grounding accuracy ($r=0.83$ vs. human judgments) and 83.4 F1 under realistic end-to-end error propagation. Ablations show that knowledge-graph re-ranking contributes the largest marginal gain (+4.6 F1), confirming that structural regulatory knowledge is critical for cross-reference-heavy tasks. Domain-specific knowledge distillation (70B $\\to$ 8B) combined with Medusa speculative decoding yields $2.8\\times$ inference speedup; regulatory text's low entropy ($H=2.31$ bits vs. $3.87$ general text) produces 91.3% draft-token acceptance rates. In four months of parallel-run deployment processing 9,847 updates at a financial institution, the system achieved 96.0% estimated recall and 90.7% precision, with a $3.1\\times$ sustained analyst efficiency gain. We report deployment lessons on trust calibration, GRC integration, and distributional shift monitoring for regulated-domain NLP.",
+        "url": "http://arxiv.org/abs/2604.23585v1",
+        "published_date": "2026-04-26T07:44:50+00:00",
+        "updated_date": "2026-04-26T07:44:50+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.IR",
+            "cs.LG"
+        ],
+        "authors": [
+            "Dongxin Guo",
+            "Jikun Wu",
+            "Siu Ming Yiu"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Knowledge-Graph-Augmented RAG",
+        "data_sources": "SEC, MiFID II, and Basel III regulatory provisions, institutional policies",
+        "alpha_potential": "The system aims to reduce compliance costs by automating regulatory gap detection, although it doesn't directly generate trading signals.",
+        "tags": [
+            "regulatory compliance",
+            "knowledge graph",
+            "RAG",
+            "NLP"
+        ],
+        "title_cn": "ComplianceNLP: 基于知识图谱增强的RAG用于多框架监管差距检测",
+        "summary_cn": "本文介绍了一种名为ComplianceNLP的系统，旨在自动监控监管变化，提取结构化义务，并识别机构政策中的合规差距。尽管该系统主要用于减少金融机构的合规成本，但通过快速分析监管信息，可以帮助投资者及时了解政策变化对特定行业的影响，从而间接影响投资决策。该系统采用基于知识图谱增强的RAG方法，可应用于识别监管变化带来的投资机会或风险。"
+    },
+    {
+        "title": "CAPSULE: Control-Theoretic Action Perturbations for Safe Uncertainty-Aware Reinforcement Learning",
+        "summary": "Ensuring safe exploration in high-dimensional systems with unknown dynamics remains a significant challenge. Existing safe reinforcement learning methods often provide safety guarantees only in expectation, which can still lead to safety violations. Control-theoretic approaches, in contrast, offer hard constraint-based safety guarantees but typically assume access to known system dynamics or require accurate estimation of control-affine models. In this paper, we propose a safe reinforcement learning framework that learns a probabilistic control-affine dynamics model in an offline setting. The learned model is leveraged to explicitly construct control barrier functions (CBFs) that incorporate model uncertainty to provide conservative safety constraints. These CBF constraints are enforced through an online constraint-based action correction mechanism, enabling safe exploration without overly restricting task performance. Empirical evaluations on nonlinear, complex continuous-control benchmarks demonstrate that our approach achieves returns comparable to those of existing baselines while significantly reducing safety violations.",
+        "url": "http://arxiv.org/abs/2604.23576v1",
+        "published_date": "2026-04-26T07:31:30+00:00",
+        "updated_date": "2026-04-26T07:31:30+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Rahul Narava",
+            "Siddharth Verma",
+            "Ojas Jain",
+            "Shashi Shekhar Jha",
+            "Mayank Shekhar Jha"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Reinforcement Learning with Control Barrier Functions",
+        "data_sources": "Simulated continuous control benchmarks (not financial data)",
+        "alpha_potential": "Not applicable. The paper focuses on safe exploration in RL environments and doesn't directly address financial market inefficiencies.",
+        "tags": [
+            "Reinforcement Learning",
+            "Safe RL",
+            "Control Theory"
+        ],
+        "title_cn": "CAPSULE: 基于控制理论的动作扰动实现安全且具有不确定性感知的强化学习",
+        "summary_cn": "本文提出一种使用控制理论保障强化学习安全性的方法。其核心在于通过离线学习概率控制仿射动力学模型，并构建控制障碍函数来确保探索过程中的安全性。该方法主要应用于非线性连续控制领域，目前没有直接应用于金融交易的案例或潜在的alpha来源。"
+    },
+    {
+        "title": "Hardware-Efficient FPGA Implementation of Sigmoid Function Using Mixed-Radix Hyperbolic Rotation CORDIC",
+        "summary": "Efficient hardware implementation of nonlinear activation functions is a crucial task in deploying artificial neural networks on resource-constrained and edge devices such as Field-Programmable Gate Arrays (FPGAs). The sigmoid activation function is widely used for probabilistic output, binary classification, and gating mechanisms in recurrent neural networks, despite its reliance on exponential computations.\n  This paper presents a hardware-efficient FPGA implementation of the sigmoid activation function using a mixed-radix CORDIC-based architecture. The proposed approach leverages the mathematical relationship between the sigmoid and hyperbolic tangent functions. The input range is normalized to 1, enabling the corresponding tanh computation to operate within a reduced range of 0.5, which significantly improves convergence behavior.\n  To achieve high accuracy with minimal hardware overhead, a modified mixed-radix hyperbolic rotation CORDIC (MR-HRC) algorithm combining radix-2 and radix-4 iterations is introduced. The initial radix-2 stage ensures stable convergence, while the subsequent radix-4 stage accelerates convergence without requiring scale-factor compensation. In the final stage, a radix-2 linear vectoring CORDIC (R2-LVC) is used to compute the hyperbolic tangent by dividing hyperbolic sine and cosine values derived from the MR-HRC algorithm.\n  The entire architecture is fully pipelined and implemented on an FPGA. The design is realized on an Xilinx Virtex-7 FPGA using a 16-bit fixed-point representation. Experimental results demonstrate a significant reduction in hardware utilization, requiring only 835 logic slices with zero DSP usage. Additionally, the design achieves a mean absolute error of 4.23 10^-4, outperforming several recent sigmoid implementations.",
+        "url": "http://arxiv.org/abs/2604.23547v1",
+        "published_date": "2026-04-26T05:52:39+00:00",
+        "updated_date": "2026-04-26T05:52:39+00:00",
+        "categories": [
+            "cs.AR",
+            "cs.AI"
+        ],
+        "authors": [
+            "Chintan Panchal",
+            "Ankur Changela",
+            "Mohendra Roy"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "FPGA Implementation of Sigmoid Function using CORDIC",
+        "data_sources": "N/A",
+        "alpha_potential": "This research focuses on efficient implementation of sigmoid functions on FPGAs. While sigmoid functions are used in neural networks, the paper itself does not propose a novel trading strategy or market inefficiency, but rather an improved hardware implementation which could indirectly improve the performance of trading systems using neural networks.",
+        "tags": [
+            "FPGA",
+            "Sigmoid Function",
+            "Hardware Acceleration",
+            "Neural Networks"
+        ],
+        "title_cn": "基于混合基双曲旋转CORDIC的Sigmoid函数高效FPGA实现",
+        "summary_cn": "本文提出了一种在FPGA上高效实现Sigmoid激活函数的方法，利用混合基CORDIC算法优化计算过程。虽然这本身不是一个交易策略，但高效的硬件实现能加速神经网络的训练和推理，间接提升依赖神经网络的量化交易系统的性能，降低延迟，并使其能部署在资源受限的边缘设备上。"
+    },
+    {
+        "title": "Interpretable Physics-Informed Load Forecasting for U.S. Grid Resilience: SHAP-Guided Ensemble Validation in Hybrid Deep Learning Under Extreme Weather",
+        "summary": "Accurate short-term electricity load forecasting is a cornerstone of U.S. grid reliability; however, prevailing deep learning models remain opaque, limiting operator trust during extreme weather. A unified, interpretable, physics-informed ensemble framework is proposed, integrating a Convolutional Neural Network (CNN) branch for local feature extraction and a Transformer branch for long-range dependency modeling; the branches are fused through a validation-optimized weighted ensemble and regularized by a physics-informed loss derived from the piecewise parabolic temperature-demand relationship of the Electric Reliability Council of Texas (ERCOT) system. Post-hoc interpretability is provided through SHapley Additive exPlanations (SHAP) with the DeepExplainer backend, yielding global and event-level attributions. Using eight years of ERCOT hourly load data (2018-2025) fused with Automated Surface Observing System (ASOS) records from three Texas stations, the framework achieves 713 MW MAE, 812 MW RMSE, and 1.18% MAPE on the test window. For Hampel-flagged extreme events, MAPE falls by 20.7% relative to its Transformer branch and by 40.5% relative to its CNN branch; an ablation confirms that the parabolic and ramp constraints drive a 14.7% RMSE reduction. SHAP analysis reveals a regime shift: temperature dominates under normal operation, whereas wind speed and precipitation become more influential during cold fronts and heatwaves.",
+        "url": "http://arxiv.org/abs/2604.23500v1",
+        "published_date": "2026-04-26T02:26:12+00:00",
+        "updated_date": "2026-04-26T02:26:12+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Md Abubakkar",
+            "Sajib Debnath",
+            "Md. Uzzal Mia"
+        ],
+        "relevance_score": 2,
+        "core_methodology": "Ensemble Deep Learning (CNN and Transformer)",
+        "data_sources": "Electricity load data, weather data (ASOS)",
+        "alpha_potential": "The paper focuses on improving electricity load forecasting accuracy, which could indirectly inform trading strategies related to energy derivatives or companies highly sensitive to energy prices; however, this requires significant adaptation and indirect application.",
+        "tags": [
+            "Deep Learning",
+            "Time Series Forecasting",
+            "Energy Markets",
+            "Extreme Weather"
+        ],
+        "title_cn": "用于美国电网弹性的可解释物理信息负荷预测：极端天气下混合深度学习中基于SHAP的集成验证",
+        "summary_cn": "本文提出了一种用于电力负荷预测的深度学习集成框架，利用CNN和Transformer提取特征，并结合物理信息进行正则化。虽然该模型提高了负荷预测的准确性，但与直接交易策略的关联性较低。潜在的应用可能在于分析能源价格波动的根本原因，从而间接影响能源衍生品交易决策。"
+    }
+]
