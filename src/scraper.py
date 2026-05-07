@@ -54,7 +54,13 @@ def fetch_cv_papers(category: str = 'q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR c
     query = f'({categories}) AND submittedDate:[{start_time_str} TO {end_time_str}]'
     logging.info(f"Using arXiv query: {query}")
 
-    client = arxiv.Client()
+    # Create client with increased delay to avoid rate limiting
+    # arXiv API allows 1 request per 3 seconds, we set 5 seconds to be safe
+    client = arxiv.Client(
+        page_size=100,
+        delay_seconds=5.0,
+        num_retries=5
+    )
     search = arxiv.Search(
         query=query,
         max_results=max_results,
@@ -79,11 +85,15 @@ def fetch_cv_papers(category: str = 'q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR c
             count += 1
         logging.info(f"Successfully fetched {count} papers submitted on {specified_date.strftime('%Y-%m-%d')} from {category}.")
 
-    except arxiv.arxiv.UnexpectedEmptyPageError as e:
+    except arxiv.UnexpectedEmptyPageError as e:
         logging.warning(f"arXiv query returned an empty page (potentially no results for the date/query): {e}")
         # This might not be a critical error, could just mean no papers found
-    except arxiv.arxiv.HTTPError as e:
-        logging.error(f"HTTP error during arXiv search: {e}")
+    except arxiv.HTTPError as e:
+        status_code = getattr(e, 'status_code', None)
+        if status_code == 429:
+            logging.error(f"arXiv API rate limit exceeded (HTTP 429). Please increase the delay between requests or reduce the number of consecutive requests.")
+        else:
+            logging.error(f"HTTP error during arXiv search (status {status_code}): {e}")
     except Exception as e:
         logging.error(f"An unexpected error occurred during arXiv search: {e}", exc_info=True)
         # Log the full traceback for unexpected errors

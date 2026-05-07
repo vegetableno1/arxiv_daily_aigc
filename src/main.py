@@ -2,6 +2,7 @@ import os
 import json
 import logging
 import argparse
+import time
 from datetime import date, datetime, timedelta
 
 # 确保 src 目录在 Python 路径中，以便导入其他模块
@@ -161,6 +162,23 @@ if __name__ == '__main__':
         # 可以考虑在这里创建默认模板或退出
 
     # 检查过去两天的报告，避免遗漏，并生成当天的报告
-    main(target_date=run_date - timedelta(days=2))
-    main(target_date=run_date - timedelta(days=1))
-    main(target_date=run_date)
+    # 只处理那些 JSON 文件不存在的日期，以避免不必要的 arXiv API 调用和限流
+    dates_to_process = []
+    for days_ago in [2, 1, 0]:
+        check_date = run_date - timedelta(days=days_ago)
+        json_filepath = os.path.join(DEFAULT_JSON_DIR, f"{check_date.isoformat()}.json")
+        if not os.path.exists(json_filepath):
+            dates_to_process.append(check_date)
+        else:
+            logging.info(f"日期 {check_date.isoformat()} 的 JSON 文件已存在，跳过抓取。")
+
+    logging.info(f"需要处理 {len(dates_to_process)} 个日期的数据: {[d.isoformat() for d in dates_to_process]}")
+
+    for i, target_date in enumerate(dates_to_process):
+        if i > 0:
+            # 在处理不同日期之间添加延迟，避免 arXiv API 限流
+            # 每个日期的处理可能需要很长时间（40+篇论文 × 10秒 = 7+分钟）
+            delay = 30  # 增加到30秒延迟
+            logging.info(f"等待 {delay} 秒后处理下一个日期，以避免 API 限流...")
+            time.sleep(delay)
+        main(target_date=target_date)
