@@ -195,7 +195,7 @@ rating_prompt_template = """
 You are a Senior Quantitative Researcher with expertise in algorithmic trading, quantitative finance, and AI applied to financial markets. You are skilled at quickly evaluating the practical value of research papers for real-world trading strategies.
 
 # Task
-Based on the following paper's title and abstract, evaluate its relevance and potential for quantitative trading and financial applications. Return null if the paper is completely irrelevant to algorithmic trading, quantitative finance, or AI applied to markets.
+Based on the following paper's title and abstract, evaluate its relevance and potential for quantitative trading and financial applications.
 
 # Input
 Paper Title: %s
@@ -207,38 +207,50 @@ AI/ML Applications: LLMs, agents, RAG (Retrieval-Augmented Generation), Graph Ne
 
 # Output Requirements
 Output should always be in JSON format, strictly compliant with RFC8259.
+
+## Case 1: Completely Irrelevant
 Return null if the paper is completely irrelevant to quantitative finance or AI in trading.
-Otherwise, output the evaluation in the following JSON format:
+
+## Case 2: Relevant but Low Practical Value (relevance_score < 5)
+If relevant but has limited practical value (score 1-4), return ONLY these fields (NO Chinese translations):
 {
-  "relevance_score": <Integer 1-10 indicating practical value for real-world trading>,
-  "core_methodology": "<String: The core algorithm or method, e.g., GNN, Transformer, Dual Momentum, RAG, Reinforcement Learning, Statistical Arbitrage>",
-  "data_sources": "<String: Data used in the paper, e.g., LOB data, earnings reports, price-volume data, alternative data, news sentiment, multi-modal data>",
-  "alpha_potential": "<String: 1-sentence summary of the alpha source or strategy logic>",
-  "tags": ["<Array of 2-4 string tags, e.g., 'momentum', 'GNN', 'alternative data', 'portfolio optimization'>"],
-  "title_cn": "<String: Chinese translation of the paper title>",
-  "summary_cn": "<String: A high-quality Chinese summary under 100 words focusing on practical trading applications>"
+  "relevance_score": <Integer 1-4>,
+  "core_methodology": "<String: Brief description>",
+  "data_sources": "<String: Brief description>",
+  "alpha_potential": "<String: Brief description>",
+  "tags": ["<Array of 2-4 tags>"]
+}
+
+## Case 3: Relevant and High Practical Value (relevance_score >= 5)
+If relevant with good practical value (score 5-10), return FULL evaluation including Chinese translations:
+{
+  "relevance_score": <Integer 5-10>,
+  "core_methodology": "<String: Detailed description>",
+  "data_sources": "<String: Detailed description>",
+  "alpha_potential": "<String: Detailed explanation>",
+  "tags": ["<Array of 2-4 tags>"],
+  "title_cn": "<String: Professional Chinese translation of the title>",
+  "summary_cn": "<String: High-quality Chinese summary under 100 words focusing on practical trading applications>"
 }
 
 # Scoring Guidelines
-- Relevance Score (1-10): Focus on practical applicability to real-world trading and quantitative finance
+- Relevance Score (1-10): Focus on practical applicability to real-world trading
   * 9-10: Directly applicable trading strategy with clear alpha potential
   * 7-8: Strong methodology with clear path to trading applications
   * 5-6: Relevant but theoretical or requires significant adaptation
-  * 3-4: Tangentially related to finance/trading
+  * 3-4: Tangentially related to finance/trading with limited practical use
   * 1-2: Minimal practical relevance
-  * Return null if completely unrelated to quantitative finance or AI in trading
+  * Return null if completely unrelated
 
-- Core Methodology: Identify the main algorithmic approach (e.g., GNN for relational data, Transformer for sequence modeling, Dual Momentum for trend following, RAG for knowledge-enhanced decisions)
+- Core Methodology: Identify the main algorithmic approach
 
-- Data Sources: Specify what market or alternative data is used (e.g., limit order book data, options flow, earnings call transcripts, satellite imagery, social media sentiment)
+- Data Sources: Specify what market or alternative data is used
 
-- Alpha Potential: Concisely explain the market inefficiency or signal source being exploited
+- Alpha Potential: Explain the market inefficiency or signal source
 
-- Tags: Include 2-4 relevant keywords covering methodology, data type, and application area
+- Tags: Include 2-4 relevant keywords covering methodology and data type
 
-- Title Translation: Translate the paper title into professional, concise Chinese
-
-- Chinese Summary: Provide a high-quality Chinese translation in under 100 words, focusing on practical trading applications and methodologies
+- Chinese Translations (ONLY for score >= 5): Provide professional Chinese translation and summary
 """
 
 
@@ -287,8 +299,17 @@ def rate_papers(papers: list) -> list:
                         papers[i]['_skip'] = True
                         break # 成功获取并解析，跳出重试循环
 
-                    logging.info(f"论文 {i+1}/{len(papers)} (尝试 {attempt+1}): '{title[:50]}...' - AI Rating: {rating_data}")
-                    papers[i].update(rating_data)
+                    # Check if it's a low-score paper (no Chinese translations)
+                    if 'title_cn' not in rating_data:
+                        score = rating_data.get('relevance_score', 0)
+                        logging.info(f"论文 {i+1}/{len(papers)} (尝试 {attempt+1}): '{title[:50]}...' - 低分论文 (score={score}), 保留基础评分")
+                        papers[i].update(rating_data)
+                        papers[i]['_low_priority'] = True  # 标记为低优先级
+                    else:
+                        # High-score paper with full evaluation
+                        logging.info(f"论文 {i+1}/{len(papers)} (尝试 {attempt+1}): '{title[:50]}...' - 高分论文 - {rating_data}")
+                        papers[i].update(rating_data)
+
                     success = True
                     break # 成功获取并解析，跳出重试循环
                 except json.JSONDecodeError:
