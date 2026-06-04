@@ -1,11 +1,138 @@
-import arxiv
 import logging
+import xml.etree.ElementTree as ET
+from email.utils import parsedate_to_datetime
 from datetime import date, timedelta, datetime, timezone
 from typing import List, Dict, Optional, Any
+
+import requests
 
 # Configure logging
 logging.basicConfig(level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
 
+# RSS feed URLs
+RSS_FEEDS = {
+    'cs': 'https://rss.arxiv.org/rss/cs',
+    'q-fin': 'https://rss.arxiv.org/rss/q-fin',
+}
+
+# Target subcategories to filter
+TARGET_CATEGORIES = {'q-fin.PM', 'q-fin.TR', 'cs.LG', 'cs.AI', 'cs.CL'}
+
+# XML namespaces
+NAMESPACES = {
+    'arxiv': 'http://arxiv.org/schemas/atom',
+    'dc': 'http://purl.org/dc/elements/1.1/',
+    'atom': 'http://www.w3.org/2005/Atom',
+}
+
+
+def _parse_rss_item(item: ET.Element) -> Optional[Dict[str, Any]]:
+    """Parse a single RSS <item> element into a paper dict."""
+    title = item.findtext('title', '').strip()
+    url = item.findtext('link', '').strip()
+    description = item.findtext('description', '').strip()
+
+    # Extract abstract from description: "arXiv:ID Announce Type: ...\nAbstract: ..."
+    summary = ''
+    abstract_marker = 'Abstract: '
+    if abstract_marker in description:
+        summary = description.split(abstract_marker, 1)[1].strip()
+    # Collapse whitespace in abstract (newlines, multiple spaces)
+    import re
+    summary = re.sub(r'\s+', ' ', summary)
+
+    # Categories: can have multiple <category> elements
+    categories = [cat.text.strip() for cat in item.findall('category') if cat.text]
+
+    # Published date
+    pub_date_str = item.findtext('pubDate', '').strip()
+    published_date = None
+    if pub_date_str:
+        try:
+            published_date = parsedate_to_datetime(pub_date_str)
+        except Exception:
+            pass
+
+    # Authors from dc:creator
+    authors_str = item.findtext('dc:creator', '', NAMESPACES).strip()
+    authors = [a.strip() for a in authors_str.split(',') if a.strip()] if authors_str else []
+
+    return {
+        'title': title,
+        'summary': summary,
+        'url': url,
+        'published_date': published_date,
+        'updated_date': published_date,  # RSS doesn't distinguish
+        'categories': categories,
+        'authors': authors,
+    }
+
+
+def fetch_papers_via_rss(target_categories: Optional[set] = None) -> List[Dict[str, Any]]:
+    """Fetch today's papers from arXiv RSS feeds.
+
+    Fetches from cs and q-fin RSS feeds, filters by target subcategories,
+    deduplicates, and returns papers in the same format as fetch_cv_papers.
+
+    Args:
+        target_categories: Set of category strings to filter (e.g. {'cs.AI', 'q-fin.TR'}).
+                          Defaults to TARGET_CATEGORIES if None.
+
+    Returns:
+        List of paper dicts with keys: title, summary, url, published_date,
+        updated_date, categories, authors.
+    """
+    if target_categories is None:
+        target_categories = TARGET_CATEGORIES
+
+    seen_urls = set()
+    papers = []
+
+    for feed_name, feed_url in RSS_FEEDS.items():
+        logging.info(f"Fetching RSS feed: {feed_url}")
+        try:
+            resp = requests.get(feed_url, timeout=60)
+            resp.raise_for_status()
+        except requests.RequestException as e:
+            logging.error(f"Failed to fetch RSS feed {feed_url}: {e}")
+            continue
+
+        try:
+            root = ET.fromstring(resp.content)
+        except ET.ParseError as e:
+            logging.error(f"Failed to parse RSS XML from {feed_url}: {e}")
+            continue
+
+        channel = root.find('channel')
+        if channel is None:
+            logging.warning(f"No <channel> found in RSS feed {feed_url}")
+            continue
+
+        items = channel.findall('item')
+        logging.info(f"Found {len(items)} items in {feed_name} RSS feed")
+
+        for item in items:
+            paper = _parse_rss_item(item)
+            if paper is None or not paper['url']:
+                continue
+
+            # Deduplicate by URL
+            if paper['url'] in seen_urls:
+                continue
+            seen_urls.add(paper['url'])
+
+            # Filter by target categories (paper must have at least one matching category)
+            if not target_categories:
+                # No filter, keep all
+                papers.append(paper)
+            elif any(cat in target_categories for cat in paper['categories']):
+                papers.append(paper)
+
+    logging.info(f"Total papers after filtering and deduplication: {len(papers)}")
+    return papers
+
+
+# --- Legacy API-based fetcher (fallback for historical dates) ---
 
 def fetch_cv_papers(category: str = 'q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', max_results: int = 500, specified_date: Optional[date] = None) -> List[Dict[str, Any]]:
     """Fetches quantitative finance and AI papers from arXiv for a given date.
@@ -101,19 +228,12 @@ def fetch_cv_papers(category: str = 'q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR c
     return papers
 
 if __name__ == '__main__':
-    logging.info("Starting arXiv paper fetching example...")
-    # Example usage: Fetch papers for a specific date
-    # Note: Using a future date like 2025 will likely return 0 results unless arXiv data exists for it.
-    # Use a recent past date for better testing.
-    # example_date = date.today() - timedelta(days=4) # Example: 4 days ago
-    example_date = date(2025, 4, 26) # Or a specific past date known to have papers
+    logging.info("Testing RSS-based arXiv paper fetching...")
+    papers = fetch_papers_via_rss()
 
-    logging.info(f"Fetching papers for {example_date.strftime('%Y-%m-%d')}...")
-    latest_papers = fetch_cv_papers(category='q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', max_results=500, specified_date=example_date)
-
-    if latest_papers:
-        logging.info(f"--- Found {len(latest_papers)} Papers ---")
-        for i, paper in enumerate(latest_papers):
-            print(f"{i+1}. {paper['title']}. published_date: {paper['published_date']}.")
+    if papers:
+        logging.info(f"--- Found {len(papers)} Papers via RSS ---")
+        for i, paper in enumerate(papers):
+            print(f"{i+1}. {paper['title']} [{', '.join(paper['categories'])}]")
     else:
-        print(f"No papers found for {example_date} or an error occurred.")
+        print("No papers found via RSS or an error occurred.")

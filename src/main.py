@@ -8,7 +8,7 @@ from datetime import date, datetime, timedelta
 # 确保 src 目录在 Python 路径中，以便导入其他模块
 # 这通常在运行脚本时自动处理，或者可以通过设置 PYTHONPATH
 # 或者更好的方式是使用相对导入（如果结构允许）或将项目作为包安装
-from scraper import fetch_cv_papers
+from scraper import fetch_cv_papers, fetch_papers_via_rss
 from filter import filter_papers_by_topic, rate_papers
 from html_generator import generate_html_from_json
 
@@ -41,8 +41,13 @@ def main(target_date: date):
         logging.info(f"未找到 JSON 文件: {json_filepath}。执行抓取和过滤。")
         # --- 1. 抓取论文 --- #
         logging.info("步骤 1: 抓取 ArXiv 量化金融和AI 论文...")
-        # 注意：fetch_cv_papers 内部默认使用 UTC 日期
-        raw_papers = fetch_cv_papers(category='q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', specified_date=target_date)
+        # 使用 RSS 抓取当天的论文（无429限流），历史日期则回退到 API
+        if target_date == date.today():
+            logging.info("使用 RSS Feed 抓取今天的论文...")
+            raw_papers = fetch_papers_via_rss()
+        else:
+            logging.info(f"使用 arXiv API 抓取历史日期 {target_date} 的论文...")
+            raw_papers = fetch_cv_papers(category='q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', specified_date=target_date)
         if not raw_papers:
             logging.warning(f"在 {target_date.isoformat()} 未找到论文或抓取失败。")
             # 如果抓取失败且无 JSON 文件，则无法继续
