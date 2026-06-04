@@ -134,6 +134,8 @@ def fetch_papers_via_rss(target_categories: Optional[set] = None) -> List[Dict[s
 
 # --- Legacy API-based fetcher (fallback for historical dates) ---
 
+import arxiv  # Only needed for the legacy API-based fetcher
+
 def fetch_cv_papers(category: str = 'q-fin.PM OR q-fin.TR OR cs.LG OR cs.AI OR cs.CL', max_results: int = 500, specified_date: Optional[date] = None) -> List[Dict[str, Any]]:
     """Fetches quantitative finance and AI papers from arXiv for a given date.
 
