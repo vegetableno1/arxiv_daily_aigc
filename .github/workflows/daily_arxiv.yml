@@ -6,6 +6,11 @@ on:
     - cron: '0 4 * * *'
   workflow_dispatch: # Allows manual triggering
 
+# 取消正在进行的运行，避免并发冲突
+concurrency:
+  group: pages-deploy
+  cancel-in-progress: true
+
 jobs:
   build:
     runs-on: ubuntu-latest
