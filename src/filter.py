@@ -16,7 +16,7 @@ OPENROUTER_API_URL = "https://openrouter.ai/api/v1/chat/completions"
 # 可以选择一个合适的模型，例如免费或低成本的模型进行分类任务
 # 查阅 OpenRouter 文档获取可用模型列表: https://openrouter.ai/docs#models
 # 例如使用 'mistralai/mistral-7b-instruct:free'
-MODEL_NAME = "deepseek/deepseek-v4-flash"
+MODEL_NAME = "deepseek/deepseek-chat-v3-0324"
 
 # 速率限制配置
 REQUEST_DELAY = 10  # 每次请求之间的延迟（秒）
