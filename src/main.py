@@ -59,8 +59,8 @@ def main(target_date: date):
         # 注意：filter_papers_by_topic 依赖 OPENROUTER_API_KEY 环境变量
         filtered_papers = filter_papers_by_topic(raw_papers, topic="algorithmic trading, quantitative finance, or AI applied to financial markets")
         filtered_papers = rate_papers(filtered_papers)
-        # 将filtered_papers按照relevance_score降序排序
-        filtered_papers.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
+        # 将filtered_papers按照relevance_score降序排序，None值视为0
+        filtered_papers.sort(key=lambda x: x.get('relevance_score') if x.get('relevance_score') is not None else 0, reverse=True)
         if not filtered_papers:
             logging.warning("没有论文通过过滤。将创建空的 JSON 文件。")
             # 创建一个空列表，以便后续保存为空 JSON
