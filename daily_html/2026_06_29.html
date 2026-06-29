@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArXiv Quantitative Finance & AI Papers - June 29, 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.dev.js"></script>
+    <!-- Example using Font Awesome (replace with your preferred icon library if needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            /* New Palette: Light, Clean, Futuristic with Teal/Aqua accents */
+            --bg-color: #f8fafc; /* Tailwind slate-50 (Very Light Gray) */
+            --card-bg-color: #ffffff; /* White */
+            --text-color: #1e293b; /* Tailwind slate-800 (Dark Gray-Blue) */
+            --text-muted-color: #64748b; /* Tailwind slate-500 (Medium Gray-Blue) */
+            --header-color: #0f172a; /* Tailwind slate-900 (Very Dark Blue) */
+            --highlight-primary: #14b8a6; /* Tailwind teal-500 */
+            --highlight-secondary: #67e8f9; /* Tailwind cyan-300 */
+            --border-color: #e2e8f0; /* Tailwind slate-200 (Light Gray) */
+            --shadow-color: rgba(15, 23, 42, 0.08); /* Subtle shadow based on slate-900 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            line-height: 1.6;
+        }
+
+        .bento-grid {
+            display: grid;
+            gap: 1.5rem; /* Tailwind gap-6 */
+            grid-template-columns: 1fr; /* Force single column */
+            padding-bottom: 4rem; /* Add padding at the bottom */
+        }
+
+        .bento-item {
+            /* Apply semi-transparent white background and blur */
+            background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px); /* Safari prefix */
+            border-radius: 1rem; /* Slightly larger radius */
+            padding: 1.75rem; /* Slightly more padding */
+            border: 1px solid rgba(226, 232, 240, 0.5); /* Lighter border with transparency */
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease-out;
+            overflow: hidden; /* Ensure content doesn't overflow */
+            position: relative; /* For potential pseudo-elements */
+        }
+
+        /* Removed ::before pseudo-element for a cleaner look */
+
+
+        .bento-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px var(--shadow-color), 0 4px 8px rgba(15, 23, 42, 0.06); /* Adjusted hover shadow */
+        }
+
+        .paper-title {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            font-weight: 600; /* Tailwind font-semibold */
+            color: var(--highlight-primary); /* Use new primary highlight */
+            margin-bottom: 0.75rem; /* Tailwind mb-3 */
+            line-height: 1.4;
+        }
+
+        .paper-summary {
+            font-size: 0.875rem; /* Tailwind text-sm */
+            color: var(--text-muted-color);
+            margin-bottom: 1.25rem; /* Tailwind mb-5 */
+            line-height: 1.6;
+        }
+
+        .paper-link {
+            display: inline-flex; /* Use flex for icon alignment */
+            align-items: center;
+            font-size: 0.875rem; /* Tailwind text-sm */
+            font-weight: 600;
+            color: var(--highlight-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem; /* Add padding */
+            border-radius: 0.5rem; /* Slightly rounder */
+            background-color: rgba(20, 184, 166, 0.08); /* Subtle teal background */
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .paper-link i {
+            margin-right: 0.5rem; /* Tailwind mr-2 */
+            transition: transform 0.3s ease;
+        }
+
+        .paper-link:hover {
+            background-color: rgba(20, 184, 166, 0.15);
+            color: #0d9488; /* Darker teal on hover */
+            transform: translateY(-1px);
+        }
+        .paper-link:hover i {
+             transform: translateX(2px);
+        }
+
+        .paper-authors {
+            font-size: 0.75rem; /* Tailwind text-xs */
+            color: var(--text-muted-color);
+            margin-top: 1rem; /* Tailwind mt-4 */
+            font-style: italic;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem; /* Tailwind mb-12 */
+            padding-top: 3rem; /* Tailwind pt-12 */
+        }
+
+        .header h1 {
+            font-size: 2.5rem; /* Tailwind text-4xl or 5xl */
+            font-weight: 700; /* Tailwind font-bold */
+            color: var(--header-color);
+            letter-spacing: -0.025em; /* Tailwind tracking-tight */
+            margin-bottom: 0.5rem;
+            /* Optional: Add a subtle text gradient */
+            /* background: linear-gradient(90deg, var(--highlight-primary), var(--highlight-secondary)); */
+            /* -webkit-background-clip: text; */
+            /* -webkit-text-fill-color: transparent; */
+        }
+
+        .header p {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            color: var(--text-muted-color);
+            margin-top: 0.5rem; /* Tailwind mt-2 */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted-color);
+            font-size: 0.875rem; /* Tailwind text-sm */
+            padding-top: 2rem;
+            padding-bottom: 2rem; /* Tailwind py-8 */
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        /* Simple line graphic element (optional) */
+        .line-graphic {
+            height: 1px; /* Thinner line */
+            background: linear-gradient(90deg, rgba(20, 184, 166, 0), var(--highlight-primary), rgba(20, 184, 166, 0));
+            opacity: 0.6;
+            margin: 1.5rem 0; /* Adjust margin */
+        }
+
+        /* Framer Motion requires the script, styles enhance appearance */
+        [data-motion-element] {
+             /* Base styles for elements animated by Framer Motion */
+        }
+
+        .paper-tldr {
+            font-size: 0.95rem; /* Slightly bigger than summary */
+            color: #475569; /* Changed to Tailwind slate-600 (slightly darker than summary) */
+            margin-top: 0.75rem; /* Tailwind mt-3 */
+            margin-bottom: 0.75rem; /* Tailwind mb-2 */
+            /* font-style: italic; */
+            font-weight: bold;
+        }
+
+        .paper-rating {
+            margin-top: 1rem; /* Tailwind mt-4 */
+            margin-bottom: 1rem; /* Tailwind mb-4 */
+            color: #f59e0b; /* Tailwind amber-500 */
+        }
+
+        .paper-rating i {
+            margin-right: 0.125rem; /* Tailwind mr-0.5 */
+        }
+
+        /* Apply consistent star color to sub-ratings */
+        .paper-sub-ratings .rating-item i {
+            color: #f59e0b; /* Match overall rating star color (amber-500) */
+            margin-right: 0.125rem; /* Consistent spacing */
+        }
+
+    </style>
+</head>
+<body class="container mx-auto px-4 antialiased">
+
+    <motion.div
+        initial="{ opacity: 0, y: -30 }"
+        animate="{ opacity: 1, y: 0 }"
+        transition="{ duration: 0.6, ease: 'easeOut' }"
+        class="header"
+        data-motion-element
+    >
+        <h1>量化金融与 AI 每日论文</h1>
+        <p>每日筛选算法交易、量化金融与人工智能相关论文（来源：q-fin.PM, q-fin.TR, cs.LG, cs.AI, cs.CL）</p>
+        <p>2026年06月29日</p>
+        <div class="line-graphic mt-4 mb-8 mx-auto w-1/4"></div> <!-- Added line graphic -->
+    </motion.div>
+
+    <div class="bento-grid" id="paper-grid">
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.0, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">The Decision Geometry of Covariance Estimation for the Global Minimum-Variance Portfolio under Heavy Tails</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">重尾分布下全局最小方差组合协方差估计的决策几何</p>
+            
+            <p class="paper-summary">The global minimum-variance portfolio (GMVP) is the canonical decision built from an estimated covariance matrix, yet covariance estimators are universally evaluated by matrix-norm loss, which is not the object the decision depends on. We characterise exactly how covariance-estimation error maps into GMVP suboptimality. We prove an exact regret identity and a non-asymptotic bound showing decision regret depends on the estimation error only through its action on the portfolio weights, scaled by portfolio concentration and the conditioning of the true covariance. From this we derive the decision geometry: GMVP regret is invariant to a (p-1)-dimensional projection of the p^2-dimensional error matrix, with invariance to the covariance-scale direction as an exact special case. We then apply the framework to heavy-tailed returns (tail index kappa in (2,4)), establishing the regret convergence rate implied by the centred operator-norm rate, and confirm the theory on a skew-t/t-copula simulation design with pre-registered analysis. The decision-focused advantage is a sharper constant and a concentration discount rather than a faster rate; we report an honest high-conditioning boundary of the rate prediction. The results complement recent decision-focused learning approaches by supplying the exact estimation geometry and consistency theory they lack.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper focuses on the decision geometry of covariance estimation for the global minimum-variance portfolio (GMVP) under heavy-tailed returns. It provides an exact characterization of how covariance-estimation error maps into GMVP suboptimality, including an exact regret identity and non-asymptotic bounds. The methodology is applied to heavy-tailed returns (tail index kappa in (2,4)), with a skew-t/t-copula simulation design for validation.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper uses simulated data based on a skew-t/t-copula design to validate the theoretical framework. While not explicitly mentioned, the methodology is applicable to real-world financial returns data, particularly those exhibiting heavy tails.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The paper's framework can improve portfolio optimization by providing a more accurate understanding of how covariance estimation errors affect GMVP performance, especially in heavy-tailed markets. This could lead to better risk-adjusted returns by minimizing suboptimality due to estimation errors.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star-half-alt"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(7/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    portfolio optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    covariance estimation
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    heavy-tailed returns
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    decision geometry
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文研究了在重尾分布下，协方差估计误差如何影响全局最小方差组合（GMVP）的次优性。通过精确的后悔恒等式和非渐近边界，揭示了估计误差通过组合权重、组合集中度和真实协方差的条件数对决策的影响。这一框架可应用于重尾市场（尾指数κ∈(2,4)），通过更准确的协方差估计提升组合优化效果，尤其适用于风险调整后的回报优化。</p>
+            </div>
+            
+
+            <a href="https://arxiv.org/abs/2606.27462" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Xavier Fonseca</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.05, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Action-Space Entropy Regularization in Bayesian Markowitz</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">贝叶斯马科维茨中的动作空间熵正则化</p>
+            
+            <p class="paper-summary">We solve the entropy-regularized mean--variance portfolio problem under Bayesian drift uncertainty. We combine continuous-time Bayesian filtering with stochastic policy optimization; the main finding is negative: the two mechanisms are orthogonal. Posterior dynamics are policy-independent, so entropy regularization cannot accelerate learning about the unknown drift. The mean control is identical to the deterministic Bayesian Markowitz feedback, and entropy enters only through policy variance. On the technical side, the optimal policy is Gaussian, the value function is quadratic in wealth, and the leading belief-dependent coefficient closes in exponential form. The framework recovers both parent models as limiting cases.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Combines Bayesian filtering with entropy-regularized stochastic policy optimization for portfolio selection, focusing on mean-variance optimization under drift uncertainty.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Implied but not specified; likely requires asset returns data for drift estimation and portfolio construction.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited, as the main finding indicates that entropy regularization does not accelerate learning about the unknown drift. The framework may offer theoretical insights but lacks clear practical alpha generation mechanisms.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star-half-alt"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(5/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Bayesian Optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Portfolio Optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Entropy Regularization
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该研究解决了贝叶斯漂移不确定性下的熵正则化均值-方差投资组合问题。结合连续时间贝叶斯滤波与随机策略优化，主要发现为负：两种机制正交，熵正则化无法加速未知漂移的学习。均值控制与确定性贝叶斯马科维茨反馈相同，熵仅通过策略方差体现。该框架为理论提供了扩展，但在实际交易中应用有限。</p>
+            </div>
+            
+
+            <a href="https://arxiv.org/abs/2602.16862" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Andy Au</p>
+            
+        </motion.div>
+        
+    </div>
+
+    <footer class="footer">
+        生成时间：2026年06月29日 08:57:05 UTC | 量化金融与 AI 论文智能追踪系统
+    </footer>
+
+</body>
+</html>

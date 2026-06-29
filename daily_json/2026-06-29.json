@@ -1,0 +1,54 @@
+[
+    {
+        "title": "The Decision Geometry of Covariance Estimation for the Global Minimum-Variance Portfolio under Heavy Tails",
+        "summary": "The global minimum-variance portfolio (GMVP) is the canonical decision built from an estimated covariance matrix, yet covariance estimators are universally evaluated by matrix-norm loss, which is not the object the decision depends on. We characterise exactly how covariance-estimation error maps into GMVP suboptimality. We prove an exact regret identity and a non-asymptotic bound showing decision regret depends on the estimation error only through its action on the portfolio weights, scaled by portfolio concentration and the conditioning of the true covariance. From this we derive the decision geometry: GMVP regret is invariant to a (p-1)-dimensional projection of the p^2-dimensional error matrix, with invariance to the covariance-scale direction as an exact special case. We then apply the framework to heavy-tailed returns (tail index kappa in (2,4)), establishing the regret convergence rate implied by the centred operator-norm rate, and confirm the theory on a skew-t/t-copula simulation design with pre-registered analysis. The decision-focused advantage is a sharper constant and a concentration discount rather than a faster rate; we report an honest high-conditioning boundary of the rate prediction. The results complement recent decision-focused learning approaches by supplying the exact estimation geometry and consistency theory they lack.",
+        "url": "https://arxiv.org/abs/2606.27462",
+        "published_date": "2026-06-29T00:00:00-04:00",
+        "updated_date": "2026-06-29T00:00:00-04:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG",
+            "q-fin.PM"
+        ],
+        "authors": [
+            "Xavier Fonseca"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper focuses on the decision geometry of covariance estimation for the global minimum-variance portfolio (GMVP) under heavy-tailed returns. It provides an exact characterization of how covariance-estimation error maps into GMVP suboptimality, including an exact regret identity and non-asymptotic bounds. The methodology is applied to heavy-tailed returns (tail index kappa in (2,4)), with a skew-t/t-copula simulation design for validation.",
+        "data_sources": "The paper uses simulated data based on a skew-t/t-copula design to validate the theoretical framework. While not explicitly mentioned, the methodology is applicable to real-world financial returns data, particularly those exhibiting heavy tails.",
+        "alpha_potential": "The paper's framework can improve portfolio optimization by providing a more accurate understanding of how covariance estimation errors affect GMVP performance, especially in heavy-tailed markets. This could lead to better risk-adjusted returns by minimizing suboptimality due to estimation errors.",
+        "tags": [
+            "portfolio optimization",
+            "covariance estimation",
+            "heavy-tailed returns",
+            "decision geometry"
+        ],
+        "title_cn": "重尾分布下全局最小方差组合协方差估计的决策几何",
+        "summary_cn": "该论文研究了在重尾分布下，协方差估计误差如何影响全局最小方差组合（GMVP）的次优性。通过精确的后悔恒等式和非渐近边界，揭示了估计误差通过组合权重、组合集中度和真实协方差的条件数对决策的影响。这一框架可应用于重尾市场（尾指数κ∈(2,4)），通过更准确的协方差估计提升组合优化效果，尤其适用于风险调整后的回报优化。"
+    },
+    {
+        "title": "Action-Space Entropy Regularization in Bayesian Markowitz",
+        "summary": "We solve the entropy-regularized mean--variance portfolio problem under Bayesian drift uncertainty. We combine continuous-time Bayesian filtering with stochastic policy optimization; the main finding is negative: the two mechanisms are orthogonal. Posterior dynamics are policy-independent, so entropy regularization cannot accelerate learning about the unknown drift. The mean control is identical to the deterministic Bayesian Markowitz feedback, and entropy enters only through policy variance. On the technical side, the optimal policy is Gaussian, the value function is quadratic in wealth, and the leading belief-dependent coefficient closes in exponential form. The framework recovers both parent models as limiting cases.",
+        "url": "https://arxiv.org/abs/2602.16862",
+        "published_date": "2026-06-29T00:00:00-04:00",
+        "updated_date": "2026-06-29T00:00:00-04:00",
+        "categories": [
+            "math.OC",
+            "q-fin.PM"
+        ],
+        "authors": [
+            "Andy Au"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "Combines Bayesian filtering with entropy-regularized stochastic policy optimization for portfolio selection, focusing on mean-variance optimization under drift uncertainty.",
+        "data_sources": "Implied but not specified; likely requires asset returns data for drift estimation and portfolio construction.",
+        "alpha_potential": "Limited, as the main finding indicates that entropy regularization does not accelerate learning about the unknown drift. The framework may offer theoretical insights but lacks clear practical alpha generation mechanisms.",
+        "tags": [
+            "Bayesian Optimization",
+            "Portfolio Optimization",
+            "Entropy Regularization"
+        ],
+        "title_cn": "贝叶斯马科维茨中的动作空间熵正则化",
+        "summary_cn": "该研究解决了贝叶斯漂移不确定性下的熵正则化均值-方差投资组合问题。结合连续时间贝叶斯滤波与随机策略优化，主要发现为负：两种机制正交，熵正则化无法加速未知漂移的学习。均值控制与确定性贝叶斯马科维茨反馈相同，熵仅通过策略方差体现。该框架为理论提供了扩展，但在实际交易中应用有限。"
+    }
+]
