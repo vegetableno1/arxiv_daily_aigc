@@ -1,0 +1,566 @@
+[
+    {
+        "title": "Liquidity-Based Audit of Algorithmic Trading Strategies",
+        "summary": "We show that net demand for liquidity by algo strategies is identifiable from its trade and price history alone, with no knowledge of its signal or optimization problem. An exact multi-period regret decomposition implies that the sign of this statistic classifies a linear strategy as a net liquidity consumer or provider, recovering the Kyle (1985) informed-trader/market-maker dichotomy from observables alone. Under an AR(1) cost process, the same statistic equals the product of strategy size and the squared Roll (1984) implied spread, making the correction a direct proxy for prevailing illiquidity. Extending to endogenous price impact and aggregating across N correlated strategies yields a liquidity-balance condition whose violation produces welfare loss scaling as N squared, a closed-form fire-sale externality. We calibrate to CRSP equity data (2016-2025), tracking implied spreads through the COVID-19 and 2022 rate-shock episodes, with an estimator computable in O(Tnd) time.",
+        "url": "http://arxiv.org/abs/2606.29018v1",
+        "published_date": "2026-06-27T17:35:21+00:00",
+        "updated_date": "2026-06-27T17:35:21+00:00",
+        "categories": [
+            "econ.EM",
+            "cs.LG",
+            "q-fin.CP",
+            "q-fin.RM",
+            "stat.ML"
+        ],
+        "authors": [
+            "Irene Aldridge"
+        ],
+        "relevance_score": 8,
+        "core_methodology": "The paper introduces a method to identify net demand for liquidity by algorithmic trading strategies using only trade and price history, without knowledge of the strategy's signal or optimization problem. It provides a multi-period regret decomposition to classify strategies as liquidity consumers or providers, and extends this to endogenous price impact and aggregation across correlated strategies.",
+        "data_sources": "CRSP equity data (2016-2025), including periods of COVID-19 and 2022 rate-shock episodes.",
+        "alpha_potential": "The methodology allows for the identification of liquidity provision or consumption by algorithmic strategies, which can be used to optimize trading strategies to minimize market impact and improve execution quality. The implied spread measure can serve as a proxy for prevailing illiquidity, offering potential alpha in liquidity-sensitive strategies.",
+        "tags": [
+            "liquidity audit",
+            "algorithmic trading",
+            "market microstructure",
+            "price impact"
+        ],
+        "title_cn": "基于流动性的算法交易策略审计",
+        "summary_cn": "该论文提出了一种仅通过交易和价格历史识别算法策略流动性净需求的方法，无需了解策略信号或优化问题。通过多周期遗憾分解，可将线性策略分类为流动性提供者或消费者，并扩展到内生价格影响和跨相关策略的聚合。该方法可用于优化交易策略，减少市场影响并提高执行质量，尤其在流动性敏感的策略中具有潜在阿尔法价值。"
+    },
+    {
+        "title": "A3M: Adaptive, Adversarial and Multi-Objective Learning for Strategic Bidding in Repeated Auctions",
+        "summary": "Learning to bid in repeated multi-unit auctions with bandit feedback poses a fundamental challenge. Existing methods often rely on rigid explore-then-exploit schedules, assume stationary adversaries, and optimize solely for bidder utility, thereby limiting adaptability and strategic robustness. To address these limitations, we introduce the A3M framework, which integrates adaptive deep reinforcement learning (DRL), explicit adversarial reasoning, and principled multi-objective reward design for online auction strategy optimization. A3M employs an actor-critic DRL backbone to dynamically balance exploration and exploitation, an opponent model for fictitious play against non-stationary adversaries, and a composite reward function to jointly maximize utility, auctioneer revenue, and fairness. We provide the first comprehensive empirical evaluation of this integrated approach against established baselines in both discriminatory and uniform price auctions. Results show that A3M reduces final regret by 30--40\\% in standard settings, maintains robust performance against adversarial strategy shifts, scales favorably with the number of units $K$, and enables tunable multi-objective trade-offs. An extensive ablation study confirms the necessity of each core component. Our work establishes A3M as a powerful and flexible framework for learning in complex auction environments.",
+        "url": "http://arxiv.org/abs/2606.28943v1",
+        "published_date": "2026-06-27T14:30:43+00:00",
+        "updated_date": "2026-06-27T14:30:43+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.LG"
+        ],
+        "authors": [
+            "Junhan Li",
+            "Yuxin Zhang",
+            "Haoran Wang",
+            "Minghao Chen"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The A3M framework integrates adaptive deep reinforcement learning (DRL), explicit adversarial reasoning, and principled multi-objective reward design for online auction strategy optimization. It employs an actor-critic DRL backbone to dynamically balance exploration and exploitation, an opponent model for fictitious play against non-stationary adversaries, and a composite reward function to jointly maximize utility, auctioneer revenue, and fairness.",
+        "data_sources": "The paper likely uses simulated auction environments or historical auction data for training and evaluation, though specific data sources are not mentioned in the abstract.",
+        "alpha_potential": "The framework's ability to adapt to non-stationary adversaries and optimize for multiple objectives (utility, revenue, fairness) could be leveraged in financial markets for algorithmic trading strategies, particularly in auction-like environments such as limit order books or dark pools. The adversarial reasoning component may help in anticipating and reacting to competitor strategies.",
+        "tags": [
+            "Reinforcement Learning",
+            "Auction Theory",
+            "Multi-Objective Optimization",
+            "Adversarial Learning"
+        ],
+        "title_cn": "A3M：用于重复拍卖中策略性竞标的自适应、对抗性和多目标学习框架",
+        "summary_cn": "A3M框架通过结合深度强化学习、对抗性推理和多目标奖励设计，为重复拍卖中的策略性竞标提供了自适应解决方案。该框架在动态平衡探索与利用、应对非静态对手策略以及优化多目标（效用、收入、公平性）方面表现出色，可应用于金融市场中的算法交易策略，特别是在类似拍卖的交易环境中。"
+    },
+    {
+        "title": "FinInvest-GTCN: Explainable Graph-Temporal-Causal Modeling for Risk-Aware Investment Decision Optimization",
+        "summary": "Venture capital (VC) investment decisions face distinct challenges, such as multi-source heterogeneous data, non-stationary time series, and the demand for explainable predictions in high-stakes, low-data settings. To overcome these issues, we introduce \\textbf{FinInvest-GTCN}, a Graph-Temporal-Causal Network that redefines the task from content recommendation to quantitative risk-return assessment. This architecture combines a relational graph encoder to capture the investment ecosystem's topology, a multi-scale temporal fusion module to handle long-term dependencies and non-stationarity, and a causal decision head that generates risk-adjusted predictions with interpretable causal attributions. A core innovation is the Meta-Causal Adaptation (MCA) strategy, which facilitates robust fine-tuning for new, data-scarce sectors by aligning updates with causally-plausible structures derived from meta-pretraining. Comprehensive experiments on proprietary VC datasets show that FinInvest-GTCN delivers state-of-the-art results, markedly lowering the primary Risk-Adjusted Mean Squared Error (RA-MSE) to 2.51 from a baseline of 3.05 and boosting the cumulative return of a simulated portfolio by 18.7\\%. Ablation studies underscore the essential role of each component, while additional analyses confirm the model's stability, interpretability, and enhanced adaptability. This work pioneers a data-driven, explainable framework for investment decision support.",
+        "url": "http://arxiv.org/abs/2606.28933v1",
+        "published_date": "2026-06-27T14:09:57+00:00",
+        "updated_date": "2026-06-27T14:09:57+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.LG"
+        ],
+        "authors": [
+            "Junyan Tan",
+            "Yifan Li",
+            "Minghao Wang",
+            "Zihan Chen",
+            "Haoyu Zhang"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Graph-Temporal-Causal Network combining relational graph encoding, multi-scale temporal fusion, and causal decision making with Meta-Causal Adaptation for fine-tuning.",
+        "data_sources": "Proprietary VC datasets, likely including investment ecosystem topology and multi-source heterogeneous data.",
+        "alpha_potential": "Potential to identify risk-adjusted investment opportunities in VC through explainable causal attributions and handling of non-stationary time series.",
+        "tags": [
+            "Graph Neural Networks",
+            "Causal Inference",
+            "Venture Capital",
+            "Time Series Analysis"
+        ],
+        "title_cn": "FinInvest-GTCN：面向风险感知投资决策优化的可解释图-时序-因果建模",
+        "summary_cn": "该研究提出了一种创新的图-时序-因果网络模型，通过整合投资生态系统的拓扑结构、多尺度时序特征和因果推理，为风险投资决策提供可解释的量化评估。核心创新Meta-Causal Adaptation策略能在数据稀缺领域实现稳健调优，实验证明其显著提升了风险调整后收益（18.7%）。该框架对量化投资中处理非平稳时序和构建可解释策略具有重要参考价值。"
+    },
+    {
+        "title": "Constrained Tabular Diffusion for Finance",
+        "summary": "Generative models in finance face the dual challenge of producing realistic data while satisfying strict regulatory and economic objectives, a requirement that standard tabular diffusion models cannot provide. To address this difficulty, we introduce Constrained Tabular Diffusion for Finance (CTDF), a novel integration of sampling-time feasibility operations with mixed-type tabular diffusion in financial applications. By incorporating a training-free feasibility operator into the reverse-diffusion sampling loop, CTDF enforces hard constraints for applications such as simulation, legal compliance, and extrapolation. Extensive experiments on large-scale financial datasets demonstrate zero constraint violations and improvement in scarce data utility. CTDF establishes a robust method for generating trustworthy and compliant synthetic data, opening new avenues for rigorous generative modeling and analysis in the financial domain.",
+        "url": "http://arxiv.org/abs/2606.28674v1",
+        "published_date": "2026-06-27T01:27:35+00:00",
+        "updated_date": "2026-06-27T01:27:35+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Michael Cardei",
+            "Jose M Munoz",
+            "Oscar Barrera",
+            "Shreyas K Chandrahas",
+            "Partha Saha"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Constrained Tabular Diffusion for Finance (CTDF) integrates sampling-time feasibility operations with mixed-type tabular diffusion, incorporating a training-free feasibility operator into the reverse-diffusion sampling loop to enforce hard constraints.",
+        "data_sources": "Large-scale financial datasets (specific types not mentioned in the abstract).",
+        "alpha_potential": "CTDF can generate synthetic financial data that is both realistic and compliant with regulatory constraints, which can be used for simulation, legal compliance, and extrapolation. This can enhance backtesting, scenario analysis, and risk management in quantitative trading strategies.",
+        "tags": [
+            "Generative Models",
+            "Tabular Diffusion",
+            "Regulatory Compliance",
+            "Synthetic Data"
+        ],
+        "title_cn": "金融领域的约束表格扩散模型",
+        "summary_cn": "本文提出的约束表格扩散模型（CTDF）通过结合采样时间可行性操作和混合类型表格扩散，生成既真实又符合监管要求的金融数据。该方法在反向扩散采样循环中引入无训练可行性算子，确保硬约束的满足。CTDF在金融领域的仿真、合规和外推等应用中具有潜力，可为量化交易策略的回测、情景分析和风险管理提供支持。"
+    },
+    {
+        "title": "Entropy-Regularized Reinforcement Learning for Linear-Quadratic Stackelberg Differential Games in Regime-Switching Diffusion Models",
+        "summary": "Stackelberg differential games (SDGs) provide a powerful framework for hierarchical decision-making in stochastic and continuous-time environments, yet their solution remains computationally challenging due to the complexity of traditional dynamic programming and Hamilton-Jacobi-Bellman-Isaacs (HJBI) methods, especially in high-dimensional systems. This paper proposes an entropy-regularized reinforcement learning (ERRL) approach for linear-quadratic SDGs (LQ-SDGs) within a continuous-time diffusion framework governed by Markovian regime switching. The key innovation lies in deriving exploratory weakly-coupled HJBI equations with entropy regularization, which promotes stochastic policies that actively avoid suboptimal equilibria -- a limitation of classical SDG methods. Neural networks are integrated to approximate regime-dependent value functions and solve high-dimensional partial differential equations (PDEs) efficiently, while a novel sampling technique enhances computational tractability. Numerical results demonstrate the effectiveness of the framework compared to conventional approaches, particularly in escaping suboptimal traps through exploratory policies. The study highlights the critical role of entropy regularization and neural network approximations in achieving robust solutions for hierarchical decision-making problems under abrupt environmental shifts.",
+        "url": "http://arxiv.org/abs/2606.28671v1",
+        "published_date": "2026-06-27T01:17:22+00:00",
+        "updated_date": "2026-06-27T01:17:22+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Congde Hu",
+            "Danping Li",
+            "Lin Xu",
+            "Wenying Xu"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces an entropy-regularized reinforcement learning (ERRL) approach for solving linear-quadratic Stackelberg differential games (LQ-SDGs) in a continuous-time diffusion framework with Markovian regime switching. It leverages neural networks to approximate regime-dependent value functions and solve high-dimensional partial differential equations (PDEs), while employing a novel sampling technique for computational efficiency.",
+        "data_sources": "The abstract does not specify explicit data sources, but the methodology is applicable to financial time series data with regime shifts, such as stock prices, interest rates, or other macroeconomic indicators that exhibit different states or regimes.",
+        "alpha_potential": "The framework's ability to handle regime-switching environments and avoid suboptimal equilibria through exploratory policies could be valuable for developing adaptive trading strategies that perform well across different market conditions. The entropy regularization promotes robustness, which is crucial for real-world trading applications.",
+        "tags": [
+            "Reinforcement Learning",
+            "Regime-Switching Models",
+            "Stackelberg Games",
+            "Neural Networks"
+        ],
+        "title_cn": "基于熵正则化强化学习的马尔可夫机制转换扩散模型中的线性二次斯塔克尔伯格微分博弈",
+        "summary_cn": "该论文提出了一种熵正则化强化学习方法，用于解决马尔可夫机制转换扩散模型中的线性二次斯塔克尔伯格微分博弈。通过结合神经网络和新型采样技术，该方法能够高效求解高维偏微分方程，并在不同市场机制下避免次优均衡。这一框架为开发适应不同市场环境的稳健交易策略提供了潜在价值。"
+    },
+    {
+        "title": "MACROCAST: A Vintage-Consistent Time Series Foundation Model for Real-Time Macroeconomic Forecasting",
+        "summary": "We introduce MACROCAST, a lightweight Time Series Foundation Model (TSFM) for real-time macroeconomic forecasting. Existing TSFMs suffer from data leakage in two forms: temporal contamination, as the model may have seen the realized values of the series it forecasts, and revision bias, as training on fully revised data diverges from the preliminary, vintage-specific releases available to real-time forecasters. MACROCAST is, to our knowledge, the first TSFM that rules out both forms of leakage entirely: at no stage of training is the model exposed to information that would not have been available to a forecaster in real time. We train MACROCAST first on purely synthetic time series in approximately one GPU-day and then fine-tune it on synthetic time series drawn from Bayesian VARs, dynamic factor models, and ARIMA specifications estimated on vintage-specific ALFRED data. Because pretraining uses only simulated data and fine-tuning uses only real-time vintages, no observed future or revised value ever enters the model; each fine-tuning run takes nine minutes. Evaluated on the FRED-MD database in a genuine real-time out-of-sample exercise, MACROCAST improves on the AR(1) benchmark for roughly 80% of series-horizon pairs, matches or surpasses Chronos-2 -- the strongest currently available TSFM -- and outperforms the Bayesian VAR and dynamic factor model benchmarks, all in a data-leakage-free manner.",
+        "url": "http://arxiv.org/abs/2606.28670v1",
+        "published_date": "2026-06-27T01:08:21+00:00",
+        "updated_date": "2026-06-27T01:08:21+00:00",
+        "categories": [
+            "econ.EM",
+            "cs.AI",
+            "cs.LG"
+        ],
+        "authors": [
+            "Andrea Carriero",
+            "Davide Pettenuzzo",
+            "Shubhranshu Shekhar"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "MACROCAST is a lightweight Time Series Foundation Model (TSFM) designed for real-time macroeconomic forecasting. It avoids data leakage by training exclusively on synthetic and vintage-specific data, ensuring no exposure to future or revised values. The model is pretrained on synthetic time series and fine-tuned on data from Bayesian VARs, dynamic factor models, and ARIMA specifications estimated on vintage-specific ALFRED data.",
+        "data_sources": "The model uses synthetic time series for pretraining and vintage-specific ALFRED data for fine-tuning. The evaluation is performed on the FRED-MD database.",
+        "alpha_potential": "MACROCAST's ability to provide accurate real-time macroeconomic forecasts without data leakage could be valuable for trading strategies that rely on macroeconomic indicators. It outperforms benchmarks like AR(1), Chronos-2, Bayesian VAR, and dynamic factor models, suggesting potential for generating alpha in macroeconomic-driven trading strategies.",
+        "tags": [
+            "Time Series Foundation Model",
+            "Macroeconomic Forecasting",
+            "Real-Time Data",
+            "Data Leakage Prevention"
+        ],
+        "title_cn": "MACROCAST：一种用于实时宏观经济预测的版本一致时间序列基础模型",
+        "summary_cn": "MACROCAST是一种轻量级时间序列基础模型，专为实时宏观经济预测设计，避免了数据泄漏问题。该模型在合成数据和特定版本的真实数据上进行训练，显著优于现有基准模型。对于依赖宏观经济指标的交易策略，MACROCAST提供了无数据泄漏的高质量预测，具有显著的阿尔法潜力。"
+    },
+    {
+        "title": "Entropy Regularized Reinforcement Learning for Zero-Sum Stochastic Differential Games in a Regime-Switching Jump-Diffusion Process",
+        "summary": "To address parameter misspecification and sudden structural environmental changes in conventional stochastic differential game (SDG) frameworks, this paper introduces a distributional control approach that characterizes optimal strategies as probability distributions over actions, conditioned on the continuous state, the discrete regime state, and parameters. This forms a reinforcement learning framework for entropy-regularized zero-sum stochastic differential games (ERRL-ZSSDGs) in a regime-switching jump-diffusion process. Using the dynamic programming principle (DPP), we derive the associated coupled systems of Hamilton-Jacobi-Bellman-Isaacs (HJBI) equations, from which equilibrium strategies are expressed via gradients of the value function. For linear-quadratic problems, semi-analytical solutions for both value function and equilibrium strategies are obtained by solving a system of coupled ordinary differential equations (ODEs). In more general settings, an Actor-Critic policy improvement algorithm is developed to approximate the value functions and equilibrium policies across different regimes. The method is applied to an investment game, and numerical examples illustrate the effect of the temperature parameter and regime transitions on optimal policies and values.",
+        "url": "http://arxiv.org/abs/2606.28669v1",
+        "published_date": "2026-06-27T01:03:53+00:00",
+        "updated_date": "2026-06-27T01:03:53+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Congde Hu",
+            "Zhuo Jin",
+            "Danping Li",
+            "Lin Xu"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces a reinforcement learning framework for entropy-regularized zero-sum stochastic differential games (ERRL-ZSSDGs) in a regime-switching jump-diffusion process. It uses the dynamic programming principle (DPP) to derive coupled systems of Hamilton-Jacobi-Bellman-Isaacs (HJBI) equations, from which equilibrium strategies are expressed via gradients of the value function. For linear-quadratic problems, semi-analytical solutions are obtained, while an Actor-Critic policy improvement algorithm is developed for more general settings.",
+        "data_sources": "The paper does not explicitly specify data sources but implies the use of market data that can be modeled by regime-switching jump-diffusion processes, which are common in financial markets for asset prices and other financial variables.",
+        "alpha_potential": "The methodology addresses parameter misspecification and sudden structural changes, which are common challenges in financial markets. The entropy-regularized approach could help in developing robust trading strategies that adapt to market regime changes, potentially uncovering alpha in environments with high uncertainty and structural breaks.",
+        "tags": [
+            "Reinforcement Learning",
+            "Stochastic Differential Games",
+            "Regime-Switching",
+            "Jump-Diffusion"
+        ],
+        "title_cn": "基于熵正则化的零和随机微分博弈在状态转换跳跃扩散过程中的强化学习",
+        "summary_cn": "本文提出了一种在状态转换跳跃扩散过程中应用熵正则化强化学习的零和随机微分博弈框架。该方法通过动态规划原理推导出耦合的HJBI方程，用于表达均衡策略。在投资博弈中的应用表明，该方法能有效应对参数误设和市场结构突变，为量化交易中的策略鲁棒性提供了新思路。"
+    },
+    {
+        "title": "RGLD: Randomized Global-Local Density Estimation for Tabular Anomaly Detection",
+        "summary": "Unsupervised tabular anomaly detection requires methods that are accurate, robust across heterogeneous datasets, and computationally efficient. Classical statistical detectors are often efficient, but they usually rely on a fixed data view and a single notion of abnormality. Deep anomaly detectors can learn more flexible scoring functions, but they are substantially slower and difficult to tune in unsupervised settings due to the lack of a reliable supervisory signal. We propose RGLD, a randomized global-local density estimator for efficient unsupervised tabular anomaly detection. RGLD combines a global random-feature density branch, which identifies samples in broadly low-density regions, with a local neighbor branch, which detects samples that are weakly supported by nearby observations. Both branches operate over feature-bagged randomized views, allowing RGLD to expose anomaly evidence that may be hidden in any single representation. We conduct experiments on 47 tabular datasets against 23 statistical and deep anomaly detection baselines under fully unsupervised setting. RGLD achieves the strongest dataset-level AUROC performance, ranking 1st in dataset wins, and ranks 2nd in AUPRC wins. RGLD is also faster than all evaluated deep detectors, achieving 50x-580x speedups, and remains competitive with statistical methods in runtime, yielding a favorable accuracy-efficiency tradeoff.",
+        "url": "http://arxiv.org/abs/2606.28970v1",
+        "published_date": "2026-06-27T15:20:09+00:00",
+        "updated_date": "2026-06-27T15:20:09+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Quanling Zhao",
+            "Jiaying Yang",
+            "Ye Tian",
+            "Josh Victoria",
+            "Zhijun Wang",
+            "Pietro Mercati",
+            "Onat Gungor",
+            "Tajana Rosing"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "RGLD combines global random-feature density estimation with local neighbor analysis over randomized feature views for anomaly detection in tabular data.",
+        "data_sources": "Generic tabular datasets (unspecified financial data in the abstract, but methodology is applicable to financial time series or cross-sectional data).",
+        "alpha_potential": "Potential for detecting anomalous market conditions or outlier instruments in portfolio construction, but requires adaptation to financial datasets.",
+        "tags": [
+            "anomaly detection",
+            "unsupervised learning",
+            "density estimation",
+            "tabular data"
+        ],
+        "title_cn": "RGLD：基于随机化全局-局部密度估计的表格异常检测方法",
+        "summary_cn": "该论文提出了一种高效的表格数据异常检测算法RGLD，通过结合全局随机特征密度估计和局部邻居分析，在无监督场景下实现了优于深度学习的检测精度与计算效率。虽然未直接使用金融数据，但该方法可迁移至市场异常状态检测或组合风险监控，需针对金融时间序列特性进行适配。"
+    },
+    {
+        "title": "Variance Reduction for Stochastic Gradient Generalized Non-reversible Langevin Monte Carlo Algorithms",
+        "summary": "We study the leading-order fluctuation of stochastic gradient Euler-Maruyama estimators for generalized non-reversible Langevin dynamics. Under structural assumptions tailored to the small-stepsize central limit theorem and under an unbiased stochastic gradient oracle, we prove that the empirical average over a horizon of order the inverse squared stepsize satisfies a central limit theorem in the vanishing-stepsize regime. The limiting variance is characterized through the Poisson equation of the limiting full-gradient diffusion. We then rewrite this constant in an operator form that links it to the continuous-time asymptotic variance and, under standard operator-theoretic assumptions, derive a sufficient condition under which an anti-symmetric perturbation strictly reduces the leading-order fluctuation constant relative to the reversible baseline. We also identify bounded smooth predictive observables that re directly covered by the main theorem. As a separate Gaussian calculation beyond the bounded-test-function regime, we obtain closed-form formulas for quadratic Hamiltonians and linear observables. The framework covers non-reversible Langevin dynamics and augmented-state examples including Hessian-free high-resolution dynamics and a positive-definite subclass of gradient-adjusted underdamped Langevin dynamics that allow stochastic gradients. Numerical experiments on basic examples and Bayesian linear regression using synthetic data, and Bayesian logistic regression using real data support the predicted Gaussian fluctuations and show that the non-reversible schemes consistently reduce the root mean squared error (RMSE) relative to their reversible baselines.",
+        "url": "http://arxiv.org/abs/2606.28808v1",
+        "published_date": "2026-06-27T08:25:48+00:00",
+        "updated_date": "2026-06-27T08:25:48+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG",
+            "math.PR"
+        ],
+        "authors": [
+            "Bingye Ni",
+            "Xiaoyu Wang",
+            "Yingli Wang",
+            "Lingjiong Zhu"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper focuses on stochastic gradient Langevin Monte Carlo algorithms, specifically analyzing the variance reduction in non-reversible Langevin dynamics. It provides theoretical guarantees for the asymptotic behavior of these algorithms under certain conditions, which can be useful for Bayesian inference and optimization problems in quantitative finance.",
+        "data_sources": "The paper does not specify particular financial datasets but mentions numerical experiments on Bayesian linear regression using synthetic data and Bayesian logistic regression using real data. This suggests potential applicability to financial modeling where such techniques are common.",
+        "alpha_potential": "The variance reduction techniques discussed could potentially improve the efficiency of Bayesian optimization and inference in trading strategies, particularly in portfolio optimization and risk management. However, the direct application to alpha generation is not explicitly discussed.",
+        "tags": [
+            "Stochastic Gradient",
+            "Langevin Monte Carlo",
+            "Bayesian Inference",
+            "Variance Reduction"
+        ],
+        "title_cn": "随机梯度广义不可逆朗之万蒙特卡洛算法的方差减少",
+        "summary_cn": "本研究探讨了广义不可逆朗之万动力学中随机梯度Euler-Maruyama估计量的领先阶波动。在结构假设下，证明了在步长消失状态下，经验平均值满足中心极限定理。通过泊松方程表征极限方差，并在算子形式下重写，表明非可逆扰动可减少波动常数。数值实验支持高斯波动预测，显示非可逆方案相对于可逆基线降低了均方根误差。该方法可应用于贝叶斯金融建模，提升优化效率。"
+    },
+    {
+        "title": "Closed-Form Steepest Descent Direction toward Flat Minima: Reducing Upper Bounds on the Loss Hessian Eigenspectrum in Neural Networks",
+        "summary": "The flatness hypothesis suggests that flatness of the loss landscape, as measured by the eigenvalues of the loss Hessian, correlates with better neural network generalization. While various algorithms reduce these eigenvalues, most focus on procedural design, leaving it unclear how data distributions and NN parameters structurally determine directions toward flat minima. Characterizing these directions analytically is generally intractable. To overcome this mathematical difficulty, recent studies derived the Wolkowicz-Styan (WS) upper bound on the maximum eigenvalue of the cross-entropy loss Hessian in three-layer NNs. Although this upper bound is differentiable, its gradient was not derived. Therefore, we analytically derive the gradient of the WS upper bound to characterize directions leading to flat minima. Based on this, we propose Hessian Spectral Range (HSR) Regularization, which updates parameters along the steepest descent direction of the WS bound. Experiments demonstrate that HSR Regularization narrows the Hessian eigenvalue spectrum, avoids sharp minima and saddle points, and promotes convergence to flat minima. Although the applicability of this method is currently limited to cross-entropy loss and three-layer architectures, to the best of the authors' knowledge, this is the first study to report a closed-form gradient that promotes convergence to flat minima without numerical approximations. Therefore, the theoretical analysis of this gradient is expected to contribute to the further development of NNs.",
+        "url": "http://arxiv.org/abs/2606.28662v1",
+        "published_date": "2026-06-27T00:47:03+00:00",
+        "updated_date": "2026-06-27T00:47:03+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "cs.NE"
+        ],
+        "authors": [
+            "Yuto Omae",
+            "Kazuki Sakai",
+            "Yohei Kakimoto",
+            "Makoto Sasaki",
+            "Yusuke Sakai",
+            "Hirotaka Takahashi"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper introduces Hessian Spectral Range (HSR) Regularization, which analytically derives the gradient of the Wolkowicz-Styan (WS) upper bound on the maximum eigenvalue of the cross-entropy loss Hessian in three-layer neural networks. This method updates parameters along the steepest descent direction of the WS bound to promote convergence to flat minima.",
+        "data_sources": "The paper does not specify particular financial datasets but focuses on the theoretical development of the method, which could be applied to any dataset where neural networks are used, including financial time series or alternative data.",
+        "alpha_potential": "The method's ability to promote convergence to flat minima could enhance the robustness and generalization of neural networks used in trading strategies, potentially leading to more stable and reliable predictions. However, the current limitation to cross-entropy loss and three-layer architectures may restrict immediate applicability.",
+        "tags": [
+            "Neural Networks",
+            "Loss Landscape",
+            "Regularization",
+            "Flat Minima"
+        ],
+        "title_cn": "闭式最陡下降方向朝向平坦最小值：减少神经网络损失Hessian特征谱的上界",
+        "summary_cn": "该论文提出了一种新的正则化方法（HSR），通过分析推导损失Hessian矩阵特征值的上界梯度，引导神经网络参数朝向平坦最小值收敛。这种方法有望提升交易策略中神经网络的泛化能力和稳定性，但目前仅限于交叉熵损失和三层网络结构，需进一步扩展以适应更复杂的金融应用场景。"
+    },
+    {
+        "title": "Adaptive Iterative Hard Thresholding for Online High-dimensional Quantile Regression",
+        "summary": "Online high-dimensional regression requires algorithms that can update sequentially while preserving structural sparsity. We propose \\textit{Adaptive Iterative Hard Thresholding (AIHT)}, an online sparse-regression framework that alternates stochastic subgradient updates with adaptively scheduled hard-thresholding steps. The key idea is to separate support discovery from local refinement: early in the learning process, AIHT delays thresholding so that weak but informative coordinates have time to accumulate signal, while later it increases the projection frequency to stabilize the sparse estimator and exploit local curvature. We develop the theory for high-dimensional online quantile regression, a challenging setting in which the loss is nonsmooth and the data may exhibit heterogeneity or heavy-tailed noise. Under restricted curvature and gradient-leakage conditions, AIHT remains in an inflated sparse cone, exhibits a two-phase convergence behavior, and attains logarithmic regret for the sliding-window objective. Simulations for online quantile regression, together with threshold-scheduling ablations, support the proposed mechanism and illustrate its advantage over standard online sparse-learning baselines.",
+        "url": "http://arxiv.org/abs/2606.28652v1",
+        "published_date": "2026-06-26T23:44:10+00:00",
+        "updated_date": "2026-06-26T23:44:10+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG",
+            "stat.ME"
+        ],
+        "authors": [
+            "Zitian Zhou",
+            "Nan Lin"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Adaptive Iterative Hard Thresholding (AIHT) for online sparse quantile regression, combining stochastic subgradient updates with adaptive hard-thresholding steps to handle high-dimensional data with structural sparsity.",
+        "data_sources": "High-dimensional financial data, potentially including market returns, macroeconomic indicators, or alternative data sources with heavy-tailed noise or heterogeneity.",
+        "alpha_potential": "The method's ability to handle non-smooth losses and heavy-tailed noise could be valuable for quantile-based trading strategies, risk management, or detecting anomalies in financial markets where traditional regression methods may fail.",
+        "tags": [
+            "quantile regression",
+            "online learning",
+            "sparse regression",
+            "high-dimensional data"
+        ],
+        "title_cn": "在线高维分位数回归的自适应迭代硬阈值方法",
+        "summary_cn": "本文提出的自适应迭代硬阈值（AIHT）方法，通过结合随机次梯度更新和自适应硬阈值步骤，有效处理高维稀疏数据。在金融交易中，该方法可用于开发基于分位数的策略，特别是在市场波动大或噪声较多的环境下，有助于风险管理和异常检测。"
+    },
+    {
+        "title": "Randomized Exploration for Linear Bandits via Absolute Perturbations",
+        "summary": "In stochastic linear bandits, the canonical Upper Confidence Bound (UCB) algorithm admits a simple frequentist regret analysis but can be computationally demanding, while Thompson Sampling (TS) is computationally attractive yet typically harder to analyze due to its non-optimistic nature. We propose Absolute Thompson Sampling (ATS), a simple modification of TS that ensures optimism in expectation by replacing the signed exploration noise with its absolute value. This preserves the computational efficiency of TS while avoiding the technically involved anti-concentration arguments common in TS analyses, enabling a simple UCB-style regret analysis. We show that ATS achieves $\\tilde{O}(d^{3/2}\\sqrt{K})$ regret, matching existing bounds for TS in linear bandits. We further introduce Ensemble Absolute Thompson Sampling (EATS), which takes the maximum over multiple absolute perturbations with normalization by the ensemble size. As the ensemble size grows, EATS converges to the UCB objective, recovering UCB behavior in the limit. Experiments show that moderate ensemble sizes already yield strong performance. Our results point to a bridge between randomized exploration and deterministic optimism both in theory and practice.",
+        "url": "http://arxiv.org/abs/2606.28616v1",
+        "published_date": "2026-06-26T21:22:17+00:00",
+        "updated_date": "2026-06-26T21:22:17+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Toshinori Kitamura",
+            "Shuai Liu",
+            "Csaba Szepesvári"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Absolute Thompson Sampling (ATS) and Ensemble Absolute Thompson Sampling (EATS) are proposed as computationally efficient alternatives to traditional Thompson Sampling (TS) and Upper Confidence Bound (UCB) methods in stochastic linear bandits. ATS ensures optimism in expectation by using absolute perturbations, while EATS extends this by taking the maximum over multiple absolute perturbations, converging to UCB behavior as the ensemble size grows.",
+        "data_sources": "The paper does not specify particular data sources but is applicable to any scenario involving stochastic linear bandits, which could include financial data such as asset returns or market indicators.",
+        "alpha_potential": "The methods could be adapted for portfolio optimization or dynamic asset allocation by treating different assets or strategies as arms in a bandit problem. The efficient exploration-exploitation trade-off could help in identifying profitable strategies or assets more quickly.",
+        "tags": [
+            "Bandit Algorithms",
+            "Portfolio Optimization",
+            "Exploration-Exploitation",
+            "Stochastic Optimization"
+        ],
+        "title_cn": "基于绝对扰动的线性Bandit随机探索",
+        "summary_cn": "本文提出了绝对Thompson采样（ATS）和集成绝对Thompson采样（EATS），作为传统Thompson采样和上置信界（UCB）方法的计算高效替代方案。这些方法通过绝对扰动确保期望乐观，适用于金融中的动态资产配置和组合优化问题，能够快速识别盈利策略。"
+    },
+    {
+        "title": "Improving Coherence in Hierarchical Time Series Forecasting using Structured Temporal Fusion",
+        "summary": "In many real-world applications, such as retail sales, energy usage, and supply chain planning, forecasting is performed across hierarchical structures. These structures often represent aggregations (e.g., products to categories to regions), where forecasts must not only be accurate but also coherent, meaning that lower-level predictions sum correctly to higher-level forecasts. Traditional statistical methods, such as Bottom-Up and MinT, enforce coherence through post-processing but fail to model complex nonlinear temporal dependencies and covariate interactions.\n  We propose Hierarchical Temporal Fusion (HTF), a novel extension of the Temporal Fusion Transformer (TFT) that integrates structured hierarchical embeddings with a coherence-aware loss function to ensure consistent forecasts across all levels of a hierarchy. Rather than applying reconciliation after forecasting, HTF embeds coherence directly into the training objective. The coherence loss penalizes the difference between aggregated child forecasts and their corresponding parent forecasts during training, enabling the model to learn both temporal dynamics and structural consistency simultaneously.\n  We evaluate HTF on two publicly available benchmark datasets: the M5 Walmart forecasting dataset and a publicly available hierarchical energy consumption dataset. Results demonstrate that HTF substantially reduces forecast incoherence while improving forecasting accuracy compared with classical reconciliation methods and deep learning baselines. In addition, attention visualization and embedding analysis provide insight into how temporal and structural information contribute to hierarchical forecasting performance.",
+        "url": "http://arxiv.org/abs/2606.28553v1",
+        "published_date": "2026-06-26T19:11:40+00:00",
+        "updated_date": "2026-06-26T19:11:40+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Ruchi Pakhle"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Hierarchical Temporal Fusion (HTF) integrates structured hierarchical embeddings with a coherence-aware loss function in a Temporal Fusion Transformer framework to ensure consistent forecasts across hierarchical levels.",
+        "data_sources": "M5 Walmart forecasting dataset and a hierarchical energy consumption dataset.",
+        "alpha_potential": "Potential for improving hierarchical forecasting in financial time series (e.g., sector/stock hierarchies) by maintaining coherence while capturing complex temporal patterns.",
+        "tags": [
+            "Hierarchical Forecasting",
+            "Temporal Fusion Transformer",
+            "Time Series",
+            "Coherence Enforcement"
+        ],
+        "title_cn": "使用结构化时间融合改进层次时间序列预测的连贯性",
+        "summary_cn": "本研究提出的层次时间融合(HTF)方法通过结合结构化层次嵌入和连贯性感知损失函数，在保持预测连贯性的同时捕捉复杂时间模式。该方法在零售和能源数据集上验证有效，可潜在应用于金融时间序列的层次预测（如行业/股票层级），在保持预测准确性的同时确保各级预测的数学一致性。"
+    },
+    {
+        "title": "Spectral phase transitions and trainability in neural network learning dynamics",
+        "summary": "The emergence of low-dimensional structures in the spectra of neural network weight matrices is a common empirical feature of trained models, but the dynamical origin of this phenomenon during learning remains an open problem. We formulate neural network training as the stochastic evolution of an initially random matrix ensemble, driven by stochastic gradient descent (SGD) updates that reshape the spectral bulk while amplifying signal strength. This induces a Baik-Ben Arous-Péché (BBP) transition during training, where isolated eigenvalues detach from the random bulk distribution, providing a dynamical framework for representation formation in high-dimensional learning dynamics. We demonstrate this in a solvable linear teacher-student model, where spectral evolution is analytically tractable and a phase diagram of trainability governed by the step size (or learning rate) and initial weight variance is obtained, and subsequently extend our formalism beyond the linear regime to nonlinear and stochastic settings. Numerical simulations in realistic settings support this picture, showing robust emergence of spectral alignment during training. Our results suggest that spectral analysis may provide a unified perspective of stochastic learning dynamics, linking trainability, optimisation hyperparameters, spectral phase transitions, and representation learning in neural networks.",
+        "url": "http://arxiv.org/abs/2606.28486v1",
+        "published_date": "2026-06-26T18:00:01+00:00",
+        "updated_date": "2026-06-26T18:00:01+00:00",
+        "categories": [
+            "cond-mat.dis-nn",
+            "cs.LG"
+        ],
+        "authors": [
+            "Chanju Park",
+            "Dario Bocchi",
+            "Francesco D'Amico",
+            "Biagio Lucini",
+            "Gert Aarts"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper investigates the spectral dynamics of neural network weight matrices during training, focusing on the emergence of low-dimensional structures and spectral phase transitions induced by stochastic gradient descent (SGD). It provides analytical insights into the trainability and representation formation in high-dimensional learning dynamics.",
+        "data_sources": "The study primarily uses synthetic data in a teacher-student model framework, with extensions to nonlinear and stochastic settings. While not directly using financial data, the methodology could be adapted to market data analysis.",
+        "alpha_potential": "The spectral analysis framework could potentially be applied to detect and exploit structural patterns in financial time series or high-dimensional market data, offering insights into market regimes or early detection of regime shifts.",
+        "tags": [
+            "Spectral Analysis",
+            "Neural Networks",
+            "SGD Dynamics",
+            "Phase Transitions"
+        ],
+        "title_cn": "神经网络学习动力学中的谱相变与可训练性",
+        "summary_cn": "本研究通过分析神经网络权重矩阵的谱动态，揭示了随机梯度下降训练过程中出现的低维结构和谱相变现象。这种分析方法可潜在应用于金融市场数据，帮助识别市场状态转变或构建高维交易信号。"
+    },
+    {
+        "title": "Analysis of Adam Algorithms for Stochastic Dynamic Systems",
+        "summary": "The adaptive moment estimation algorithm, known as Adam, is widely used in modern machine learning, owing to its low per-iteration complexity and strong empirical performance. Despite its prevalent use, the theoretical foundation of Adam remains largely unexplored for time-varying and nonstationary systems. In fact, the existing theoretical analyses of Adam-type algorithms are primarily concerned with time-invariant model parameters and explicitly or implicitly rely on independent and identically distributed (i.i.d.) data assumptions, under which the learning taskcan be formulated as minimizing a fixed expected objective with a static minimizer. However, such assumptions are often violated in time-varying and nonstationary systems, thereby calling for a theoretical investigation beyond the conventional yet idealized i.i.d. setting. The main objective of this paper is to solve this challenging problem by establishing a general theory of Adam for time-varying and nonstationary stochastic systems. We will introduce some new techniques for analyzing the products of nonstationary and dependent random matrices induced by Adam's coupled first- and second-moment recursions, and will construct a new stochastic Lyapunov function that blends these two moment dynamics. Under a stochastic excitation condition that allows nonstationary and dependent data, we will derive both parameter tracking and output prediction error bounds explicitly, quantifying the effects of stepsize, first- and second-momentum parameters, gradient noise and parameter drift. These bounds not only provide guarantees for Adam performance, but also provide guidelines for hyperparameter selection. Experiments on both synthetic and real-world data validate our theory and design guidelines.",
+        "url": "http://arxiv.org/abs/2606.28879v1",
+        "published_date": "2026-06-27T11:54:23+00:00",
+        "updated_date": "2026-06-27T11:54:23+00:00",
+        "categories": [
+            "cs.LG",
+            "eess.SY"
+        ],
+        "authors": [
+            "Xin Zheng",
+            "Yifei Jin",
+            "Lei Guo"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "The paper presents a theoretical analysis of Adam optimization algorithms applied to time-varying and nonstationary stochastic systems, introducing techniques for analyzing nonstationary and dependent random matrices, and constructing a stochastic Lyapunov function.",
+        "data_sources": "The experiments mentioned use both synthetic and real-world data, though specific financial datasets are not detailed in the abstract.",
+        "alpha_potential": "Potential for improving hyperparameter selection and performance tracking in dynamic trading environments, particularly for adaptive momentum strategies in nonstationary financial markets.",
+        "tags": [
+            "Adam Optimization",
+            "Stochastic Systems",
+            "Hyperparameter Tuning",
+            "Nonstationary Data"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Agentic Abstention: Do Agents Know When to Stop Instead of Act?",
+        "summary": "LLM agents are expected to act over multiple turns, using search, browsing interfaces, and terminal tools to complete user goals. Yet not every goal is well specified or achievable in the available environment. In such cases, a reliable agent should recognize that further interaction is unlikely to help and abstain from additional tool calls. We define Agentic Abstention, the problem of deciding when an agent should stop acting under uncertainty. Unlike standard LLM abstention, which is usually evaluated as a single-turn answer-or-abstain decision, agentic abstention is a sequential decision problem: an agent can answer, abstain, or gather more information at each turn, and the need to abstain may only become clear after interacting with the environment. We study this problem across web shopping, terminal environments, and question answering, evaluating 13 LLM-as-agent systems and 2 agent scaffolds on more than 28,000 tasks. Our results show that the main challenge is not only whether agents can abstain, but also when they abstain. Some agents never abstain when they should, while others do so only after many unnecessary interactions. This gap is especially large on tasks where the instruction appears feasible until the environment reveals otherwise (e.g., no valid result matches the instruction). We further find that model scale, reasoning, and agent scaffolding affect abstention in different ways, where larger or more capable models sometimes perform worse at timely abstention. Finally, we introduce CONVOLVE, a context engineering method for improving agentic abstention that distills full interaction trajectories into reusable stopping rules. On WebShop, CONVOLVE substantially improves timely abstention without updating model parameters, raising Llama-3.3-70B's timely recall rate from 26.7 to 57.4. Our dataset and code are available at https://lhannnn.github.io/agentic-abstention",
+        "url": "http://arxiv.org/abs/2606.28733v1",
+        "published_date": "2026-06-27T04:49:37+00:00",
+        "updated_date": "2026-06-27T04:49:37+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Han Luo",
+            "Bingbing Wen",
+            "Lucy Lu Wang"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Sequential decision problem for LLM agents to determine when to stop acting under uncertainty",
+        "data_sources": "Web shopping, terminal environments, and question answering tasks",
+        "alpha_potential": "Potential to improve decision-making in trading by reducing unnecessary actions, but direct financial application is unclear",
+        "tags": [
+            "LLM agents",
+            "sequential decision",
+            "abstention",
+            "uncertainty"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Developmental Trajectories of Situation Modeling and Mentalizing in Transformer Language Models",
+        "summary": "Recent work suggests that Large Language Models (LLMs) are sensitive to the belief states of agents described by text, as measured by the false belief task (FBT), yet persistent concerns of construct validity remain. We adopt a **developmental perspective**, tracing the pattern of mental state reasoning behavior -- and likely **preconditions** for this behavior -- across multiple training stages in the Olmo2 and Pythia language model suites. We find that above-chance FBT performance depends both on model size and sufficient training volume, emerges relatively late in pretraining, and is most improved by post-training interventions (SFT, DPO) in the condition most diagnostic of mentalizing (False Belief, Implicit). However, FBT performance is fragile: consistent with past work, the use of non-factive verbs (e.g., thinks) increases false belief attributions even in the True Belief condition. To contextualize these findings, we track the emergence of **situation modeling**: the ability to report on basic factual properties of a described scene. Situation modeling accuracy generally precedes and exceeds FBT accuracy, yet situational representations also prove surprisingly incoherent in certain respects: when asked about the knowledge states of the Antagonist agent -- who always knows the item's true location -- Olmo2 13b is consistently influenced both by the Target agent's knowledge state and the presence of non-factive verbs. Together, these results suggest that larger, sufficiently trained models build partially coherent situation models in a developmentally appropriate sequence, yet display surprising fragility -- highlighting the value of developmental and stress-testing approaches for evaluating LLM capabilities.",
+        "url": "http://arxiv.org/abs/2606.28524v1",
+        "published_date": "2026-06-26T18:21:16+00:00",
+        "updated_date": "2026-06-26T18:21:16+00:00",
+        "categories": [
+            "cs.CL"
+        ],
+        "authors": [
+            "Pamela D. Rivière",
+            "Cameron Jones",
+            "Sean Trott"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Developmental analysis of situation modeling and mentalizing in transformer language models",
+        "data_sources": "False belief task (FBT) scenarios and situational modeling tests on LLMs (Olmo2, Pythia)",
+        "alpha_potential": "Potential insights into LLM reasoning for processing financial narratives/sentiment, but no direct application yet",
+        "tags": [
+            "LLM capabilities",
+            "situation modeling",
+            "mentalizing",
+            "false belief task"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "A Theoretical Interpretation of In-Context Learning via Probabilistic Modeling",
+        "summary": "In-context learning (ICL) is an emerging paradigm that employs the semantic information inherent in large language models (LLMs) for generating answers to user queries. While the remarkable performance of ICL has been widely known, a general modeling and a rigorous theoretical analysis of this paradigm are still lacking. This work presents a probabilistic model for ICL and derives the performance of ICL for both general parametric distributions and exponential families. Based on the derived results, the work explains the impact of multiple factors such as the number of demonstrations, the sensitivity of the probabilistic model to the variation of its parameters, as well as the similarity between the demonstrations and the query on the performance of ICL.",
+        "url": "http://arxiv.org/abs/2606.28926v1",
+        "published_date": "2026-06-27T14:01:48+00:00",
+        "updated_date": "2026-06-27T14:01:48+00:00",
+        "categories": [
+            "cs.IT",
+            "cs.LG"
+        ],
+        "authors": [
+            "Zhenyu Liu",
+            "Huaze Tang",
+            "Shao-Lun Huang"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Probabilistic modeling of in-context learning (ICL) in large language models (LLMs)",
+        "data_sources": "Not specified (theoretical analysis)",
+        "alpha_potential": "Limited direct applicability; potential indirect value in improving LLM-based financial text analysis",
+        "tags": [
+            "LLMs",
+            "probabilistic modeling",
+            "in-context learning"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "A Path-Space Formulation of Prediction in World Models: From a Single Action to Prediction, Planning, and Irreversibility",
+        "summary": "We propose a path-space formulation of prediction in AI world models. Rather than sequences of one-step conditional distributions, we argue that a world model implicitly defines a probability measure over future trajectories. In the local regime where latent dynamics admit an effective Markovian description, this path measure takes the Onsager-Machlup form. Within this framework, prediction (most probable trajectory), planning (constrained optimization), and uncertainty (fluctuations) emerge as operations on a single action functional. We decompose the latent dynamics into reversible and irreversible components and introduce operational measures of entropy production from model rollouts. In controlled small-scale attention-based models, we find that attention asymmetry is acquired during training in proportion to the irreversibility of the data. Symmetrizing the learned attention suppresses entropy production and selectively degrades long-horizon prediction of irreversible dynamics while preserving relaxational prediction. These results suggest that irreversibility may serve as a computational resource for predictive world models. More generally, the fundamental predictive object is a distribution over future paths rather than states.",
+        "url": "http://arxiv.org/abs/2606.28751v1",
+        "published_date": "2026-06-27T06:00:09+00:00",
+        "updated_date": "2026-06-27T06:00:09+00:00",
+        "categories": [
+            "cs.LG",
+            "cond-mat.stat-mech"
+        ],
+        "authors": [
+            "Gunn Kim"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Path-space formulation of prediction in AI world models using probability measures over future trajectories, decomposing latent dynamics into reversible and irreversible components.",
+        "data_sources": "Not specified, likely synthetic or small-scale attention-based models.",
+        "alpha_potential": "Limited direct applicability; theoretical framework for understanding irreversibility in predictive models, potentially useful for long-horizon prediction tasks.",
+        "tags": [
+            "World Models",
+            "Irreversibility",
+            "Attention Mechanisms",
+            "Path-Space Prediction"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Analysis of Parameter Settings for the Bat Algorithm Using Variance Evolution",
+        "summary": "Parameter settings in evolutionary algorithms and metaheuristics are important because such parameter values can influence the performance of algorithms under evaluation. For a given algorithm, there are many different numerical experiments to show that the algorithm can work well in practice; however, in most cases there is no theoretical analysis of parameter settings. In this work, we show that theoretical analysis using the theory of dynamical systems and evolution of population variance can give some good results in terms of parameter ranges for the bat algorithm. We also show that results from numerical experiments are consistent with theoretical bounds. Such analyses can provide good insights from different perspectives about the algorithmic characteristics such as variance evolution, transition between exploration and exploitation as well as convergence behaviour.",
+        "url": "http://arxiv.org/abs/2606.28644v1",
+        "published_date": "2026-06-26T23:01:58+00:00",
+        "updated_date": "2026-06-26T23:01:58+00:00",
+        "categories": [
+            "cs.NE",
+            "cs.AI",
+            "cs.LG"
+        ],
+        "authors": [
+            "Xin-She Yang",
+            "Mehmet Karamanoglu"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Theoretical analysis of parameter settings in the bat algorithm using dynamical systems and variance evolution",
+        "data_sources": "Not applicable (theoretical study without specific market data)",
+        "alpha_potential": "Limited direct applicability to trading; potential insights for metaheuristic optimization in portfolio construction",
+        "tags": [
+            "metaheuristics",
+            "parameter optimization",
+            "algorithmic convergence"
+        ],
+        "_low_priority": true
+    }
+]
