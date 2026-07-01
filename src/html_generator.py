@@ -18,7 +18,8 @@ def generate_html_from_json(json_file_path: str, template_dir: str, template_nam
         with open(json_file_path, 'r', encoding='utf-8') as f:
             papers = json.load(f)
             # Sort papers by relevance_score in descending order (changed from overall_priority_score)
-            papers.sort(key=lambda x: x.get('relevance_score', 0), reverse=True)
+            # None values (e.g. AI returned null) are treated as 0 to avoid TypeError
+            papers.sort(key=lambda x: x.get('relevance_score') or 0, reverse=True)
     except FileNotFoundError:
         logging.error(f"JSON file not found at {json_file_path}")
         return
