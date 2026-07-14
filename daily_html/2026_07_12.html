@@ -1,0 +1,2596 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArXiv Quantitative Finance & AI Papers - July 12, 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.dev.js"></script>
+    <!-- Example using Font Awesome (replace with your preferred icon library if needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            /* New Palette: Light, Clean, Futuristic with Teal/Aqua accents */
+            --bg-color: #f8fafc; /* Tailwind slate-50 (Very Light Gray) */
+            --card-bg-color: #ffffff; /* White */
+            --text-color: #1e293b; /* Tailwind slate-800 (Dark Gray-Blue) */
+            --text-muted-color: #64748b; /* Tailwind slate-500 (Medium Gray-Blue) */
+            --header-color: #0f172a; /* Tailwind slate-900 (Very Dark Blue) */
+            --highlight-primary: #14b8a6; /* Tailwind teal-500 */
+            --highlight-secondary: #67e8f9; /* Tailwind cyan-300 */
+            --border-color: #e2e8f0; /* Tailwind slate-200 (Light Gray) */
+            --shadow-color: rgba(15, 23, 42, 0.08); /* Subtle shadow based on slate-900 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            line-height: 1.6;
+        }
+
+        .bento-grid {
+            display: grid;
+            gap: 1.5rem; /* Tailwind gap-6 */
+            grid-template-columns: 1fr; /* Force single column */
+            padding-bottom: 4rem; /* Add padding at the bottom */
+        }
+
+        .bento-item {
+            /* Apply semi-transparent white background and blur */
+            background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px); /* Safari prefix */
+            border-radius: 1rem; /* Slightly larger radius */
+            padding: 1.75rem; /* Slightly more padding */
+            border: 1px solid rgba(226, 232, 240, 0.5); /* Lighter border with transparency */
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease-out;
+            overflow: hidden; /* Ensure content doesn't overflow */
+            position: relative; /* For potential pseudo-elements */
+        }
+
+        /* Removed ::before pseudo-element for a cleaner look */
+
+
+        .bento-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px var(--shadow-color), 0 4px 8px rgba(15, 23, 42, 0.06); /* Adjusted hover shadow */
+        }
+
+        .paper-title {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            font-weight: 600; /* Tailwind font-semibold */
+            color: var(--highlight-primary); /* Use new primary highlight */
+            margin-bottom: 0.75rem; /* Tailwind mb-3 */
+            line-height: 1.4;
+        }
+
+        .paper-summary {
+            font-size: 0.875rem; /* Tailwind text-sm */
+            color: var(--text-muted-color);
+            margin-bottom: 1.25rem; /* Tailwind mb-5 */
+            line-height: 1.6;
+        }
+
+        .paper-link {
+            display: inline-flex; /* Use flex for icon alignment */
+            align-items: center;
+            font-size: 0.875rem; /* Tailwind text-sm */
+            font-weight: 600;
+            color: var(--highlight-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem; /* Add padding */
+            border-radius: 0.5rem; /* Slightly rounder */
+            background-color: rgba(20, 184, 166, 0.08); /* Subtle teal background */
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .paper-link i {
+            margin-right: 0.5rem; /* Tailwind mr-2 */
+            transition: transform 0.3s ease;
+        }
+
+        .paper-link:hover {
+            background-color: rgba(20, 184, 166, 0.15);
+            color: #0d9488; /* Darker teal on hover */
+            transform: translateY(-1px);
+        }
+        .paper-link:hover i {
+             transform: translateX(2px);
+        }
+
+        .paper-authors {
+            font-size: 0.75rem; /* Tailwind text-xs */
+            color: var(--text-muted-color);
+            margin-top: 1rem; /* Tailwind mt-4 */
+            font-style: italic;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem; /* Tailwind mb-12 */
+            padding-top: 3rem; /* Tailwind pt-12 */
+        }
+
+        .header h1 {
+            font-size: 2.5rem; /* Tailwind text-4xl or 5xl */
+            font-weight: 700; /* Tailwind font-bold */
+            color: var(--header-color);
+            letter-spacing: -0.025em; /* Tailwind tracking-tight */
+            margin-bottom: 0.5rem;
+            /* Optional: Add a subtle text gradient */
+            /* background: linear-gradient(90deg, var(--highlight-primary), var(--highlight-secondary)); */
+            /* -webkit-background-clip: text; */
+            /* -webkit-text-fill-color: transparent; */
+        }
+
+        .header p {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            color: var(--text-muted-color);
+            margin-top: 0.5rem; /* Tailwind mt-2 */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted-color);
+            font-size: 0.875rem; /* Tailwind text-sm */
+            padding-top: 2rem;
+            padding-bottom: 2rem; /* Tailwind py-8 */
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        /* Simple line graphic element (optional) */
+        .line-graphic {
+            height: 1px; /* Thinner line */
+            background: linear-gradient(90deg, rgba(20, 184, 166, 0), var(--highlight-primary), rgba(20, 184, 166, 0));
+            opacity: 0.6;
+            margin: 1.5rem 0; /* Adjust margin */
+        }
+
+        /* Framer Motion requires the script, styles enhance appearance */
+        [data-motion-element] {
+             /* Base styles for elements animated by Framer Motion */
+        }
+
+        .paper-tldr {
+            font-size: 0.95rem; /* Slightly bigger than summary */
+            color: #475569; /* Changed to Tailwind slate-600 (slightly darker than summary) */
+            margin-top: 0.75rem; /* Tailwind mt-3 */
+            margin-bottom: 0.75rem; /* Tailwind mb-2 */
+            /* font-style: italic; */
+            font-weight: bold;
+        }
+
+        .paper-rating {
+            margin-top: 1rem; /* Tailwind mt-4 */
+            margin-bottom: 1rem; /* Tailwind mb-4 */
+            color: #f59e0b; /* Tailwind amber-500 */
+        }
+
+        .paper-rating i {
+            margin-right: 0.125rem; /* Tailwind mr-0.5 */
+        }
+
+        /* Apply consistent star color to sub-ratings */
+        .paper-sub-ratings .rating-item i {
+            color: #f59e0b; /* Match overall rating star color (amber-500) */
+            margin-right: 0.125rem; /* Consistent spacing */
+        }
+
+    </style>
+</head>
+<body class="container mx-auto px-4 antialiased">
+
+    <motion.div
+        initial="{ opacity: 0, y: -30 }"
+        animate="{ opacity: 1, y: 0 }"
+        transition="{ duration: 0.6, ease: 'easeOut' }"
+        class="header"
+        data-motion-element
+    >
+        <h1>量化金融与 AI 每日论文</h1>
+        <p>每日筛选算法交易、量化金融与人工智能相关论文（来源：q-fin.PM, q-fin.TR, cs.LG, cs.AI, cs.CL）</p>
+        <p>2026年07月12日</p>
+        <div class="line-graphic mt-4 mb-8 mx-auto w-1/4"></div> <!-- Added line graphic -->
+    </motion.div>
+
+    <div class="bento-grid" id="paper-grid">
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.0, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Can Agentic Trading Systems Pay for Their Own Intelligence?</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">智能交易系统能否自负盈亏？</p>
+            
+            <p class="paper-summary">Large language model (LLM) agents are increasingly used in trading systems, where model reasoning, tool use, and continual decisions incur costs that are expected to produce trading value. Existing evaluations typically report performance metrics, but rarely examine agentic viability: whether dynamic LLM-mediated decisions convert their induced costs into measurable incremental profit. To apply this criterion, we introduce TradeLens, a trace-grounded diagnostic toolkit for evaluating agentic trading systems from their trading records, runtime traces, and deployment configurations. It reconstructs trading trajectories, attributes profit and cost to interpretable evidence, and diagnoses whether and why an agent pays for its own intelligence. We conduct extensive analysis across backbone models, capital scales, trading frequencies, and system architectures, together with deployment discussion. Our results show that viability hinges on intelligence-to-profit conversion: models exhibit different failure patterns, such as poor asset selection in DeepSeek-V3.2 and negative timing in GLM-4.7, while capital scale, trading frequency, and architecture matter only by amplifying or degrading decision-attributed timing value. These findings reframe the evaluation of LLM-based trading agents from capability-centric performance ranking to trace-grounded diagnosis of intelligence-to-profit conversion. Our code is available at https://anonymous.4open.science/r/TradeLens.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces TradeLens, a diagnostic toolkit for evaluating agentic trading systems by analyzing trading records, runtime traces, and deployment configurations. It focuses on whether LLM-mediated decisions can convert their costs into measurable incremental profit, providing a trace-grounded approach to diagnose intelligence-to-profit conversion.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Trading records, runtime traces, and deployment configurations of LLM-based trading agents. The analysis spans across different backbone models, capital scales, trading frequencies, and system architectures.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The paper identifies specific failure patterns in LLM-based trading agents (e.g., poor asset selection, negative timing) and highlights the importance of intelligence-to-profit conversion. This can help in refining LLM-based trading strategies to better capture market inefficiencies and improve timing decisions.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(8/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    LLM Agents
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Trading Systems
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Profit Attribution
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Market Timing
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">本文提出TradeLens工具包，用于评估基于LLM的智能交易系统是否能将决策成本转化为实际利润。通过分析交易记录和运行时追踪，研究发现不同模型在资产选择和时机把握上存在特定失败模式，强调了智能到利润转换的关键作用。这对于优化LLM交易策略具有实际指导意义。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10286v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Qiqi Duan, Changlun Li, Chen Wang, Fan Zhang, Mengxiang Wang, Dayi Miao, Peixian Ma, Jiangpeng Yan, Liyuan Chen, Shuoling Liu, Preslav Nakov, Yuyu Luo, Nan Tang</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.05, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">A Foundation Model for Multimodal Event Sequences in Financial Applications</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">金融应用中的多模态事件序列基础模型</p>
+            
+            <p class="paper-summary">Predictive modeling is a core component of modern financial services, where a wide range of tasks are traditionally addressed using separate models trained on manually engineered tabular features. This task-specific approach limits reuse and makes it difficult to fully exploit heterogeneous data sources such as transaction histories and digital interaction signals. In this paper, we present an approach based on pretraining a foundation transformer model on multimodal sequences of user events. Events from multiple data sources are unified into a single chronological sequence, enabling early fusion of heterogeneous modalities and learning of general-purpose representations via a next-event prediction objective. These representations are combined with existing engineered user features, on top of which lightweight neural models are trained for multiple downstream tasks. The proposed system outperforms traditional task-specific models while reducing development overhead. The approach was deployed in production at one of the biggest banks in Eastern Europe, resulting in measurable improvements in business metrics.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Pretraining a foundation transformer model on multimodal sequences of user events, unifying events from multiple data sources into a single chronological sequence for early fusion of heterogeneous modalities and learning general-purpose representations via a next-event prediction objective.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Transaction histories and digital interaction signals, combined with existing engineered user features.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The model's ability to learn general-purpose representations from heterogeneous data sources can uncover hidden patterns and correlations in user behavior, potentially leading to better predictive models for trading signals, risk management, and customer segmentation.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(8/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Transformers
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Multimodal Data
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Next-Event Prediction
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    User Behavior
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出了一种基于预训练Transformer的多模态事件序列建模方法，通过将来自不同数据源的用户事件统一为单一时间序列，实现了异构数据的早期融合和通用表征学习。该方法在金融领域的实际部署中已显示出对业务指标的显著提升，适用于交易信号预测、风险管理和客户细分等场景。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.09955v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Nikita Rusakov, Vladislav Meshkov, Konstantin Zorin, Gleb Zaripov, Alexander Uglov, Alexey Vasilev, Anton Klenitskiy</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.1, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Global Merger-Arbitrage Forecasting with Language Models</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">基于语言模型的全球并购套利预测系统</p>
+            
+            <p class="paper-summary">We present a language-model forecasting system for merger arbitrage, a specialized high-stakes financial setting in which the task is to predict the outcome of announced M\&A deals. Unlike prior work on judgmental forecasting with LLMs, which has focused on broad mixed-topic benchmarks and short context such as news snippets, we study a setting that requires long-context reasoning over hundreds of pages of technical documents. Our system combines expert-guided context engineering with finetuning on hindsight-guided reasoning traces derived from historical deals. Given an announced deal, it outputs a probability distribution over three mutually exclusive outcomes: closing at announced terms, a higher bid, or deal termination. On an out-of-sample set of more than 400 large deals spanning 42 countries, our finetuned system achieves the best performance of any method we evaluate, reducing class-balanced Brier score to 0.151. This is 24\% below calibrated market-implied probabilities, 19\% below XGBoost, and 25-42\% below frontier language models. These results, together with ablation studies, show that LLM-based forecasting can succeed in specialized, long-context financial workflows, with hindsight-based supervision and expert-designed context playing a critical role.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper presents a language-model forecasting system for merger arbitrage, combining expert-guided context engineering with finetuning on hindsight-guided reasoning traces derived from historical deals. The system performs long-context reasoning over hundreds of pages of technical documents to predict deal outcomes.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Historical M&A deal documents, including technical and legal documents spanning more than 400 large deals across 42 countries.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The system demonstrates clear alpha potential by outperforming market-implied probabilities and other baseline methods (XGBoost, frontier language models) in predicting M&A deal outcomes. The reduction in class-balanced Brier score by 24-42% indicates significant predictive power.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(8/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    LLMs
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Merger Arbitrage
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Long-Context Reasoning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Hindsight-Guided Supervision
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">本文提出了一种用于并购套利的语言模型预测系统，通过专家引导的上下文工程和对历史交易的后见推理微调，实现了对并购交易结果的精准预测。在超过400笔大型跨国交易的测试中，该系统显著优于市场隐含概率和其他基准方法，展现出在金融交易中的实际应用潜力。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.09921v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Hinal Jajal, Michal Mucha, Charles Sweat, Chris Pulman, Charlie Flanagan, Peter Anderson</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.15000000000000002, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">A Control Theory of Predictability in Latent World Models</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">潜在世界模型中可预测性的控制理论</p>
+            
+            <p class="paper-summary">Latent world models are trained to predict future states in a learned representation and are then deployed inside a planner that selects actions by simulating them forward. Current practice adopts the prediction error, the single- or multi-step rollout loss on held-out data, as the training and model-selection objective, on the assumption that a lower prediction error yields better control. We show that this assumption is unreliable for a structural reason: a planner does not query the model on the training distribution but on the states that its candidate actions reach, which generally leave the data manifold, so an error averaged over the data cannot by itself govern control. We therefore reframe the objective as the discrepancy between the predicted and the true plan-cost at the plan the planner commits to, and prove that the planner's suboptimality is bounded by twice this discrepancy, whereas the data-averaged prediction error neither bounds nor tracks it. Under a linear-control premise the discrepancy separates into two terms. The first is a small on-manifold residual, on which the predicted and true dynamics agree and which a spectral tax prices through the non-normality of the latent transition operator. The second is an off-manifold divergence, on which an action carries the state off the manifold and the two dynamics diverge; this divergence is the binding term and is bounded by no data-averaged error. Synthetic operators confirm the pricing formulas, and latent model-predictive control experiments confirm the decoupling: across seeds, the single-step validation error is essentially uncorrelated with control success, whereas a fidelity score on the planner-reachable measure tracks it.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces a novel objective for training latent world models based on the discrepancy between predicted and true plan-cost, rather than traditional prediction error. It provides theoretical guarantees on planner suboptimality and demonstrates the decoupling of control success from single-step validation error.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The abstract mentions synthetic operators and latent model-predictive control experiments, but does not specify financial market data. The methodology is general and could be applied to market data.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The approach could potentially improve model-based trading strategies by focusing on the actual states visited during planning, which may lead to more robust predictions and better control in dynamic financial environments.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    latent world models
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    model-predictive control
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    reinforcement learning
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出了一种新的训练潜在世界模型的目标函数，基于预测与真实计划成本的差异而非传统预测误差。通过理论证明计划器的次优性受限于这一差异的两倍，实验表明单步验证误差与控制成功率无关，而计划可达测度的保真度评分能有效跟踪控制成功率。这一方法可提升基于模型的交易策略在动态市场中的稳健性。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10362v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Hanzhe You, Yonggang Zhang, Maohao Ran, Zhiqin Yang, Zhenyuan Zhang, Wei Xue, Jun Song, Xinmei Tian, Yike Guo</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.2, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Sharper Analysis of Single-Loop Methods for Bilevel Optimization</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">双层优化中单循环方法的更锐利分析</p>
+            
+            <p class="paper-summary">Bilevel optimization underpins many machine learning applications, including hyperparameter optimization, meta-learning, neural architecture search, and reinforcement learning. While hypergradient-based methods have advanced significantly, a gap persists between theoretical guarantees and practical single-loop implementations required for efficiency. We bridge this gap by establishing sharper convergence results for single-loop approximate implicit differentiation (AID) and iterative differentiation (ITD) methods, leveraging our proposed analytical framework, decoupled norm analysis (DNA). For AID, we improve the convergence rate from $\mathcal{O}(κ^6/K)$ to $\mathcal{O}(κ^5/K)$, where $κ$ is the condition number of the inner-level problem. For ITD, we prove that the asymptotic error is $\mathcal{O}(κ^2)$, exactly matching the known lower bound and improving upon the previous $\mathcal{O}(κ^3)$ guarantee. Numerical experiments on synthetic and real tasks corroborate our theoretical findings.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper focuses on improving convergence rates for single-loop methods in bilevel optimization, specifically for approximate implicit differentiation (AID) and iterative differentiation (ITD). The proposed decoupled norm analysis (DNA) framework provides sharper theoretical guarantees for these methods.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper mentions numerical experiments on synthetic and real tasks, but does not specify financial data sources. However, the methodology could be applied to financial datasets for tasks like hyperparameter optimization in trading models.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The improved convergence rates could enhance the efficiency of hyperparameter optimization and meta-learning in trading strategies, potentially leading to better model performance and faster adaptation to market changes. However, the direct alpha generation is not explicitly discussed.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    bilevel optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    hyperparameter optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    convergence analysis
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    machine learning
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文通过改进单循环近似隐式微分（AID）和迭代微分（ITD）方法的收敛速率，为双层优化提供了更锐利的理论保证。这一方法可应用于交易策略中的超参数优化和元学习，提高模型效率和适应性。尽管未直接涉及金融数据，但其方法论对量化交易中的模型优化具有潜在价值。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10263v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Yubo Zhou, Jun Shu, Luo Luo, Junmin Liu, Deyu Meng, Guang Dai, Haishan Ye</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.25, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Behavioural Signatures of Risk-Sensitive Decision-Making in Large Language Models</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">大型语言模型中风险敏感决策的行为特征</p>
+            
+            <p class="paper-summary">As large language models (LLMs) are increasingly used in decision support, it is important to understand whether their choices under uncertainty exhibit stable and interpretable behavioural regularities. Human decision-making combines relatively persistent risk preferences with context-dependent adjustment, yet it remains unclear whether analogous behavioural structure can be observed in LLM-based decision systems. Here we examine this question using a controlled multi-model framework based on no-limit Texas Hold'em, where behaviour is quantified by Participation, measuring voluntary engagement in uncertain opportunities, and Proactiveness, measuring pre-flop risk escalation. Across homogeneous self-play and heterogeneous mixed-model interactions, frontier LLMs exhibit stable, model-specific risk profiles, forming a spectrum from conservative to aggressive decision styles. These profiles remain largely robust under changing opponent composition, while the most conservative and most aggressive models diverge further in mixed settings. Under global risk pressure and personal resource constraint, models adapt in structured but heterogeneous ways, ranging from broad behavioural contraction to selective de-escalation and near-invariant behaviour. These findings suggest that LLMs differ not only in baseline risk disposition, but also in the risk signals they respond to and the flexibility with which they adjust, providing a behavioural basis for auditing risk-sensitive decision-making in interactive settings. Our code is publicly available at: https://github.com/XuankunRong/AgentTexasPoker.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper examines risk-sensitive decision-making in large language models (LLMs) using a controlled multi-model framework based on no-limit Texas Hold'em. It quantifies behavior through Participation (voluntary engagement in uncertain opportunities) and Proactiveness (pre-flop risk escalation). The study evaluates how LLMs exhibit stable, model-specific risk profiles and adapt under changing conditions.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The study uses simulated interactions in no-limit Texas Hold'em, focusing on homogeneous self-play and heterogeneous mixed-model interactions. No real-world financial data is used, but the methodology is designed to mimic decision-making under uncertainty.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The findings suggest that LLMs exhibit stable risk profiles and adapt in structured ways under risk pressure. This could be leveraged in quantitative trading to model and predict risk-taking behavior in financial markets, particularly in high-frequency trading or algorithmic decision-making under uncertainty. However, the direct application to financial markets requires further validation with real-world data.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    LLMs
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    risk-sensitive decision-making
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    behavioral finance
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    algorithmic trading
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该研究通过德州扑克模拟框架，分析了大型语言模型（LLMs）在不确定性下的风险决策行为。研究发现LLMs表现出稳定的风险偏好，并能根据环境调整策略。这些行为特征可用于量化交易中，特别是在高频交易或算法决策中建模风险行为。然而，实际应用需进一步验证。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10251v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Xuankun Rong, Wenke Huang, Bo Du, Dacheng Tao, Mang Ye</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.30000000000000004, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">DSSMs: State Space Models with Explicit Memory via Delay Differential Equations</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">DSSMs：通过延迟微分方程实现显式记忆的状态空间模型</p>
+            
+            <p class="paper-summary">State Space Models (SSMs) have emerged as a powerful paradigm for efficient long-sequence modeling, offering parallel training and fast linear-time recurrent inference. However, like other recurrent architectures, SSMs must compress an unbounded history into a fixed-size state, which limits context retention and makes precise retrieval over long-range context inherently difficult. To overcome this limitation, we propose Delay State Space Models (DSSMs), a delay differential equation (DDE)-inspired extension of diagonal SSMs that augments discrete SSM recurrences with explicit delayed-state feedback. Making explicit delayed feedback practical requires new stability parameterization, history management, and FFT-training tools. We address these challenges with a practical discretization and parameterization grounded in a simple delay-independent stability condition. To bypass direct time-domain kernel construction, we derive the DSSM transfer function and compute kernels in the frequency domain, using a kernel contour shift to suppress aliasing and recover accurate FFT training. Empirically, DSSMs substantially improve targeted delayed-retrieval tasks while outperforming S4D on most standard sequence metrics and remaining close on the others.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Delay State Space Models (DSSMs) extend traditional State Space Models by incorporating explicit delayed-state feedback via Delay Differential Equations (DDEs). This approach enhances long-range context retention and retrieval, which is achieved through a new stability parameterization, history management, and FFT-training tools.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper does not specify particular data sources but focuses on sequence modeling. In financial applications, this could be applied to time-series data such as stock prices, order book data, or macroeconomic indicators.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">DSSMs could improve the modeling of long-range dependencies in financial time-series data, potentially leading to better predictive models for momentum strategies, factor timing, or arbitrage opportunities that rely on historical patterns.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    State Space Models
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Delay Differential Equations
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Time-Series Analysis
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Sequence Modeling
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">本研究提出的DSSMs通过引入延迟微分方程（DDEs）改进了传统状态空间模型，增强了长序列建模能力。在量化交易中，这一方法可能用于优化时间序列预测模型，提高动量策略或套利机会的捕捉效率，特别是在需要长期依赖分析的场景中。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10244v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Yixiao Qian, Song Chen, Jiaxu Liu, Shengze Cai, Chao Xu</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.35000000000000003, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">How much Data do We Need? Sequential Data Collection for Stochastic Programming</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">我们需要多少数据？随机规划中的顺序数据收集</p>
+            
+            <p class="paper-summary">Data-driven optimization often requires collecting data to estimate uncertain model parameters before solving the underlying decision problem. In practice, however, data acquisition may incur non-negligible costs, making it critical to determine when to stop additional data collection. In this paper, we study an optimal stopping problem for sequential data collection in stochastic optimization under parameter uncertainty. We propose a benefit-driven stopping framework that balances information gain and sampling cost. We model the unknown distribution parameter within a Bayesian learning framework and update beliefs sequentially as new observations are collected. At each iteration, the decision maker evaluates the expected marginal benefit of additional data relative to the unit sampling cost and determines whether to continue sampling or stop and implement the optimization decision. Based on this framework, we develop several stopping policies. The proposed policies are evaluated through a newsvendor problem with exponentially distributed demand. Numerical experiments compare the policies with fixed-budget and hindsight benchmark strategies. The results show that benefit-driven stopping rules can substantially reduce unnecessary data collection while achieving near-optimal decision performance, demonstrating the effectiveness of adaptive stopping in data-driven optimization.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper proposes a Bayesian learning framework for sequential data collection in stochastic optimization, focusing on optimal stopping rules to balance information gain and sampling costs. The methodology involves updating beliefs about unknown distribution parameters as new data is collected and evaluating the marginal benefit of additional data against sampling costs.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper uses simulated data from a newsvendor problem with exponentially distributed demand. While not directly using financial market data, the methodology can be adapted to financial datasets where data collection is costly.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The framework could be applied to optimize data collection in quantitative finance, such as determining the optimal amount of historical data needed for backtesting or the point at which additional data no longer improves model performance. This could lead to more efficient use of resources and potentially better model performance by avoiding overfitting to noisy data.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Bayesian Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Stochastic Optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Optimal Stopping
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Data Efficiency
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该研究提出了一种基于贝叶斯学习的顺序数据收集框架，用于随机优化中的最优停止问题。在量化交易中，该方法可帮助确定历史数据的最优收集量，平衡信息增益与采样成本，从而提高模型效率和避免过拟合。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10207v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Xin Li, Juergen Branke, Xuan Vinh Doan</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.4, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">SALT-GNN: Handling Dense Neighborhoods in Anti-Money Laundering Graphs via Statistics-Aware Attention</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">SALT-GNN：通过统计感知注意力处理反洗钱图中的密集邻居关系</p>
+            
+            <p class="paper-summary">Money laundering threatens financial stability and exposes institutions to penalties, motivating automated detection. Because laundering schemes often emerge through relational patterns, graph neural networks (GNNs) are increasingly used for anti-money laundering (AML). Yet AML GNNs are typically evaluated with aggregate metrics such as overall F1 score, which hide an operational issue: high-activity recipient accounts concentrate many incoming transactions, making suspicious signals harder to isolate and costlier to investigate. We introduce a recipient-degree stratified evaluation that reports standard AML metrics across recipient-context density. Across three datasets (HI-Small, HI-Medium, and AMLSim-32k-5%), it reveals consistent degradation in dense recipient contexts, which we trace to three GNN characteristics: two known limitations that AML amplifies, i.e., (1) multiset non-discriminability and (2) cardinality blindness, and (3) an attention-specific effect: in dense neighborhoods, normalized attention attenuates weak but pattern-relevant multi-hop signals. Guided by this diagnosis, we propose SALT-GNN, a lightweight statistics-aware architecture that fuses degree-aware statistical aggregation with attention at each message-passing layer, so distributional and cardinality information shapes the node states used by subsequent attention steps. Ablations support fusion placement as a key factor in dense-context performance. On HI-Small and HI-Medium, SALT-GNN uses up to 77% fewer parameters than task-specific graph-transformer baselines while improving dense-context F1 score by 3-6 points; on AMLSim-32k-5%, it improves highest-degree F1 score by 16-20 points. The gains hold for both Transformer- and GAT-style attention, indicating that the benefit comes from where statistical and attentional evidence is fused rather than from a specific attention operator.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces SALT-GNN, a graph neural network architecture that combines degree-aware statistical aggregation with attention mechanisms to improve detection of suspicious activities in dense transaction networks. It addresses limitations of traditional GNNs in handling dense neighborhoods by fusing statistical and attentional evidence at each message-passing layer.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper evaluates the method on three datasets: HI-Small, HI-Medium, and AMLSim-32k-5%, which are synthetic and real-world datasets for anti-money laundering (AML) scenarios.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The methodology could be adapted to detect anomalous trading patterns or fraudulent activities in financial markets, particularly in high-frequency trading or large transaction volumes where dense networks are common. The improved F1 scores in dense contexts suggest potential for identifying subtle but significant signals in complex financial networks.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Graph Neural Networks
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Anti-Money Laundering
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Attention Mechanisms
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Financial Fraud Detection
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出了一种名为SALT-GNN的图神经网络架构，通过结合度感知统计聚合和注意力机制，显著提升了在密集交易网络中检测可疑活动的能力。该方法在反洗钱场景中表现出色，尤其适用于高频交易或大额交易中的异常模式识别，具有潜在的金融欺诈检测应用价值。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10131v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Lidia Losavio, Francesco Sovrano, Dario Fenoglio, Martin Gjoreski, Marc Langheinrich</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.45, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Energy-guided Recursive Model</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">能量引导的递归模型</p>
+            
+            <p class="paper-summary">Recursive reasoning models address structured problems by repeatedly updating latent states of small neural networks. However, their test-time scaling lacks a principled inference mechanism: increasing depth or stochastic breadth generates more trajectories without a clear criterion for selection, and existing methods predominantly rely on additional q-heads or heuristic voting. Here, we develop the Energy-guided Recursive Model (ERM), which introduces an intrinsic selection principle based on explicit Hopfield energies. ERM leverages Hopfield-type memories of valid local or global structures to define the selector over candidate trajectories. The resulting energy seamlessly integrates with energy-based techniques such as parallel tempering to enhance sampling efficiency and ranking. With $D=64$ recurrent steps and $K=128$ candidates, ERM reaches optimal solutions on Sudoku ($98.97\%$), Pencil Puzzle Bench (PPBench, $88.04\%$) and Maze ($99.30\%$), improving upon recent Probabilistic Tiny Recursive Model and Equilibrium Reasoners. These results suggest that incorporating explicit energy functions into recursive reasoning offers a principled path toward more effective inference.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces an Energy-guided Recursive Model (ERM) that uses Hopfield energies to guide recursive reasoning in neural networks. This method provides an intrinsic selection principle for trajectory selection, integrating energy-based techniques like parallel tempering for enhanced sampling efficiency and ranking.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper does not specify financial data sources but demonstrates performance on structured problems like Sudoku, Pencil Puzzle Bench (PPBench), and Maze.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">ERM's ability to optimize recursive reasoning and trajectory selection could be adapted for financial applications like portfolio optimization, where recursive simulations are used to find optimal strategies under constraints.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Recursive Reasoning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Energy-based Models
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Structured Problems
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出了一个能量引导的递归模型（ERM），利用Hopfield能量来指导神经网络的递归推理，提高轨迹选择的效率。该方法在结构性问题（如数独、迷宫）上表现出色，可能适用于金融领域的递归优化问题，如投资组合优化。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10128v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Yifei Zhao, Ying Tang</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.5, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">GAE: Graph-Augmented Evolution for Scientific Discovery via Reinforcement Optimization</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">GAE：基于图增强进化的科学发现强化优化方法</p>
+            
+            <p class="paper-summary">Evolutionary program search guided by Large Language Models (LLMs) has emerged as a powerful paradigm for automated scientific discovery. However, current approaches are fundamentally constrained by three bottlenecks: structurally blind parent selection, sparse whole-program evaluation rewards, and static mutation operators that fail to adapt during search. We present GAE (Graph-Augmented Evolution), a framework that resolves these limitations through a tightly coupled, three-pillar architecture. First, a relational graph neural network (GNN) parses programs into typed computation graphs, producing structure-aware embeddings. Second, an RL-optimized meta-controller leverages these embeddings to replace blind evolutionary sampling with a directed policy, dynamically selecting optimal parents and mutation directions based on reward history. Third, an online GRPO fine-tuning loop continuously updates the LLM mutation operator at test-time using group-normalized evaluation rewards, directly aligning the model's generation distribution with high-fitness structural edits. We evaluate GAE on a challenging scientific discovery task: symbolic regression for complex nonlinear oscillator systems. By transforming stochastic search into a directed, self-improving trajectory, GAE efficiently discovers closed-form physical equations, consistently matching or outperforming static LLM-driven baselines and achieving state-of-the-art out-of-distribution performance.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> GAE combines Graph Neural Networks (GNNs) with Reinforcement Learning (RL) and Large Language Models (LLMs) to optimize evolutionary program search. It uses structure-aware embeddings from GNNs, an RL-optimized meta-controller for directed policy selection, and continuous LLM fine-tuning for adaptive mutations.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper focuses on symbolic regression for complex nonlinear oscillator systems, which is not directly financial data. However, the methodology could be adapted to financial time series or market microstructure data.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The framework's ability to discover high-fitness structural edits and optimize search dynamically could be applied to financial modeling, such as discovering hidden patterns in market data or optimizing trading strategies. The adaptive nature of the mutation operators might help in evolving trading rules or portfolio strategies.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Graph Neural Networks
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Reinforcement Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    LLMs
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Symbolic Regression
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">GAE框架通过图神经网络、强化学习和LLM的协同优化，为科学发现提供了一种高效的进化搜索方法。在量化交易中，该技术可潜在应用于市场模式发现和交易策略优化，尤其是通过动态调整突变操作来适应市场变化。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10127v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Xuanzhou Chen, Taoli Cheng</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.55, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">TabLoRA: Parameter-Efficient Low-Rank Ensemble Learning for Large-Scale Tabular Data</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">TabLoRA：面向大规模表格数据的参数高效低秩集成学习</p>
+            
+            <p class="paper-summary">Tabular learning is still dominated by gradient-boosted decision trees (GBDTs), while recent deep learning approaches have become increasingly competitive. However, applying deep tabular models to large-scale datasets remains challenging, as large sample sizes, high feature dimensionality, or many target classes can introduce substantial computational cost. We propose TabLoRA, a parameter-efficient trainable neural ensemble for large-scale tabular learning. Instead of using fully independent ensemble backbones, TabLoRA shares a common backbone across predictors and introduces predictor-specific low-rank adaptations, enabling ensemble-style prediction without full parameter duplication. Across benchmarks, TabLoRA achieves a favorable balance between predictive performance and practical efficiency compared with GBDT methods and recent deep learning baselines under the same resource constraints. Memory analysis and ablation studies further show that the proposed design improves the feasibility of neural ensemble learning while preserving much of the benefit of full ensembles.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> TabLoRA introduces a parameter-efficient neural ensemble for tabular data, utilizing a shared backbone with predictor-specific low-rank adaptations to balance performance and computational efficiency.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Large-scale tabular datasets, which could include financial market data such as stock prices, trading volumes, or fundamental indicators.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The method's efficiency in handling large-scale datasets could enhance feature engineering and predictive modeling in quantitative trading, potentially uncovering new patterns or improving existing models.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Neural Ensemble
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Tabular Data
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Low-Rank Adaptation
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Computational Efficiency
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">TabLoRA提出了一种参数高效的神经集成方法，适用于大规模表格数据，通过共享主干和特定预测器的低秩适应，提高了计算效率而不牺牲性能。在量化交易中，该方法可优化特征工程和预测模型，有助于发现新的市场信号或改进现有策略。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10077v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Jiaqi Luo, Shixin Xu</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.6000000000000001, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Distance-Preserving Embeddings in Inhomogeneous Random Graphs</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">非均匀随机图中的距离保持嵌入</p>
+            
+            <p class="paper-summary">Graph machine learning provides powerful tools for understanding complex networks and learning meaningful node representations. A central challenge, however, is designing embeddings with minimal distortion of both local and global functionals, such as shortest path lengths. Prior distortion guarantees for distance-preserving embeddings are worst-case in nature, producing overly pessimistic bounds that fail to capture the structure of typical large-scale networks. To address this, we analyze shortest-path approximation via landmark-based embeddings on inhomogeneous random graphs, a general model with type-dependent edge probabilities. By retaining shortest paths to a small set of reference nodes called landmarks, landmark-based methods effectively function as virtual graph spanners, where structural heterogeneity and controlled neighborhood expansion modeled via multi-type branching processes enable significantly tighter dimension-distortion trade-offs than classical worst-case bounds. We extend these guarantees to global, component-wide averages and unify the analysis across finite-type and continuous latent spaces through a novel metric sandwiching framework, establishing universal distortion bounds for general $L^2$ kernel models, including heavy-tailed and power-law networks. Finally, we introduce a GNN-augmented variant that replaces rigid, computationally expensive exact shortest-path queries with flexible, structure-aware neural surrogates. By leveraging the inherent alignment between graph neural message-passing and the dynamic programming principles of shortest-path algorithms, our approach demonstrates that models trained on small-scale random graphs learn to extract universal distance-preserving features, achieving robust generalization to large-scale, real-world networks that match or exceed the fidelity of classical, exact landmark-based embeddings.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces distance-preserving embeddings via landmark-based methods and GNN-augmented variants for approximating shortest paths in inhomogeneous random graphs. The approach leverages multi-type branching processes and neural surrogates to improve dimension-distortion trade-offs.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The methodology is tested on general $L^2$ kernel models, including heavy-tailed and power-law networks, which could be analogous to financial networks or market microstructure graphs.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Potential applications include improving graph-based trading strategies, such as those relying on network centrality or shortest-path-based signals in market microstructure or cross-asset relationships. The GNN-augmented variant could reduce computational costs in real-time trading systems.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Graph Neural Networks
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Network Embeddings
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Market Microstructure
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Shortest-Path Algorithms
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出了一种基于地标和GNN增强的距离保持嵌入方法，用于在非均匀随机图中近似最短路径。该方法通过多类型分支过程和神经代理优化了维度-失真权衡，可能应用于金融市场网络分析，如市场微观结构或跨资产关系中的图交易策略。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.10074v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：My Le, Luana Ruiz, Souvik Dhara</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.65, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Beyond Bayesian Nash: Learning Minimax-Regret Equilibria for Adversarial Team Games under Asymmetric Information</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">超越贝叶斯纳什：非对称信息下对抗性团队博弈的最小化最大遗憾均衡学习</p>
+            
+            <p class="paper-summary">Adversarial team games (ATGs) with asymmetric information, such as adversarial path-finding, goal search, and reachability games on graphs, require strategies that are robust to hidden opponent types, such as a hidden goal flag, and to deception. Under asymmetric information, deception is seen as strategic shifts in the type distribution such that the omniscient opponent can collude with Nature and condition its play on the observed type. Existing risk-neutral solution concepts, such as Bayesian Nash equilibrium (BNE), are sensitive to distribution shifts, while distributionally robust approaches provide guarantees only within a prescribed ambiguity set. To address these limitations, we introduce Probabilistically Robust Minimax-Regret Equilibrium (PR-MRE), a novel equilibrium concept that combines the distribution-free robustness of minimax-regret reasoning with probabilistic information from a nominal type distribution. PR-MRE minimizes worst-case regret over a high-confidence subset of the type space, providing protection against strategic redistribution of probability mass while avoiding the conservatism of fully distribution-free approaches. We show that, for normal-form Bayesian games, PR-MRE can be formulated as a robust bilinear program and derive a tractable semidefinite relaxation. We then adapt this relaxation into a novel meta-solver within a robust double-oracle framework, PRMRE-PSRO, enabling population-based learning of approximate PR-MRE strategies via deep reinforcement learning best responses. Experiments on graph-structured adversarial team games demonstrate that PR-MRE discovers strategies with substantially improved worst-case performance across hidden types compared to risk-neutral equilibrium solutions, resulting in more robust behavior under strategic distribution shifts.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces Probabilistically Robust Minimax-Regret Equilibrium (PR-MRE), a novel equilibrium concept that combines distribution-free robustness with probabilistic information from a nominal type distribution. It leverages robust bilinear programming and a semidefinite relaxation, adapted into a meta-solver (PRMRE-PSRO) for approximate PR-MRE strategies via deep reinforcement learning.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The methodology is demonstrated on graph-structured adversarial team games, which are synthetic environments designed to test robustness under strategic distribution shifts. No specific financial market data is mentioned.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The PR-MRE approach could potentially be adapted to develop robust trading strategies in environments with asymmetric information, such as high-frequency trading or algorithmic market-making, where opponents might have hidden intentions or strategies. The methodology's focus on minimizing worst-case regret could help in designing strategies resilient to adversarial actions or market regime shifts.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Reinforcement Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Game Theory
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Robust Optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Adversarial Environments
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出了PR-MRE（概率鲁棒最小化最大遗憾均衡），结合了分布式自由鲁棒性与名义类型分布的概率信息。该方法通过鲁棒双线性规划和半定松弛，以及基于深度强化学习的元求解器（PRMRE-PSRO），用于在对抗性团队博弈中发现鲁棒策略。在量化交易中，该方法可应用于设计在高频交易或算法做市中抵抗对手隐藏意图或策略的鲁棒交易策略。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.09993v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Naman Aggarwal, Jonathan P. How</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.7000000000000001, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Depth-Efficient Quantum Topological Data Analysis for Regime-Specific Detection of Financial Stress</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">用于金融压力特定区域检测的深度高效量子拓扑数据分析</p>
+            
+            <p class="paper-summary">We present, to our knowledge, the first adaptation of Pauli Correlation Encoding (PCE) to quantum topological data analysis, reformulating Betti number estimation as a depth-efficient variational optimization over a compressed qubit register. From a Takens embedding and Vietoris--Rips filtration of S&P~500 returns, we extract combinatorial Laplacians and recast null-space counting as a continuous-PCE Rayleigh-quotient minimization with variational deflation, encoding $n_k$ simplex indices into $O(n_k^{1/κ})$ qubits with shallow, ancilla-free circuits. Because the resulting loss is rational rather than bilinear in the correlators, the barren-plateau bound of~\cite{Sciorilli25} does not transfer; empirically the gradient variance decays only polynomially, with no exponential barren plateau, over $n=4$--$12$ qubits. The classical stage matches ripser~\cite{bauer2021ripser} on all 190 sliding windows (2007-2009). On the real market Laplacians ($β_1=1$--$22$), warm-starting from a classical null-space surrogate allows PCE-VQE to recover $β_1$ exactly at every scale, placing the obstacle in the optimisation landscape rather than the encoding. Chronologically split classification gives in-regime ROC AUC $0.818$, but out-of-distribution evaluation on the 2020 COVID shock and 2022 rate cycle (AUC $0.009$, $0.515$) shows the calibration does not generalize across crisis regimes.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper adapts Pauli Correlation Encoding (PCE) to quantum topological data analysis, specifically for Betti number estimation, using a depth-efficient variational optimization over a compressed qubit register. It combines classical topological data analysis (TDA) with quantum computing techniques to analyze financial stress regimes.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> S&P 500 returns, analyzed through Takens embedding and Vietoris-Rips filtration, with evaluation on real market data from 2007-2009 and additional out-of-distribution tests on the 2020 COVID shock and 2022 rate cycle.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The methodology has potential for regime-specific detection of financial stress, which could be useful for risk management and portfolio optimization. However, the limited generalization across crisis regimes (as evidenced by poor out-of-distribution AUC scores) suggests it may need further refinement for robust real-world trading applications.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Quantum Computing
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Topological Data Analysis
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Financial Stress Detection
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    S&P 500
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">本文首次将Pauli相关编码（PCE）应用于量子拓扑数据分析，通过深度高效的变分优化和压缩量子比特寄存器，重新定义了Betti数估计。该方法基于S&P 500收益数据的Takens嵌入和Vietoris-Rips过滤，能够识别特定金融压力区域，但跨危机区域的泛化能力有限。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.09906v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Arul Rhik Mazumder, Shreyan Ronit Mazumder</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.75, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Nonparametric Bayesian Inverse Reinforcement Learning with Data-Parallel Gibbs Sampling</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">基于数据并行吉布斯采样的非参数贝叶斯逆向强化学习</p>
+            
+            <p class="paper-summary">Inverse Reinforcement Learning recovers reward functions from expert demonstrations, but standard formulations assume that all demonstrations come from a single expert. When demonstrations are pooled from multiple experts with distinct preferences, parametric methods recover an averaged reward that fits no individual expert well. We implement Nonparametric Bayesian Inverse Reinforcement Learning with a Dirichlet Process prior over reward functions, allowing the number of latent reward types to be inferred jointly with the rewards themselves. Inference uses a collapsed Gibbs sampler combining a Chinese Restaurant Process update for cluster assignments with a Metropolis-Hastings update for reward weights, and soft value iteration as the inner planning routine. We evaluate on a 10x10 ObjectWorld grid with two and three ground-truth reward types. The serial sampler recovers K=2 with Adjusted Rand Index of 1.000, substantially outperforming a Maximum Entropy IRL baseline (ARI=0.000). Extension to K=3 shows that the sampler correctly identifies the number of clusters in all runs; assignment ARI of 0.48-0.58 reflects behavioral overlap between expert types that persists across grid instantiations, revealing that reliable K=3 evaluation on ObjectWorld requires controlled object placement rather than random seeding. We further parallelize the sampler across CPU cores using Ray on HPC hardware, achieving a peak speedup of 4.79x at 8 workers, and characterize a throughput-versus-accuracy tradeoff arising from the consensus merge heuristic used during state aggregation. Code and a containerized environment are available at https://github.com/dasashreeya/np_bayes_irl.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Nonparametric Bayesian Inverse Reinforcement Learning with Dirichlet Process prior and data-parallel Gibbs sampling</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Expert demonstrations in a simulated 10x10 ObjectWorld grid environment</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Potential to identify distinct trading strategies or behaviors from heterogeneous expert traders, useful for strategy clustering or adaptive trading systems</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star-half-alt"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(5/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Inverse Reinforcement Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Bayesian Nonparametrics
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Cluster Analysis
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Behavioral Finance
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出一种非参数贝叶斯逆向强化学习方法，通过狄利克雷过程先验和并行吉布斯采样，可从多专家演示数据中自动识别不同奖励函数类型。在量化交易中，该方法可用于发现不同交易策略的行为模式，或构建自适应交易系统识别市场参与者类型。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2607.09886v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Sai Anirudh Katupilla, Shreeya Dasa Lakshminath</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.8, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">TSCoNet: A Two-Stage Copula CNN-LSTM for Uncertainty-Aware Spatio-Temporal Forecasting</h2>
+            
+            <p class="paper-summary">Reliable forecasting of several interrelated environmental variables - such as regional precipitation and temperature, or other correlated geophysical fields - across many locations calls for accurate predictions accompanied by trustworthy statements of their uncertainty. Modern deep-learning models forecast such variables accurately but usually report no uncertainty, and forcing them to output uncertainty through maximum likelihood tends to degrade their accuracy, especially when the variables are strongly correlated. Motivated by this tension, we develop TSCoNet, a two-stage convolutional-recurrent model coupled with a Gaussian copula that jointly forecasts multiple variables over space and time while quantifying predictive uncertainty. The method first learns accurate mean forecasts and then, holding the mean fixed, refines a shared representation to estimate the predictive variance, yielding calibrated prediction intervals after a standard recalibration, so that uncertainty is added without sacrificing point accuracy. We study the approach on simulated non-stationary spatial fields on the sphere and on a real dataset of monthly precipitation and temperature for fifty cities over 2000-2020. The model matches the accuracy of a strong deterministic forecaster while supplying calibrated prediction intervals that the deterministic model cannot, giving a single tool that provides both accurate point forecasts and reliable uncertainty for multivariate spatio-temporal data.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Uses a two-stage CNN-LSTM model with Gaussian copula for joint forecasting of correlated variables with uncertainty quantification</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Environmental data (precipitation and temperature), simulated non-stationary spatial fields</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited direct application to trading; methodology could be adapted for correlated asset forecasting but requires significant modification</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    spatio-temporal forecasting
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    uncertainty quantification
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    deep learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    multivariate prediction
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.10410v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Jongwook Kim, Jong-Min Kim</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.8500000000000001, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Neutralizing Structural Inequality in the Nigerian FinTech Sector</h2>
+            
+            <p class="paper-summary">Algorithmic decision systems in financial services often rely on data proxies that inadvertently encode structural inequalities. This paper introduces a hierarchical human-AI triage model for Point of Sale fraud detection in the Nigerian FinTech sector. Adopting a We Are All Equal worldview, we address the challenge of discrimination laundering, wherein the system misinterprets infrastructure related aleatoric noise such as rural network timeouts as fraudulent intent. We implement a three-tier routing policy utilizing a calibrated ensemble model as a primary filter. The policy routes transactions characterized by epistemic uncertainty such as cold start new accounts to specialist analysts while reserving high stakes cases for a senior supervisor. To manage finite human capacity, we utilize a dynamic shadow price to ration human attention and implement a random audit mechanism to prevent human skill atrophy. Our experimental results demonstrate a statistically significant 1.88\% complementarity gap and a 24.79\% percentage point gain in fraud recall over an autonomous baseline. Crucially, the model reduces the regional performance gap from 19.43 to 2.88 percentage points, neutralizing structural bias. Hierarchical collaboration provides a robust mechanism for substantive equality of opportunity, ensuring that rural accounts are not excluded from the digital economy due to environmental brute luck.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Hierarchical human-AI triage model for fraud detection utilizing a calibrated ensemble model and dynamic shadow pricing for human attention allocation</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Point of Sale transaction data in the Nigerian FinTech sector</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited direct alpha potential as focus is on fraud detection and bias reduction rather than market inefficiencies or trading signals</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    fraud detection
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    human-AI collaboration
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    bias reduction
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    ensemble models
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.10317v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Muhammad Abdullahi Said</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.9, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">When Data Imbalance Helps: Robust Generalization Through Shortcut Saturation</h2>
+            
+            <p class="paper-summary">We study robust generalization under spurious correlations: tasks where a shortcut feature is correlated with the true label in training but anti-correlated in an adversarial held-out split. Varying the spurious ratio $r$ (the fraction of training examples where shortcut = true label) and model capacity, we find a counterintuitive result: data imbalance promotes generalization in sufficiently capable models. On a synthetic task where the true label is sum parity of an integer sequence and the shortcut is the parity of the maximum-valued element, a 2-layer, 2-head transformer generalized (reached $100\%$ adversarial accuracy) in 0% of seeds at $r{=}0.50$ but 77% of seeds at $r{=}0.90$. The effect is absent in 1-layer models, where imbalance instead traps the model on the shortcut. Through mechanistic analysis -- gradient conflict dynamics, circuit evolution, and QK/OV circuit ablations -- we characterize a mechanistic pathway consistent with imbalance promoting generalization.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Investigates the effect of data imbalance on model generalization in the presence of spurious correlations, using a synthetic task with a 2-layer transformer.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Synthetic data involving integer sequences where the true label is sum parity and the shortcut is parity of the maximum-valued element.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited direct application to trading, but the study of spurious correlations and model robustness could inform feature selection in financial ML models.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    transformer
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    spurious correlations
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    data imbalance
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    model generalization
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.10116v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Cheng-Ting Chou, Duc Binh Hoang</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.9500000000000001, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Optimizing ARDL Models for Retail Sales Forecasting and Fair Pricing</h2>
+            
+            <p class="paper-summary">Pricing food products to balance profitability with consumer welfare is a central challenge for retailers. Dynamic pricing is widely used to maximize revenue, yet most pricing models optimize business objectives while overlooking consumer fairness. This paper studies the risk of consumer exploitation under dynamic food pricing in Canada and proposes a methodology that embeds fairness constraints directly into retail sales forecasting. We model total retail trade sales with a log--log Autoregressive Distributed Lag (ARDL) specification, in which the coefficient on a product price is a sales elasticity, and pose the pricing problem as maximizing forecast sales subject to price bounds anchored to the Consumer Price Index (CPI). We solve this problem with both Linear Programming (LP) and Simulated Annealing (SA), under single-product and multi-product configurations. A key finding is that the fitted nominal elasticities are positive. As a result, an unconstrained sales-maximizer would push every price to its upper bound, and the CPI ceiling is the safeguard that prevents this. Simulated Annealing instead settles on conservative, interior prices that lower consumer cost while still meeting the sales target. We benchmark forecast accuracy against naive, seasonal-naive, ARIMA, and SARIMA baselines, and a CPI-deflated re-specification shows that the positive nominal elasticities are largely an inflation-driven artifact. The result is a transparent, fairness-aware pricing framework.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Autoregressive Distributed Lag (ARDL) models with fairness constraints, solved using Linear Programming and Simulated Annealing</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Retail trade sales data and Consumer Price Index (CPI) in Canada</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited directly applicable alpha potential in quantitative trading; primarily focused on retail pricing optimization with fairness constraints</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    ARDL models
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Fairness constraints
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Retail sales
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    CPI
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.09956v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Sujay Uday Rittikar</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 1.0, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Learning Partition Trees for Nearest Neighbor Search</h2>
+            
+            <p class="paper-summary">We study nearest neighbor search from the perspective of data-driven algorithm design: given a dataset $P \subset \mathbb{R}^d$ of size $n$ and sample access to a query distribution over $\mathbb{R}^d$, the goal is to learn a data structure optimized for queries drawn from that specific distribution. We focus on the class of balanced halfspace trees, which naturally abstracts space-partitioning frameworks like locality-sensitive hashing. Assuming Gaussian-like marginal conditions on the dataset and query distribution, we give an efficient algorithm that learns a tree achieving $o(nd)$ query time, provided that a perfect tree exists.
+  At the core of our algorithmic approach is the balanced halfspace cut problem, where we are given a distribution over $\mathbb{R}^d \times \mathbb{R}^d$ and must find a balanced halfspace that minimizes the fraction of cut pairs. We prove that without distributional assumptions, finding the optimal balanced halfspace is NP-hard. To circumvent this computational barrier, we design an efficient improper learning algorithm: if the optimal halfspace cuts an $α$ fraction of pairs, our algorithm outputs a balanced polynomial threshold function of degree $\tilde{O}(1/\varepsilon^2)$ that cuts at most an $O(\sqrt{α+\varepsilon})$ fraction.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Learning balanced halfspace trees for nearest neighbor search optimized for specific query distributions</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> General datasets in Euclidean space with Gaussian-like marginal conditions</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Potential for optimizing nearest neighbor search in high-dimensional financial data, but not directly linked to market inefficiencies</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    nearest neighbor search
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    data-driven algorithms
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    space-partitioning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    high-dimensional data
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.09909v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Sanjeev Khanna, Ashwin Padaki, Erik Waingarten</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 1.05, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Remembering Distinct Items, Not Tokens: A Learnable Dirichlet-Process Cache Between State-Space Models and Attention</h2>
+            
+            <p class="paper-summary">Fixed-state sequence models compress an unbounded past into a bounded state, which caps their associative recall at roughly the state dimension; attention escapes the cap by keeping a key-value entry for every token, at quadratic compute and a cache that grows with the sequence. We study the middle ground: a sparse cache that allocates a slot only when an input is novel, so its size tracks the number of distinct items rather than the number of tokens. The allocation rule is the DP-means clustering rule, the small-variance limit of a Dirichlet-process mixture, used not as latent-variable inference but as the key-value memory operator for a deep recurrent backbone. We develop it in two forms, a static cache with a fixed concentration and a surprise-adaptive variant whose concentration follows the recent novelty rate. On a controlled associative-recall benchmark with redundancy we show that the cache matches full-attention recall while storing only the distinct items, that it dominates a fixed-budget eviction cache on the recall-versus-size frontier, and that on a state-space backbone it answers both a recall query and a long-range aggregate at the lowest memory of any model tested. The allocation is learnable end to end: a two-parameter novelty-threshold gate trained on the task loss alone recovers the rule exactly, whereas an over-parameterized gate fails, so the operative ingredient is the inductive bias rather than capacity. The evidence is a family of controlled mechanism studies at modest scale, with the distinct-items property confirmed on four real streams (recommendation, systems logs, clinical events, and insurance claims); a real-backbone, real-corpus language validation is pursued in a companion study.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> A sparse cache mechanism using DP-means clustering to allocate slots only for novel inputs, optimizing memory usage while maintaining performance similar to full attention models.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Controlled associative-recall benchmark with redundancy, recommendation systems, systems logs, clinical events, and insurance claims.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Potential application in processing large-scale, high-frequency financial data where distinct items (e.g., unique trades or events) are more relevant than repeated tokens, possibly improving efficiency in memory usage and computation.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    memory optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    DP-means clustering
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    sparse cache
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    high-frequency data
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.09889v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Siddharth Pal, Viktoria Rojkova</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 1.1, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Nonlinear Axiomatic Attribution for Cooperative Games</h2>
+            
+            <p class="paper-summary">The Shapley value is a widely used concept in attribution problems, as it uniquely satisfies the axioms of linearity, consistency, equal treatment, and efficiency. Often, the inclusion AUC metric is used to evaluate the quality of player rankings, in order to identify positively participating players. However, it can be established that the Shapley value is not always reliable for this purpose. The core issue lies in its linearity: the Shapley value acts as a linear operator with an excessively large null space, which is likely to contain non-negligible perturbations that remain indistinguishable to the operator. To address this limitation, we explore the design of nonlinear axiomatic attribution methods. Inspired by the least core, which is a popular nonlinear substitute for the Shapley value, we introduce a class of nonlinear attribution methods that retain the remaining necessary axioms. Each method yields a contribution vector that is the unique optimal solution to a minimization problem, which aims to approximate utility functions as faithfully as possible. In terms of the inclusion AUC metric, our experiments demonstrate the potential effectiveness of these methods compared to Shapley value variants that relax only the efficiency axiom. Our code is available at https://github.com/watml/nonlinear-axiom.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Nonlinear axiomatic attribution methods inspired by the least core, as an alternative to the Shapley value for better player ranking in cooperative games.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Not specified, but likely theoretical or synthetic data for testing the methodology.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Potential application in feature importance analysis in quantitative models or portfolio attribution, but lacks direct financial market application.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    attribution methods
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    game theory
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    nonlinear optimization
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.09869v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Weida Li, Zhuanghua Liu, Yaoliang Yu, Bryan Kian Hsiang Low</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 1.1500000000000001, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Manifold Constrained Conformal Prediction for Spatial Events</h2>
+            
+            <p class="paper-summary">We introduce a new conformal prediction method that constructs calibrated prediction sets over collections of spatial events, such as tropical cyclone genesis and earthquake locations. Forecasting natural hazards has become increasingly important, due to their significant economic impact, and quantifying the uncertainty of predictions is critical for accurate risk assessment. Our approach works by representing spatial point clouds as empirical measures so that we can score them using (sliced) Wasserstein distance, then constraining the resulting distribution-valued prediction set to be supported only near the training data manifold. We derive a coverage lower bound for the intersected sets and show that, in practice, this gap can be made small through a simple data-adaptive selection criterion. Because the resulting set is not analytically tractable, we introduce a modified flow-based sampling procedure, which allows us to represent and apply these prediction sets in practice as ensembles. Numerical experiments on synthetic data, tropical cyclone genesis, and earthquake occurrences show that our method achieves near-nominal coverage, with significantly lower energy distance and manifold distance than highest predictive density region (HDR) baselines along with generative model baselines.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Conformal prediction method using Wasserstein distance for spatial event forecasting</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Synthetic data, tropical cyclone genesis, earthquake occurrences</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited direct application; potential for risk assessment in weather-sensitive commodities</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star-half-alt"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(3/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    conformal prediction
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    spatial events
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Wasserstein distance
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2607.10008v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Collin Nill, Trevor Harris, Jason Adams</p>
+            
+        </motion.div>
+        
+    </div>
+
+    <footer class="footer">
+        生成时间：2026年07月14日 06:48:53 UTC | 量化金融与 AI 论文智能追踪系统
+    </footer>
+
+</body>
+</html>
