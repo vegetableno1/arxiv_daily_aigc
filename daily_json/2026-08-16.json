@@ -1,0 +1,717 @@
+[
+    {
+        "title": "Convolution Smoothed Quantile Regression for XGBoost",
+        "summary": "The increasing availability of large and complex datasets across many scientific disciplines has led to widespread adoption of machine learning (ML) for prediction. However, most ML algorithms focus on point estimation and provide limited information about predictive uncertainty or the conditional distribution of the response, restricting their ability to characterize rare or extreme outcomes. We develop QXGB, a quantile-based gradient boosting framework, and introduce a convolution smoothed loss within it that estimates conditional quantiles for constructing dense cumulative distribution functions (CDFs), exceedance probabilities, and tail behaviour relevant to extreme outcomes. This approach preserves the computational efficiency of extreme gradient boosting while restoring the Hessian information XGBoost relies on for tree splitting, in turn providing interpretable measures of extreme value and exceedance probability predictions. We derive the gradients and Hessians needed to integrate convolution smoothed quantile loss with different kernel specifications into XGBoost, and with simulated data, benchmark this approach against alternative smoothed quantile regression losses, the native quantile objective in the XGBoost Python package, and independent versus multi-output tree estimation. The practical relevance is illustrated in an application predicting fine particulate matter (PM$_{2.5}$) in northern California, including periods where levels were elevated due to wildfire smoke. Our results show that convolution smoothed QXGB, particularly when paired with multi-output trees, delivers accurate predictions with near-zero quantile crossing, well-calibrated CDF and exceedance probability estimates, and useful tail characterization for extreme values. Interval estimation is also evaluated as a measure of data spread.",
+        "url": "http://arxiv.org/abs/2608.15290v1",
+        "published_date": "2026-08-15T15:44:19+00:00",
+        "updated_date": "2026-08-15T15:44:19+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Mandy Yao",
+            "Meredith Franklin"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces QXGB, a quantile-based gradient boosting framework that uses a convolution smoothed loss function to estimate conditional quantiles. This allows for the construction of dense cumulative distribution functions (CDFs), exceedance probabilities, and tail behavior characterization, which are crucial for understanding extreme outcomes. The method preserves the computational efficiency of XGBoost while restoring Hessian information for tree splitting, providing interpretable measures of extreme value and exceedance probability predictions.",
+        "data_sources": "The paper demonstrates the method using simulated data and an application predicting fine particulate matter (PM2.5) in northern California, including periods with elevated levels due to wildfire smoke. While the primary focus is not financial data, the methodology is generalizable to financial time series data.",
+        "alpha_potential": "The ability to accurately estimate conditional quantiles and tail behavior is highly relevant for risk management, tail risk hedging, and extreme event prediction in financial markets. This can be particularly useful for strategies involving volatility trading, tail risk premia, and portfolio optimization under extreme market conditions. The method's interpretability and efficiency make it a strong candidate for real-world trading applications.",
+        "tags": [
+            "quantile regression",
+            "XGBoost",
+            "extreme value analysis",
+            "risk management"
+        ],
+        "title_cn": "XGBoost的卷积平滑分位数回归",
+        "summary_cn": "该论文提出了一种基于XGBoost的分位数回归框架（QXGB），通过卷积平滑损失函数估计条件分位数，构建累积分布函数和超越概率，特别适用于极端事件的预测。在金融交易中，该方法可用于风险管理、尾部风险对冲和极端市场条件下的投资组合优化，具有较高的实用价值。"
+    },
+    {
+        "title": "FinFraudBench: A Heterogeneous Graph Benchmark for Financial Fraud Detection",
+        "summary": "The increasing complexity of digital financial systems has reshaped financial fraud detection from isolated transaction classification into relational risk reasoning over interconnected financial entities. This shift has motivated graph-based fraud detection, where models identify fraudulent nodes by exploiting dependencies among customers, cards, merchants, categories, and locations. However, despite rapid progress in graph-based methods, existing public benchmarks remain misaligned with real-world financial systems in two important aspects. First, they often simplify financial ecosystems into homogeneous or single-node-type multi-relational graphs, failing to preserve the multi-entity and multi-relational nature of financial data. Second, they rarely provide large-scale heterogeneous financial graph datasets with realistic operating conditions such as extreme class imbalance and limited label availability, making it difficult to assess the practical effectiveness of current methods. To address these gaps, we present FinFraudBench, a heterogeneous graph benchmark for financial fraud detection. FinFraudBench contains two heterogeneous graph datasets (CreditCard-Fraud and BankTrans-Fraud) with up to 8.99M nodes and 89.23M directed typed edges. Each dataset preserves six financial entity types, fourteen directed edge types, and natural fraud rates that mirror deployment constraints. With these datasets, we establish a standardized evaluation protocol covering both ranking and imbalance-sensitive classification metrics, and evaluate representative baselines. Extensive experiments yield empirical insights into current methods' limitations and suggest promising avenues for future research. FinFraudBench is available at https://anonymous.4open.science/r/FinFraudBench-B002.",
+        "url": "http://arxiv.org/abs/2608.15177v1",
+        "published_date": "2026-08-15T11:34:51+00:00",
+        "updated_date": "2026-08-15T11:34:51+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Yixuan Chen",
+            "Hongyu Zhan",
+            "Jie Sheng",
+            "Weiyu Han",
+            "Shuai Chen",
+            "Tianyi Zhang",
+            "Xiao Tan",
+            "Jun Xia"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Heterogeneous Graph Neural Networks for financial fraud detection by exploiting multi-entity and multi-relational dependencies in financial data.",
+        "data_sources": "Two datasets (CreditCard-Fraud and BankTrans-Fraud) with up to 8.99M nodes and 89.23M directed typed edges, covering six financial entity types and fourteen directed edge types.",
+        "alpha_potential": "Potential to identify fraudulent transactions by analyzing complex relationships in financial ecosystems, which could be adapted to detect market manipulation, insider trading, or other anomalous behaviors in trading systems.",
+        "tags": [
+            "Graph Neural Networks",
+            "Fraud Detection",
+            "Heterogeneous Graphs",
+            "Financial Data"
+        ],
+        "title_cn": "FinFraudBench：一个用于金融欺诈检测的异构图基准",
+        "summary_cn": "FinFraudBench提供了一个异构图基准，用于金融欺诈检测，包含两个大规模数据集（CreditCard-Fraud和BankTrans-Fraud），覆盖六种金融实体类型和十四种有向边类型。该方法利用图神经网络分析复杂的金融关系，可识别欺诈行为，并有潜力应用于市场异常检测和交易监控。"
+    },
+    {
+        "title": "Decision-Driven Regularization: A Blended Model for Learning and Optimization",
+        "summary": "In contextual optimization, the decision-maker seeks optimal decisions to minimize a cost function, that varies based on observed features. This context is common in many business applications ranging from on-demand delivery and retail operations to portfolio optimization and inventory management. In this paper, we study the learning and optimization approach, which first learns how outcomes result from the features, and then selects optimal decisions based on these outcomes. We focus on the integrated learning and optimization literature, and identify that a lack of control for prediction accuracy can lead to overfitting and a loss of decision effectiveness against simple separate learning and optimization models. Instead, we propose a bi-objective formulation that balances prediction accuracy and cost minimization, termed decision-driven regularization. It also addresses ambiguity in the definition of the cost function via a surrogate that depends on a new hyperparameter. We additionally show that alternative perspectives for formulating the problem, namely robust optimization and regret minimization, lead to models that are closely related to our proposed model. As a consequence, our framework generalizes models such as SPO+. Our model is shown to be numerically superior to other benchmarks, such as OLS, Random Forest, XGBoost, SPO+, Perturbation Gradient, and Learning and Rank, in our synthetic studies.",
+        "url": "http://arxiv.org/abs/2608.15124v1",
+        "published_date": "2026-08-15T08:49:33+00:00",
+        "updated_date": "2026-08-15T08:49:33+00:00",
+        "categories": [
+            "cs.LG",
+            "math.OC"
+        ],
+        "authors": [
+            "Gar Goei Loke",
+            "Qinshen Tang",
+            "Yangge Xiao",
+            "Xun Zhang"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces a bi-objective formulation called decision-driven regularization that balances prediction accuracy and cost minimization in contextual optimization. It addresses overfitting and decision effectiveness by integrating learning and optimization, and generalizes models like SPO+.",
+        "data_sources": "The abstract mentions synthetic studies, but the methodology is applicable to any contextual optimization problem, including portfolio optimization and inventory management, which can leverage market data, economic indicators, or alternative data sources.",
+        "alpha_potential": "The approach could enhance portfolio optimization strategies by improving decision-making under uncertainty, potentially uncovering alpha through better cost function minimization and reduced overfitting compared to traditional separate learning and optimization models.",
+        "tags": [
+            "contextual optimization",
+            "portfolio optimization",
+            "decision-driven regularization",
+            "SPO+"
+        ],
+        "title_cn": "决策驱动的正则化：一种学习和优化的混合模型",
+        "summary_cn": "该论文提出了一种决策驱动的正则化方法，通过平衡预测准确性和成本最小化，改进了上下文优化中的决策效果。该方法在投资组合优化等领域具有潜在应用价值，能够减少过拟合并提升决策效率，优于传统的分离学习和优化模型。"
+    },
+    {
+        "title": "MAPLE: MoE Adaptive Plug-and-play Layer-wise Expert allocation",
+        "summary": "Sparsely-activated Mixture-of-Experts (MoE) Transformers universally fix the same number of routed experts across all layers, a convention that ignores the well-documented heterogeneity in layer-wise redundancy. We demonstrate that this uniformity is systematically suboptimal and propose MAPLE, a plug-and-play framework that reallocates the routed-expert budget heterogeneously across layers of any pretrained MoE LLM, without modifying weights or requiring retraining. Our core contribution is a closed-form sensitivity-guided allocation: we probe each layer's response to variation in expert count, quantify sensitivity using three measures, and derive an analytically optimal budget assignment that directs capacity towards sensitive layers and absorbs reductions in redundant layers. This closed-form solution is further refined by a sensitivity-constrained genetic search that uses layer-wise sensitivity as a prior to guide exploration, yielding faster convergence and superior allocation quality. On four MoE models spanning different scales and architectures, MAPLE outperforms uniform and pruning-based baselines under a 75% routed-expert budget. Notably, on DeepSeek-MoE-16B, MAPLE uses only 75% of the experts yet surpasses the original 100% expert-uniform baseline on ARC-E, ARC-C, and BoolQ, improving accuracy from 65.09 to 71.40, 48.49 to 51.50, and 80.03 to 82.38, respectively. These accuracy gains translate into measured deployment efficiency: implementing MAPLE in SGLang reduces single-GPU end-to-end serving latency by 32.2% and improves throughput by 47.4%. These results show that well-designed heterogeneous allocation can be more effective than simply activating more experts, establishing it as a principled and practical axis for improving MoE efficiency.",
+        "url": "http://arxiv.org/abs/2608.15299v1",
+        "published_date": "2026-08-15T16:10:28+00:00",
+        "updated_date": "2026-08-15T16:10:28+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Lie Li",
+            "Wen Li",
+            "Junxiao Shen",
+            "Gusheng Hu"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "MAPLE introduces a plug-and-play framework for optimizing the allocation of routed experts in Mixture-of-Experts (MoE) Transformers. It uses a closed-form sensitivity-guided allocation to probe each layer's response to expert count variation, followed by a sensitivity-constrained genetic search to refine the allocation. This approach improves model efficiency without requiring retraining or weight modification.",
+        "data_sources": "The paper evaluates the methodology on four MoE models of different scales and architectures, including DeepSeek-MoE-16B, using standard benchmarks like ARC-E, ARC-C, and BoolQ.",
+        "alpha_potential": "The methodology could be adapted to optimize MoE-based financial models, potentially improving efficiency and accuracy in tasks like sentiment analysis, market prediction, or portfolio optimization. The improved efficiency (32.2% reduction in latency and 47.4% improvement in throughput) could be valuable for high-frequency or real-time trading applications.",
+        "tags": [
+            "Mixture-of-Experts",
+            "Transformer Optimization",
+            "Sensitivity Analysis",
+            "Genetic Search"
+        ],
+        "title_cn": "MAPLE：MoE自适应即插即用分层专家分配",
+        "summary_cn": "MAPLE提出了一种无需重新训练即可优化MoE Transformer中专家分配的方法，通过敏感性分析和遗传搜索提高模型效率。在金融领域，该方法可优化实时交易或市场预测模型，提升处理速度和准确性。"
+    },
+    {
+        "title": "Identifying parameter couplings and uncertainties of mixed-noise stochastic systems via full-covariance Gaussian mixture network",
+        "summary": "Parameter identification of stochastic dynamical systems driven by mixed noises is challenging due to intractable likelihood functions. We propose PENN-GMD, a parameter estimation neural network that maps partially observed trajectories to a Gaussian mixture distribution (GMD) over the system parameters. Unlike conventional uncertainty estimates, the GMD employs full covariance matrices to explicitly reveal parameter couplings and multi-modal likelihood structures. The network is trained by minimizing the negative log-likelihood via a surjective parameterization that hard-encodes all GMD constraints, thereby approximating the true likelihood. We validate the method on five numerical examples with increasing complexity, including systems driven by fractional Gaussian and Lévy noises, oscillators with colored noise, coupled neurons under different observability, and an aeroelastic airfoil with unidentifiable stochastic disturbances. Results demonstrate that PENN-GMD accurately recovers likelihood distributions, captures parameter couplings, and naturally diagnoses non-identifiability through variance broadening or mode splitting. These capabilities establish PENN-GMD as a practical tool for uncertainty-aware parameter identification in complex stochastic systems where conventional likelihood-based methods are infeasible.",
+        "url": "http://arxiv.org/abs/2608.15198v1",
+        "published_date": "2026-08-15T12:30:10+00:00",
+        "updated_date": "2026-08-15T12:30:10+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG",
+            "physics.comp-ph"
+        ],
+        "authors": [
+            "Xiaolong Wang",
+            "Xiangwen Hao",
+            "Jing Feng",
+            "Yuanyuan Liu",
+            "Yong Xu"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper introduces PENN-GMD, a neural network that maps observed trajectories of stochastic systems to a Gaussian mixture distribution over system parameters, using full covariance matrices to capture parameter couplings and multi-modal likelihood structures.",
+        "data_sources": "The method is validated on numerical examples including systems driven by fractional Gaussian and Lévy noises, oscillators with colored noise, coupled neurons, and an aeroelastic airfoil. No specific financial market data is mentioned.",
+        "alpha_potential": "While the methodology is innovative for parameter identification in stochastic systems, its direct application to financial markets is not explored. Potential exists in modeling market microstructure or complex price dynamics where parameter couplings and uncertainties are critical.",
+        "tags": [
+            "Gaussian Mixture Models",
+            "Parameter Estimation",
+            "Stochastic Systems",
+            "Neural Networks"
+        ],
+        "title_cn": "通过全协方差高斯混合网络识别混合噪声随机系统的参数耦合和不确定性",
+        "summary_cn": "本文提出了一种名为PENN-GMD的神经网络方法，用于识别混合噪声驱动的随机系统中的参数耦合和多模态似然结构。该方法在复杂系统参数估计中表现出色，可能在金融市场微观结构或价格动态建模中有潜在应用，但仍需进一步研究验证其实际交易价值。"
+    },
+    {
+        "title": "Sufficient Dimesion Reduction via Generalized Stein's Lemma",
+        "summary": "Sufficient dimension reduction (SDR) seeks the minimal subspace of the predictors that captures the full conditional distribution of the response, which is known as the central subspace (CS). When the response is multivariate, the problem becomes considerably more challenging, particularly when the sample size is limited. Existing methods face different limitations:inverse regression approaches rely on strong distributional assumptions and matrix inversion, and their multi-response extensions suffer from severe slice sparsity; forward regression methods depend on computationally intensive iterative smoothing whose cost grows with the response dimension; and deep learning-based approaches demand large amounts of labeled data. To circumvent these shortcomings, we propose an SDR framework based on the generalized Stein's lemma. Our method constructs a cross-moment matrix between the multivariate response and the marginal score function of the predictors, and recovers the CS via its singular value decomposition. The proposed method does not rely on the linearity condition, avoids matrix inversion as well as iterative smoothing, and can leverage unlabeled data when available. We establish convergence guarantees for the proposed estimator under standard regularity conditions. Moreover, we propose a practical rank-selection algorithm to estimate the dimension of the CS. Extensive simulation studies and a real data application demonstrate that the proposed methods consistently outperform existing approaches across a variety of settings, particularly in moderate-dimensional, label-scarce scenarios with high noise levels.",
+        "url": "http://arxiv.org/abs/2608.15121v1",
+        "published_date": "2026-08-15T08:46:45+00:00",
+        "updated_date": "2026-08-15T08:46:45+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG",
+            "stat.ME"
+        ],
+        "authors": [
+            "Ye Tian"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper proposes a sufficient dimension reduction (SDR) framework based on generalized Stein's lemma, which constructs a cross-moment matrix between multivariate responses and the marginal score function of predictors, then recovers the central subspace via singular value decomposition. This method avoids strong distributional assumptions, matrix inversion, and iterative smoothing.",
+        "data_sources": "The methodology is theoretically applicable to any multivariate financial time series data where dimension reduction can be beneficial (e.g., high-dimensional factor models, cross-asset relationships). The abstract mentions usage of both labeled and unlabeled data.",
+        "alpha_potential": "This dimension reduction technique could help identify the most relevant predictive factors in multivariate financial forecasting problems, potentially improving signal-to-noise ratio in moderate-dimensional settings with high noise - a common scenario in financial markets.",
+        "tags": [
+            "dimension reduction",
+            "multivariate analysis",
+            "factor models",
+            "statistical learning"
+        ],
+        "title_cn": "基于广义Stein引理的充分降维方法",
+        "summary_cn": "本文提出了一种基于广义Stein引理的充分降维框架，适用于多变量金融数据的特征提取。该方法通过构建响应变量与预测变量边际得分函数的交叉矩矩阵，避免了传统方法的严格分布假设和计算瓶颈。在金融领域，可应用于高噪声环境下多因子模型的降维和特征选择，提升量化模型在中等维度数据环境下的预测能力。"
+    },
+    {
+        "title": "GATTA: Graph Active Learning with Test-Time Augmentation",
+        "summary": "Test-time augmentation (TTA) has proven effective for improving model robustness and uncertainty estimation in computer vision, yet its application to graph-structured data remains largely unexplored. We introduce GATTA (Graph Active Learning with Test-Time Augmentation), a framework for enhancing active learning by aggregating predictions across multiple augmented views to produce more reliable uncertainty estimates. To address the challenge of label-preserving graph augmentations, GATTA incorporates a consistency-based filtering mechanism that discards augmented views yielding unreliable predictions. We systematically evaluate GATTA across multiple graph datasets, GNN architectures, and acquisition strategies. Our results show that simple uncertainty-based methods, such as Entropy and Least Confidence, benefit most from TTA, achieving performance competitive with more sophisticated and computationally expensive approaches. GATTA generalizes across architectures, outperforms model-side ensemble methods such as MC Dropout. We further show that GATTA scales efficiently with both ensemble size and graph size. Extensive analysis of augmentation types, strengths, and filtering strategies provides practical guidelines for effective deployment. Our findings demonstrate that augmenting simple methods with TTA offers a more efficient path to strong active learning performance than engineering complex acquisition functions, enabling practitioners to achieve competitive results with lower computational overhead and reduced implementation complexity.",
+        "url": "http://arxiv.org/abs/2608.15084v1",
+        "published_date": "2026-08-15T07:01:59+00:00",
+        "updated_date": "2026-08-15T07:01:59+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Zsombor Bánfi",
+            "András Gézsi",
+            "András Formanek"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "GATTA enhances active learning for graph-structured data through test-time augmentation (TTA) by aggregating predictions across multiple augmented views and using a consistency-based filtering mechanism to discard unreliable predictions. It focuses on improving uncertainty estimates in graph neural networks (GNNs).",
+        "data_sources": "The paper evaluates GATTA across multiple graph datasets, which could include financial networks (e.g., market correlation graphs, transaction networks, or knowledge graphs derived from financial data).",
+        "alpha_potential": "The method could be applied to improve uncertainty estimation in financial graph-based models, such as predicting stock movements using market correlation graphs or detecting anomalies in transaction networks. The TTA approach may enhance model robustness in noisy financial data environments.",
+        "tags": [
+            "Graph Neural Networks",
+            "Active Learning",
+            "Uncertainty Estimation",
+            "Test-Time Augmentation"
+        ],
+        "title_cn": "GATTA：基于测试时增强的图主动学习框架",
+        "summary_cn": "GATTA通过测试时增强技术提升图神经网络的主动学习性能，利用多视图预测聚合和一致性筛选机制提高不确定性估计的可靠性。该方法可应用于金融市场中的图结构数据（如相关性网络或交易图谱），增强模型在噪声环境下的鲁棒性，为量化交易中的图信号提取提供更稳定的预测框架。"
+    },
+    {
+        "title": "Online Convex Optimization with Dueling Feedback",
+        "summary": "We study online convex optimization with dueling (pairwise comparison) feedback, where the learner observes only a binary preference between two queried points. While dueling feedback is well understood in discrete or stochastic settings, the adversarial convex setting has remained unexplored. We propose a simple reduction that converts dueling feedback into approximate gradients, enabling the use of standard first-order methods. We show that regret guarantees transfer under this reduction, yielding the first results for this setting, including $\\mathcal{O}(T^{3/4})$ static, adaptive, and dynamic regret. Under additional structure, we obtain improved rates of $\\mathcal{O}(T^{2/3})$ for smooth objectives and $\\mathcal{O}(\\sqrt{T \\log T})$ for strongly convex functions.",
+        "url": "http://arxiv.org/abs/2608.15050v1",
+        "published_date": "2026-08-15T05:26:27+00:00",
+        "updated_date": "2026-08-15T05:26:27+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Yiyang Lu",
+            "Hareshkumar Jadav",
+            "Mohammad Pedramfar",
+            "Ranveer Singh",
+            "Vaneet Aggarwal"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Online convex optimization with dueling feedback, converting pairwise comparisons into approximate gradients for first-order methods",
+        "data_sources": "Pairwise comparison data (implicit feedback) - could be applied to security ranking or preference-based portfolio selection",
+        "alpha_potential": "Potential for optimizing investment choices based on relative preferences rather than absolute values - could be adapted for security selection or factor weighting",
+        "tags": [
+            "online optimization",
+            "preference learning",
+            "convex optimization",
+            "comparative feedback"
+        ],
+        "title_cn": "基于对决反馈的在线凸优化",
+        "summary_cn": "该研究提出了一种在只获得二元偏好反馈下的在线凸优化方法，适用于需通过相对比较而非绝对数值进行决策的交易场景。通过将配对比较转化为近似梯度，该方法可能应用于证券排序、组合优化等需要处理相对偏好的量化交易领域。"
+    },
+    {
+        "title": "LLM-Based Hierarchical Coordinated Control with Continuation-Aware Policy Learning",
+        "summary": "Coordinating multiple interacting units in complex engineering systems is challenging when system interactions are difficult to model, operational information is heterogeneous, and low-level actions must satisfy strict constraints. We propose an LLM-based hierarchical framework in which the LLM coordinates interacting units based on heterogeneous operational context, while task-specific controllers or optimizers generate executable and constraint-aware actions. We further introduce Continuation-Aware GRPO to capture the consequences of coordination decisions over subsequent control intervals. Rather than judging a decision only by its immediate outcome, the method also evaluates how the system evolves afterward under the current policy. We validate the framework on multi-ramp traffic control and virtual power plant (VPP) energy management, using simplified system models for training and more realistic simulators for evaluation. Across both tasks, the proposed method consistently outperforms direct task-specific control and optimization, end-to-end reinforcement learning, rule-based and RL-based hierarchical coordination, and prompting-only LLM coordinators, demonstrating the value of heterogeneous-context reasoning, hierarchical execution, and continuation-aware policy learning.",
+        "url": "http://arxiv.org/abs/2608.15041v1",
+        "published_date": "2026-08-15T05:00:02+00:00",
+        "updated_date": "2026-08-15T05:00:02+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Changhong He",
+            "Jinda Gao",
+            "Xinkuan Liu",
+            "Le Zhang",
+            "Xizi Luo",
+            "Yu Mei"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "LLM-based hierarchical framework for coordinating multiple interacting units with continuation-aware policy learning (Continuation-Aware GRPO) that evaluates decisions based on both immediate outcomes and subsequent system evolution.",
+        "data_sources": "Simplified system models for training and more realistic simulators for evaluation, applied to multi-ramp traffic control and virtual power plant (VPP) energy management.",
+        "alpha_potential": "Potential application in portfolio optimization and execution algorithms where coordination of multiple assets or strategies under constraints is required. The continuation-aware approach could improve long-term strategy performance by considering future impacts of current decisions.",
+        "tags": [
+            "LLM",
+            "Reinforcement Learning",
+            "Hierarchical Control",
+            "Policy Learning"
+        ],
+        "title_cn": "基于大语言模型的分层协调控制与连续感知策略学习",
+        "summary_cn": "该研究提出了一种基于大语言模型的分层协调框架，结合连续感知策略学习（Continuation-Aware GRPO），在复杂系统中协调多个交互单元。这种方法不仅评估决策的即时效果，还考虑其对后续系统演化的影响。在量化交易中，该框架可应用于多资产组合优化和算法执行，通过约束感知的动作生成和长期决策评估来提升策略表现。"
+    },
+    {
+        "title": "Lipschitz Bandits with Arbitrary Feedback Delays",
+        "summary": "The Lipschitz bandit problem extends the traditional multi-armed bandit framework to continuous action spaces by assuming that the reward functions satisfy a Lipschitz condition. This work investigates Lipschitz bandits under arbitrary feedback delays, where reward signals are not received immediately upon taking an action but after an arbitrarily chosen delay. We consider both stochastic and adversarial reward settings, proposing an elimination-based algorithm and an EXP3-based algorithm, respectively. For both settings, our algorithms achieve a regret bound of $\\tilde{O}\\left(T^{\\frac{d_z+1}{d_z+2}}+\\sqrt{D}\\right)$ over a time horizon $T$ with total delay $D$, where the main difference between settings lies in the definition of the zooming dimension $d_z$. Our bounds match existing delay-free regret guarantees for Lipschitz bandits and characterize the additional $\\tilde{O}(\\sqrt{D})$ impact introduced by feedback delays.",
+        "url": "http://arxiv.org/abs/2608.15036v1",
+        "published_date": "2026-08-15T04:39:49+00:00",
+        "updated_date": "2026-08-15T04:39:49+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Yuhao Liu",
+            "Yu Chen",
+            "Longbo Huang"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper introduces elimination-based and EXP3-based algorithms for Lipschitz bandits under arbitrary feedback delays, applicable to both stochastic and adversarial reward settings. The methodology focuses on optimizing actions in continuous spaces with delayed feedback, which can be analogous to trading decisions in financial markets where execution and feedback are not instantaneous.",
+        "data_sources": "The abstract does not specify particular data sources, but the methodology is general and could be applied to any financial market data where delayed feedback is a factor, such as high-frequency trading (HFT) or algorithmic execution strategies.",
+        "alpha_potential": "The potential for alpha lies in the ability to optimize trading strategies in environments with delayed feedback, such as latency in trade execution or delayed price updates. This could be particularly useful in markets with high latency or where execution speed varies significantly.",
+        "tags": [
+            "Lipschitz Bandits",
+            "Delayed Feedback",
+            "Algorithmic Trading",
+            "Reinforcement Learning"
+        ],
+        "title_cn": "具有任意反馈延迟的Lipschitz多臂老虎机",
+        "summary_cn": "该研究探讨了在连续动作空间中，奖励信号存在任意延迟情况下的Lipschitz多臂老虎机问题。通过提出适用于随机和对抗性奖励设置的算法，研究为量化交易中延迟反馈环境下的策略优化提供了理论支持。此方法可应用于高频交易或执行策略优化，尤其在延迟显著的市场环境中具有潜在应用价值。"
+    },
+    {
+        "title": "A Deep Learning Model for Spatially Clustered Data via Differentiable Cluster Assignment",
+        "summary": "We consider nonparametric regression when the association between a response and its covariates changes across an unknown partition of a spatial domain. The proposed estimator learns the partition and the cluster-specific regression functions jointly. A neural network depending only on location determines cluster membership, while separate neural networks describe the covariate--response relationship within the clusters. An annealed softmax relaxation permits gradient-based estimation of the otherwise discrete assignments. Graph-Laplacian and occupancy penalties are used to discourage fragmented regions and degenerate solutions. We establish identifiability up to label permutation, bound partition error under a margin condition, and decompose prediction risk into regression and assignment components. The resulting rate agrees with that of an oracle estimator when the partition is estimated sufficiently accurately. Simulations show that joint estimation is useful when regression surfaces change abruptly across spatial boundaries, including settings with nonlinear effects, unequal region sizes, preferential sampling, and spatially correlated errors. Finally, a real data analysis is provided to demonstrate the validity and effectiveness of the proposed method.",
+        "url": "http://arxiv.org/abs/2608.14968v1",
+        "published_date": "2026-08-15T01:39:56+00:00",
+        "updated_date": "2026-08-15T01:39:56+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Kexuan Li",
+            "Weidong Ma"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper proposes a deep learning model that jointly learns spatial cluster assignments and cluster-specific regression functions using neural networks. It employs an annealed softmax relaxation for gradient-based estimation and incorporates graph-Laplacian and occupancy penalties to maintain spatial coherence.",
+        "data_sources": "The abstract does not specify particular data sources but implies applicability to spatially clustered datasets, which could include geospatial financial data (e.g., regional economic indicators, location-based trading volumes).",
+        "alpha_potential": "Potential applications include identifying region-specific market regimes or geographically clustered anomalies in financial data (e.g., regional arbitrage opportunities, spatially correlated asset behaviors). The abrupt boundary detection could help capture localized market microstructure effects.",
+        "tags": [
+            "Spatial Clustering",
+            "Neural Networks",
+            "Nonparametric Regression",
+            "Market Regimes"
+        ],
+        "title_cn": "通过可微分聚类分配处理空间聚类数据的深度学习模型",
+        "summary_cn": "该研究提出了一种联合学习空间分区和区域特定回归函数的深度学习方法，通过可微分聚类分配和空间平滑约束识别突变边界。在量化交易中，可用于检测地理或市场维度的局部模式（如区域动量差异、交易所套利），但需适配金融数据结构。"
+    },
+    {
+        "title": "PathFinder: Joint Decompositions of Linked Multimodal Datasets",
+        "summary": "Low-rank matrix decompositions can uncover patterns and structure in data and have a number of different applications across many disciplines. Extensions to \"joint\" low-rank decompositions have been proposed to link datasets from different modalities. While these methods enable the discovery of common patterns across modalities, they require that all the multimodal data share one or more dimensions. We propose a new analysis method, PathFinder, that enables co-analysis of datasets that do not necessarily all share a dimension. The key insight is that as long as pairs or subgroups of matrices do share some dimension, and that there are one or more paths that link across the data matrices, a global joint decomposition can be sought out. This enables the joint estimation of common patterns across different modalities, species, or scales, where a one-to-one mapping across all data along some dimension is not necessarily available. We show that PathFinder is a general umbrella under which many matrix decomposition methods fall as special cases. It can be used to discover common patterns across disparate datasets and to make predictions for missing data or modalities.",
+        "url": "http://arxiv.org/abs/2608.14951v1",
+        "published_date": "2026-08-15T00:31:10+00:00",
+        "updated_date": "2026-08-15T00:31:10+00:00",
+        "categories": [
+            "cs.LG",
+            "eess.IV",
+            "q-bio.QM",
+            "stat.ML"
+        ],
+        "authors": [
+            "Ying-Qiu Zheng",
+            "Alex Fung",
+            "Stephen M Smith",
+            "Rogier B Mars",
+            "Saad Jbabdi"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Joint low-rank matrix decomposition for analyzing linked multimodal datasets without requiring all datasets to share a common dimension. Uses 'paths' across data matrices to enable global pattern discovery.",
+        "data_sources": "Multimodal datasets (e.g., market data, alternative data, cross-asset data) that may have partial dimensional overlap but lack complete alignment.",
+        "alpha_potential": "Potential to uncover hidden patterns across disparate financial datasets (e.g., linking price data with news/sentiment or cross-asset relationships) where traditional joint decomposition methods fail due to dimensional misalignment. Could help identify cross-market inefficiencies or latent factors.",
+        "tags": [
+            "matrix decomposition",
+            "multimodal data fusion",
+            "latent factor models"
+        ],
+        "title_cn": "路径发现者：关联多模态数据集的联合分解方法",
+        "summary_cn": "PathFinder提出了一种新型矩阵分解技术，可分析维度不完全对齐的多源金融数据（如价格、新闻、另类数据）。该方法通过构建数据矩阵间的连接路径，在传统联合分解无法应用的场景下挖掘跨市场隐藏模式，为量化策略开发提供新工具，特别适用于跨资产相关性分析或多因子模型构建。"
+    },
+    {
+        "title": "ReasonCast: Agentic Demand Forecasting with Selective Semantic Reasoning",
+        "summary": "Demand forecasting increasingly requires combining two complementary sources of information: historical sales reveal recurring numerical dynamics, while future promotions, holidays, price changes, and platform interventions provide forward-looking knowledge. Existing text-enhanced forecasting methods often encode such context into generic representations and fuse it uniformly with time-series features, without explicitly distinguishing which semantic effects are forecast-relevant or how they should modify future dynamics.\n  We introduce ReasonCast, a structured semantic intervention framework that translates event knowledge into forecast-specific operations. An agent examines the event context, the no-text forecast, and its uncertainty to determine whether textual reasoning is needed. Rather than injecting free-form text, ReasonCast represents event knowledge through structured fields describing event relevance, demand direction, temporal shape, amplitude, and peak intensity. These fields interact selectively with temporal components of a time-series foundation model. An additive path corrects local trends and temporal shapes, while a multiplicative path captures event-driven level shifts.\n  ReasonCast introduces a forecast-grounded post-training curriculum. Schema SFT establishes semantic fields; semantic-field RL calibrates direction, shape, amplitude, and peak judgments; and forecast-utility RL evaluates semantic interventions through a frozen forecaster, aligning reasoning outputs with marginal forecast improvement. ReasonCast lowers WMAPE by 3.29, 1.25, and 0.47 percentage points on holiday-sensitive categories, mega-sale-sensitive categories, and M5 event windows, respectively. On stable-sales periods, indiscriminate semantic intervention increases WMAPE by 1.68 percentage points, whereas suppressing unnecessary intervention preserves the numerical backbone.",
+        "url": "http://arxiv.org/abs/2608.15291v1",
+        "published_date": "2026-08-15T15:46:46+00:00",
+        "updated_date": "2026-08-15T15:46:46+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Ziyue Yang",
+            "Chaolin Xu",
+            "Yijing Wang",
+            "Tiankai Gu",
+            "Hui Yang",
+            "Yanhong Lin",
+            "Kaiyuan Liu",
+            "Fei Xiao"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "Structured semantic intervention framework combining historical sales data with future promotional events, using selective semantic reasoning to modify time-series forecasts. The method employs an agent to determine when to apply textual reasoning and uses both additive and multiplicative paths to adjust forecasts based on event characteristics.",
+        "data_sources": "Historical sales data, future promotions, holidays, price changes, and platform interventions.",
+        "alpha_potential": "The framework has potential for improving demand forecasting in retail and e-commerce sectors, which could indirectly benefit quantitative trading strategies focused on retail or consumer goods sectors by providing more accurate predictions of company performance.",
+        "tags": [
+            "time-series forecasting",
+            "semantic reasoning",
+            "agent-based",
+            "retail"
+        ],
+        "title_cn": "ReasonCast：基于选择性语义推理的主动性需求预测",
+        "summary_cn": "ReasonCast是一种结合历史销售数据和未来事件信息的结构化语义干预框架，通过选择性语义推理改进时间序列预测。该方法在零售和电子商务领域的需求预测中展现出潜力，可能间接影响零售相关股票的交易策略。"
+    },
+    {
+        "title": "Shape Operator PCA: Curvature-Aware Projections for Geometric Machine Learning",
+        "summary": "In this paper, we propose SHOPCA (Shape Operator-based Principal Component Analysis), a novel method for unsupervised metric learning and dimensionality reduction that incorporates differential geometric information into the covariance structure of classical PCA. SHOPCA regularizes the global covariance matrix using the mean shape operator, defined as the average of the absolute local shape operators estimated from the data manifold, steering principal components toward directions of both maximum variance and informative curvature. A single trace-normalized mixing coefficient $α$ controls the regularization, recovering standard PCA at $α= 0$ and a curvature-driven embedding as $α\\to \\infty$. We further introduce a fully unsupervised criterion for selecting $α$ based on the spectral eigengap of the regularized covariance matrix, maximizing the relative separation between the top-$d$ and remaining eigenvalues without using class labels. We evaluate SHOPCA on more than 50 real-world benchmark datasets, comparing it with PCA, ISOMAP, and UMAP using Adjusted Rand Index (ARI), Normalized Mutual Information (NMI), Fowlkes-Mallows index (FM), and V-measure. Results show that SHOPCA consistently improves clustering quality over PCA across a broad range of datasets and surpasses UMAP on small-sample settings, where iterative neighborhood-based manifold estimation can degrade. SHOPCA is computationally tractable, parameter-efficient, and applicable to domains requiring fully unsupervised, geometry-aware dimensionality reduction.",
+        "url": "http://arxiv.org/abs/2608.15313v1",
+        "published_date": "2026-08-15T16:37:47+00:00",
+        "updated_date": "2026-08-15T16:37:47+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "cs.CV",
+            "stat.ML"
+        ],
+        "authors": [
+            "Alexandre L. M. Levada"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "SHOPCA extends PCA by incorporating local curvature information from the data manifold through the mean shape operator, enabling geometry-aware dimensionality reduction",
+        "data_sources": "Evaluated on general benchmark datasets (not financial-specific)",
+        "alpha_potential": "Potential for identifying nonlinear relationships in financial time series, though not directly tested. May help with regime detection",
+        "tags": [
+            "dimensionality reduction",
+            "manifold learning"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Memory-Bounded Continuation of Greedy Sampling for Continual Anomaly Detection",
+        "summary": "Greedy sampling produces a compact yet representative summary of normal data, which is essential for reliable anomaly detection that relies on measuring distance from normality. For continual anomaly detection where tasks arrive sequentially, extending greedy sampling is straightforward with unbounded memory through coreset accumulation. However, practical deployment requires fixed memory where the coreset size remains constant regardless of task count. We observe that continued greedy sampling, which iteratively applies greedy selection over previously greedy-sampled sets, effectively preserves representativeness under strict memory limits. Despite discarding data at each step to satisfy the memory constraint, coreset quality degrades gracefully rather than catastrophically, enabling reliable anomaly detection across the tasks. We provide theoretical justification by showing that resulting greedy-continued coreset approximates the oracle coreset within a bounded gap. We instantiate this principle in ContCore, which constructs a greedy-continued coreset through greedy expansion on new task features followed by greedy consolidation to enforce the memory budget. Unlike neural methods susceptible to catastrophic forgetting or naive coreset accumulation requiring unbounded memory, ContCore maintains fixed memory with theoretical guarantees. Empirically, ContCore achieves state-of-the-art performance across 11 task schedules on MVTecAD and VisA, and extends effectively to online continual AD settings where prior methods degrade significantly. Code: https://github.com/jungyg/ContCore",
+        "url": "http://arxiv.org/abs/2608.15277v1",
+        "published_date": "2026-08-15T15:19:12+00:00",
+        "updated_date": "2026-08-15T15:19:12+00:00",
+        "categories": [
+            "cs.CV",
+            "cs.LG"
+        ],
+        "authors": [
+            "Yoon Gyo Jung",
+            "Jaewoo Park",
+            "Kuan-Chuan Peng",
+            "Seongdeok Bang",
+            "Octavia Camps"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Greedy sampling for continual anomaly detection with memory constraints",
+        "data_sources": "Primarily focused on image datasets (MVTecAD and VisA)",
+        "alpha_potential": "Limited direct application to financial markets; more suitable for detecting anomalies in non-financial sequential data",
+        "tags": [
+            "anomaly detection",
+            "greedy sampling",
+            "coreset",
+            "memory efficiency"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Validation-Frontier Representation Selection under Constrained Observation",
+        "summary": "AI systems deployed outside clean benchmark settings often rely on observations that are incomplete, unstable, costly, or degraded by monitoring failures. This paper studies representation selection under constrained observation: choosing a state representation when raw accuracy is not the only operational criterion. We propose a validation-frontier selector that combines balanced accuracy with penalties for feature cost, overfit gap, and validation-test instability. In a focused public-tabular benchmark using three scikit-learn datasets, five observation regimes, 45 matched task cells, 720 candidate actions, and 405 representation rows, the adaptive selector improves frontier score over full trace features by 0.025801 while reducing mean feature count by 22.733. Balanced-accuracy difference is small and not statistically significant. A broader offline stress test gives mixed results. The supported claim is therefore bounded: adaptive representation selection can improve a constrained-observation robustness-efficiency frontier in matched benchmark settings, but does not universally dominate trace baselines.",
+        "url": "http://arxiv.org/abs/2608.15095v1",
+        "published_date": "2026-08-15T07:40:39+00:00",
+        "updated_date": "2026-08-15T07:40:39+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Wesley Shu"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Validation-frontier selector combining balanced accuracy with penalties for feature cost, overfit gap, and validation-test instability",
+        "data_sources": "Public-tabular benchmark using three scikit-learn datasets",
+        "alpha_potential": "Limited, as it focuses on representation selection in generic datasets rather than financial data",
+        "tags": [
+            "feature selection",
+            "representation learning"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Do Geometry-Aware Positional Encodings Help Transformers in Spatial Imperfect-Information Games?",
+        "summary": "Transformers applied to spatial imperfect-information games must represent map geometry while tracking hidden entities through time. We ask whether geometry-aware positional encodings improve these capabilities, without claiming a new positional encoding. We construct a four-level benchmark on a hexagonal naval pursuit game: controlled geometry and topology probes, an exact-Bayes hidden-target tracking task, offline policy imitation at 1k and 10k games, and 7,200 fixed-seed games against three legacy opponents. Across matched Transformer backbones, HexRoPE reduces exact-belief posterior cross-entropy relative to no positional encoding by 0.278 on D6-transformed test orbits and 0.329 on a larger map; both hierarchical-bootstrap confidence intervals exclude zero, and both Holm-adjusted p-values are below 0.001. At 1k games, HexRoPE improves policy action accuracy by 4.63 percentage points over no encoding and 2.05 points over rectangular relative bias; the gains shrink to 1.55 and 0.41 points at 10k games. However, HexRoPE does not improve aggregate gameplay win rate: its paired effect over no encoding is -1.56 percentage points (95% CI [-4.50, 1.17]). Rectangular relative bias is strongest on D6 belief consistency but fails sharply when extrapolating from radius 3 to radius 4, while graph bias provides only a small blocked-edge gain. The results show that geometric inductive bias improves belief estimation and data-efficient imitation, but those representation gains do not automatically produce stronger closed-loop play.",
+        "url": "http://arxiv.org/abs/2608.14982v1",
+        "published_date": "2026-08-15T02:20:10+00:00",
+        "updated_date": "2026-08-15T02:20:10+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "stat.ML"
+        ],
+        "authors": [
+            "Wenji Fu"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "The paper explores the use of geometry-aware positional encodings (HexRoPE) in Transformers for spatial imperfect-information games, focusing on belief estimation and policy imitation tasks.",
+        "data_sources": "The study uses a hexagonal naval pursuit game with controlled geometry and topology probes, exact-Bayes hidden-target tracking tasks, and offline policy imitation datasets.",
+        "alpha_potential": "Limited direct application to quantitative trading, but the methodology could inspire improved spatial representation in market microstructure or order book dynamics modeling.",
+        "tags": [
+            "Transformers",
+            "Positional Encodings",
+            "Spatial Games",
+            "Belief Estimation"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Command-Space Counterfactual Explanations for Pareto-Conditioned Reinforcement Learning",
+        "summary": "Pareto Conditioned Networks learn multiple multi-objective reinforcement learning behaviours by conditioning a single policy on a desired return command. However, the local mapping from command and state to action remains opaque. We propose command-space counterfactual explanations for PCNs: given a fixed state, original command, and foil action, we search, in a black-box setting, for a minimally changed desired-return command under which the same trained policy would choose the foil. Our contributions are threefold. First, we formulate PCN explanations as return-command interventions, using a return-only PCN variant that avoids the added ambiguity of horizon-conditioning. Second, we adapt adversarial machine learning methods to reinforcement-learning explanations. Third, we introduce a boundary-seeded directional search that improves over purely local optimization in the command-action landscape, resulting in our proposed approach CF-ZOO. The resulting explanations are actionable and intuitively expressed in the user's own preferences: \"If your trade-off had shifted slightly towards X, the agent would have chosen Y.\"",
+        "url": "http://arxiv.org/abs/2608.14963v1",
+        "published_date": "2026-08-15T01:32:28+00:00",
+        "updated_date": "2026-08-15T01:32:28+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "cs.HC"
+        ],
+        "authors": [
+            "Joanikij Chulev",
+            "Hendrik Baier"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Counterfactual explanations for Pareto Conditioned Networks (PCNs) in multi-objective reinforcement learning, focusing on command-space interventions to explain policy decisions.",
+        "data_sources": "Not specified in the abstract (likely simulated or generic RL environments).",
+        "alpha_potential": "Limited direct applicability; potential for explaining multi-objective trading strategies but requires significant adaptation to financial contexts.",
+        "tags": [
+            "Reinforcement Learning",
+            "Multi-Objective Optimization",
+            "Explainable AI",
+            "Counterfactuals"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Can Neural Networks Learn by Experimenting on Themselves? Self-Interventional Learning from Functional Consequences to Predictive Self-Knowledge",
+        "summary": "Machine-learning systems usually model external data, while their internal functional organization is analyzed by external observers. This work introduces Self-Interventional Learning (SIL), in which a neural system perturbs its own functional structure, observes consequences, learns a predictive self-model, generalizes to unexecuted interventions, and uses predictions to guide later structural action. In a construction-known synthetic system, SIL recovered critical structure, redundancy, and replaceability, while synergy was not reliably recovered. Across 30 fresh confirmatory seeds, increasing the pairwise intervention budget from 4 to 56 reduced held-out prediction error from 0.0335 to 0.0148 and increased Spearman correlation from 0.629 to 0.883. In a matched ablation, preserving the correct intervention--consequence mapping reduced prospective prediction error by 81.3%, while using the same learned self-model for action reduced normalized regret by 31.7% relative to ignoring it. However, model-guided action did not significantly outperform a direct empirical-memory policy, and powered CIFAR-10/ResNet validation showed no robustness advantage over equal-budget direct repair search. These results support SIL as an intervention-driven framework for learning predictive knowledge about a network's own functional organization, while showing that the self-model remains incomplete and is not universally superior to simpler direct strategies.",
+        "url": "http://arxiv.org/abs/2608.14894v1",
+        "published_date": "2026-08-14T21:01:33+00:00",
+        "updated_date": "2026-08-14T21:01:33+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Michał Tomaszewski"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Self-Interventional Learning (SIL) where a neural network perturbs its own functional structure to learn a predictive self-model",
+        "data_sources": "Synthetic data and CIFAR-10/ResNet validation",
+        "alpha_potential": "Limited direct application to financial markets as it focuses on understanding internal network structure rather than external data modeling",
+        "tags": [
+            "Self-Interventional Learning",
+            "Neural Networks",
+            "Predictive Modeling"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "STAR-FL: Secure Federated Learning with Spatial-Temporal Analysis and Robust Aggregation",
+        "summary": "Data poisoning attacks pose serious security threats to Federated Learning (FL) systems in Computer Vision. Despite growing research attention, two key challenges remain for existing defense techniques: (1) accurately distinguishing between benign and malicious model updates and (2) effectively mitigating the influence of poisoned model updates during model aggregation. To address these challenges, we propose a novel defense framework against targeted poisoning attacks with Spatial-Temporal Analysis and Robust aggregation for FL (STAR-FL). First, we employ spatial-temporal clustering to identify and remove potentially malicious updates from the FL training process. Second, we adjust the learning rate during aggregation to mitigate the impact of any malicious updates that evade detection. Third, we conduct extensive experiments across multiple benchmark datasets to evaluate the spatial-temporal analysis and robust aggregation in STAR-FL. Experimental results demonstrate their synergistic effect in enabling STAR-FL to effectively protect FL and consistently outperform state-of-the-art defenses against targeted poisoning attacks, significantly reducing Attack Success Rates (ASRs). The source code is available at https://github.com/mlsysx/STAR-FL.",
+        "url": "http://arxiv.org/abs/2608.14861v1",
+        "published_date": "2026-08-14T19:55:24+00:00",
+        "updated_date": "2026-08-14T19:55:24+00:00",
+        "categories": [
+            "cs.CR",
+            "cs.LG"
+        ],
+        "authors": [
+            "Nawrin Tabassum",
+            "Yanzhao Wu"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Spatial-temporal clustering and robust aggregation to defend against data poisoning in Federated Learning systems.",
+        "data_sources": "Benchmark datasets in Computer Vision (specific datasets not mentioned in abstract).",
+        "alpha_potential": "Limited direct alpha potential; primarily focused on security in collaborative learning systems rather than financial markets.",
+        "tags": [
+            "Federated Learning",
+            "Data Poisoning",
+            "Robust Aggregation",
+            "Spatial-Temporal Analysis"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "CEDAR-GRPO: Process-Aware Reinforcement Learning for General Abductive Reasoning in LLMs",
+        "summary": "Abductive reasoning, often characterized as inference to the best explanation, is central to explanation under uncertainty, from everyday sense-making and investigation to scientific discovery. Yet LLM research has mostly studied abduction through narrow, task-specific benchmarks, making it unclear whether observed gains transfer beyond the benchmark family used for training or evaluation. We ask whether RL post-training can improve abduction as a transferable reasoning capability. We introduce CEDAR-GRPO, a process-aware framework that combines final-answer correctness with abductive rewards for evidence coverage and evidence-to-explanation directionality. Four open-weight LLMs are post-trained on a controlled, domain-neutral mixture of abductive hypothesis-generation and hypothesis-selection tasks. We evaluate them on 11 unseen tasks spanning hypothesis selection, missing-fact generation, defeasible inference, long-context investigation, clinical reasoning, code debugging, and non-abductive controls. CEDAR- GRPO improves every model on every held-out task over both base models and correctness-only GRPO, with average gains of 7.4 and 2.7 points, respectively, and a maximum gain of 30.8 points. Ablations confirm that RL, abductive reward design, and task diversity each contribute to transfer. Process-level metrics further show stronger abductive behavior, including exploration of alternatives, elimination of rivals, backtracking, and uncertainty marking.",
+        "url": "http://arxiv.org/abs/2608.14791v1",
+        "published_date": "2026-08-14T18:02:07+00:00",
+        "updated_date": "2026-08-14T18:02:07+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Moein Salimi",
+            "Danial Parnian",
+            "Shaygan Adim",
+            "Amirmohammad Ebrahiminasab",
+            "Nima Alighardashi",
+            "Parsa Gholami",
+            "Sahand Akramipour",
+            "Mahdi Jafari Siavoshani",
+            "Mohammad Hossein Rohban"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Reinforcement Learning (RL) with abductive reasoning rewards for evidence coverage and directionality in Large Language Models (LLMs)",
+        "data_sources": "Domain-neutral mixture of abductive hypothesis-generation and hypothesis-selection tasks",
+        "alpha_potential": "Potential for improving decision-making under uncertainty, but not directly applicable to financial markets without significant adaptation",
+        "tags": [
+            "Reinforcement Learning",
+            "Abductive Reasoning",
+            "LLMs"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "When AI Rewrites, Classifiers Relax: Uncertainty-Aware Sentiment Analysis on Sarcastic and AI-Paraphrased Social Text",
+        "summary": "Sentiment classifiers are increasingly applied to social media content that is either sarcastic or AI-generated --- two distributional regimes where standard evaluations offer little guidance. We present a three-part empirical study of sentiment classifier behaviour under these conditions. First, we find that confidence scores on sarcastic text are significantly lower than on non-sarcastic text (Mann--Whitney $p = 2 \\times 10^{-6}$), confirming that classifiers sense their own uncertainty on ironic content even without explicit uncertainty modelling. Second, and counterintuitively, we show that sentiment classifiers achieve higher accuracy on AI-paraphrased reviews than on the original human-authored text (RoBERTa: $+5.8$ pp for Qwen3.5-4B paraphrases, $+3.7$ pp for Gemma4-E4B), revealing a cross-domain stylistic alignment effect: AI paraphrases remove distributional noise that confounds Twitter-trained classifiers, producing cleaner, more prototypical sentiment text. Third, we demonstrate that a lightweight abstention wrapper --- flagging the $14\\%$ of inputs with confidence below $0.6$ --- improves accuracy from 82.2\\% to 88.9\\% ($+6.7$ pp) on the retained set. We further compare Semantic Entropy and MC-Dropout-style disagreement as uncertainty signals and find near-identical AUROC ($0.650$ vs.\\ $0.646$) on sarcastic text, suggesting that for short social media inputs, both methods are interchangeable. Our results motivate a shift from confident single-label prediction to uncertainty-aware abstention in high-stakes sentiment applications such as mental health flagging and content moderation.",
+        "url": "http://arxiv.org/abs/2608.15338v1",
+        "published_date": "2026-08-15T17:41:45+00:00",
+        "updated_date": "2026-08-15T17:41:45+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.AI"
+        ],
+        "authors": [
+            "Shresth Shroff"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Empirical study of sentiment classifier behavior on sarcastic and AI-paraphrased text using uncertainty-aware models",
+        "data_sources": "Social media content including Twitter and AI-paraphrased reviews",
+        "alpha_potential": "Limited due to focus on sentiment analysis rather than financial markets; may have tangential relevance for social media-driven trading signals",
+        "tags": [
+            "sentiment analysis",
+            "AI-generated text",
+            "uncertainty modeling"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "A concentration result for multilayer feedforward neural networks",
+        "summary": "We consider for an arbitrary fixed $ρ$ and for each positive integer $n$ a multilayer feedforward artificial neural network with $ρ$ layers, $n$ neurons in the first layer (the input layer) and only one neuron, the output neuron, in the last layer. Very roughly formulated, the main result is that if the distribution of weights of connections from a layer to the next are, for all large $n$, approximated well by a fixed continuous (but otherwise arbitrary) curve which does not depend on $n$, and if the values of the $n$ input neurons are independently and identically distributed with a continuous probability density function, then there is a number $ψ$ such that for all $\\varepsilon > 0$ the probability that the value of the output neuron is in $[ψ- \\varepsilon, ψ+ \\varepsilon]$ tends to 1 as $n$ tends to infinity.",
+        "url": "http://arxiv.org/abs/2608.15335v1",
+        "published_date": "2026-08-15T17:31:46+00:00",
+        "updated_date": "2026-08-15T17:31:46+00:00",
+        "categories": [
+            "cs.AI",
+            "math.LO",
+            "math.PR"
+        ],
+        "authors": [
+            "Vera Koponen"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Theoretical analysis of multilayer feedforward neural networks focusing on weight distribution convergence",
+        "data_sources": "Synthetic or theoretical input data (i.i.d. with continuous probability density function)",
+        "alpha_potential": "Limited direct applicability to trading, but potential indirect value in understanding neural network behavior under specific conditions",
+        "tags": [
+            "Neural Networks",
+            "Convergence Analysis",
+            "Theoretical ML"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "An Adaptive Gradient Clipping and Noise Injection Mechanism for Differentially Private Federated Learning",
+        "summary": "Differentially private federated learning must balance privacy protection against model accuracy and training efficiency. Static gradient clipping applies a fixed threshold throughout training and across model layers, which can cause excessive clipping when the threshold is too small or unnecessarily large noise when it is too large. This paper presents DDP-SA-adaptive, an adaptive gradient clipping and noise adding mechanism for differentially private federated learning with secure aggregation. At each communication round, every client determines a separate clipping threshold for each model layer from the median of its per-sample gradient norms. The resulting layer-wise thresholds adapt to the evolving gradient distributions and calibrate the Laplace noise added before the updates are encoded and secret-shared among intermediate aggregation servers. We evaluate the proposed mechanism on a federated regression task in terms of efficiency, accuracy, privacy, convergence, clipping norm, and noise magnitude. Compared with the static DDP-SA baseline, DDP-SA-adaptive reduces the number of communication rounds by 6.81%, total training time by 19.21%, and average per-round training time by 13.33%, leading to improved training efficiency. It also reduces test loss by 98.74% and increases test R2 by 3.41%, leading to improved model accuracy. To attain R2 = 0.99, the adaptive mechanism operates with a privacy budget of approximately epsilon = 0.1, compared with epsilon = 0.4 for static DDP-SA, thus providing stronger privacy protection and achieving stronger privacy guarantees. These results demonstrate that round-wise, layer-wise adaptation can improve the privacy-accuracy-efficiency trade-off of differentially private federated learning.",
+        "url": "http://arxiv.org/abs/2608.15153v1",
+        "published_date": "2026-08-15T10:10:34+00:00",
+        "updated_date": "2026-08-15T10:10:34+00:00",
+        "categories": [
+            "cs.CR",
+            "cs.LG"
+        ],
+        "authors": [
+            "Wenjing Wei",
+            "Alla Jammine",
+            "Farid Nait-Abdesselam"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Adaptive gradient clipping and noise injection mechanism for differentially private federated learning",
+        "data_sources": "Federated learning datasets (specifics not mentioned)",
+        "alpha_potential": "Limited direct alpha potential; potential indirect benefits from improved privacy-preserving model training",
+        "tags": [
+            "federated learning",
+            "differential privacy",
+            "adaptive optimization"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "S2-MoE: Enabling Efficient Self-Speculative Decoding for Mixture-of-Experts on Edge Devices",
+        "summary": "Deploying large language models (LLMs) for inference on edge devices is challenging due to severe memory and bandwidth constraints. While speculative decoding and Mixture-of-Experts (MoE) have been proposed to improve inference efficiency, naively combining them often incurs excessive verification overhead and poor expert reuse, limiting their effectiveness in memory-bound edge settings. In this work, we propose S2-MoE, an efficient self-speculative decoding framework for MoE inference on edge devices. S2-MoE reduces redundant verification through routing-aware adaptive speculative expansion, improves verification efficiency with reuse-aware expert gating, and aligns draft and target execution via shared context. Implemented in llama.cpp, S2-MoE achieves up to 5.3x speedup (about 2.0x on average) over standard autoregressive de?coding across diverse MoE models and datasets on edge devices.Code is available at https://github.com/angerybob/S2-MoE.",
+        "url": "http://arxiv.org/abs/2608.15018v1",
+        "published_date": "2026-08-15T04:08:04+00:00",
+        "updated_date": "2026-08-15T04:08:04+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Haochen Huang",
+            "Shengxuan Qiu",
+            "Meng Li"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Efficient inference optimization for Mixture-of-Experts models on edge devices",
+        "data_sources": "Generic large language models and datasets (unspecified financial data)",
+        "alpha_potential": "Potential for improving response times in financial language processing tasks, but no direct trading signal generation",
+        "tags": [
+            "LLM optimization",
+            "Edge computing"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Generative data assimilation highlights fronts as key regulators of ocean energy cascade",
+        "summary": "Mesoscale eddies are fundamental to the ocean circulation, yet the extent to which submesoscale motions, a few kilometers across, influence mesoscale eddy energetics through a kinetic energy cascade remains uncertain. High-resolution simulations predict that submesoscale fronts are key regulators of the cascade, transferring energy both downscale towards dissipation and upscale to sustain and shape the seasonality of mesoscale eddies. Testing these predictions has remained difficult because existing observations and state estimates cannot resolve submesoscale currents over sufficiently broad domains. Here we map the ocean's submesoscale energy cascade by combining multi-source satellite observations with a generative deep learning framework, reconstructing gap-free, kilometer-scale surface currents with physically plausible dynamics learned from simulations. Applying this to the eddy-rich Agulhas Current system, we find that submesoscales energize the mesoscale through an upscale energy cascade above 10 km, contributing to the seasonality of mesoscale eddies. Below 10 km, convergence at submesoscale fronts drives a downscale cascade towards dissipation. Both upscale and downscale pathways concentrate within fronts, where cross-scale transfer is up to an order of magnitude more efficient. Despite their limited extent, fronts account for a substantial fraction of the domain-integrated cascade, establishing them as key regulators of the cascade and targets for next-generation eddy parameterizations.",
+        "url": "http://arxiv.org/abs/2608.14955v1",
+        "published_date": "2026-08-15T01:08:05+00:00",
+        "updated_date": "2026-08-15T01:08:05+00:00",
+        "categories": [
+            "physics.ao-ph",
+            "cs.AI"
+        ],
+        "authors": [
+            "Scott A. Martin",
+            "Georgy E. Manucharyan",
+            "Patrice Klein"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Generative deep learning framework for data assimilation in oceanography",
+        "data_sources": "Multi-source satellite observations and high-resolution simulations",
+        "alpha_potential": "None directly applicable to financial markets; methodology might inspire similar approaches in alternative data analysis",
+        "tags": [
+            "generative deep learning",
+            "data assimilation",
+            "satellite data",
+            "oceanography"
+        ],
+        "_low_priority": true
+    }
+]
