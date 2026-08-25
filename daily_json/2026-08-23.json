@@ -1,0 +1,314 @@
+[
+    {
+        "title": "Variance Driven Exploration: A Provable and Efficient Methodology for Pure Exploration in Highly Stochastic Environments",
+        "summary": "We propose Variance Driven Exploration (VarDE), a principled approach for pure exploration in highly stochastic environments, where the exploration process is dominated by stochastic variance. VarDE is built on a fundamental principle: sampling effort should be allocated to minimize the uncertainty of the final decision. We formalize the uncertainty of the final decision through a smooth decision function and derive allocation rules that explicitly capture how stochastic noise in individual components affects the reliability of the final output. We apply this methodology to three core problems of pure exploration -- Best Arm Identification (BAI), Monte Carlo Tree Search (MCTS), and Best-Policy Identification (BPI) -- with theoretical guarantees on variance decay and simple regret. Empirically, we demonstrate consistent and significant improvements of VarDE over existing methods, with especially strong gains in highly stochastic environments.",
+        "url": "http://arxiv.org/abs/2608.21995v1",
+        "published_date": "2026-08-22T15:01:43+00:00",
+        "updated_date": "2026-08-22T15:01:43+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "stat.ML"
+        ],
+        "authors": [
+            "Khang Luong",
+            "Nam Nguyen",
+            "Hoang Ta",
+            "Hung The Tran",
+            "Tuan Dam"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Variance Driven Exploration (VarDE) is a methodology for pure exploration in highly stochastic environments, focusing on minimizing the uncertainty of the final decision by allocating sampling effort based on stochastic variance. It is applied to Best Arm Identification (BAI), Monte Carlo Tree Search (MCTS), and Best-Policy Identification (BPI) with theoretical guarantees on variance decay and simple regret.",
+        "data_sources": "The paper does not specify particular financial data sources, but the methodology is applicable to any highly stochastic environment, including financial markets where asset returns or other metrics exhibit high variance.",
+        "alpha_potential": "VarDE could help in identifying optimal trading strategies or assets in highly volatile markets by efficiently allocating resources to minimize uncertainty. This could lead to better decision-making in portfolio optimization, algorithmic trading, and risk management.",
+        "tags": [
+            "Pure Exploration",
+            "Stochastic Variance",
+            "Portfolio Optimization",
+            "Algorithmic Trading"
+        ],
+        "title_cn": "方差驱动探索：在高度随机环境中进行纯探索的可证明且高效的方法论",
+        "summary_cn": "本文提出的方差驱动探索（VarDE）方法，通过优化采样资源分配以减少最终决策的不确定性，适用于高度随机的金融市场环境。该方法在最佳臂识别、蒙特卡洛树搜索和最佳策略识别等问题中表现优异，可提升交易策略的决策效率和稳定性，尤其在高波动市场中具有显著优势。"
+    },
+    {
+        "title": "Short-horizon mean reversion in cryptocurrency markets: a matched cross-market measurement",
+        "summary": "At 15-minute horizons, directional mean reversion is far stronger and more pervasive in cryptocurrency markets than in US equities: scored under one matched, strictly out-of-sample protocol, 90% of 183 Binance pairs carry significant directional reversal against 2.7% of 187 US stocks and ETFs, in every focal coin-year since 2021. The signal lives in signs, not magnitudes: lag-one return autocorrelation is near zero on the major coins, yet simply betting against the previous candle captures most of the effect. US-listed funds whose net asset value is a crypto or metal price inherit their underlying's reversal, including its absence, from their first months of trading; stocks merely correlated with the same underlyings inherit nothing: descriptive evidence that a wrapper's tape reads like the process it wraps, not the venue it prints on. On the originating tape, the reversal concentrates after moves driven by aggressive taker flow and grows with flow intensity, while the order-book depth a move consumes conditions nothing: a conditioning consistent with compensated liquidity provision, not a test that selects it. The gross edge peaks near 1.3 bp per trade against a 5 bp round-trip cost: large enough to detect, too small to clear benchmark spot capture costs. The contrast survives an artifact battery, an exact permutation null, and a frozen six-month holdout, with a class-mean AUC gap of +0.031 as designed and +0.011 (95% CI [+0.008, +0.014]) under the most conservative accounting, clear of zero either way.",
+        "url": "http://arxiv.org/abs/2608.21888v1",
+        "published_date": "2026-08-22T10:06:04+00:00",
+        "updated_date": "2026-08-22T10:06:04+00:00",
+        "categories": [
+            "q-fin.TR",
+            "q-fin.ST"
+        ],
+        "authors": [
+            "Nadav A. Kitron",
+            "Jonathan M. Wengrowicz"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper investigates short-horizon mean reversion in cryptocurrency markets using a matched cross-market measurement approach. It focuses on directional reversal at 15-minute intervals, comparing crypto markets to US equities. The methodology includes out-of-sample testing, lag-one return autocorrelation analysis, and conditioning on aggressive taker flow.",
+        "data_sources": "The study uses data from 183 cryptocurrency pairs on Binance and 187 US stocks and ETFs. It also examines US-listed funds with crypto or metal price net asset values.",
+        "alpha_potential": "The paper identifies a significant short-term mean-reverting signal in cryptocurrency markets, particularly after moves driven by aggressive taker flow. The gross edge is estimated at 1.3 bp per trade, which, while small, is detectable and could be exploitable in high-frequency trading environments. The signal is more pervasive in crypto markets compared to US equities.",
+        "tags": [
+            "mean reversion",
+            "high-frequency trading",
+            "cryptocurrency",
+            "market microstructure"
+        ],
+        "title_cn": "加密货币市场中的短周期均值回归：一个匹配的跨市场测量",
+        "summary_cn": "该研究通过匹配的跨市场测量方法，发现加密货币市场在15分钟周期内存在显著的短周期均值回归现象，且比美股市场更为普遍。信号主要出现在方向而非幅度上，特别是在激进吃单流驱动的波动后。尽管单笔交易的毛边仅为1.3个基点，但这一发现对高频交易策略具有潜在应用价值。"
+    },
+    {
+        "title": "Spectral Pre-Filtering for Context-Adaptive Sensor Fusion: A Four-Role FFT-GDCB Integration for High-Stakes Decision Systems",
+        "summary": "Context-adaptive Kalman filters calibrate their noise covariance matrices Q and R from innovation residuals via online regression. When the underlying sensor or signal carries periodic structure -- mechanical LiDAR rotation harmonics, engine vibration, ground multipath, weekly and annual demand cycles, dosing-interval rhythms, weekly media-buying cadence -- the regression input is contaminated and the fitted covariance models structural modes rather than genuine state uncertainty. We introduce a four-role FFT pre-filter that solves this problem at $O(N\\log N)$ cost and serves three additional roles \"for free\": (i) it whitens coloured noise before the Kalman update, restoring the optimality assumption; (ii) it cleans innovations before covariance regression, preventing periodic contamination of $\\hat{R}$ and $\\hat{Q}$; (iii) it generates spectral context features that enrich the downstream bandit's regime-selection state; (iv) it deseasonalises the input feature vector before any supervised regression that produces a sensitivity coefficient (beta, dose offset, bid modifier). We position the algorithm inside the Gated Decoupled Compositional Bandits (GDCB) family, where it acts as a preprocessing layer for the supervised scaler. The single $O(N\\log N)$ FFT call thereby serves four downstream consumers, fits in <0.1% of the sensor-fusion or pricing-pipeline compute budget, and is a drop-in addition with no changes to the Kalman filter, bandit, or runtime composition operator. We summarise empirical validation across six independent domains (rocket descent, autonomous-vehicle tracking, short-term rental pricing, clinical drug dosing, airline fare distribution, and ad-operations bid calibration), all returning a PROVES verdict under a pre-registered evaluation protocol.",
+        "url": "http://arxiv.org/abs/2608.22023v1",
+        "published_date": "2026-08-22T15:57:25+00:00",
+        "updated_date": "2026-08-22T15:57:25+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Oleg Miroshnichenko"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "A four-role FFT pre-filter integrated with a Gated Decoupled Compositional Bandits (GDCB) framework to preprocess and deseasonalize data before Kalman filtering and other supervised regressions.",
+        "data_sources": "Periodic structured data such as mechanical LiDAR rotation harmonics, engine vibration, weekly and annual demand cycles, and other domain-specific periodic signals.",
+        "alpha_potential": "The methodology could be adapted to identify and filter out periodic noise in financial time series data, potentially improving signal extraction for strategies like momentum or mean-reversion by reducing noise from seasonal effects or other periodic market behaviors.",
+        "tags": [
+            "FFT",
+            "Kalman Filter",
+            "Deseasonalization",
+            "Bandit Algorithms"
+        ],
+        "title_cn": "用于上下文自适应传感器融合的频谱预滤波：高风险决策系统中的四角色FFT-GDCB集成",
+        "summary_cn": "该研究提出了一种基于FFT的预滤波方法，结合GDCB框架，用于去除周期性噪声并优化卡尔曼滤波器的性能。在量化交易中，该方法可应用于金融时间序列数据的季节性调整和噪声过滤，提升动量或均值回归策略的信号质量。"
+    },
+    {
+        "title": "Gated Decoupled Compositional Bandits: A Unified Theory of Contextual Bandits with Supervised-Calibrated Action Scaling and Pre-Execution Gating",
+        "summary": "We introduce Gated Decoupled Compositional Bandits (GDCB), a family of contextual bandit algorithms with three structural innovations that jointly fall outside the taxonomy of LinUCB, LinTS, HierTS, factored bandits, neural contextual bandits, and RLHF. In a GDCB system: (i) the action delivered to the environment is the composition of a nominal arm, drawn by a discrete or hierarchical bandit, with a context-dependent scaler; (ii) the scaler parameter is learned in a separate supervised loop, not jointly with arm selection; and (iii) every action passes through a pre-execution gate that may modify or veto the composed action before it reaches the environment. We formalise this class of algorithms, prove four structural theorems characterising its statistical behaviour, and show that six industrially significant systems -- short-term rental dynamic pricing, clinical drug dosing, credit origination, grid demand response, content moderation, and LLM tool-use agents -- are all instances of GDCB, differing only in the composition operator, scaler family, and gate. The central result is the Decoupling Variance Reduction theorem: a well-calibrated scaler removes context-induced variance from the arm-to-reward mapping, turning a non-stationary bandit problem into an approximately stationary one. The Gate-Induced Equivalence theorem shows that under a stationary gate, historical data collected under any prior policy is a valid warm-up initialiser without importance-sampling correction, generalising the companion P-HITL result (arXiv:2606.02595) from human approval to arbitrary gates. In regulated, high-stakes domains, constraints usually treated as deployment frictions -- approval gates, compliance rules, safety shields -- are the mechanism that makes fast deployment possible, not an obstacle to it. The companion paper validates instance 1 (STR dynamic pricing) on real production data.",
+        "url": "http://arxiv.org/abs/2608.21993v1",
+        "published_date": "2026-08-22T14:58:25+00:00",
+        "updated_date": "2026-08-22T14:58:25+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Oleg Miroshnichenko"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Gated Decoupled Compositional Bandits (GDCB) combines discrete or hierarchical bandit arm selection with context-dependent scaling and pre-execution gating, learning the scaler parameter in a separate supervised loop.",
+        "data_sources": "Contextual data specific to the application domain (e.g., dynamic pricing, credit origination), which could be adapted to financial market data.",
+        "alpha_potential": "Potential to improve dynamic decision-making in high-frequency trading, algorithmic execution, or portfolio rebalancing by reducing context-induced variance and leveraging pre-execution gates for compliance.",
+        "tags": [
+            "contextual bandits",
+            "dynamic decision-making",
+            "supervised learning",
+            "high-stakes domains"
+        ],
+        "title_cn": "门控解耦组合式多臂老虎机：具有监督校准动作缩放和预执行门控的上下文老虎机统一理论",
+        "summary_cn": "该论文提出的GDCB算法通过解耦动作缩放和预执行门控，将非平稳老虎机问题转化为近似平稳问题，适用于金融领域的高频交易和动态投资组合管理，尤其在需要合规性检查的场景中具有潜在应用价值。"
+    },
+    {
+        "title": "Structured Learning on Mapper Representations",
+        "summary": "Modern machine learning (ML) methods are highly effective for prediction tasks, but many commonly used representations reduce complex data to fixed dimensional embeddings that may suppress multiscale structural organization. The Mapper algorithm from topological data analysis (TDA) provides a different perspective by decomposing data into overlapping local regions connected through a nerve construction, producing a structured representation that captures geometric organization, local statistical behavior, and relational connectivity simultaneously. In this work, we develop a framework for learning over Mapper induced structured representations. Rather than treating Mapper as a preprocessing step that produces a graph for downstream learning, we treat the full Mapper construction as part of the representation itself. We study mathematical properties of these representations, including invariance under relabeling, a distance functional on the space of Mapper representations, structural complexity of multiscale decompositions, and learning oriented stability under representation perturbations. Experiments on time series and graph classification datasets validate the proposed framework through controlled studies of representation ablation, Mapper parameter sensitivity, and the geometry of the induced representation space. Together, these results demonstrate how the proposed mathematical framework enables systematic comparison, interpretation, and analysis of Mapper representations, providing practical tools for studying representation geometry, structural complexity, and learning stability in learning tasks.",
+        "url": "http://arxiv.org/abs/2608.22044v1",
+        "published_date": "2026-08-22T17:15:37+00:00",
+        "updated_date": "2026-08-22T17:15:37+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "George Babus",
+            "Farzana Nasrin"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "The paper introduces a framework for learning over Mapper-induced structured representations from topological data analysis (TDA). Unlike traditional embeddings, Mapper decomposes data into overlapping local regions connected through a nerve construction, capturing geometric organization, local statistical behavior, and relational connectivity.",
+        "data_sources": "The paper evaluates the framework on time series and graph classification datasets, which could be analogous to financial time series and market network data.",
+        "alpha_potential": "The method's ability to capture multiscale structural organization and relational connectivity could potentially identify hidden patterns in financial data that traditional ML methods miss, offering new avenues for signal generation.",
+        "tags": [
+            "Topological Data Analysis",
+            "Structured Representations",
+            "Time Series Analysis",
+            "Graph Classification"
+        ],
+        "title_cn": "基于Mapper表示的结构化学习",
+        "summary_cn": "本文提出了一种基于拓扑数据分析（TDA）中Mapper算法的结构化学习框架，能够捕捉数据的多尺度几何结构和局部统计特性。这一方法在时间序列和图分类数据上验证了有效性，对于金融时序数据分析和市场网络结构建模可能有潜在应用价值。"
+    },
+    {
+        "title": "Reaching the Tail: Calibration Diversity Drives Conformal Coverage under Data Scarcity",
+        "summary": "Multi-horizon rare-event forecasting is hard under long macroeconomic series' data constraints: labeled events are scarce, and standard uncertainty quantification assumes an exchangeability that autocorrelation violates. A controlled ablation shows an apparent rare-event threshold for Adaptive Conformal Inference instead reflects calibration-set size. Across 200 random calibration sets, support width of the nonconformity-score distribution explains up to 85% of coverage variance versus 2% for rare-event count; the same, not the same magnitude, replicates across synthetic conditions and five countries (five-country Spearman $ρ$ 0.45-0.66 vs. 0.02-0.23). A diversity-maximizing selector built on this is the only strategy tested that improves long-horizon coverage (67.8% to 81.4% at six months); Mondrian, shift-robust, and extreme-value alternatives fail to close it. Mondrian even worsens coverage under oracle labels. A compact proposition explains why: coverage deficit reflects how closely the calibration set's upper quantile reaches the test distribution's. Diversity is necessary, not sufficient. Demonstrated on a two-stage U.S. recession-forecasting framework with RegressorChain, whether six-month coverage reaches 90% under honest scoring remains open, a question this paper quantifies rather than resolves.",
+        "url": "http://arxiv.org/abs/2608.21591v1",
+        "published_date": "2026-08-21T19:51:08+00:00",
+        "updated_date": "2026-08-21T19:51:08+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Donald Aadithiyan"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "Adaptive Conformal Inference with diversity-maximizing calibration set selection for rare-event forecasting",
+        "data_sources": "Long macroeconomic time series from five countries",
+        "alpha_potential": "Potential application in predicting rare but high-impact economic events (e.g., recessions) which could inform tactical asset allocation and hedging strategies",
+        "tags": [
+            "uncertainty quantification",
+            "macro forecasting",
+            "conformal prediction"
+        ],
+        "title_cn": "触及尾部：数据稀缺条件下校准多样性推动保形覆盖",
+        "summary_cn": "该研究提出了一种在数据稀缺情况下改进罕见事件预测置信区间覆盖的方法。通过最大化校准集多样性来提升宏观经济变量长周期预测的可靠性，对战术性资产配置决策具有潜在应用价值，尤其在经济衰退预警方面。"
+    },
+    {
+        "title": "Barycentric Fused Gromov-Wasserstein Balancing for Causal Inference under Multiple Treatments",
+        "summary": "Estimating heterogeneous single and interaction treatment effects from observational data under multiple simultaneous treatments is crucial for decision-making. To mitigate estimation variance, previous studies balance representation distributions between every pair of treatment patterns. However, such pairwise balancing scales quadratically with the number of treatment patterns and fails to preserve consistent local proximity structures across patterns, which degrades counterfactual estimation. To address these challenges, we propose the Causal Inference for Heterogeneous Single and Interaction Treatment Effects Network (CIHSI-Net), a deep learning framework built on a novel Barycentric Fused Gromov-Wasserstein Balancing (BFG-WB) objective. BFG-WB aligns the representation distribution of each treatment pattern with a shared Wasserstein barycenter, achieving global alignment while reducing the computational complexity from quadratic to linear, and its Fused Gromov-Wasserstein discrepancy preserves the local proximity structures essential for reliable heterogeneous effect estimation. Simulation studies show that CIHSI-Net consistently outperforms state-of-the-art baselines, and an application to real-world marketing data demonstrates its practical utility in complex multi-treatment scenarios.",
+        "url": "http://arxiv.org/abs/2608.22024v1",
+        "published_date": "2026-08-22T16:01:40+00:00",
+        "updated_date": "2026-08-22T16:01:40+00:00",
+        "categories": [
+            "stat.ME",
+            "cs.AI",
+            "cs.LG",
+            "stat.ML"
+        ],
+        "authors": [
+            "Yuki Murakami",
+            "Takumi Hattori",
+            "Kohsuke Kubota"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Deep learning framework (CIHSI-Net) with Barycentric Fused Gromov-Wasserstein Balancing for causal inference in multiple treatment scenarios",
+        "data_sources": "Observational data, specifically mentioned marketing data in the abstract",
+        "alpha_potential": "Potential to improve decision-making in scenarios involving heterogeneous treatment effects, but direct financial trading applications are unclear",
+        "tags": [
+            "Causal Inference",
+            "Deep Learning",
+            "Treatment Effects"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Variational Structure at the Edge of Stability",
+        "summary": "When discrete-time optimizers operate at the edge of stability, they exhibit near-two-periodic behavior. These oscillatory dynamics are reminiscent of conservative systems, such as the dynamics generated by symplectic integrators. However, a precise formulation of the connection between discrete-time optimizers at the edge of stability and discrete mechanics remains underexplored. Recently, Litman introduced the \"edge coupling\": a functional on consecutive gradient descent iterates whose critical points encode the fixed points and two-point orbits of the gradient descent dynamics. Here we extend the edge coupling to heavy-ball and Nesterov momentum. We show that its critical points characterize the fixed points and two-point orbits, with its Hessian characterizing their stability. We also show that the edge coupling can be identified with the symmetric Verlet action, formalizing the connection between the edge of stability and discrete mechanics.",
+        "url": "http://arxiv.org/abs/2608.21660v1",
+        "published_date": "2026-08-21T22:05:12+00:00",
+        "updated_date": "2026-08-21T22:05:12+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Eric Regis"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Extension of 'edge coupling' to analyze stability in momentum-based optimization algorithms",
+        "data_sources": "Theoretical analysis (no specific financial data used)",
+        "alpha_potential": "Potential insights for improving portfolio optimization algorithms and momentum-based trading strategies",
+        "tags": [
+            "optimization theory",
+            "momentum algorithms"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "ChequeMark: An Ensemble Machine Learning Framework for After-Hours Business Deposit Fraud Detection",
+        "summary": "Cheque fraud is a material risk in after-hours business deposit operations because funds may be released within one business day, while cheque clearing takes several days. This timing gap creates a fraud exposure window for financial institutions. Prior mitigation relies on static, deposit-level checks and therefore miss historical client behavior and evolving patterns. To address this gap, we propose a multi-view ensemble ML framework that combines: Extreme Gradient Boosting (XGBoost) for known fraud patterns, Isolation Forest for label-free anomaly detection, and Graph Sample and Aggregate (GraphSAGE) for relational patterns associated with transaction activities. We then combine the three outputs into a single client-level risk score. Under stable conditions, performance is comparable to XGBoost; under a targeted distribution shift, our framework performs best (F1: 83.77%, FPR: 0.69%) versus XGBoost (F1: 82.77%, FPR: 0.72%). These results indicate improved robustness to distribution shift while preserving interpretability through plain-language explanations grounded in behavioural, anomaly, and relational evidence.",
+        "url": "http://arxiv.org/abs/2608.21629v1",
+        "published_date": "2026-08-21T21:00:41+00:00",
+        "updated_date": "2026-08-21T21:00:41+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Ann Youduo Xu",
+            "Emily Yu",
+            "Justin Leski",
+            "William Lam"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Ensemble machine learning framework combining XGBoost, Isolation Forest, and GraphSAGE for fraud detection",
+        "data_sources": "Business deposit transactions and client behavior data",
+        "alpha_potential": "Limited direct trading applications, primarily useful for fraud prevention rather than generating trading signals",
+        "tags": [
+            "Ensemble Learning",
+            "Fraud Detection",
+            "Graph Neural Networks"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Generate in the Chart, Not on the Boundary: Function-Symbol Grounding for Hard Constraints in LTN-GANs",
+        "summary": "Logic Tensor Network-Enhanced Generative Adversarial Networks (LTN-GANs) inject background knowledge by grounding each logical axiom as a predicate and training the generator to raise its satisfaction, a fuzzy truth value in $[0,1]$. Previous LTN-GAN work grounded every constraint this way, at the predicate level, and improved constraint satisfaction. A predicate, however, only scores a sample, so it cannot embed hard structural constraints, rules such as orderings, positivity, and definitional identities that must hold in every generated sample. In this work, we investigate grounding each axiom as a function symbol inside the LTN framework. We compare against the state-of-the-art alternative, a constraint layer that clamps each violating sample onto the feasible boundary and so produces outputs that are always valid. Our investigation shows that a valid sample is not always a realistic one. An inequality is not merely satisfied or violated. It holds by a margin, and a faithful generator should also reproduce the margin's real distribution. We find that the resolution ratio $R$, the data's scale over the margin's spread, is a diagnostic, computable before training, of which constraints a chosen grounding can learn. When $R$ is large, the predicate receives no learning signal, the clamp pushes every sample onto the boundary, and the margin distribution is lost while every standard metric still looks fine. A function symbol avoids both failures, computing the constrained variable rather than scoring it. Together the function symbols form a chart, a coordinate system inside the feasible region, where every sample is valid by construction and the margin is learned like any other quantity.",
+        "url": "http://arxiv.org/abs/2608.21605v1",
+        "published_date": "2026-08-21T20:19:01+00:00",
+        "updated_date": "2026-08-21T20:19:01+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Nijesh Upreti",
+            "Vaishak Belle"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Logic Tensor Network-Enhanced Generative Adversarial Networks (LTN-GANs) with function-symbol grounding for hard constraints",
+        "data_sources": "Not specified in the abstract (likely synthetic or general-purpose datasets)",
+        "alpha_potential": "Potential for generating constrained financial time series or structured financial data, but no direct trading application demonstrated",
+        "tags": [
+            "LTN-GAN",
+            "constraint satisfaction",
+            "structured generation",
+            "logical constraints"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Federated Continual Learning as a Distributed Drift-Plus-Penalty Control Problem",
+        "summary": "Federated Continual Learning (FCL) is fundamental to real-world distributed learning systems, requiring models to adapt to sequential, non-IID data across clients while mitigating catastrophic forgetting and client drift. Existing approaches formulate continual learning (CL) as a sequence of per-task optimization problems, applied locally at each client and coupled through aggregation, using heuristic mechanisms such as replay, regularization, or projection-based constraints. However, forgetting in FCL is inherently a long-term, distributed phenomenon, arising from the interaction of temporal task evolution and cross-client heterogeneity, which is not explicitly regulated. In this work, we cast FCL as a stochastic control problem and propose Federated Queue-regulated Continual Learning (FedQCL), a framework based on Lyapunov drift-plus-penalty (DPP) optimization. FedQCL introduces virtual queues to track the accumulation of forgetting across tasks and clients, enabling explicit control of the stability-plasticity trade-off. By optimizing a DPP objective, the method jointly improves current-task performance while the queue-based formulation provides an interpretable and tunable mechanism to balance adaptation and retention through a single parameter, without requiring gradient projection or additional communication overhead. Empirical evaluations on standard benchmarks, including Split-CIFAR-10, Split-CIFAR-100, and Split-TinyImageNet, demonstrate that FedQCL outperforms state-of-the-art baselines with respect to accuracy while significantly reducing forgetting under heterogeneous data distributions.",
+        "url": "http://arxiv.org/abs/2608.21539v1",
+        "published_date": "2026-08-21T18:21:19+00:00",
+        "updated_date": "2026-08-21T18:21:19+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Nazreen Shah",
+            "Naveen Kumar Reddy Somireddy",
+            "Zubair Shaban",
+            "Ranjitha Prasad",
+            "B. N. Bharath"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "The paper proposes Federated Queue-regulated Continual Learning (FedQCL), a framework based on Lyapunov drift-plus-penalty (DPP) optimization to manage forgetting in federated continual learning systems. It introduces virtual queues to track forgetting across tasks and clients, optimizing a DPP objective to balance adaptation and retention.",
+        "data_sources": "Standard machine learning benchmarks (Split-CIFAR-10, Split-CIFAR-100, Split-TinyImageNet) were used for empirical evaluations.",
+        "alpha_potential": "The methodology could theoretically be adapted to handle non-IID financial data streams across distributed clients (e.g., different brokers or institutional investors), but there's no direct evidence of its efficacy on financial datasets or trading-specific applications.",
+        "tags": [
+            "Federated Learning",
+            "Continual Learning",
+            "Drift-Penalty Optimization",
+            "Non-IID Data"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "More Experts, Worse Dynamics: Inverse Scaling and Spectral Bias in Mixture-of-Experts State-Space Models",
+        "summary": "Mixture-of-Experts (MoE) architectures are commonly motivated as a way to increase expressivity by decomposing complex systems into simpler local dynamics. This intuition has recently been extended to spectral state-space models, where mixing stable operators is assumed to enable adaptation to heterogeneous or regime-switching time series. We critically evaluate this assumption in a controlled synthetic setting designed to isolate dynamical rather than representational challenges. We study a next-step prediction task on sequences composed of three regimes: chaotic dynamics generated by the Mackey-Glass system, a stable oscillatory regime, and a noise-dominated autoregressive regime. Across extensive ablations including capacity scaling, oracle routing, frozen-expert variants, and comparisons to output-level MoE baselines, operator-level mixture models consistently fail to outperform a single-expert baseline. Increasing the number of experts leads to inverse scaling, routing collapses or fails to induce meaningful specialization, and even perfect regime supervision does not prevent degradation in global performance. Furthermore, we show that apparent improvements in mean squared error on chaotic trajectories can be misleading. Phase-space analysis reveals that lower error often arises from temporal smoothing that destroys the geometry of the underlying attractor rather than from faithful modeling of the dynamics. These results identify a likely limitation of operator interpolation under the studied parameterization and training protocol, and underscore the need for geometry-aware evaluation when assessing regime-switching dynamical systems.",
+        "url": "http://arxiv.org/abs/2608.21840v1",
+        "published_date": "2026-08-22T08:22:32+00:00",
+        "updated_date": "2026-08-22T08:22:32+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Chandresh Pandey"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Evaluation of Mixture-of-Experts (MoE) architectures in spectral state-space models for next-step prediction tasks on synthetic multi-regime time series data.",
+        "data_sources": "Synthetic data comprising chaotic dynamics (Mackey-Glass system), stable oscillatory regime, and noise-dominated autoregressive regime.",
+        "alpha_potential": "Limited direct alpha potential; primarily theoretical insights into limitations of MoE models in handling regime-switching dynamics, which may inform model selection in time-series forecasting.",
+        "tags": [
+            "Mixture-of-Experts",
+            "Spectral State-Space Models",
+            "Regime-Switching",
+            "Time-Series Prediction"
+        ],
+        "_low_priority": true
+    }
+]
