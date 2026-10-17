@@ -1,0 +1,1524 @@
+[
+    {
+        "title": "Twice Upon a Time: Complementary Representations for Time-Series Reasoning",
+        "summary": "Time Series Language Models (TSLMs) enable language-based understanding and reasoning over temporal data, yet a fundamental question remains: what information should their time-series representations preserve, and what variation should they factor out? Existing TSLMs typically expose the language model to a single representation, imposing a fixed inductive bias across downstream tasks. We instead introduce complementary representations as a design principle for time-series reasoning. Our model combines two visual views: line plots preserve absolute measurements and the observed coordinate frame, while normalized delay embeddings factor out positive amplitude rescaling and offsets while exposing temporal structure. Dedicated visual encoders integrate both views into a shared language model through visual tokens and multi-level feature fusion. Evaluation-time interventions verify that the two views exhibit distinct invariance profiles, while single-view ablations show that their combination is particularly beneficial beyond basic perception, with the large gains in prediction and reasoning. Built on Qwen3-VL-8B, our dual-view model improves overall TSRBench accuracy from 44.5% with line plots alone to 53.2%, substantially exceeding the strongest evaluated dedicated TSLM baseline at 36.7%. It further achieves 89.9% accuracy on TSExam and 86.8% numerical accuracy on multivariate ChatTS alignment. Together, these results demonstrate that complementary representations provide an effective design principle for general-purpose TSLMs, enabling models to exploit temporal structure without sacrificing access to the original measurement frame.",
+        "url": "http://arxiv.org/abs/2610.22327v1",
+        "published_date": "2026-10-15T17:52:18+00:00",
+        "updated_date": "2026-10-15T17:52:18+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "cs.CL"
+        ],
+        "authors": [
+            "Hedi Zisling",
+            "Liran Nochumsohn",
+            "Ilan Naiman",
+            "Mihir Parmar",
+            "Omri Azencot"
+        ],
+        "relevance_score": 8,
+        "core_methodology": "The paper introduces complementary representations for time-series reasoning by combining two visual views: line plots that preserve absolute measurements and normalized delay embeddings that factor out amplitude rescaling and offsets while exposing temporal structure. These representations are integrated into a shared language model through visual tokens and multi-level feature fusion.",
+        "data_sources": "The methodology is evaluated on time-series data, likely including multivariate datasets as indicated by the mention of multivariate ChatTS alignment, though specific financial datasets aren't detailed.",
+        "alpha_potential": "The dual-view approach could enhance predictive modeling in financial time series by capturing both absolute values and relative temporal patterns. This could improve momentum strategies, temporal pattern recognition, and anomaly detection in market data.",
+        "tags": [
+            "Time-Series Analysis",
+            "Language Models",
+            "Dual-View Learning",
+            "Temporal Structure"
+        ],
+        "title_cn": "时间序列推理中的互补表示：双重视角",
+        "summary_cn": "该研究提出了一种双重视角的时间序列语言模型，结合保留绝对值的线图和展示时间结构的归一化延迟嵌入，显著提升了时间序列预测和推理能力。在量化交易中，这种方法可同时捕捉价格绝对水平和相对时序模式，对动量策略和市场异常检测具有潜在应用价值。"
+    },
+    {
+        "title": "Where Backtests and Live Trading Part Ways: Six Defects from One Intraday System",
+        "summary": "Backtests of intraday strategies can drift away from what the live system actually does; in our case, the drift never showed in summary statistics. We report six defects found while running one intraday US equity system live and comparing its live days with their backtest replay. Three came from data: a default feed that carried a small fraction of real opening volume, historical prices adjusted for dividends that live orders never see, and data the live system downloaded but the backtest never did. Two came from code: a sizing step that exceeded a limit the live account enforces, and UTC timestamps read as New York time. One came from configuration: settings that were switched on but never reached the code that places orders. For each we give the symptom, the size of the error, the cause and the test or control that now guards against it. All six sat where two paths that should agree had drifted apart. We close with a ten-point checklist. We make no claim about whether the system is profitable.",
+        "url": "http://arxiv.org/abs/2610.21846v1",
+        "published_date": "2026-10-15T13:24:52+00:00",
+        "updated_date": "2026-10-15T13:24:52+00:00",
+        "categories": [
+            "q-fin.ST",
+            "q-fin.TR"
+        ],
+        "authors": [
+            "Alex Vidovich",
+            "Zivana Zerjal"
+        ],
+        "relevance_score": 8,
+        "core_methodology": "Comparative analysis between backtest results and live trading performance to identify discrepancies, specifically focusing on data, code, and configuration defects in intraday US equity trading.",
+        "data_sources": "Intraday US equity market data, including real-time feed data and historical prices adjusted for dividends.",
+        "alpha_potential": "Identifies systematic sources of divergence between backtest and live performance, which can lead to improved strategy robustness and reduced implementation risk in live trading environments.",
+        "tags": [
+            "backtesting",
+            "live trading",
+            "data quality",
+            "implementation risk"
+        ],
+        "title_cn": "回测与实盘分道扬镳之处：一个日内交易系统的六种缺陷",
+        "summary_cn": "该研究通过对比日内美国股票交易系统的回测与实盘表现，揭示了六种导致差异的缺陷类别（数据源差异、编码问题及配置错误），这些问题在传统统计指标中不可见。研究提出具体诊断方法和十项检查清单，对量化交易团队提升策略实盘可靠性具有重要实践价值。"
+    },
+    {
+        "title": "How Much Screening Buys a Second? Speed, Selection, and the Maker's Spread",
+        "summary": "We study the spread a liquidity provider needs to break even against counterparties that can exploit a stale quote, and we place two defenses on a single scale: repricing sooner and screening informed flow. A break-even condition pins down the exact screening rate at which a slower maker matches a faster unscreened venue: the selection that buys back the extra staleness. The result requires only an integrable price innovation and therefore holds under jumps, atoms, and infinite variance. Predictable drift is a centering problem: it widens a spot-centered quote, but its cost vanishes once the quote is recentered on the expected reference. In four USDC-WETH pools benchmarked against Binance ETH-USDT from June to August 2026, the one-second benchmark innovation is sharply non-Gaussian: 73% of seconds show no price change. Cutting cadence from twelve seconds to one sheds 84.5% of the expected shock, so a twelve-second maker must screen at least 84.5% of informed flow to match a one-second venue, far above the 71.1% that a Gaussian model implies. In trending markets, the stale pool is picked off at execution: with-trend fills obtain an effective spread 11.1 bps lower than against-trend fills, with the same sign in all four pools.",
+        "url": "http://arxiv.org/abs/2610.21510v1",
+        "published_date": "2026-10-15T08:45:19+00:00",
+        "updated_date": "2026-10-15T08:45:19+00:00",
+        "categories": [
+            "q-fin.TR",
+            "q-fin.MF"
+        ],
+        "authors": [
+            "Aleksei Adadurov",
+            "Eduard Airapetian",
+            "Anton Chtepine",
+            "Antero Eloranta",
+            "Boris Pletenev",
+            "Andrei Sebyakin",
+            "Arsenii Valitov"
+        ],
+        "relevance_score": 8,
+        "core_methodology": "The paper analyzes the break-even spread for liquidity providers by considering two key defenses: frequent repricing and screening of informed flow. It establishes a break-even condition that links the screening rate to the staleness of quotes, providing a quantitative framework applicable under various market conditions including jumps and infinite variance.",
+        "data_sources": "The study uses data from four USDC-WETH pools benchmarked against Binance ETH-USDT from June to August 2026, focusing on one-second benchmark innovations.",
+        "alpha_potential": "The paper identifies a significant non-Gaussian behavior in price changes, where 73% of seconds show no price change. This insight can be leveraged to optimize liquidity provision strategies by adjusting quote cadence and screening rates, potentially yielding alpha by reducing adverse selection.",
+        "tags": [
+            "market microstructure",
+            "liquidity provision",
+            "adverse selection",
+            "non-Gaussian"
+        ],
+        "title_cn": "多少筛选能赢得一秒？速度、选择与做市商价差",
+        "summary_cn": "本研究通过分析流动性提供者在面对信息流时的两种防御机制（更频繁的定价调整和信息流筛选），为做市商价差提供定量分析框架。基于四个USDC-WETH池的数据，研究发现价格变动高度非高斯分布，73%的秒级无价格变化，优化报价频率可大幅降低预期冲击。这一发现对优化流动性策略、降低逆向选择风险具有实际应用价值。"
+    },
+    {
+        "title": "PathFM: Fast Generative Forecasting of Multivariate Trajectories",
+        "summary": "Time series foundation models are becoming increasingly popular for general-purpose forecasting. However, most leading models predict marginal quantiles, leaving the dependence structure of future trajectories unspecified. This distinction matters for trajectory-dependent quantities such as cumulative demand, peak load, and event timing, yet point and marginal scores do not reveal it. To model this dependence, we introduce PathFM, a trajectory-based forecasting model that uses flow matching to generate complete future paths. We further distill the model to one or two steps and share history attention cache across draws. Together, these enable PathFM to generate multiple paths for a single series in roughly the time needed for one query to a quantile model. The distilled sampler also makes it practical to optimize a calibration loss directly. PathFM achieves competitive marginal accuracy on the established forecasting benchmarks fev-bench and TIME. To complement these evaluations, we introduce Forecast Path Score Bench (fps-bench), which augments fev-bench tasks with energy and variogram scores and downstream metrics. PathFM achieves a higher aggregate path score on fps-bench than all evaluated external baselines. Experiments on chaotic systems further show that our flow model sustains long-run variability, while strong baselines rapidly collapse. PathFM makes generative time series forecasting both competitive and practical, enabling diverse downstream applications.",
+        "url": "http://arxiv.org/abs/2610.22358v1",
+        "published_date": "2026-10-15T17:58:45+00:00",
+        "updated_date": "2026-10-15T17:58:45+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Jiachen Yao",
+            "Xiyuan Zhang",
+            "Annan Yu",
+            "Boran Han",
+            "Abdul Fatir Ansari",
+            "Shuai Zhang",
+            "Michael Bohlke-Schneider",
+            "Bernie Wang"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Flow matching-based generative forecasting model that generates complete future trajectories (paths) for multivariate time series. Key innovations include: 1) Distillation to one or two steps for efficiency, 2) Shared history attention cache across draws, enabling faster multi-path generation than quantile models.",
+        "data_sources": "Generic multivariate time series data (demonstrated on fev-bench and TIME forecasting benchmarks), potentially applicable to market data including: asset price series, order book dynamics, macroeconomic indicators.",
+        "alpha_potential": "Addresses critical limitation of marginal quantile models in finance by capturing dependence structure in trajectories - crucial for applications like: 1) Path-dependent options pricing, 2) Risk estimation of drawdowns/peaks, 3) Optimal execution where entire future path matters. The maintained long-run variability (vs. competitor collapse) suggests robustness for volatile market regimes.",
+        "tags": [
+            "generative forecasting",
+            "flow matching",
+            "multivariate time series",
+            "path-dependent trading"
+        ],
+        "title_cn": "PathFM: 多变量轨迹的快速生成式预测",
+        "summary_cn": "该论文提出PathFM模型，通过流匹配技术生成完整未来路径，解决了传统分位数模型无法捕捉轨迹依赖性结构的痛点。对于量化交易，该技术可直接应用于路径依赖型衍生品定价、风险价值测算（尤其极端行情）及算法交易优化等场景，其保持长期波动性的特性相比现有方法更适合真实市场环境。"
+    },
+    {
+        "title": "Causal Integrated Gradients: Scalable Feature Attribution Along Causal Paths",
+        "summary": "Existing feature attribution methods that account for feature dependencies do not scale to high dimensions. We propose causal integrated gradients (CIG) and causal expected gradients (CEG), which extend integrated gradients to incorporate prior causal structure among input features while retaining its computational efficiency and, under conditions on the causal graph, its axiomatic guarantees. In many settings, some causal structure between features is already known, for example, that a transcription factor causally regulates a target gene's expression. Yet existing gradient-based methods cannot exploit this structure, instead crediting a feature's downstream effects over its true upstream cause, such as ranking the target gene above the transcription factor that regulates it. Our key idea is to embed this causal structure by routing the integration path along the causal graph. The method thereby decomposes each feature's attribution into a direct effect and effects mediated through its causal descendants. We evaluate CIG in three settings of increasing realism. First, on a synthetic benchmark with a known causal model, CIG's attributions best match the ground-truth causal effect from Pearl's do-calculus, matching the accuracy of causal Shapley values at a fraction of the computational cost. Second, on simulated single-cell gene expression data with a known gene regulatory network (Dyngen), CIG most accurately recovers the transcription factors driving the simulation. Third, on real interferon-$β$ stimulation data, where only an approximate causal graph is available, CIG better prioritizes the transcription factors driving the measured response than DeepSHAP and integrated gradients. Together, these results show that incorporating causal structure into gradient-based attributions recovers upstream drivers that existing methods miss, without sacrificing scalability.",
+        "url": "http://arxiv.org/abs/2610.22126v1",
+        "published_date": "2026-10-15T16:02:18+00:00",
+        "updated_date": "2026-10-15T16:02:18+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Joran Michiels",
+            "Anis Ismail",
+            "Maarten De Vos",
+            "Alejandro Sifrim"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Causal Integrated Gradients (CIG) extends integrated gradients by incorporating prior causal structure among input features, routing the integration path along the causal graph to decompose each feature's attribution into direct and mediated effects.",
+        "data_sources": "Gene expression data (simulated and real), including single-cell gene expression data with known gene regulatory networks and real interferon-$β$ stimulation data.",
+        "alpha_potential": "The method can be adapted to financial markets to identify upstream drivers of price movements or other market behaviors by leveraging known causal relationships, potentially uncovering hidden factors that traditional gradient-based methods miss.",
+        "tags": [
+            "causal inference",
+            "feature attribution",
+            "gradient-based methods",
+            "gene expression data"
+        ],
+        "title_cn": "因果积分梯度：沿因果路径的可扩展特征归因",
+        "summary_cn": "本文提出的因果积分梯度（CIG）方法通过整合已知的因果结构，改进了特征归因的准确性。在金融交易中，该方法可帮助识别价格波动的深层因果驱动因素，优于传统梯度方法，具有较高的实用潜力。"
+    },
+    {
+        "title": "Momentum, Commentary Tone, and Earnings Surprise in LLM Financial Forecasts",
+        "summary": "Which inputs drive a language model's financial forecast? We construct synthetic earnings announcements that independently reverse 20-day momentum, non-informational commentary tone, and whether fixed actual EPS beats a manipulated consensus. Six instruction/chat checkpoint conversions from four families (0.49-7.61B base parameters) receive 2,016 prompts each under a direct-answer Q8_0 protocol. The design includes 24 numerical blocks, six commentary pairs, profits and losses, rising and falling annual EPS, and two surprise sizes. Both A/B answer assignments and U/D cover all 384 primary scenarios per conversion. We estimate matched changes in conditional answer-prefix scores, not calibrated market probabilities. Across these checkpoints, the primary EPS contrast ranges from -0.19 to 86.80 percentage points. The magnitude of the primary signed tone contrast exceeds that of EPS in 5 of six models, and momentum exceeds it in 5. Natural-word numerical diagnostic accuracy ranges from 51.0 to 95.8 percent. Answer-encoding, wording, context, and conversion controls qualify these results. The experiment measures observable input reliance and numerical recognition; it establishes neither an internal reasoning mechanism nor realized return predictability. Public benchmark prompts, recorded scores, and an interactive recorded-results explorer accompany the study.",
+        "url": "http://arxiv.org/abs/2610.22043v1",
+        "published_date": "2026-10-15T15:14:20+00:00",
+        "updated_date": "2026-10-15T15:14:20+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "cs.CL",
+            "q-fin.GN"
+        ],
+        "authors": [
+            "Alina Khaybullina"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Experimental design using synthetic earnings announcements to test how LLMs respond to different financial inputs (momentum, commentary tone, earnings surprise) across multiple model checkpoints, measuring conditional answer-prefix scores rather than calibrated probabilities.",
+        "data_sources": "Synthetic earnings announcements (controlled variations in numerical blocks, commentary pairs, EPS trends, and surprise sizes) with systematically manipulated inputs.",
+        "alpha_potential": "Identifies which inputs (tone > EPS in 5/6 models, momentum > EPS in 5/6 models) LLMs overweight in forecasts - suggests potential misalignment between model focus and true signal sources. Findings could inform: 1) NLP-based trading factor construction 2) Detection of LLM bias in market-impacted contexts 3) Synthetic data approaches for financial fine-tuning.",
+        "tags": [
+            "LLM financial forecasting",
+            "Earnings surprise analysis",
+            "Quantitative NLP",
+            "Factor bias detection"
+        ],
+        "title_cn": "大规模语言模型金融预测中的动量、评论语气与盈利意外",
+        "summary_cn": "通过构建合成盈利公告系统测试不同规模LLM对三大要素(20日动量反转/非信息性评论语气/盈利意外)的依赖度。实验发现模型普遍高估语气信号(5/6模型)和动量信号(5/6模型)而低估实际EPS信号，揭示算法交易中需警惕的LLM预测偏差模式。研究为设计抗干扰的NLP量化因子提供实证基础。"
+    },
+    {
+        "title": "SelectPFN: Amortized Bayesian Variable Selection for Sparse Nonlinear Regression with Prior-Data Fitted Networks",
+        "summary": "Tabular foundation models based on prior-data fitted networks (PFNs) predict on a new data set in a single forward pass, but they cannot report which inputs their predictions depend on. We propose SelectPFN, a PFN that performs Bayesian variable selection and prediction jointly for sparse nonlinear regression. In one forward pass it returns posterior inclusion probabilities for every variable, and its predictions are computed from sampled subsets only, so excluded variables provably cannot affect them; we show this is exactly what the Bayesian model prescribes. The network is pretrained once on synthetic tasks from a meta-prior built around a group spike-and-slab sparse-input neural network. Column-permutation equivariance combined with random interleaving of original and knockoff columns yields knockoff statistics with exact finite-sample false discovery rate control, even when the meta-prior is wrong. We develop theory for amortized selection: a Bayes-regret bound for the amortized median probability model, a characterization showing that the information needed to detect a variable grows like $(2/λ)\\log(1/ω)$ in the prior weight $ω$ of structures that can use it, where $λ\\le1$ is an efficiency, and a negative result showing that average-case training does not transfer to frequentist guarantees at a fixed truth. On out-of-prior nonlinear designs with p up to 500, SelectPFN improves the area under the precision-recall curve by 0.23-0.28 over the lasso, BART, DART, LassoNet and a group-penalized sparse neural network, at a false discovery proportion of about 0.07 and 0.04 seconds per data set. The advantage persists on real covariate matrices, and, as the theory predicts, detection of interaction-only variables rises monotonically with their prior weight.",
+        "url": "http://arxiv.org/abs/2610.21950v1",
+        "published_date": "2026-10-15T14:18:30+00:00",
+        "updated_date": "2026-10-15T14:18:30+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Bin Luo"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces SelectPFN, a prior-data fitted network that performs Bayesian variable selection and prediction jointly for sparse nonlinear regression. It uses synthetic tasks from a meta-prior to pretrain once and then, in a single forward pass, returns posterior inclusion probabilities for every variable and predictions computed from sampled subsets only. The approach includes strategies for exact finite-sample false discovery rate control.",
+        "data_sources": "As the model is trained on synthetic tasks, the real-world application could involve financial datasets, such as time-series of asset prices or macroeconomic indicators.",
+        "alpha_potential": "SelectPFN's ability to accurately select relevant variables for nonlinear regression could be valuable in identifying predictive signals in noisy financial data, thereby enhancing trading strategy performance. Its control over false discovery rates is particularly useful to avoid spurious correlations.",
+        "tags": [
+            "Bayesian variable selection",
+            "nonlinear regression",
+            "false discovery control",
+            "prior-data fitted networks"
+        ],
+        "title_cn": "SelectPFN：基于先验数据拟合网络的稀疏非线性回归贝叶斯变量选择方法",
+        "summary_cn": "本文提出一种贝叶斯变量选择方法SelectPFN，适用于稀疏非线性回归，能同时进行变量选择与预测。该方法在金融数据中可有效识别相关变量，提高信号识别效率并控制误发现率，适用于量化交易策略的变量筛选与预测模型优化。"
+    },
+    {
+        "title": "Provably Efficient Risk-Sensitive Offline Reinforcement Learning via Optimized Certainty Equivalents",
+        "summary": "Risk-sensitive reinforcement learning (RL) addresses decision-making under uncertainty and adverse outcomes. Learning risk-sensitive policies from fixed datasets is important when additional interaction with the environment is costly. Existing work on risk-sensitive RL focuses on online settings or specific risk measures, leaving a general theoretical understanding of its offline setting underdeveloped. In this work, we investigate efficient offline risk-sensitive RL using the optimized certainty equivalent (OCE), a general class of risk measures. We consider two formulations: dynamic-OCE RL, which applies OCE recursively at each step, and static-OCE RL, which applies a single OCE to the cumulative rewards. Under the tabular setting, we develop pessimistic value-iteration algorithms for both formulations and establish tight sublinear suboptimality bounds, explicitly capturing how risk sensitivity, encoded by utility functions, affects learning difficulty. Moreover, we establish minimax suboptimality lower bounds to characterize the problem's fundamental limits. To handle large state spaces, we further develop pessimistic least-squares value-iteration algorithms that incorporate the general OCE risk criterion into linear function approximation. We establish utility-dependent sublinear guarantees with explicit dependence on the feature dimension $d$. To our knowledge, we provide the first offline algorithms along with the first upper and lower suboptimality bounds for both dynamic- and static-OCE RL.",
+        "url": "http://arxiv.org/abs/2610.21870v1",
+        "published_date": "2026-10-15T13:41:18+00:00",
+        "updated_date": "2026-10-15T13:41:18+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "math.OC",
+            "stat.ML"
+        ],
+        "authors": [
+            "Hanzhen Wang",
+            "Boxiang Lyu",
+            "Zhongxiang Dai",
+            "Siyang Gao",
+            "Dake Zhang",
+            "Shuang Qiu"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper develops pessimistic value-iteration algorithms for offline risk-sensitive reinforcement learning using optimized certainty equivalents (OCE). It considers both dynamic (recursive) and static (cumulative reward) applications of OCE and provides theoretical guarantees under tabular and linear function approximation settings.",
+        "data_sources": "Fixed datasets (offline setting) for risk-sensitive decision-making, which could be adapted to historical market data in financial applications.",
+        "alpha_potential": "The method could be adapted to optimize trading strategies under risk constraints by learning from historical data without additional environment interaction, potentially improving risk-adjusted returns.",
+        "tags": [
+            "Reinforcement Learning",
+            "Risk-sensitive RL",
+            "Optimized Certainty Equivalents",
+            "Offline Learning"
+        ],
+        "title_cn": "基于优化确定性等价的可证明高效风险敏感离线强化学习",
+        "summary_cn": "该论文开发了离线风险敏感强化学习算法,适用于需要从固定数据集学习且避免实际交互的场景。其优化确定性等价(OCE)方法可被金融领域用于开发风险敏感的交易策略,直接从历史市场数据中学习最优决策。"
+    },
+    {
+        "title": "Q($γ_H$): Entropy-Guided Horizon Mixing in Multi-Discount Q-Learning",
+        "summary": "A fixed discount factor in Q-learning imposes a single planning horizon throughout training, despite the differing demands of early exploration and long-term credit assignment. We propose Q($γ_H$), a multi-horizon Q-learning framework that maintains multiple discount-specific heads and adaptively combines them at control time using an entropy-derived confidence signal. The resulting state-dependent mixing weights shift control from shorter- to longer-horizon heads as policy confidence increases, enabling adaptive horizon mixing without modifying individual Bellman updates. Across classical control and deep reinforcement-learning benchmarks, Q($γ_H$) shows its strongest improvements on delayed-credit tasks relative to strong fixed-discount baselines. By decoupling horizon adaptation from the underlying learning updates, Q($γ_H$) provides a lightweight framework for adaptive planning-horizon control in reinforcement learning, avoiding the need for manual discount-factor selection while remaining compatible with standard value-learning methods.",
+        "url": "http://arxiv.org/abs/2610.21764v1",
+        "published_date": "2026-10-15T12:20:47+00:00",
+        "updated_date": "2026-10-15T12:20:47+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Arwa Albelaihi",
+            "Abdulrahman Altahhan"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Q($γ_H$) introduces a multi-horizon Q-learning framework that maintains multiple discount-specific heads and adaptively combines them using an entropy-derived confidence signal. This allows for state-dependent mixing weights that shift control from shorter to longer horizons as policy confidence increases.",
+        "data_sources": "Not explicitly mentioned in the abstract, but typically involves reinforcement learning environments and potentially financial time-series data in applied contexts.",
+        "alpha_potential": "The adaptive planning-horizon control can be particularly useful in trading strategies that require balancing between short-term exploitation and long-term strategic positioning, such as portfolio optimization or execution algorithms.",
+        "tags": [
+            "Reinforcement Learning",
+            "Adaptive Horizon",
+            "Q-Learning",
+            "Trading Strategies"
+        ],
+        "title_cn": "Q($γ_H$)：多折扣Q学习中的熵引导混合规划周期",
+        "summary_cn": "Q($γ_H$)通过维护多个特定折扣的头并使用熵导出的置信信号动态组合它们，实现了状态依赖的混合权重，使得策略从短期到长期的平滑过渡。这种方法在量化交易中特别适用于需要平衡短期机会与长期战略的投资策略。"
+    },
+    {
+        "title": "In-Context Preference-Conditioned Pareto Set Learning from Limited Offline Data",
+        "summary": "Multi-objective optimization involves diverse preferences over conflicting objectives. Rather than returning a finite set of trade-off solutions, preference-conditioned Pareto set learning seeks to map a specified preference directly to a corresponding Pareto optimal solution. Yet in many real-world scenarios, optimization must proceed offline without further objective evaluations, leaving only a limited static dataset that sparsely covers the decision and objective spaces. Existing methods either optimize separately for each preference or train a problem-specific Pareto solution model, requiring repeated search across preferences or repeated training across problems. We introduce in-context preference-conditioned Pareto set learning (ICPSL), a framework that amortizes both preference-wise solution search and problem-specific model construction. ICPSL pretrains a foundation-style hypernetwork on a large and diverse set of synthetic prior data. Given the offline observations of an unseen problem, the pretrained hypernetwork learns to generate a problem-specific, preference-conditioned Pareto solution model in a single forward pass. The generated model can then be reused to predict solutions for arbitrary preferences without problem-specific training or preference-wise search. Experiments on synthetic and real-world problems show that ICPSL produces high-quality Pareto solutions while providing substantial speedups in problem-specific solution-model construction.",
+        "url": "http://arxiv.org/abs/2610.21736v1",
+        "published_date": "2026-10-15T11:54:43+00:00",
+        "updated_date": "2026-10-15T11:54:43+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Yiming Yao",
+            "Liang Zhao",
+            "Qingfu Zhang"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "In-context learning framework for preference-conditioned Pareto set learning, using a pretrained hypernetwork to generate problem-specific Pareto solution models efficiently",
+        "data_sources": "Synthetic prior data for pretraining, then limited offline observations from real-world problems",
+        "alpha_potential": "Enables rapid generation of optimal portfolios under varying risk/reward preferences in offline settings, potentially improving multi-objective portfolio construction",
+        "tags": [
+            "multi-objective optimization",
+            "offline learning",
+            "hypernetworks",
+            "portfolio optimization"
+        ],
+        "title_cn": "基于有限离线数据的上下文偏好条件帕累托集合学习",
+        "summary_cn": "该研究提出一种新型多目标优化框架，通过预训练超网络在未见问题上快速生成符合特定风险偏好的帕累托最优投资组合。相比现有方法需反复优化的不足，该技术仅需单次前向传播即可完成组合构建，为量化投资中的离线组合优化决策提供高效解决方案。"
+    },
+    {
+        "title": "When Does \"Post-Call\" Begin? An Availability Contract for Earnings-Call NLP Benchmarks",
+        "summary": "Corporate financial disclosures often unfold over time, with announcements, prepared remarks, and discussion spanning multiple high-frequency return intervals. Financial NLP benchmarks can therefore suffer from a within-event timing mismatch when the prediction target begins before the textual or audio input used by a model could be complete. Chronological train--test splits do not prevent this mismatch, because it occurs inside individual events rather than across samples. We introduce an Availability Contract, which requires a benchmark to state the input boundary, evidence for input availability, the outcome start, and the claims supported by that evidence. We apply this framework to 552 earnings calls from 24 firms. For each call, we hold the return endpoint fixed and compare the previous close, a documentary call-start proxy, and a completion proxy based on reconstructed audio end plus a stipulated processing allowance. At this baseline, moving from the call-start proxy to the completion proxy flips return signs for 9.4% of calls. Holding completion-clock cutpoints fixed, 28.3% change quintile. In an independent release-session analysis of a public earnings-call volatility benchmark, shifting before-market target windows forward by one trading session raises three-day mean squared error by 18.1-21.4% across four frozen prediction streams, while their point rankings remain unchanged. Together, the results show that labels and losses can depend materially on the declared outcome clock even when model rankings appear stable. The Availability Contract makes this assumption explicit and ties post-input claims to the available timing evidence.",
+        "url": "http://arxiv.org/abs/2610.21659v1",
+        "published_date": "2026-10-15T10:40:06+00:00",
+        "updated_date": "2026-10-15T10:40:06+00:00",
+        "categories": [
+            "q-fin.CP",
+            "cs.CL",
+            "cs.LG"
+        ],
+        "authors": [
+            "Xiaoyu Ma",
+            "Kelvin J. L. Koa",
+            "Yuncong Liu",
+            "Ke-Wei Huang"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces an Availability Contract framework to address timing mismatches in financial NLP benchmarks, specifically focusing on earnings calls. It provides a structured approach to define input boundaries, evidence for input availability, outcome start times, and the claims supported by that evidence. The methodology involves comparing different proxies for call-start and completion times to assess their impact on return signs and quintile changes.",
+        "data_sources": "The study uses 552 earnings calls from 24 firms, along with high-frequency return intervals and reconstructed audio data for timing analysis. It also references a public earnings-call volatility benchmark for independent validation.",
+        "alpha_potential": "The research highlights the material impact of timing assumptions on labels and losses in earnings-call analysis. By explicitly defining input and outcome timing, it can help improve the accuracy of NLP models used in trading strategies that rely on earnings call transcripts. This could lead to better detection of market reactions and potential alpha generation from timely and precise interpretation of earnings call content.",
+        "tags": [
+            "NLP",
+            "earnings calls",
+            "timing analysis",
+            "quantitative finance"
+        ],
+        "title_cn": "“盘后电话会议”何时开始？为财报电话会议NLP基准制定的可用性合同",
+        "summary_cn": "本研究通过引入可用性合同框架，解决了财报电话会议NLP基准中的时序错配问题，明确了输入边界和结果时间。实证分析显示时序假设对标签和损失有显著影响，可提升交易策略中NLP模型的准确性。适用于依赖财报电话内容的量化交易场景，提升市场反应捕捉能力。"
+    },
+    {
+        "title": "NEST: Stale-Robust Tokenized-Stock Measurement for a Crypto-Treasury LETF Stack",
+        "summary": "Tokenized equities trade while listed markets are closed, so their marks could improve off-hours measurement along layered exposures that link Bitcoin, crypto-treasury stocks, and leveraged ETFs. A token return and the next opening gap, however, share the price move from the previous close to the token mark, so part of their apparent fit is mechanical. We develop NEST, a stale-robust protocol that separates this shared-history fit from conditional measurement value. A shared-history identity and a variance-clock bound show how much fit timing alone can generate. The partial determination index (PDI), the squared partial correlation between token and gap given public controls, measures what remains, and a finite-sample frontier expresses the partial-F decision in PDI units. Product, provenance, timestamp, and execution audits decide whether an informative mark is admissible. For MSTRx, a tracker certificate on MicroStrategy (MSTR), a token-only $R^2$ of 0.916 shrinks to a modest increment once Bitcoin, mark age, and a pre-09:00 MSTR premarket proxy are controlled: the token explains 15.7% of the remaining gap variation (1% frontier 0.031), and 14.0% to 17.0% under stricter clock variants, including one in which every token mark precedes 09:00. A trade-level reconstruction on Gate gives 25.2%; NVDAX and AAPLX clear their frontiers, whereas TSLAX does not. An admitted mark updates, rather than replaces, BTC-unit exposure diagnostics for the BTC-MSTR-LETF chain.",
+        "url": "http://arxiv.org/abs/2610.21491v1",
+        "published_date": "2026-10-15T08:28:59+00:00",
+        "updated_date": "2026-10-15T08:28:59+00:00",
+        "categories": [
+            "q-fin.TR",
+            "cs.CR"
+        ],
+        "authors": [
+            "Doohwi Cha",
+            "Minsuk Sung",
+            "Minjae Lee",
+            "Hyeonjun Yeo",
+            "Hanhee Kim",
+            "Seunghan Son",
+            "Donghwa Seo",
+            "Juyeong Lee"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "NEST protocol for stale-robust measurement that separates shared-history fit from conditional measurement value using partial determination index (PDI) and variance-clock bound to evaluate tokenized equity data quality and information content.",
+        "data_sources": "Tokenized equities (MSTRx, NVDAX, AAPLX, TSLAX), Bitcoin, mark age, pre-market proxies, timestamp and execution audits from Gate.io and similar platforms.",
+        "alpha_potential": "Identifies conditional information in tokenized stock prices after controlling for shared history with public markets. Shows 15-25% explanatory power for opening gaps, suggesting potential for off-hours signal extraction in BTC-linked equities and LETFs. Protocol enables filtered signal extraction from crypto-treasury asset chains.",
+        "tags": [
+            "tokenized-assets",
+            "market-microstructure",
+            "off-hours-trading",
+            "variance-decomposition"
+        ],
+        "title_cn": "NEST：加密国库LETF堆栈中抗陈旧的代币化股票衡量协议",
+        "summary_cn": "NEST协议通过部分决定指数(PDI)分离代币化股票与公开市场的共享历史关联，量化其独立信息价值。针对微策略(MSTRx)等BTC关联股票，在控制比特币等因素后，代币仍能解释15-25%的盘前缺口变异，为加密国库资产链提供闭市后信号筛选框架。"
+    },
+    {
+        "title": "Learning to Forecast on Multiple Spatiotemporal Hierarchies",
+        "summary": "Hierarchical forecasting exploits aggregation structures that expose multiple views of the same underlying spatiotemporal forecasting problem, while ensuring coherence among forecasts. Individual series provide fine-grained information, while progressively coarser aggregates reveal temporal and spatial patterns at different scales. In the associated deep learning architectures, the hierarchy determines which aggregate series are available and how they are processed together with individual series (e.g., through reconciliation or message-passing operators). Different hierarchies thus provide distinct learning signals and inductive biases for forecasting the same collection of time series. Nonetheless, existing architectures are typically trained on a single, often fixed, structure. In this work, we propose a graph deep learning framework that leverages variations across hierarchies as multi-task regularization. We show that jointly learning across these structures can reduce over-specialization to any single hierarchy and improve forecasting performance. Indeed, training across hierarchies provides an inductive bias toward representations that are useful across different structures, and as such, generalize better. Making forecasts coherent with the aggregation constraints for each sampled hierarchy is computationally expensive: to complement the framework, we propose a novel operator-based on a top-down approach-that produces coherent forecasts with linear time and space complexity w.r.t. the hierarchy size. Experiments show that our approach improves forecasting accuracy over training on a single structure and is competitive with current state-of-the-art methods.",
+        "url": "http://arxiv.org/abs/2610.21414v1",
+        "published_date": "2026-10-15T07:29:32+00:00",
+        "updated_date": "2026-10-15T07:29:32+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Valentina Moretti",
+            "Cesare Alippi",
+            "Andrea Cini"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Graph deep learning framework for hierarchical forecasting, leveraging multiple spatiotemporal aggregation structures as multi-task regularization. Introduces a top-down operator for efficient forecast coherence across hierarchies.",
+        "data_sources": "Presumably time-series data with hierarchical aggregation structures (e.g., financial markets data with sector/asset class groupings, geographic hierarchies, or multi-frequency aggregations)",
+        "alpha_potential": "Could extract signals from complex market microstructure interactions, improve volatility forecasts by leveraging multi-scale patterns, or enhance portfolio construction by maintaining coherence across asset hierarchies",
+        "tags": [
+            "Graph Neural Networks",
+            "Hierarchical Forecasting",
+            "Spatiotemporal Analysis",
+            "Deep Learning"
+        ],
+        "title_cn": "基于多时空层次结构的学习预测方法",
+        "summary_cn": "该研究提出的图深度学习框架通过多时空层次结构进行联合学习，可减少模型对单一结构的过拟合。在量化交易中可用于：1) 跨资产类别/频率的协同预测 2) 保持投资组合层级约束下的预测一致性 3) 从市场微观结构多尺度数据中提取有效信号。线性复杂度的自上而下算子适合实时交易系统部署。"
+    },
+    {
+        "title": "Online Quantile Omniprediction for Proper Losses",
+        "summary": "The task of constructing a predictor that is simultaneously accurate under multiple evaluation metrics has been popularized recently under the name omniprediction. Prior work in this area has largely focused on binary prediction tasks, and existing results for multiclass and continuous outcomes typically suffer from slow error rates. In this paper, we consider forecasts expressed as a set of quantiles over a discrete but otherwise arbitrary set of probability levels. We develop sample-efficient algorithms for constructing forecasts that are accurate simultaneously across all proper losses that satisfy mild regularity conditions, where proper losses are those minimized by predicting the true quantiles. Our algorithms are online and can operate in a dynamic environment, while simultaneously taking multiple losses into account, and their forecasts offer the potential to provide diverse end-users with rich information for evaluating risk and informing a range of practical decision-making tasks. As an example, we demonstrate how our procedure can be used to ensemble quantile forecasts of COVID-19 hospitalizations made by experts during the pandemic.",
+        "url": "http://arxiv.org/abs/2610.21342v1",
+        "published_date": "2026-10-15T06:27:36+00:00",
+        "updated_date": "2026-10-15T06:27:36+00:00",
+        "categories": [
+            "cs.LG",
+            "stat.ME"
+        ],
+        "authors": [
+            "Hyunsuk Kim",
+            "Isaac Gibbs",
+            "Michael W. Mahoney",
+            "Ryan J. Tibshirani"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Development of online algorithms for constructing quantile forecasts that are accurate across multiple proper loss functions. The methodology focuses on discrete but arbitrary probability levels and ensures sample efficiency in dynamic environments.",
+        "data_sources": "No specific market data mentioned in the abstract, but the methodology is applicable to any time-series data, such as financial returns, volatility, or economic indicators. Demonstrated application includes COVID-19 hospitalization forecasts, suggesting adaptability to various time-series datasets.",
+        "alpha_potential": "The ability to generate accurate quantile forecasts across multiple loss functions can be valuable for risk management, volatility forecasting, and tail-risk hedging strategies in quantitative trading. The online nature of the algorithm makes it suitable for real-time trading environments.",
+        "tags": [
+            "quantile forecasting",
+            "online learning",
+            "risk management",
+            "proper loss functions"
+        ],
+        "title_cn": "在线分位数全预测在适当损失函数下的应用",
+        "summary_cn": "本文提出了一种在线算法，用于在动态环境中构建同时满足多个适当损失函数的精确分位数预测。该方法在金融交易中可应用于风险管理、波动率预测和尾部风险对冲策略，特别适合实时交易环境。"
+    },
+    {
+        "title": "DST-Net: Decomposed Spatio-Temporal Network for Time Series Forecasting",
+        "summary": "Series decomposition has emerged as a widely acknowledged paradigm in deep time series forecasting models. However, existing approaches predominantly employ a homogeneous modeling strategy for all subsequences, thereby overlooking the distinct inductive biases inherent in different components. We identify that the trend component exhibits dominant spatial coupling across channels but carries significant temporal redundancy, whereas the seasonal component is characterized by local temporal evolution but remains susceptible to attention distraction. To address this, we propose a novel disentangled architecture that tailors specific modeling strategies to align with the intrinsic properties of each component. For the trend branch, we design a Latent Graph Block, employing latent graph modeling to capture global topological dependencies and system-wide co-movements. Conversely, for the seasonal branch, we introduce a Gaussian Multi-scale Attention mechanism to mitigate attention distraction. By injecting learnable Gaussian priors, we impose structural constraints that compel the model to focus on multi-granular local contexts, effectively filtering out global noise and accurately capturing local evolutionary phases. Extensive experiments on multiple real-world benchmarks demonstrate the effectiveness of our proposed model.",
+        "url": "http://arxiv.org/abs/2610.21123v1",
+        "published_date": "2026-10-15T02:28:22+00:00",
+        "updated_date": "2026-10-15T02:28:22+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Yaohua Zha",
+            "Hai Wu",
+            "Shu-Tao Xia"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper proposes a novel disentangled architecture for time series forecasting, decomposing series into trend and seasonal components. It employs a Latent Graph Block for global trend dependencies and Gaussian Multi-scale Attention for local seasonal patterns, addressing the distinct properties of each component.",
+        "data_sources": "Multiple real-world benchmarks (specific datasets not mentioned in abstract but likely include standard time series datasets and possibly financial time series given the methodology's general applicability)",
+        "alpha_potential": "The model's ability to separately capture global co-movements (trend) and local evolutionary patterns (seasonal) could identify persistent market anomalies or regime shifts, particularly in: 1) Momentum strategies by improving trend identification, 2) Pairs trading through enhanced co-movement detection, 3) Volatility forecasting via better seasonal pattern recognition",
+        "tags": [
+            "time series decomposition",
+            "graph neural networks",
+            "attention mechanisms",
+            "multi-scale modeling"
+        ],
+        "title_cn": "DST-Net：分解时空网络用于时间序列预测",
+        "summary_cn": "该论文提出的分解式时空架构通过分离趋势（全局空间耦合）和季节性（局部时间演化）成分，为金融时间序列预测提供创新解决方案。潜在图模块可捕捉跨资产联动，适用于组合优化；高斯多尺度注意力机制能有效过滤市场噪音，提升高频交易信号质量。在动量策略、统计套利等领域具有直接应用潜力。"
+    },
+    {
+        "title": "StochLOB: Heavy-Tailed Score Matching for Robust Limit Order Book Trend Prediction",
+        "summary": "Score-based diffusion methods usually perturb data with Brownian Gaussian noise, corresponding to a light-tailed forward stochastic differential equation (SDE). For market time series this SDE can be a poor abstraction: limit order book (LOB) order flow is heavy-tailed, bursty, and occasionally jump-like. We study STOCHLOB, a training-only score-matching framework that changes the forward diffusion corruption law while leaving the deployed predictor deterministic. Instead of Brownian-only Gaussian corruption, the noising process uses two non-Gaussian SDE-inspired alternatives: jump-Lévy noise through a compound-Poisson variance mixture, and clipped $α$-stable noise through a positive-stable Gaussian scale mixture. These corruptions inject finite jumps and heavy-tailed residuals into training without requiring reverse-time diffusion sampling at inference. The resulting score target has a useful interpretation: its radial factor $h_t(r)$ is the posterior expected corruption precision, so large residuals are weighted according to the latent corruption scale that most plausibly generated them. On chronologically held-out Coinbase LOB data, the proposed variants remain competitive on uncorrupted BTC and altcoin test horizons and improve several realized tail-window stress diagnostics. An exploratory Feishu A-share transfer study further tests whether the probability outputs remain usable under transaction costs and trading-rule constraints. Code and configuration files are available at https://github.com/ArshiAbolghasemi/Penny.",
+        "url": "http://arxiv.org/abs/2610.21081v1",
+        "published_date": "2026-10-15T01:33:30+00:00",
+        "updated_date": "2026-10-15T01:33:30+00:00",
+        "categories": [
+            "cs.LG",
+            "q-fin.TR",
+            "stat.ML"
+        ],
+        "authors": [
+            "Arshia Abolghasemi",
+            "Seyed Reza Tavakoli",
+            "Parsa Naderi",
+            "Nazanin Mirzaei",
+            "Behrad Jahani",
+            "Saba Yousefzadeh",
+            "Tahereh Javaheri",
+            "Mohammad Hosein Rohban",
+            "Gholamali Aminian",
+            "Ali Habibnia"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "Score-based diffusion framework that incorporates heavy-tailed noise (jump-Lévy and clipped α-stable noise) during training to better model limit order book dynamics, while maintaining deterministic prediction at inference time. The method focuses on robust trend prediction by adapting to the heavy-tailed nature of market data.",
+        "data_sources": "Coinbase limit order book (LOB) data for Bitcoin (BTC) and altcoins, with exploratory testing on Feishu A-share data under trading constraints.",
+        "alpha_potential": "The method captures heavy-tailed and jump-like behavior in order flow, potentially improving trend prediction during volatile market conditions. The explicit modeling of tail risks may provide better signal quality for momentum-based strategies or market-making algorithms.",
+        "tags": [
+            "limit order book modeling",
+            "heavy-tailed distributions",
+            "score matching",
+            "market microstructure"
+        ],
+        "title_cn": "StochLOB：基于重尾评分配比的鲁棒限价订单簿趋势预测",
+        "summary_cn": "该论文提出了StochLOB框架，通过训练阶段引入重尾噪声（跳跃-列维噪声和截断α稳定噪声）来改进限价订单簿的趋势预测。相比传统高斯噪声扩散模型，该方法更贴合市场数据的厚尾特性，在比特币和山寨币测试中显示出更好的尾部风险捕捉能力，对高频交易和趋势策略具有实用价值。"
+    },
+    {
+        "title": "LEV: Thinking Fast and Deep with Looped Decision Models",
+        "summary": "Decision models answer typed questions about an input with one probability per option, computed in a single forward pass without generating text. Like the fast System 1 of dual-process theory, they answer at once, but their depth is fixed at training time, so they spend the same computation on easy and hard questions. Models that reason in generated text can think longer, but they pay for every extra step in decoded tokens. We present LEV, a decision model that thinks deeper by rerunning its layers in a loop instead of generating tokens. LEV builds on a language model pretrained as a loop, reads the options after every loop step and trains all steps jointly, so one checkpoint can answer at any depth. On three looped backbones, accuracy rises with depth on the same weights, mostly on hard questions, and a 2.6B LEV goes from 63.2% at depth one to 76.2% at depth four on JevBench. On-demand depth, set per question by a small stopper with a threshold fitted on unlabelled requests, saves 15% to 24% of the computation at a cost of under one accuracy point, level with or slightly above a fixed mix of depths. On a locked test set, the 1.4B and 3B models are 5.4 to 8.8 points more accurate than dense (non-looped) models and cascades of the same latency below 50 ms.",
+        "url": "http://arxiv.org/abs/2610.20951v1",
+        "published_date": "2026-10-14T21:20:03+00:00",
+        "updated_date": "2026-10-14T21:20:03+00:00",
+        "categories": [
+            "cs.AI",
+            "cs.CL",
+            "cs.LG"
+        ],
+        "authors": [
+            "Dingjie Song",
+            "Zhiling Yan",
+            "Yuxuan Zhang",
+            "Lichao Sun"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "LEV introduces a decision model that dynamically adjusts its computational depth by looping through model layers and reading options after each loop step, enabling on-demand depth adaptation for different question difficulties without generating text.",
+        "data_sources": "The paper does not specify financial datasets but demonstrates performance on JevBench, suggesting potential applicability to market prediction or decision tasks.",
+        "alpha_potential": "The model's ability to adapt computational depth on-the-fly offers potential for efficient real-time decision-making in trading scenarios, particularly for latency-sensitive tasks where computational resources must be optimized without sacrificing accuracy.",
+        "tags": [
+            "Looped Models",
+            "Real-time Decision Making",
+            "Computational Efficiency",
+            "Adaptive Algorithms"
+        ],
+        "title_cn": "LEV：通过循环决策模型实现快速深度思考",
+        "summary_cn": "LEV模型通过循环层实现动态深度计算，有效适应不同难度的问题，适用于实时交易决策。其按需调节深度的能力在保持低延迟的同时优化计算资源，对高频或实时交易策略具有潜在应用价值。"
+    },
+    {
+        "title": "Stochastic Gradient Descent: A Nonlinear Time Series Perspective",
+        "summary": "This paper investigates the statistical behavior of Stochastic Gradient Descent (SGD) with constant step size under the framework of iterated random functions. Compared to previous studies establishing the convergence of SGD in probability measure, e.g., Wasserstein distance, our approach directly provides the convergence in Euclidean distance by showing the Geometric Moment Contraction (GMC) of SGD. This new convergence can address the non-stationarity of SGD due to fixed initial points and can provide a more refined asymptotic analysis of SGD. Specifically, we prove quenched central limit theorem, invariance principle and $α$-stable convergence for averaged SGD (ASGD) regardless of initialization. Furthermore, we provide a novel perspective to understand the impact of step sizes in SGD by studying its derivative with respect to the step size. The existence of stationary solutions for the derivative processes is shown, enabling the use of interpolation to recover the full-trajectory of SGD. Subsequently, we utilize multiple step sizes and show an enhanced Richardson-Romberg extrapolation with improved bias representation, which brings ASGD estimates closer to the global optimum. Finally, we propose a new online inference method and a bias-reduced variant for the extrapolated ASGD. Empirical confidence intervals are constructed and the coverage probabilities approach the nominal level as $n$ grows.",
+        "url": "http://arxiv.org/abs/2610.20894v1",
+        "published_date": "2026-10-14T20:22:43+00:00",
+        "updated_date": "2026-10-14T20:22:43+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG",
+            "math.ST"
+        ],
+        "authors": [
+            "Jiaqi Li",
+            "Zhipeng Lou",
+            "Stefan Richter",
+            "Wei Biao Wu"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper advances the understanding of Stochastic Gradient Descent (SGD) in a nonlinear time series context, particularly focusing on the convergence properties in Euclidean distance rather than probability measure. It introduces a novel perspective on the impact of step sizes in SGD and proposes an enhanced Richardson-Romberg extrapolation method to improve the bias representation of averaged SGD (ASGD) estimates. Additionally, it offers a new online inference method and a bias-reduced variant for extrapolated ASGD.",
+        "data_sources": "While the paper does not specify financial market data sources, the methodologies are theoretically applicable to financial time series data, such as stock prices, returns, or other market indicators.",
+        "alpha_potential": "The research has significant potential for quantitative trading by improving the optimization of trading strategies. The enhanced convergence properties and bias-reduced SGD variants could lead to more stable and accurate predictions in financial models, potentially uncovering inefficiencies in market data through improved machine learning model training.",
+        "tags": [
+            "Stochastic Gradient Descent",
+            "Algorithmic Optimization",
+            "Time Series Analysis",
+            "Bias Reduction"
+        ],
+        "title_cn": "随机梯度下降：非线性时间序列视角",
+        "summary_cn": "本文通过非线性时间序列框架研究了固定步长随机梯度下降（SGD）的统计行为，提出了在欧几里得距离下的新收敛证明。研究通过分析步长的影响和提升Richardson-Romberg外推法，优化了平均SGD估计的偏差表现，并提出了新的在线推断方法和偏差减少变体。这些进展有望在量化交易中提升策略优化的稳定性和预测精度，潜在地从市场数据中发现新的阿尔法信号。"
+    },
+    {
+        "title": "Learning Self-Orchestration in Decentralized Agent Swarms",
+        "summary": "The capabilities of an agent swarm depend on both its individual members and how they coordinate. Yet existing multi-agent systems often train agents within fixed orchestration structures, separating the learning of individual capabilities from the organization of collective behavior. We introduce market-based post-training (MPT), a framework for jointly learning action policies and self-orchestration in decentralized agent swarms. Agents express their willingness to participate through bids, which determine who acts and how collective outcomes provide local training credit. Learning both action and bidding behavior allows individual capabilities and patterns of participation to adapt together without a central coordinating agent. We evaluate MPT on embodied crafting, robot navigation, and deep research. Results show gains over monolithic post-training and confirm that agent participation indeed evolves with learning. With the same post-trained action policies, learned self-orchestration outperforms alternative coordination strategies. Ablations show that both action and bidding benefit from learning, and that learned bids provide more effective action-training signals. Beyond the original training objectives, trained swarms adapt faster to related tasks and achieve better performance with larger populations at inference time. Larger populations also suffer smaller performance losses under agent dropout, demonstrating that learned self-orchestration supports reuse, scaling, and robustness in decentralized agent swarms. Code and trained models are available at https://github.com/Embodied-Minds-Lab/MPT.",
+        "url": "http://arxiv.org/abs/2610.22322v1",
+        "published_date": "2026-10-15T17:51:57+00:00",
+        "updated_date": "2026-10-15T17:51:57+00:00",
+        "categories": [
+            "cs.MA",
+            "cs.AI",
+            "cs.CL"
+        ],
+        "authors": [
+            "Guowei Xu",
+            "Zhenting Qi",
+            "Amani Kiruga",
+            "Himabindu Lakkaraju",
+            "Yilun Du"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Market-based post-training (MPT) framework for learning self-orchestration and action policies in decentralized agent swarms using bidding mechanisms to determine participation and credit assignment",
+        "data_sources": "Simulated environments (embodied crafting, robot navigation, deep research tasks)",
+        "alpha_potential": "Potential applications in portfolio management as a decentralized coordination mechanism for multi-strategy systems or algorithmic execution. The adaptive coordination aspect could help with dynamic strategy allocation",
+        "tags": [
+            "multi-agent systems",
+            "reinforcement learning",
+            "decentralized coordination"
+        ],
+        "title_cn": "去中心化智能体群中的自主学习协同机制",
+        "summary_cn": "该研究提出的市场式后训练框架可通过竞价机制实现去中心化智能体群的自主协调与策略优化，在量化交易中可能应用于多策略动态分配、算法交易智能体协作等场景，提升系统适应性与鲁棒性。"
+    },
+    {
+        "title": "Decentralized LLM Workflows via Sequential Auctions",
+        "summary": "We present a scalable framework for solving multi-step tasks through a decentralized market of self-interested agents. Prior theoretical work demonstrated that agents organized through sequential auctions can converge to a globally optimal policy in a Markov decision process (MDP), but relied on the restrictive assumption of the existence of perfect clones as a model of perfect competition. In reality, exact clones drive agent profit to zero, violating the natural risk-reward incentives of participants. Conversely, we empirically demonstrate that the opposite extreme, absence of competition, also leads to market failure and value extraction collapse. Between these two extremes, we investigate how heterogeneous agents can survive in markets that span the critical middle ground of imperfect competition. To be profitable, agents learn to strategically shade bids to secure positive individual profit margins, while still ensuring that the marketplace functions effectively enough so that collaborative tasks posed by market consumers can still be solved. We formulate and evaluate four bidding algorithms (Mirror Descent, Thompson Sampling, Bayes-Optimal, and PPO) across three auction protocols (1st-Price, 2nd-Price, and Credit-Conserving Vickrey). Across a diverse set of domains, we demonstrate that imperfect competition successfully sustains necessary agent profit margins while maintaining high task success rates at low costs.",
+        "url": "http://arxiv.org/abs/2610.22201v1",
+        "published_date": "2026-10-15T16:52:16+00:00",
+        "updated_date": "2026-10-15T16:52:16+00:00",
+        "categories": [
+            "cs.GT",
+            "cs.AI",
+            "cs.MA"
+        ],
+        "authors": [
+            "Ian Gemp",
+            "Shubhendu Trivedi",
+            "Adam Fisch",
+            "Fantine Huot",
+            "Michael Kaisers",
+            "Mirella Lapata",
+            "William W. Cohen",
+            "Alekh Agarwal",
+            "Kate Larson",
+            "Jacob Eisenstein"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper investigates decentralized markets of self-interested agents using sequential auctions, with four bidding algorithms (Mirror Descent, Thompson Sampling, Bayes-Optimal, and PPO) across three auction protocols (1st-Price, 2nd-Price, and Credit-Conserving Vickrey). The focus is on strategic bidding in imperfect competition to maintain profitability and task success.",
+        "data_sources": "The paper does not specify financial market data but uses simulation domains to evaluate bidding algorithms and auction protocols.",
+        "alpha_potential": "Potential applications include algorithmic trading strategies where agents (e.g., trading algorithms) compete in decentralized markets, optimizing bids to secure profitable trades while maintaining market efficiency. This could be adapted to high-frequency trading or dark pool liquidity provision.",
+        "tags": [
+            "sequential auctions",
+            "reinforcement learning",
+            "decentralized markets",
+            "algorithmic trading"
+        ],
+        "title_cn": "通过序贯拍卖实现去中心化大型语言模型工作流程",
+        "summary_cn": "本文研究通过序贯拍卖实现自利代理在去中心化市场中的多步骤任务协作，探索战略竞价在非完全竞争市场中的盈利特性。四种竞价算法在三种拍卖协议下经测试表明，代理人能维持盈利的同时确保任务执行效率。该方法对高频交易等去中心化市场算法策略具备潜在应用价值。"
+    },
+    {
+        "title": "Mosaic: Multi-Session Agentic Reinforcement Learning",
+        "summary": "Most existing agentic reinforcement learning methods assume single-session trajectories, where interaction proceeds within one continuously accumulated context. However, agentic techniques such as context compaction and subagent forking may produce trajectories spanning multiple sessions, creating a mismatch between the single-session training assumption and inference-time execution. Therefore, we introduce Multi-Session Agentic Reinforcement Learning, a more general setting that supports an arbitrary number of sessions within a trajectory. Under this setting, a widely adopted method is to broadcast trajectory-level advantages to all sessions, but this does not distinguish contributions from various sessions or guide session allocation within trajectories. To address this issue, we propose Mosaic, a multi-session agentic RL method with critic-free hierarchical optimization. At the trajectory level, it incorporates session-usage signals into advantage estimation. At the session level, it shapes each session's advantage according to the estimated marginal contribution. Experiments on BrowseComp with Qwen3.5-4B show that Mosaic outperforms broadcasting in both context compaction and subagent forking scenarios while using fewer sessions on average. Further analyses show that our method achieves improvements in session utility and allocation, which we suggested is a promising target for future advances in multi-session agentic RL.",
+        "url": "http://arxiv.org/abs/2610.22174v1",
+        "published_date": "2026-10-15T16:32:44+00:00",
+        "updated_date": "2026-10-15T16:32:44+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.AI",
+            "cs.LG"
+        ],
+        "authors": [
+            "Yilong Xu",
+            "Minrui Xu",
+            "Xinyu Zhou",
+            "Xiang Long",
+            "Haochen Tan",
+            "Zhijiang Guo"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Mosaic introduces a multi-session agentic reinforcement learning method with critic-free hierarchical optimization. It incorporates session-usage signals into advantage estimation at the trajectory level and shapes each session's advantage according to the estimated marginal contribution at the session level.",
+        "data_sources": "Experiments conducted on BrowseComp with Qwen3.5-4B, suggesting the potential for adaptation to financial market data.",
+        "alpha_potential": "The method's ability to optimize and allocate sessions effectively within trajectories could be adapted for dynamic portfolio allocation or trading strategy optimization, albeit requiring significant domain-specific adaptation.",
+        "tags": [
+            "Reinforcement Learning",
+            "Agentic Learning",
+            "Multi-Session Optimization",
+            "Hierarchical Models"
+        ],
+        "title_cn": "Mosaic：多会话智能体强化学习",
+        "summary_cn": "Mosaic提出了一种多会话智能体强化学习方法，通过分层优化进行会话级优势估计和边际贡献评估，在会话利用和分配上展现出改进潜力。该方法可适配于金融市场的动态策略优化，但需针对交易场景进行领域适配。"
+    },
+    {
+        "title": "Progress Reward Model for Reinforcement Learning via Large Language Models",
+        "summary": "Traditional reinforcement learning (RL) algorithms face significant limitations in handling long-term tasks with sparse rewards. Recent advancements have leveraged large language models (LLMs) to enhance RL by utilizing their world knowledge for task planning and reward generation. However, planning-based approaches often depend on pre-defined skill libraries and fail to optimize low-level control policies, while reward-based methods require extensive human feedback or exhaustive searching due to the complexity of tasks. In this paper, we propose the Progress Reward Model for RL (PRM4RL), a novel framework that integrates task planning and dense reward to enhance RL. For high-level planning, a complex task is decomposed into a series of simple manageable subtasks, with a subtask-oriented, fine-grained progress function designed to monitor task execution progress. For low-level reward generation, inspired by potential-based reward shaping, we use the progress function to construct a Progress Reward Model (PRM), providing theoretically grounded optimality and convergence guarantees, thereby enabling effective policy optimization. Experimental results on robotics control tasks demonstrate that our approach outperforms both LLM-based planning and reward methods, achieving state-of-the-art performance. Code is available at https://github.com/deng-ai-lab/PRM4RL.",
+        "url": "http://arxiv.org/abs/2610.22056v1",
+        "published_date": "2026-10-15T15:21:25+00:00",
+        "updated_date": "2026-10-15T15:21:25+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Xiuhui Zhang",
+            "Ning Gao",
+            "Xingyu Jiang",
+            "Yihui Chen",
+            "Yuheng Pan",
+            "Mohan Zhang",
+            "Yue Deng"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "A novel framework called PRM4RL that integrates task planning and dense reward generation in reinforcement learning. It decomposes complex tasks into simpler subtasks with a progress function for monitoring execution and uses this function to construct a Progress Reward Model (PRM) for policy optimization.",
+        "data_sources": "Robotics control tasks (not financial data directly, but methodology could be adapted to financial tasks)",
+        "alpha_potential": "Potential for optimizing trading strategies by decomposing complex portfolio management problems into simpler subtasks and using progress-based reward shaping for better policy optimization. Could be adapted for execution algorithms or dynamic portfolio management.",
+        "tags": [
+            "Reinforcement Learning",
+            "Large Language Models",
+            "Task Decomposition",
+            "Reward Shaping"
+        ],
+        "title_cn": "基于大型语言模型的强化学习进展奖励模型",
+        "summary_cn": "本研究提出的PRM4RL框架结合任务规划和密集奖励生成，通过将复杂任务分解为简单子任务并设计进度函数优化策略。该方法虽然在机器人控制任务中验证，但其基于进度的奖励模型可潜在应用于量化交易策略优化，如组合管理或执行算法的分阶段优化。"
+    },
+    {
+        "title": "Rethinking Successive Rejects Algorithms",
+        "summary": "In the best-arm identification problem, an algorithm adaptively selects arms to find the arm of the largest mean reward. Successive Rejects (SR) is a simple fixed-budget best-arm identification algorithm that eliminates one candidate arm at each phase. At first glance, SR seems to have limited adaptivity, since it follows predetermined phase lengths. However, for Gaussian arms with common variance, SR's worst-instance error exponent normalized by the popular complexity measure $H_1(P)$ is optimal up to a constant factor, which partly explains why SR's performance is competitive compared with state-of-the-art adaptive sampling algorithms. In this paper, we extend the framework of SR by optimizing its predefined schedule of phase lengths. We formulate phase-schedule design as an optimization problem for the normalized error exponent. Then, we introduce a version of SR with the optimized schedule, which we call $H_1$-balanced Successive Rejects ($H_1$-SR). This schedule is optimal within the class of SR-type algorithms with deterministic equal-count schedules. For Gaussian arms with common variance, $H_1$-SR achieves at least $11/12$ of the optimal normalized rate over all adaptive algorithms for every $K\\ge2$, and this approximation ratio converges to one as $1-O(1/\\log K)$ as $K\\to\\infty$. This is a significant improvement over original SR, whose corresponding fraction of the optimal normalized rate converges to $1/4$. Finally, experiments on ten synthetic instances and two dataset-derived Gaussian benchmarks compare the optimized schedule with original SR at finite horizons. They show substantial gains on many instances while also exposing a regime in which more aggressive early elimination is costly.",
+        "url": "http://arxiv.org/abs/2610.22051v1",
+        "published_date": "2026-10-15T15:19:12+00:00",
+        "updated_date": "2026-10-15T15:19:12+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Mohamed Khair",
+            "Junpei Komiyama"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper introduces an optimized version of the Successive Rejects (SR) algorithm, called H1-balanced Successive Rejects (H1-SR), for best-arm identification in bandit problems. The methodology focuses on optimizing the phase lengths of the SR algorithm to improve the error exponent, particularly for Gaussian arms with common variance.",
+        "data_sources": "The paper uses synthetic instances and dataset-derived Gaussian benchmarks for experimental validation.",
+        "alpha_potential": "The optimized SR algorithm could potentially be applied to portfolio optimization and asset selection problems in quantitative finance, where identifying the best-performing assets (arms) with limited samples (budget) is crucial.",
+        "tags": [
+            "bandit algorithms",
+            "portfolio optimization",
+            "Gaussian models"
+        ],
+        "title_cn": "重新思考连续拒绝算法",
+        "summary_cn": "本文提出了一种优化的连续拒绝算法（H1-SR），用于在高斯臂共方差的情况下提高最佳臂识别的效率。该方法通过优化相位长度设计，显著提升了错误指数的性能。在量化交易中，该算法可应用于资产选择和组合优化，特别是在有限样本下识别最佳资产。实验结果表明，优化后的算法在多个实例上表现优异，为实际交易策略提供了潜在优化方向。"
+    },
+    {
+        "title": "ChronoSheaf: Joint Spatio-Temporal Spectral Filtering on Cellular Sheaves",
+        "summary": "Sheaf neural networks generalize graph neural networks by assigning each edge a learned linear restriction map that specifies how the local representations of adjacent nodes relate to one another, thereby mitigating oversmoothing. Existing sheaf architectures, however, define the sheaf Laplacian as an instantaneous spatial operator and therefore cannot explicitly model how signals evolve over time on a graph. We first introduce a spectral sheaf Laplacian, defined jointly over space and time, such that a single operator regulates signal propagation across both the spatial graph and the temporal domain. Directly extending this operator's receptive field in space or time would require increasingly complex sheaf structures. Instead, we propose a spectral filter that expands the effective receptive field along both dimensions without enlarging the underlying sheaf. Building on this operator, we introduce ChronoSheaf, a spatio-temporal sheaf network with two key components. First, Transitional Restriction Maps (TRM) decompose each node's restriction map into a spatial term and two temporal frames that independently control its relation to neighboring nodes at the preceding and following timestep, enabling asymmetric temporal influence. Second, the Dual Spectral Filter (DSF) applies a single bounded-degree polynomial filter with an adaptively estimated spectral radius to the joint spatio-temporal sheaf operator. We validate ChronoSheaf on a diverse set of spatio-temporal forecasting benchmarks, where it outperforms state-of-the-art baselines. The code is available at: https://anonymous.4open.science/r/ChronoSheaf-1D7D/.",
+        "url": "http://arxiv.org/abs/2610.21958v1",
+        "published_date": "2026-10-15T14:20:51+00:00",
+        "updated_date": "2026-10-15T14:20:51+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Abeer Mostafa",
+            "Zahra Ahmadi"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "ChronoSheaf introduces a spatio-temporal sheaf network combining spatial graph structures with temporal dynamics through Transitional Restriction Maps (TRM) and Dual Spectral Filter (DSF). TRM decomposes node relations into spatial and temporal components, while DSF applies an adaptive spectral filter to the joint spatio-temporal operator.",
+        "data_sources": "Not explicitly specified in the abstract, but likely applicable to any spatio-temporal financial data (e.g., cross-asset correlations, geographically distributed market data, or high-frequency order book dynamics)",
+        "alpha_potential": "The methodology could capture complex temporal dependencies in financial networks (e.g., lead-lag relationships between assets, time-varying correlations). The asymmetric temporal influence capability may help identify momentum/counter-momentum effects in networked financial systems.",
+        "tags": [
+            "spatio-temporal modeling",
+            "graph neural networks",
+            "time series forecasting",
+            "spectral filtering"
+        ],
+        "title_cn": "时空谱滤波的细胞层状结构：基于时空联合谱滤波的细胞层状神经网络方法",
+        "summary_cn": "该研究提出的ChronoSheaf模型通过将空间图结构与时间动态相结合，在时空联合层状结构中实现了更精确的信号传播控制。其过渡限制映射(TRM)和双谱滤波器(DSF)技术，特别是对节点跨时间非对称关联的建模能力，可能用于金融市场的跨资产时效关系捕捉、高频订单流动态预测等场景，对构建基于复杂金融网络关系的量化策略具有潜在价值。"
+    },
+    {
+        "title": "Agentic-Priors: Using Large Language Models to Address the Cold Start Problem in Preference Elicitation",
+        "summary": "An agent that learns a user's preferences from their choices faces a cold start problem: before any choices are observed, it must rely solely on a prior. Informative priors are usually fitted to historical choice data, which new tasks and deployments lack. To address this, we present Agentic-Priors, which lets agentic systems use the implicit knowledge of large language models (LLMs) instead. Specifically, an LLM states a new user's trade-offs in interpretable terms, such as willingness to pay or value of time, which we map to a prior over multinomial logit coefficients. This prior is then refined by a Bayesian learner as choices are observed. Across seven choice datasets, Agentic-Priors improves cold start accuracy over an uninformed prior by 5-40 percentage points. It also outperforms AutoElicit, a state-of-the-art LLM prior-elicitation method, on three datasets and loses on one. It is up to 18 points more accurate than in-context learning, and never significantly worse. Against hierarchical Bayes models fitted to surveys of increasing size, our approach is worth roughly 6-40 surveyed users, in terms of log-loss, so its value is concentrated in a deployment's first users.",
+        "url": "http://arxiv.org/abs/2610.21938v1",
+        "published_date": "2026-10-15T14:14:04+00:00",
+        "updated_date": "2026-10-15T14:14:04+00:00",
+        "categories": [
+            "cs.MA",
+            "cs.AI"
+        ],
+        "authors": [
+            "Bruno Arcanjo",
+            "Zhaoxing Li",
+            "Sebastian Stein"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Using LLMs to generate informative priors for user preferences in choice models, which is then refined through Bayesian learning as actual choices are observed. The method maps LLM-derived trade-offs (e.g., willingness to pay) to multinomial logit coefficients.",
+        "data_sources": "Seven choice datasets from unspecified domains (likely consumer or general decision-making contexts, not financial markets directly).",
+        "alpha_potential": "The methodology could theoretically adapt to infer trader/investor preferences in financial contexts, such as portfolio allocation or order routing strategies, particularly in early stages of deployment where historical choice data is scarce. However, the abstract does not demonstrate financial market applications, so adaptation would be required.",
+        "tags": [
+            "LLMs",
+            "Bayesian learning",
+            "preference elicitation",
+            "cold start problem"
+        ],
+        "title_cn": "Agentic-Priors：利用大语言模型解决偏好引导中的冷启动问题",
+        "summary_cn": "该研究提出了一种使用大语言模型（LLMs）生成初始偏好先验的方法，以解决决策模型中的冷启动问题（即缺乏历史选择数据时）。通过将LLM推断的用户权衡（如支付意愿）映射到多项Logit系数先验，并结合贝叶斯学习逐步优化。虽然在论文中测试的是通用选择数据集，但该方法有潜力应用于量化交易场景——例如在新策略部署初期或新市场环境中，快速学习投资者/交易员的隐含偏好（如风险容忍度、资产类别偏向等），从而优化订单执行或组合配置。实际金融应用需进一步验证。"
+    },
+    {
+        "title": "The Tilted Sampling Problem: Optimism, Posterior Sampling, and Logarithmic Regret",
+        "summary": "Many modern learning systems are used not to select a single best action, but to sample diverse high-quality outputs. Examples include entropy-regularized reinforcement learning, RLHF, and reward-guided generative modeling. Motivated by these settings, we study tilted sampling: an online learning problem in which the goal is to sample from the Gibbs distribution induced by an unknown reward function. We define sampling regret as the temperature-normalized cumulative KL divergence between the learner's distribution and the Gibbs target, corresponding to the suboptimality gap in entropy-regularized reward maximization. Our framework generalizes recent sampling-based and KL-regularized formulations in bandits and reinforcement learning. Our main contribution is a general regret framework that captures the different uncertainty structure of tilted sampling and classical regret minimization. While standard regret scales as $\\widetilde{O}(\\sqrt{T})$ due to first-order uncertainty, sampling regret is governed by squared confidence widths, yielding logarithmic-in-$T$ regret in standard settings at fixed temperature. We develop sampling analogues of UCB and Thompson sampling (UCS and TS$^2$) and provide unified regret decompositions that explain and extend recent logarithmic guarantees, including the first Bayesian sampling-regret decomposition based on new bounds for posterior-random Gibbs distributions. Our results show that learning to sample from a soft-optimal distribution is statistically distinct from learning to identify a hard optimum.",
+        "url": "http://arxiv.org/abs/2610.21908v1",
+        "published_date": "2026-10-15T13:58:23+00:00",
+        "updated_date": "2026-10-15T13:58:23+00:00",
+        "categories": [
+            "cs.LG",
+            "math.OC",
+            "stat.ML"
+        ],
+        "authors": [
+            "Mohammad Pedramfar",
+            "Siamak Ravanbakhsh"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper introduces tilted sampling as a novel approach for online learning problems where the goal is to sample from a Gibbs distribution induced by an unknown reward function. It presents sampling analogues of UCB and Thompson sampling (UCS and TS$^2$), with a focus on logarithmic regret guarantees.",
+        "data_sources": "Theoretical framework applicable to any domain with an unknown reward function, including financial markets where reward functions can represent trading performance metrics.",
+        "alpha_potential": "Potential applications in portfolio optimization and algorithmic trading strategies that require sampling diverse high-quality actions (e.g., trade allocations) rather than selecting a single optimum, particularly in environments requiring entropy-regularized approaches.",
+        "tags": [
+            "online learning",
+            "Gibbs sampling",
+            "regret minimization",
+            "reinforcement learning"
+        ],
+        "title_cn": "倾斜采样问题：乐观性、后验抽样与对数遗憾",
+        "summary_cn": "本文研究倾斜采样这一在线学习问题，提出在未知奖励函数诱导的Gibbs分布中进行抽样的新框架，开发了UCB和Thompson抽样的对应算法（UCS和TS²）。在量化交易中，该方法可用于需要从软最优分布中抽样的场景（如多元化投资组合构建），其对数遗憾特性相比传统硬优化更具优势。"
+    },
+    {
+        "title": "Robust Covariance Estimation for Entry-wise Contaminated and Partially Observed Data via Expectation Maximization Algorithm",
+        "summary": "Robust covariance estimation under entry-wise contamination and missing data is challenging in various signal processing applications. Under the Student-$t$ model, observation-level reweighting induces a uniform attenuation across samples, which can lead to cumulative information loss even when most coordinates remain informative. The alternative Student-$t^*$ model enables coordinate-wise robustness, but its E-step is not available in closed form. We extend inference for the Student-$t^*$ model to incomplete observations through a stochastic approximation EM (SAEM) algorithm operating on a reduced latent space: stochastic updates of the coordinate-wise scales are combined with Rao-Blackwellized Gaussian conditional moments, which avoids explicit sampling of latent Gaussian variables while preserving a likelihood-based framework. Experiments on synthetic and real sensor data show a lower Fisher-Rao error than Gaussian, Student-$t$, imputation-based and detect-then-estimate estimators at moderate to high outlier rates under diffuse contamination.",
+        "url": "http://arxiv.org/abs/2610.21709v1",
+        "published_date": "2026-10-15T11:31:40+00:00",
+        "updated_date": "2026-10-15T11:31:40+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Matys Savidan",
+            "Mohammed Nabil El Korso"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper presents a robust covariance estimation method using a stochastic approximation EM (SAEM) algorithm under the Student-$t^*$ model for handling entry-wise contamination and missing data. The approach combines stochastic updates of coordinate-wise scales with Rao-Blackwellized Gaussian conditional moments, avoiding explicit sampling of latent variables while maintaining a likelihood-based framework.",
+        "data_sources": "The method is tested on synthetic and real sensor data, suggesting potential applicability to financial time series or high-frequency trading data with similar characteristics.",
+        "alpha_potential": "The methodology could be valuable for portfolio optimization and risk management in the presence of outliers or missing data, particularly in high-frequency trading or alternative data applications where data quality issues are common.",
+        "tags": [
+            "robust statistics",
+            "covariance estimation",
+            "EM algorithm",
+            "missing data"
+        ],
+        "title_cn": "通过期望最大化算法对条目污染和部分观测数据进行稳健协方差估计",
+        "summary_cn": "该研究提出了一种基于随机逼近EM算法和Student-$t^*$模型的稳健协方差估计方法，适用于处理金融时间序列中的异常值和数据缺失问题。该方法通过坐标级鲁棒性和潜在空间约减，在保持似然框架的同时提高了估计精度，可应用于高频交易数据清洗和投资组合风险建模。"
+    },
+    {
+        "title": "Transfer Learning in Bandits from Unknown Adaptive Policies: Problem-Dependent Lower and Upper Bounds",
+        "summary": "Transfer learning in stochastic multi-armed bandits is typically studied assuming that prior data forms a fixed offline dataset or is generated by a known source. In practice, historical observations come from a previous adaptive decision process whose policy is unknown. We study this setting for bounded rewards in $[0,1]$.\n  Before the online game starts, the learner receives, for each arm $k$, $N'_k$ observations drawn i.i.d.\\ from an unknown distribution $ν'_k$, collected by an arbitrary and possibly data-dependent strategy, so the sample sizes $N'_k$ may be random. Source and target means satisfy $|μ_k-μ'_k|<L_k$ for known constants $(L_k)_k$.\n  We derive an asymptotic problem-dependent lower bound and propose KL-UCB-Transfer, which combines online and historical data and achieves logarithmic regret with an improved leading constant whenever $μ'_a<μ_1-L_a$, and recovers the classical KL-UCB guarantee otherwise. Since bounding the source-target discrepancy is often unrealistic, we relax the assumption to the one-sided condition $μ_k-μ'_k<L_k$ and show that logarithmic regret can survive under misspecification, characterizing three regimes ranging from improvement to a degraded logarithmic bound to a loss of guarantee. Simulations illustrate the practical benefits of exploiting process-generated historical data.",
+        "url": "http://arxiv.org/abs/2610.21582v1",
+        "published_date": "2026-10-15T09:30:13+00:00",
+        "updated_date": "2026-10-15T09:30:13+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Adrien Prevost",
+            "Timothee Mathieu",
+            "Waris Radji",
+            "Odalric-Ambrym Maillard"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Transfer learning in stochastic multi-armed bandits, combining online and historical data from an unknown adaptive policy to improve decision-making under uncertainty.",
+        "data_sources": "Historical observations from previous adaptive decision processes (unknown policies) and online data collected during the current decision process.",
+        "alpha_potential": "Potential to improve trading strategies by leveraging historical data even when the data-generating process is unknown or has changed, specifically in scenarios where historical means are lower than current means minus a known constant.",
+        "tags": [
+            "Transfer Learning",
+            "Multi-Armed Bandits",
+            "Adaptive Policies",
+            "Uncertainty"
+        ],
+        "title_cn": "从未知自适应策略中转移学习的多臂老虎机问题：问题相关的上下界",
+        "summary_cn": "本研究提出了一种在未知自适应策略下进行转移学习的方法，结合历史和在线数据以改进决策。在金融交易中，当历史数据的生成策略未知或市场环境变化时，该方法可帮助优化交易策略，尤其是在历史均值低于当前均值减已知常数的情形下。"
+    },
+    {
+        "title": "V-SHARE: Provable Convergence Guarantees for Advantage-based Algorithms",
+        "summary": "In reinforcement learning, advantage-based value-learning methods, unlike standard Q-learning, share information across actions by decomposing the action-value function into a state-dependent value component and action-specific advantages. While this mechanism has proven effective in both tabular and deep reinforcement learning, its theoretical understanding remains incomplete. We introduce V-SHARE, an advantage-based value-learning algorithm that combines cross-action value sharing with an importance-weighted Bellman-residual correction. To our knowledge, we provide the first complete theoretical characterization of an advantage-based algorithm, including both asymptotic convergence and non-asymptotic finite-sample guarantees. We identify a regime in which V-SHARE mitigates the rare-action bottleneck of asynchronous Q-learning and uncover a contraction--variance tradeoff between stronger deterministic contraction and increased importance-weighting noise. Motivated by this tradeoff, we develop decreasing residual-preconditioning schedules that combine faster early contraction with lower asymptotic noise. We further develop a two-timescale analysis that removes the single-timescale residual-weight threshold while preserving convergence guarantees. Experiments on discrete Markov decision processes (MDPs) and deep reinforcement-learning benchmarks corroborate our results.",
+        "url": "http://arxiv.org/abs/2610.21448v1",
+        "published_date": "2026-10-15T07:52:35+00:00",
+        "updated_date": "2026-10-15T07:52:35+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Kintan Saha",
+            "Hamed Masoudi",
+            "Xinyi Sheng",
+            "Dominik Baumann",
+            "Joni Pajarinen",
+            "Arsenii Mustafin"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "V-SHARE algorithm combining cross-action value sharing with importance-weighted Bellman-residual correction in reinforcement learning",
+        "data_sources": "Tested on discrete Markov decision processes (MDPs) and deep RL benchmarks (not financial datasets)",
+        "alpha_potential": "Potential for improving action-selection in trading strategies through better advantage estimation, but requires adaptation to financial domains",
+        "tags": [
+            "Reinforcement Learning",
+            "Advantage Learning",
+            "MDPs",
+            "Algorithm Convergence"
+        ],
+        "title_cn": "V-SHARE算法：基于优势的算法的可证明收敛性保证",
+        "summary_cn": "V-SHARE算法通过结合跨行动价值共享与重要性加权的贝尔曼残差修正，改进强化学习中的优势估计。在交易策略中可能优化行动选择机制，但其金融领域适用性仍需进一步验证。"
+    },
+    {
+        "title": "Loss-versus-rebalancing with external proportional transaction costs",
+        "summary": "We study liquidity provision in automated market makers when trading in the external market incurs proportional transaction costs. We consider both separately collected fees and fees retained in reserves. The benchmark is a self-financing strategy holding the same total risky inventory and trading at the external bid and ask. Under continuous external prices and pure arbitrage, the pool and benchmark have identical liquidation wealth whenever the pool fee or the external spread is positive. Thus loss-versus-rebalancing relative to this transaction-cost benchmark is zero, even without a pool fee if the external spread is positive. We then construct retained-fee utility-indifference pools that implement admissible decreasing inventory schedules, and geometric mean pools that implement feasible constant no-trade boundaries for portfolio weights. These results offer an investment interpretation of liquidity provision: by choosing the pool design, a liquidity provider can specify a trading strategy whose rebalancing is carried out by arbitrageurs.",
+        "url": "http://arxiv.org/abs/2610.21057v1",
+        "published_date": "2026-10-15T01:00:15+00:00",
+        "updated_date": "2026-10-15T01:00:15+00:00",
+        "categories": [
+            "q-fin.MF",
+            "q-fin.PM"
+        ],
+        "authors": [
+            "Masaaki Fukasawa"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper studies automated market makers (AMMs) under proportional transaction costs, comparing pool performance against a self-financing benchmark strategy. It develops mathematical models for liquidity provision that specify trading strategies executed by arbitrageurs. Key methodologies include continuous-time finance modeling and utility-indifference pricing techniques.",
+        "data_sources": "Theoretical framework based on automated market maker systems and external market bid-ask spreads. No specific empirical data is used.",
+        "alpha_potential": "Provides theoretical framework for designing AMMs that can minimize loss-versus-rebalancing in the presence of transaction costs. The strategies could potentially be applied to optimize liquidity provider returns in decentralized finance (DeFi) systems.",
+        "tags": [
+            "market making",
+            "transaction costs",
+            "DeFi",
+            "portfolio rebalancing"
+        ],
+        "title_cn": "存在外部比例交易成本时的再平衡损失研究",
+        "summary_cn": "本文研究了在存在外部市场比例交易成本情况下的自动化做市商流动性提供机制。通过建立数学模型对比池化策略与自融资基准策略的表现，提出了通过做市商设计实现特定交易策略的方法，其中套利者执行再平衡操作。这些发现为去中心化金融中的流动性提供优化提供了理论框架。"
+    },
+    {
+        "title": "Replicable Dueling Bandits",
+        "summary": "Dueling bandits choose each comparison based on earlier noisy outcomes, so two runs on the same preferences can compare different pairs. We study replicable dueling bandits, where two executions with shared internal randomness and independent comparison outcomes must select the same ordered pair in every round with probability at least $1-ρ$. Building on Beat-the-Mean, whose scores change as arms are eliminated and need not rank the best arm highest, we design the first such algorithms with sublinear regret. Under relaxed stochastic transitivity with parameter $γ\\ge 1$ and the stochastic triangle inequality, we design an algorithm that achieves expected regret $\\widetilde{O}(γ^8 K^4 H_{\\mathrm{p}}/ρ^2)$, where $H_{\\mathrm{p}}=\\sum_{i=2}^{K}(P_{1i}-1/2)^{-1}$. Under strong stochastic transitivity, we design an algorithm based on simultaneous elimination that improves the dependence on $K$ and achieves $\\widetilde{O}(K^2 H_{\\mathrm{p}}/ρ^2)$ regret. For linear dueling bandits, we design an algorithm that achieves regret $\\widetilde{O}(d^3\\sqrt{T}/(c_μρ))$. Experiments on synthetic and language-model preferences show replicability, with sublinear regret.",
+        "url": "http://arxiv.org/abs/2610.20908v1",
+        "published_date": "2026-10-14T20:36:18+00:00",
+        "updated_date": "2026-10-14T20:36:18+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Rohan Deb",
+            "Aadirupa Saha",
+            "Udaya Ghai",
+            "Karan Singh",
+            "Arindam Banerjee"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Replicable dueling bandits with sublinear regret guarantees under stochastic transitivity assumptions",
+        "data_sources": "Synthetic data and language-model preferences",
+        "alpha_potential": "Potential for optimizing pairwise comparisons in momentum-based strategies or preference learning in financial markets",
+        "tags": [
+            "multi-armed bandits",
+            "preference learning",
+            "algorithmic optimization",
+            "stochastic models"
+        ],
+        "title_cn": "可复制的对决赌博机",
+        "summary_cn": "本文提出的可复制对决赌博机算法通过确保执行过程中的一致性选择，在随机传递性假设下实现次线性遗憾。该方法可用于金融市场的动量策略优化或资产偏好学习，具有潜在的alpha发现能力。"
+    },
+    {
+        "title": "Learning Warm Starts for the Simplex Method from Measured Solver Cost",
+        "summary": "Learned warm starts for the simplex method build starting bases using predictions of which variables will be basic at optimality. Prior work has shown that starting bases predicted by graph neural networks can sharply reduce iteration counts, but the time saved may fall well short of the iterations saved. On 25 classes of linear programs (LPs), we find that a strong supervised basis predictor removes two thirds of the dual simplex's iterations but only a third of its time. Two effects explain the gap: the iterations removed by a good start tend to be cheap, and closeness to an optimal basis does not rank starts by cost. We prove that two starts with equal overlap with an optimal basis and equal pivot counts can differ in linear-algebra work by a factor that grows with the square root of the number of rows. Empirically, across the starts of one LP, the pivot count explains 71% of the variance of log solve time, while the CPU instruction count explains 98.5%. We introduce CostStart, which uses supervised prediction for the basis and trains a small policy on measured instruction counts to choose, per LP, how many predicted columns to use, which algorithm and pricing rule to run, and whether to warm-start at all. On unseen LPs of the training classes, including LPs four times the training size, CostStart roughly halves the solve time relative to the solver's default start and is 1.4 to 2.2 times as fast as two published methods retrained on the same data.",
+        "url": "http://arxiv.org/abs/2610.20892v1",
+        "published_date": "2026-10-14T20:19:58+00:00",
+        "updated_date": "2026-10-14T20:19:58+00:00",
+        "categories": [
+            "math.OC",
+            "cs.LG"
+        ],
+        "authors": [
+            "Felix Parker",
+            "Danielle A. Ripsman",
+            "Emmett Springer",
+            "Kimia Ghobadi"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper introduces a method called CostStart that combines supervised prediction for the optimal basis in linear programming with a small policy trained on measured CPU instruction counts to optimize solver settings per LP problem. This includes decisions on the number of predicted columns to use, which algorithm and pricing rule to run, and whether to warm-start at all.",
+        "data_sources": "The method is tested on 25 classes of linear programs (LPs), including problems scaled up to four times the training size, demonstrating its generalizability to larger or unseen problem instances.",
+        "alpha_potential": "The methodology could be potentially applied in financial applications such as real-time portfolio optimization or arbitrage strategies where quick solutions to linear programming problems are critical for trading decisions. The reduction in solve time could enhance algorithmic trading strategies that rely on fast solutions to optimization problems.",
+        "tags": [
+            "optimization",
+            "linear programming",
+            "algorithmic efficiency",
+            "trading strategies"
+        ],
+        "title_cn": "从测量的求解器成本中学习单纯形法的热启动",
+        "summary_cn": "本研究提出了CostStart方法，通过结合监督学习和测量CPU指令的策略优化LP求解器设置，将求解时间缩短至默认方法的一半。其优化算法性能的特点可应用于高频交易中的实时投资组合优化。"
+    },
+    {
+        "title": "Time-partitioning Gaussian Process Mixture Model",
+        "summary": "We propose the Time-partitioning Gaussian Process Mixture Model (TPGPMM), a Bayesian nonparametric framework for identifying persistent regimes and modelling nonstationary dependence in time series. The model combines an adaptive Pitman--Yor prior on contiguous segmentations with regime-specific Gaussian processes, without imposing Markovian within-regime dependence. Learning the Pitman--Yor discount parameter allows adaptation to homogeneous and heterogeneous regime lengths.\n  A split--merge Metropolis-within-Gibbs sampler with exact Gibbs boundary updates jointly learns change points and model hyperparameters, quantifying uncertainty over segmentations and within-regime dynamics. With an RBF kernel and a fixed, conservative observation-noise level, TPGPMM favours sparse segmentations that distinguish persistent shifts from transient shocks. Simulations demonstrate recovery of the regime structure. Applications to the CBOE Volatility Index (VIX) and the 10-year United States Treasury yield identify regimes aligned with major market and monetary-policy events.\n  Variants that estimate observation noise improve predictive accuracy relative to the main specification, but can produce less sparse or less event-aligned segmentations. A variant with regime-specific means fits better than a fitted stationary Gaussian process and forecasts about as accurately. These results highlight a trade-off between interpretable regime identification and predictive accuracy.",
+        "url": "http://arxiv.org/abs/2610.20860v1",
+        "published_date": "2026-10-14T19:52:23+00:00",
+        "updated_date": "2026-10-14T19:52:23+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Guilherme Piantino",
+            "Hedibert F. Lopes"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Bayesian nonparametric framework combining adaptive Pitman-Yor prior for segmentations with regime-specific Gaussian processes, using split-merge Metropolis-within-Gibbs sampler for change point detection and hyperparameter learning",
+        "data_sources": "CBOE Volatility Index (VIX), 10-year US Treasury yield",
+        "alpha_potential": "Potential for identifying persistent market regimes and distinguishing structural shifts from noise, useful for volatility trading and macro regime detection",
+        "tags": [
+            "regime switching",
+            "volatility modeling",
+            "fixed income"
+        ],
+        "title_cn": "时间分区高斯过程混合模型",
+        "summary_cn": "该论文提出了一种贝叶斯非参数框架，用于识别金融市场中的持续制度和建模非平稳时间序列。通过结合自适应分割算法和制度特定的高斯过程，可有效区分市场结构性变化和短期波动，在VIX指数和美债收益率应用中验证了与重大市场事件的制度对应关系，为量化择时策略提供新方法。"
+    },
+    {
+        "title": "Graph Dirichlet Energy for Fitting-Free Bivariate Causal Inference",
+        "summary": "We propose the Graph Dirichlet Energy Causal Inference (GDECI) criterion for distinguishing cause from effect in bivariate settings. For a candidate direction $X\\to Y$, we construct a kernel similarity graph from $X$ and treat $Y$ as a graph signal. The score is the Dirichlet energy of this signal, induced by the unnormalized graph Laplacian. The reverse score swaps the variables, and the lower-energy direction is inferred as causal. The method requires neither regression fitting nor independence testing. After the empirical probability integral transform, its decisions are invariant under strictly monotone transformations of either variable, and the graph operations reduce to convolutions, allowing exact evaluation in $O(n\\log n)$ time and $O(n)$ memory. At the population level, GDECI compares degree-weighted Bayes squared prediction errors plus a non-negative smoothness term of the regression function. As the bandwidth tends to zero, the weights become uniform and the smoothness term vanishes, reducing the criterion to a RECI-type comparison of expected conditional variances in copula space. Empirically, we compare GDECI with QCCD, GRCI, CAM, IGCI (two variants), RESIT, LOCI, QPE-k, and RECI (two variants), in accuracy on 1899 cause--effect pairs and in inference speed. GDECI ranked fifth of eleven methods in macro-averaged accuracy on 12 synthetic suites ($0.776$). On the real-world Tuebingen pairs, it ranked third in unweighted accuracy ($0.684$) and fifth in weighted accuracy ($0.678$). It was also the fastest of the compared methods up to $n\\approx10^{4}$. The accompanying code repository: https://github.com/povidanius/gdeci.",
+        "url": "http://arxiv.org/abs/2610.21892v1",
+        "published_date": "2026-10-15T13:51:46+00:00",
+        "updated_date": "2026-10-15T13:51:46+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Povilas Daniušis"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "Graph-based causal inference using Dirichlet energy scores to determine causal direction without regression fitting or independence testing",
+        "data_sources": "Potentially any bivariate financial data (e.g., asset pairs, lead-lag relationships)",
+        "alpha_potential": "Could help identify causal relationships in market microstructure or factor timing models, particularly for detecting asymmetric dependencies",
+        "tags": [
+            "causal_inference",
+            "graph_methods",
+            "bivariate_analysis",
+            "nonparametric"
+        ],
+        "title_cn": "基于图狄利克雷能量的免拟合二元因果推理",
+        "summary_cn": "GDECI方法通过图的狄利克雷能量分数快速判断二元因果关系方向，无需回归拟合。在金融领域可应用于识别资产间的领先滞后关系或市场微观结构研究，算法效率高（O(n log n)），对单调变换具有不变性，适合高频数据分析。"
+    },
+    {
+        "title": "Conditional Mean Flows: Few-Step Densities for Simulation-Based Inference",
+        "summary": "Flow matching has emerged as a powerful generative family for simulation-based inference (SBI). However, sampling and density evaluation require numerical integration at inference time. This makes posterior sampling in neural posterior estimation costly. More importantly, it can make repeated likelihood evaluation prohibitively expensive and impractical for Markov chain Monte Carlo (MCMC) sampling, which may require thousands of repeated density evaluations. Here, we develop conditional mean flows for posterior and likelihood approximation, combining few-step sampling with tractable density evaluation. We show that the mean flow objective identifies conditional flow maps and that independent masking enables direct estimation of marginal likelihoods. We evaluate both posterior and likelihood estimation across several tasks and show that conditional mean flows retain the flexibility of flow-based density estimators while significantly reducing inference time. In particular, single-step conditional mean flow density evaluation yields estimation error comparable to 200-step flow matching while enabling about 200-fold faster downstream MCMC sampling.",
+        "url": "http://arxiv.org/abs/2610.21657v1",
+        "published_date": "2026-10-15T10:36:49+00:00",
+        "updated_date": "2026-10-15T10:36:49+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Jonas Arruda",
+            "Jan Hasenauer",
+            "Stefan T. Radev"
+        ],
+        "relevance_score": 5,
+        "core_methodology": "The paper introduces conditional mean flows for posterior and likelihood approximation in simulation-based inference, combining few-step sampling with tractable density evaluation. This methodology reduces the computational cost of density evaluation and sampling, which is crucial for practical applications.",
+        "data_sources": "The paper does not specify particular financial data sources, but the methodology is generally applicable to any data used in simulation-based inference, including market data, alternative data, or synthetic data generated for backtesting.",
+        "alpha_potential": "The reduced computational cost and improved efficiency in density evaluation and sampling could be leveraged in high-frequency trading, option pricing, or risk management where rapid and accurate posterior estimation is critical. The methodology may enable more efficient MCMC-based strategies.",
+        "tags": [
+            "flow matching",
+            "simulation-based inference",
+            "MCMC",
+            "computational efficiency"
+        ],
+        "title_cn": "条件均值流：用于基于模拟推理的少步密度估计",
+        "summary_cn": "本研究提出的条件均值流方法通过减少密度评估的计算成本，显著提高了基于模拟推理的效率。对于高频交易和风险管理中需要快速后验估计的场景，该方法具有潜在的应用价值。"
+    },
+    {
+        "title": "Explore Once, Evaluate Many: Multiple Policy Evaluation for Stochastic Linear Bandits",
+        "summary": "We study how to evaluate $K$ target policies simultaneously in stochastic contextual bandits with linear reward structure. Given a known $d$-dimensional feature map and reward-free access to policy queries, we propose PRISMA (Policy evaluation through Regularized Information Sharing and Mixture Allocation), an algorithm that estimates every target policy's value to accuracy $\\varepsilon$ with probability at least $1-δ$. The algorithm uses $\\widetilde{\\mathcal{O}}\\!\\left( \\frac{(L^2S^2+β^2)(1\\veeρ^\\star)}{\\varepsilon^2} \\cdot \\log(K) \\right)$ context draws and reward observations, where $ρ^\\star\\le d$ is an instance-dependent measure of the difficulty of designing a shared sampling distribution. Here, $L$, $S$, and $β$ bound the feature norm, reward parameter norm, and reward noise, respectively, and the suppressed factors are logarithmic in $K$, $d$, and $1/δ$. Our method combines reward-free planning, a regularized sampling design, and a single ridge regression estimator shared across all target policies. An adaptive doubling procedure selects the regularization scale without knowledge of $ρ^\\star$. The guarantees require no numerical lower bound on second-moment eigenvalues and have no explicit dependence on the cardinalities of the context and action spaces. Policy-query costs are accounted for separately, with $K$ queries per shared planning context.",
+        "url": "http://arxiv.org/abs/2610.22252v1",
+        "published_date": "2026-10-15T17:22:59+00:00",
+        "updated_date": "2026-10-15T17:22:59+00:00",
+        "categories": [
+            "cs.LG",
+            "stat.ML"
+        ],
+        "authors": [
+            "Spyros Dragazis",
+            "Yilei Chen",
+            "Aldo Pacchiano"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Contextual bandits with linear reward structure and multiple policy evaluation",
+        "data_sources": "Feature vectors and reward-free policy queries",
+        "alpha_potential": "Potential for optimizing sequential decision-making in dynamic environments, but not directly applicable to financial markets",
+        "tags": [
+            "contextual bandits",
+            "policy evaluation",
+            "reinforcement learning"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Attention over noisy examples: generalization and memorization in the exponential Hopfield network",
+        "summary": "In Hebbian learning from examples a Hopfield network of $N$ neurons is not supplied with the $K$ archetypes it has to retrieve but with $M$ blurred examples of each, of quality $r$, and whether it can infer them depends on the load $α=K/N$ (interference among them) and on the dataset entropy $ρ=(1-r^2)/(Mr^2)$ (how little the examples say about them). We transfer this protocol to the exponential Hopfield model, whose zero-temperature update is a step of softmax attention with the unlabelled examples as keys. A signal-to-noise analysis gives in closed form the overlap between the output and an unseen archetype, $m^{(1)}={\\rm erf}(1/\\sqrt{2ρ_{\\rm eff}})$: the majority-rule law of the pairwise model at small load, with $ρ$ replaced by an attention entropy $ρ_{\\rm eff}$ built from the weight the softmax gives to the correct class and the number of examples it spreads it over. Two consequences follow. First, in a window of inverse temperatures $β$ that widens as $\\sqrt N$ the interference between archetypes is exponentially small in $Nβ$: the load drops out and the number of archetypes that can be learnt grows as $\\exp(c\\sqrt N)$. Second, learning fails differently: in the pairwise model through a spin-glass phase, in the exponential model through memorization: the softmax concentrates its weight on the training example closest to the input and returns it in place of the archetype. Seen from the input the softmax weights are those of the random energy model, and memorization is its freezing transition, at $β\\sqrt{N(1-r^2)}\\simeq\\sqrt{2\\ln M}$; it is measurable on a head whose keys are examples as the number of examples carrying weight. On MNIST the diagnostic follows the random-energy prediction; on fashion-MNIST it detects sub-clusters in the classes, and the best accuracy lies beyond the memorization threshold, where the softmax reads out a local sub-prototype.",
+        "url": "http://arxiv.org/abs/2610.22191v1",
+        "published_date": "2026-10-15T16:43:55+00:00",
+        "updated_date": "2026-10-15T16:43:55+00:00",
+        "categories": [
+            "cond-mat.dis-nn",
+            "cs.LG",
+            "cs.NE"
+        ],
+        "authors": [
+            "Francesco Alemanno"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "The paper introduces an exponential Hopfield model with softmax attention to analyze learning and memorization in neural networks, focusing on the interaction between noise, generalization, and memorization.",
+        "data_sources": "The paper uses synthetic datasets and evaluates performance on MNIST and fashion-MNIST datasets, which are standard benchmarks in machine learning but not financial data.",
+        "alpha_potential": "The theoretical insights into memorization and generalization could potentially inform the design of AI models for financial time-series prediction, but the direct application to trading strategies is unclear.",
+        "tags": [
+            "Hopfield networks",
+            "softmax attention",
+            "generalization",
+            "memorization"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "FAOPs: Normal Forms and an Algebra for AI Agent Workflows",
+        "summary": "Organizations increasingly encode operational procedures as multi-step agent skills, here called Agent Operating Procedures (AOPs), that must be traceable, auditable, reproducible, access-controlled, and bounded in time and cost, requirements that regulated sectors make mandatory. Yet AOPs are typically kept as coarse-grained files, in which steps bundle actions, copied procedures drift apart, any step may reach any tool, and refactoring goes unchecked. We present Functional Agent Operating Procedures (FAOP), a formal theory that brings database-grade discipline to AI agent workflows. FAOP recasts each workflow as a typed function over scoped state and subjects an entire library to four progressive normal forms: Decomposed (FNF-1) splits a workflow into atomic steps, Typed (FNF-2) makes its data flow explicit and type-checked, Factored (FNF-3) gives each shared procedure a single canonical definition so a change propagates instead of drifting, and Scoped (FNF-4) confines every step to least-privilege tool access. Once normalized, every atomic step is a separate entity with a declared contract and can be type-checked, scope-confined, bounded, tested, traced, and audited on its own. A FAOP algebra of provably sound equalities turns refactoring and parallelization into compiler rewrites; orthogonal extensions add verified termination (+V), optimization (+O), and time and cost bounds (+B); and an architectural-level classifier (0-3) determines whether a workflow needs AI at all. Together, these make integrity, isolation, typing, termination, cost, and optimization compile-time concerns across the whole library, not runtime hopes. We implement the theory in SkillBase, an AOP management system (what PostgreSQL is to data, SkillBase is to AOPs), together with a separate executor that enforces these guarantees at run time. A worked financial workflow illustrates the approach end to end.",
+        "url": "http://arxiv.org/abs/2610.22061v1",
+        "published_date": "2026-10-15T15:24:46+00:00",
+        "updated_date": "2026-10-15T15:24:46+00:00",
+        "categories": [
+            "cs.AI",
+            "cs.DB",
+            "cs.PL"
+        ],
+        "authors": [
+            "Ali Mohammadi Shanghooshabad"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Formal theory for structuring AI agent workflows with normal forms and algebraic operations",
+        "data_sources": "Not specified (framework applicable to any agent-based process)",
+        "alpha_potential": "Potential for improving reliability/auditability of automated trading agents",
+        "tags": [
+            "AI workflows",
+            "process formalization",
+            "agent systems"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Why Shallow Neural Networks Learn Sinusoidal Components First: An Orthogonal Polynomial Dynamics Framework",
+        "summary": "Neural networks often learn low-frequency components before high-frequency ones --- a phenomenon called spectral bias or termed F-principle. Many numerical studies have demonstrated this phenomenon, and theoretical studies have sought to explain it. However, several goals remain insufficiently addressed: (1) explaining spectral bias asymptotically, including its origin and why the preferred components are generally sinusoidal; (2) extending the explanation to general activation functions, such as sigmoid and ReLU; (3) making weak assumptions about the data distribution; (4) avoiding aliasing effects, such as those arising in finite-domain Fourier analysis; and (5) developing a theoretical framework applicable to arbitrary networks. We address these goals theoretically by analyzing the eigenvalue decay and eigenvector shapes of the dynamics matrix H, which arises when we expand the network output as a general Fourier series (GFS) in an orthogonal polynomial basis and express the gradient-descent dynamics of the GFS coefficients as ordinary differential equations. The graded structure of H enables an intuitive explanation of spectral bias, while orthogonal polynomial theory helps us analyze how learning bias depends on the activation function and, potentially, the network architecture.",
+        "url": "http://arxiv.org/abs/2610.21964v1",
+        "published_date": "2026-10-15T14:23:15+00:00",
+        "updated_date": "2026-10-15T14:23:15+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "math.SP",
+            "stat.ML"
+        ],
+        "authors": [
+            "Yanyang Xiao"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Analyzes the eigenvalue decay and eigenvector shapes of the dynamics matrix in neural networks to explain spectral bias in learning low-frequency components first.",
+        "data_sources": "Theoretical analysis of neural network dynamics, no specific financial market data.",
+        "alpha_potential": "Limited direct applicability to trading; may provide foundational insights for designing neural networks that better capture specific frequency components in financial time series.",
+        "tags": [
+            "neural networks",
+            "spectral bias",
+            "learning dynamics",
+            "theoretical ML"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "The Lagrangian Structure of Cost-Penalized Active Feature Acquisition",
+        "summary": "Active Feature Acquisition (AFA) sequentially selects features to maximize predictive accuracy under an acquisition budget. A natural heuristic greedily maximizes Expected Information Gain minus a cost penalty, EIG(j|x_S)-lam*c_j (EIG-Cost), but its theoretical guarantees are unclear. We provide an a-posteriori certificate decomposing the gap to the optimal hard-budget policy into a budget-slack term and a greedy-suboptimality term Del_lam. The certificate is computable when the penalized optimum is tractable; on small heterogeneous-cost instances, we verify it exactly, finding Del_lam near zero across 4,000 solved cases. On the large clinical task, Del_lam is not computable, so the decomposition is diagnostic rather than a numerical guarantee. Our analysis identifies EIG-Cost as one-step greedy optimization of the Lagrangian relaxation of expected-cost AFA, with lam as its dual multiplier. For equal costs, we prove Del_lam <= exp(-gam*I(Y;X_[d])), where gam is the submodularity ratio, yielding a structural guarantee in the near-submodular regime. Supporting results establish an adaptive chain-rule identity showing that cumulative stepwise EIG optimizes transcript information, and prove that A -> I(Y;X_A) need not be submodular, even for jointly Gaussian variables. This rules out a direct Nemhauser-Wolsey-Fisher bound; naive Bayes restores submodularity. We also bound the randomization gap between hard-budget and expected-cost optima, analyze sensitivity to dual-multiplier error under local smoothness, and derive a conditional CVAE generator-shift bound given a bound on forward predictive KL. We treat this KL as a diagnostic quantity, not as a transform of training loss. Experiments cover synthetic Gaussian settings, AFA benchmarks, and clinical differential diagnosis on MIMIC-IV. On MIMIC-IV, EIG-Cost achieves macro-F1 0.180 +/- 0.012 at a $30 budget, using 6.6% of full-panel cost.",
+        "url": "http://arxiv.org/abs/2610.21919v1",
+        "published_date": "2026-10-15T14:03:55+00:00",
+        "updated_date": "2026-10-15T14:03:55+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Joseph Bingham"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Active Feature Acquisition (AFA) with Expected Information Gain minus cost penalty (EIG-Cost) optimization, including Lagrangian relaxation analysis",
+        "data_sources": "Synthetic Gaussian settings, AFA benchmarks, clinical differential diagnosis on MIMIC-IV (medical dataset)",
+        "alpha_potential": "Limited direct trading applications; methodology could be adapted for cost-sensitive feature selection in alternative data markets",
+        "tags": [
+            "feature selection",
+            "cost optimization",
+            "information theory",
+            "medical diagnostics"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Learning Rewards in Strategic Games",
+        "summary": "Understanding the objectives that drive agents' behavior is crucial in strategic environments, where multiple agents interact and adapt to one another. This challenge arises in domains such as cybersecurity, autonomous driving, and online markets, where agents' underlying incentives are typically unknown and must be inferred from their observed behavior. Inverse reinforcement learning (IRL) provides a natural framework for this problem, but extending IRL to strategic multi-agent settings introduces a fundamental challenge: a reward that explains observed behavior does not necessarily induce optimal strategies when used for decision-making. In this work, we study this problem through the lens of \\emph{strategic identifiability}, and show that learning from a fixed policy pair can be insufficient to strategically identify rewards, independent of the number of expert samples $K$. Motivated by this, we introduce an active IRL algorithm for two-player repeated Stackelberg games, in which the leader adaptively selects policies to elicit informative responses about the follower's reward. Combining maximum-likelihood estimation with experimental design, we derive finite-sample guarantees on the Stackelberg sub-optimality induced by the learned reward, matching up to polylogarithmic factors a new minimax learning rate of $K^{-1/2}$. Finally, we evaluate our approach in a realistic anti-poaching setting, demonstrating the benefits of active exploration for reward recovery and downstream strategic performance.",
+        "url": "http://arxiv.org/abs/2610.21912v1",
+        "published_date": "2026-10-15T13:59:45+00:00",
+        "updated_date": "2026-10-15T13:59:45+00:00",
+        "categories": [
+            "cs.GT",
+            "cs.AI",
+            "cs.LG",
+            "cs.MA"
+        ],
+        "authors": [
+            "Antoine Bergerault",
+            "Cyrille Kone",
+            "Giorgia Ramponi"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Inverse reinforcement learning (IRL) applied to two-player repeated Stackelberg games with active experimental design",
+        "data_sources": "Simulated game environments, anti-poaching scenario (not financial data)",
+        "alpha_potential": "Potential application in modeling strategic market participants (e.g., market makers) but requires significant adaptation",
+        "tags": [
+            "inverse reinforcement learning",
+            "game theory",
+            "active learning"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Sparse Federated Echo State Networks for Time-Series Classification via Smooth-L1 Regularization",
+        "summary": "Echo State Networks (ESNs), as lightweight implementations of reservoir computing, provide efficient solutions for temporal data processing in resource-constrained environments. While standard ESNs offer computational efficiency, their dense readout layers inflate the stored model and the per-sample inference cost. This paper introduces a Smooth-L1 regularized ESN (SL1ESN) that promotes sparsity in the readout layer while preserving differentiability for gradient-based optimization. The method employs a twice-differentiable Smooth-L1 approximation compatible with Newton's method, which we exploit both for centralized training and for a second-order (Newton-step) federated aggregation scheme. Under a single fixed shrinkage threshold shared by every dataset and both settings, experiments on seven time-series classification benchmarks show that SL1ESN learns readouts that are $77$--$95\\%$ sparse in the centralized setting and $75$--$95\\%$ sparse in the federated one, while staying within $0.7$ accuracy points of the strongest dense baseline on five of the seven benchmarks in the centralized setting and within $1.6$ points on the same five in the federated one, and the second-order federated update converges in only a few rounds. The resulting sparsity compresses the stored model, the per-sample inference cost, and the server-to-client broadcast by a comparable factor. These results demonstrate the practical value of sparse readouts for edge computing and IoT deployments.",
+        "url": "http://arxiv.org/abs/2610.21742v1",
+        "published_date": "2026-10-15T12:02:04+00:00",
+        "updated_date": "2026-10-15T12:02:04+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Gengcheng Lyu",
+            "Manuel Röder",
+            "Frank-Michael Schleif"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Smooth-L1 regularized Echo State Networks (ESNs) for creating sparse readout layers in time-series classification",
+        "data_sources": "Time-series classification benchmarks (specific datasets not mentioned)",
+        "alpha_potential": "Potential for reducing computational overhead in time-series prediction tasks, but limited immediate applicability to financial markets due to lack of finance-specific testing",
+        "tags": [
+            "Echo State Networks",
+            "Time-Series Classification",
+            "Sparse Models",
+            "Federated Learning"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Finite-Time Guarantees for Constrained Reinforcement Learning under Partial Observability",
+        "summary": "We study reinforcement learning in constrained partially observable Markov decision processes (CPOMDPs), where an agent maximizes reward subject to a cost constraint using only incomplete information about the underlying state. The lack of state observability may require optimal policies to depend on arbitrarily long observation-action histories, making planning and learning challenging. We leverage recent advances in finite-memory approximations of POMDPs and represent finite history windows as states of a constrained MDP. We then develop a primal--dual algorithm that provides the first non-asymptotic guarantees that jointly bound average reward suboptimality and constraint violation in the original CPOMDP. A key challenge is that this finite-window approximation affects both reward values and the set of feasible policies. Under a filter-stability assumption, we derive bounds relating optimality and feasibility in the finite-state model to those in the original CPOMDP, with approximation errors that decay geometrically with the window length. Experiments in partially observable gridworlds demonstrate the effectiveness of our approach.",
+        "url": "http://arxiv.org/abs/2610.21548v1",
+        "published_date": "2026-10-15T09:12:27+00:00",
+        "updated_date": "2026-10-15T09:12:27+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Valentina Zaccaria",
+            "Philip Jordan",
+            "Tingting Ni",
+            "Gian Antonio Susto",
+            "Maryam Kamgarpour"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Constrained Reinforcement Learning for POMDPs using finite-memory approximations and primal-dual optimization",
+        "data_sources": "Artificial partially observable environments (e.g., gridworlds)",
+        "alpha_potential": "Potential application to trading scenarios with partial market information but requires significant adaptation to real market conditions",
+        "tags": [
+            "Reinforcement Learning",
+            "POMDP",
+            "Constrained Optimization",
+            "Finite-Memory Approximations"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Pricing the Unprovable: Ambiguity, Turnstile Runs, and the Verifiability Discount in Crypto Protocols",
+        "summary": "Privacy-preserving protocols can repair a vulnerability without establishing whether it was exploited beforehand, even when no theft is reported and aggregate supply is protected. We call the potential value reduction from this gap the verifiability discount. A turnstile model shows how early withdrawal can shift a possible shortfall to remaining holders and why credible evidence can become more valuable as exposure grows. We introduce VDISC, a reproducible framework that records reported loss, exposed value, public evidence, returns, and pool flows separately. It combines Orchard's staged disclosures with reconstructed on-chain flows, earlier Zcash cases, and a 40-event security panel. Orchard follows the predicted direction: market responses were muted after repair and supply assurance, while the largest negative return and aggregate shielded-pool net outflow aligned with the acknowledgment that past abuse could not be ruled out. These patterns are directional, not causal. Across events, market-cap-normalized reported loss and unresolved exposure overlap among the 38 events with a public loss figure (Pearson 0.86, Spearman 0.56), partly because exposure is often coded from the loss itself, so returns alone cannot distinguish reported loss from unresolved history. The findings motivate three candidate design priorities: produce privacy-compatible evidence about past states, limit the state exposed by a single flaw, and disclose residual uncertainty explicitly.",
+        "url": "http://arxiv.org/abs/2610.21540v1",
+        "published_date": "2026-10-15T09:06:12+00:00",
+        "updated_date": "2026-10-15T09:06:12+00:00",
+        "categories": [
+            "q-fin.TR",
+            "cs.CR",
+            "q-fin.GN",
+            "q-fin.RM"
+        ],
+        "authors": [
+            "Doohwi Cha",
+            "Hanhee Kim",
+            "Hyeonjun Yeo",
+            "Minsuk Sung",
+            "Minjae Lee",
+            "Seunghan Son",
+            "Donghwa Seo",
+            "Juyeong Lee"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "The paper introduces VDISC, a framework for evaluating the impact of unverifiable vulnerabilities in privacy-preserving crypto protocols on asset values, using a combination of reported losses, exposed values, and on-chain flows.",
+        "data_sources": "Reported losses, exposed values, public evidence, returns, and pool flows from crypto protocols, particularly Zcash and Orchard cases.",
+        "alpha_potential": "Limited direct trading applicability; focuses more on understanding market reactions to unverifiable vulnerabilities rather than creating tradable signals.",
+        "tags": [
+            "crypto protocols",
+            "market reactions",
+            "privacy vulnerabilities",
+            "on-chain analysis"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Beyond Invariance: Factor-wise Selective Treatment of Shifts for Multimodal Learning",
+        "summary": "Distribution shifts pose a fundamental challenge to robust multimodal learning. Existing methods typically promote invariance by suppressing environment-dependent variations, implicitly applying a uniform treatment to shifted information. However, shifted information can have different predictive consequences: some contributes little to prediction, some remains reliably informative, and some exhibits environment-dependent predictive effects. This raises a fundamental question: which shifted information should be suppressed, preserved, or attenuated? To address this question, we propose FaShift, a factor-wise shift framework that diagnoses latent representation factors according to their distributional changes, intervention effects, and cross-environment stability. By factorizing multimodal representations and evaluating these complementary properties, FaShift distinguishes non-predictive factors, stably predictive factors, and predictively useful but unstable factors. It then selectively suppresses, preserves, or attenuates their contributions, rather than enforcing uniform invariance. Experiments on MOSI, MOSEI, and CH-SIMS show that FaShift achieves the best ID accuracy and F1 across all three datasets. Compared with the strongest competitors reporting OOD results, it improves OOD accuracy/F1 by 1.5/3.6 points on MOSI and 1.7/2.7 points on MOSEI, while achieving the best reported OOD accuracy and F1 on CH-SIMS.",
+        "url": "http://arxiv.org/abs/2610.21403v1",
+        "published_date": "2026-10-15T07:21:45+00:00",
+        "updated_date": "2026-10-15T07:21:45+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.LG"
+        ],
+        "authors": [
+            "Guimin Hu",
+            "Qiwei Peng"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "A factor-wise shift framework (FaShift) that diagnoses latent representation factors in multimodal learning by evaluating their distributional changes, intervention effects, and cross-environment stability, then selectively suppresses, preserves, or attenuates their contributions.",
+        "data_sources": "Primarily tested on MOSI, MOSEI, and CH-SIMS datasets, which are multimodal sentiment analysis datasets involving text, audio, and video data.",
+        "alpha_potential": "Indirect potential. While not directly applicable to financial markets, the methodology of handling distribution shifts could inspire robustness improvements in financial prediction models that face similar challenges with non-stationary data distributions.",
+        "tags": [
+            "distribution shifts",
+            "multimodal learning",
+            "robustness",
+            "factor analysis"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Constrained Multi-Agent Reinforcement Learning in Imagination",
+        "summary": "Predicting cost in a multi-agent world model moves most constrained policy updates into imagination: the stronger model-free baseline needs $10$ to $20$ times CA-MAMBA's interactions on the median SMAC configuration, and CA-MAMBA earns $2.8$ to $12$ times the baselines' MAMuJoCo reward at equal budget. In controlled tests on one task per benchmark, pricing the model's cost advantages at parity more than halves a cost-blind learner's cost and meets a tight continuous-control limit the learned multiplier misses, suggesting the model's cost estimates are not the bottleneck.",
+        "url": "http://arxiv.org/abs/2610.21319v1",
+        "published_date": "2026-10-15T06:09:04+00:00",
+        "updated_date": "2026-10-15T06:09:04+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Raz Shmueli",
+            "Shahaf S. Shperberg"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Multi-agent reinforcement learning with world model imagination for constrained policy optimization",
+        "data_sources": "Synthetic environments (SMAC and MuJoCo benchmarks)",
+        "alpha_potential": "Potential application in multi-agent market simulations or execution algorithms, but requires significant adaptation to financial markets",
+        "tags": [
+            "Multi-agent RL",
+            "Constrained Optimization",
+            "World Models"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Sign Betting for Misspecified Regression: Variance Adaptivity and Optimal Approximation",
+        "summary": "We study bounded regression under model misspecification, evaluating a function $f$ by its $L_1(P_X)$ distance to the conditional mean $η(x)=\\mathbb{E}[Y\\mid X=x]$, rather than the standard $L_2(P_X)$. This $L_1$ metric is natural for downstream decision problems such as bandits and reinforcement learning. We analyze the min--max estimator of Baraud & Maillard (2025), which we call \\emph{sign-betting regression}. Our main results show that sign-betting regression achieves high-probability $L_1$ oracle inequalities under misspecification. Under realizability, our bound adapts to the average conditional variance and recovers the variance-adaptive rate of Li et al. (2026). We further characterize the optimal universal approximation factor for proper learning by showing that sign betting achieves factor 3, while no proper learner can satisfy a distribution-free, high-probability $L_1$ oracle inequality with a universal approximation factor strictly below 3. We extend the upper-bound analysis beyond finite classes and complement the theory with experiments in synthetic and real-world model-selection tasks.",
+        "url": "http://arxiv.org/abs/2610.20903v1",
+        "published_date": "2026-10-14T20:33:52+00:00",
+        "updated_date": "2026-10-14T20:33:52+00:00",
+        "categories": [
+            "cs.LG",
+            "stat.ML"
+        ],
+        "authors": [
+            "Yinan Li",
+            "Han Han",
+            "Kwang-Sung Jun"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "An L1-based regression approach under model misspecification, using sign-betting regression for robust estimation",
+        "data_sources": "Abstract theoretical framework without specific financial data sources mentioned",
+        "alpha_potential": "Potential for robust modeling in highly uncertain regimes or regime-switching markets, but not directly applicable",
+        "tags": [
+            "robust regression",
+            "model misspecification",
+            "L1 optimization"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Optimal Explicit and Implicit Regularization Strengths in High-Dimensional Continual Linear Regression",
+        "summary": "We study continual linear regression in a high-dimensional regime, where a learner observes a sequence of tasks and updates its parameters sequentially. In this setting, we derive an explicit closed-form expression for the generalization loss of a model trained with gradient descent for a fixed number of steps per task, which holds for arbitrary teachers. We prove that the optimal fixed step size decays nearly inversely with the number of tasks, specifically as $\\ln T / T$, for a single teacher and, more generally, i.i.d. teachers. Under this scaling, we show that the resulting generalization loss is asymptotically equivalent to that achieved by optimally tuned L2 (isotropic) regularization. Furthermore, we extend our analysis to generalized ridge regression with diagonal regularization matrices, obtaining a closed-form characterization of the generalization loss and identifying necessary and sufficient conditions under which the optimal regularizer is isotropic. Finally, we identify a regime where the optimal step size remains finite even as the number of tasks tends to infinity, thus revealing a non-trivial tradeoff between task variability and implicit regularization, in contrast to the i.i.d. teacher scaling. Our theoretical predictions are corroborated by experiments on both linear models and neural networks, providing practical guidance for the design of continual learning systems.",
+        "url": "http://arxiv.org/abs/2610.20804v1",
+        "published_date": "2026-10-14T18:51:18+00:00",
+        "updated_date": "2026-10-14T18:51:18+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Gilad Karpel",
+            "Daniel Soudry"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Continual linear regression with gradient descent in high-dimensional settings, analyzing optimal step sizes and regularization",
+        "data_sources": "Not specified (theoretical analysis with potential application to sequential financial data)",
+        "alpha_potential": "Theoretical framework for continual learning could be adapted to sequential market data analysis, but requires significant domain adaptation",
+        "tags": [
+            "continual learning",
+            "high-dimensional regression",
+            "gradient descent",
+            "regularization"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Waypoint-OPD: Transferring RL-Induced Policy Shifts via Gated On-Policy Distillation",
+        "summary": "Policy-shift distillation reuses the difference between a teacher's log probabilities before and after reinforcement learning (RL) as supervision on student-generated trajectories. However, this endpoint policy shift cannot reveal whether local action preferences evolved consistently during teacher training. The same endpoint shift can result from early and late shifts that reinforce or partially cancel each other. We investigate whether agreement between early and late teacher policy shifts can guide selective transfer. We introduce Waypoint-guided On-Policy Distillation (Waypoint-OPD), which uses an intermediate teacher checkpoint from the same RL run to compare early and late shifts in relative action preferences at student-visited prefixes. We gate the endpoint shift according to the directional agreement between the early and late shifts, suppressing it when they point in opposing directions. Compared with endpoint-only transfer, our method requires only one additional frozen-teacher scoring pass. Using RL-trained Qwen3-4B teachers, we evaluate our method with Qwen3-8B, Qwen3-14B, and Qwen3-30B-A3B as student models in mathematical and code reasoning. In all six domain--student settings, Waypoint-OPD achieves the highest domain-average score among the compared distillation methods. Ablations with the Qwen3-8B student show that removing or shuffling gates reduces mathematical reasoning performance. These results support the use of directional agreement between early and late teacher policy shifts to weight the endpoint shift during student training.",
+        "url": "http://arxiv.org/abs/2610.21601v1",
+        "published_date": "2026-10-15T09:47:19+00:00",
+        "updated_date": "2026-10-15T09:47:19+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.CL"
+        ],
+        "authors": [
+            "Bingxi Hou",
+            "Guochao Jiang",
+            "Guofeng Quan",
+            "Weiqing Li",
+            "Wenfeng Feng",
+            "Guohua Liu",
+            "Yuewei Zhang"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Policy-shift distillation for reinforcement learning, comparing early and late teacher policy shifts to guide selective transfer.",
+        "data_sources": "Mathematical and code reasoning tasks, not financial data.",
+        "alpha_potential": "Limited direct potential for alpha generation as it focuses on general RL policy distillation without financial market application.",
+        "tags": [
+            "Reinforcement Learning",
+            "Policy Distillation",
+            "AI Training",
+            "Knowledge Transfer"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Kolmogorov-Arnold Networks: Curse of Dimensionality and Structural Bias",
+        "summary": "Kolmogorov-Arnold networks (KANs) have a dimension-independent approximation exponent when the target admits a sufficiently smooth representation by univariate edge functions. We ask whether this favorable scaling belongs to the architecture or to the assumed target class. For arbitrary-depth standard spline-KANs, we prove a worst-case lower bound on isotropic Sobolev balls: below a dimension-independent accuracy threshold, the required number of spline coefficients grows at least exponentially with input dimension. Existing composition-matched MLP results, by contrast, show that favorable exponents on low-arity targets are not exclusive to KANs. We also revisit empirical comparisons. On four scaling-law targets, spline-KAN approximants constructed from known decompositions transfer exactly to MLPs with the cubic ReLU activation $σ(x)=(\\max\\{0,x\\})^3$, although their full dense parameter counts are larger. In controlled ridge-profile scans, KANs have a strong advantage when each nonlinear component depends on one input coordinate. When a component couples multiple input coordinates, this advantage may narrow sharply. At tight budgets, interacting targets often favor MLPs. In the random-label test on MNIST, ReLU-MLPs fit the randomized training labels more efficiently than spline-only KANs. Together, these results locate favorable scaling in target structure and a compatible inductive bias, not a general KAN-specific escape from the curse of dimensionality.",
+        "url": "http://arxiv.org/abs/2610.21480v1",
+        "published_date": "2026-10-15T08:21:12+00:00",
+        "updated_date": "2026-10-15T08:21:12+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Yunhao Ni",
+            "Yuxin Guo",
+            "Jie Luo",
+            "Wenjun Wu",
+            "Lei Huang"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Theoretical analysis of Kolmogorov-Arnold networks (KANs) versus MLPs in terms of approximation capabilities and computational efficiency across different target structures",
+        "data_sources": "Controlled ridge-profile scans, random-label test on MNIST",
+        "alpha_potential": "Limited direct applicability for trading strategies; insights into network architectures' efficiency could inform model selection for specific function approximation tasks",
+        "tags": [
+            "neural networks",
+            "approximation theory",
+            "dimensionality reduction"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "When Judges Agree and Are Wrong: Consistency-Accuracy Dissociation as a Blind Spot for Label-Free Evaluation",
+        "summary": "Label-free evaluation methods, such as self-consistency filtering, majority-vote aggregation, and agreement-based reliability scoring, rely on an implicit assumption that consistency can serve as a proxy for correctness when ground-truth labels are unavailable or expensive to obtain. In this paper, we test this assumption directly. Using four financial QA datasets (multiple-choice and free-form), ten consistency dimensions, and two frontier model families, we measure the joint distribution of consistency and accuracy at the level of individual examples rather than in aggregate. We find that 60% of all incorrect answers fall in the high-consistency region (consistency $\\geq$ 0.8), and that 77.7% of these show complete answer collapse, i.e. identical wrong answers across all perturbation variants. This high-consistency/incorrect quadrant cannot be detected by any evaluation signal that is built on agreement alone, as the model appears maximally reliable while being wrong. We show that the phenomenon is robust to the choice of consistency threshold t (it persists from t=0.50 to t=1.00), is shared across model families, and is concentrated in specific intersections of perturbation dimension and domain. We map where this quadrant occurs, analyze its stability properties, and discuss the implications for evaluation pipelines that use agreement-based signals in place of human labels.",
+        "url": "http://arxiv.org/abs/2610.21128v1",
+        "published_date": "2026-10-15T02:33:30+00:00",
+        "updated_date": "2026-10-15T02:33:30+00:00",
+        "categories": [
+            "cs.CL",
+            "cs.AI"
+        ],
+        "authors": [
+            "Xiang Zhang",
+            "Lovedeep Gondara",
+            "Jekaterina Novikova"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Examination of consistency-accuracy relationship in model outputs using financial QA datasets",
+        "data_sources": "Four financial QA datasets (multiple-choice and free-form)",
+        "alpha_potential": "Limited direct alpha potential; mainly highlights pitfalls in agreement-based evaluation methods",
+        "tags": [
+            "LLM evaluation",
+            "consistency-accuracy",
+            "financial QA",
+            "model reliability"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Halve-Then-Greedy: Adaptive Sampling for Posterior Success with Near-Optimal Instance Dependence",
+        "summary": "We study fixed-budget adaptive experimentation aimed at maximizing the probability of obtaining sufficient posterior evidence that a recommended design's mean performance exceeds a target. Unlike best-arm identification, this objective does not require finding the best design. For Gaussian bandits with a Gaussian prior, we propose \\emph{Halve-Then-Greedy} (HTG), which combines a large initial balanced allocation, successive halving, and posterior-greedy sampling. We prove instance-dependent, finite-budget exponential bounds on posterior-failure probability that capture both separation from unfavorable arms and the presence of multiple favorable arms. On one-positive-arm families, we establish an asymptotic sample-complexity lower bound that HTG matches up to a logarithmic factor. We further analyze uniform sampling and sequential halving, revealing regimes where they require more samples than HTG by linear and logarithmic factors, respectively. Simulations illustrate HTG's sample-efficiency advantages and their dependence on instance structure.",
+        "url": "http://arxiv.org/abs/2610.20997v1",
+        "published_date": "2026-10-14T22:33:06+00:00",
+        "updated_date": "2026-10-14T22:33:06+00:00",
+        "categories": [
+            "cs.LG",
+            "stat.ML"
+        ],
+        "authors": [
+            "Yinan Li",
+            "Kwang-Sung Jun",
+            "Kapilan Balagopalan",
+            "Tuan Nguyen",
+            "Yao Zhao",
+            "Abbas Zaidi",
+            "Houssam Nassif"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Adaptive sampling algorithm combining balanced allocation, successive halving, and posterior-greedy sampling for bandit problems",
+        "data_sources": "Gaussian bandits with Gaussian prior (theoretical framework)",
+        "alpha_potential": "Limited direct potential - methods could be adapted for portfolio exploration or campaign optimization but not directly transferable to trading",
+        "tags": [
+            "bandit algorithms",
+            "adaptive sampling",
+            "Gaussian models",
+            "experimental design"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "SkillNEO: Non-Elitist Evolutionary Optimization of Agent Skills",
+        "summary": "Agent skills turn procedural knowledge into reusable artifacts, allowing LLM agents to accumulate and refine expertise through experience. Building on this, skill evolution iteratively improves skills using execution feedback. However, improvement may require several interdependent edits, so low-reward versions can still be worth developing. Requiring immediate reward gains can discard useful partial repairs before their benefits emerge. Non-elitist evolution allows new versions to receive further edits despite scoring below earlier ones. For agent skills, this calls for evidence of what to preserve and repair next. We introduce SkillNEO (Non-Elitist Evolutionary Optimization for Agent Skills), which separately selects a version to use and versions to keep improving. Comparing how related versions perform the same task reveals working steps to preserve and remaining failures to fix. It can also revisit and revise earlier versions using later evidence. Across 86 SkillsBench tasks in eight domains, including software engineering and office work, SkillNEO raises GPT-5.4 Mini's average reward from 49.1% to 66.4%, within GPT-5.5 and GPT-5.6 Luna's original-skill range. Mini executes tasks, proposes revisions, and edits skills; final evaluation uses the same task instances. Gains span all eight domains. The same skills improve stronger models without further editing. On the 41 tasks with modified skills, reuse improves Luna by 10.5 percentage points and places GPT-5.5 10.6 points above its published original-skill reference. Execution records show these skills can benefit stronger models even when Mini still fails some task requirements. Search histories also show lower-scoring versions leading to skills ultimately selected for use. Together, these findings show that skill evolution can turn a weaker model's partial progress into reusable procedural knowledge for improving more capable agents.",
+        "url": "http://arxiv.org/abs/2610.20926v1",
+        "published_date": "2026-10-14T20:57:26+00:00",
+        "updated_date": "2026-10-14T20:57:26+00:00",
+        "categories": [
+            "cs.AI",
+            "cs.CL"
+        ],
+        "authors": [
+            "Enze Ma",
+            "Chunyu Miao",
+            "Yankai Chen",
+            "Jie Yang",
+            "Liancheng Fang",
+            "Kening Zheng",
+            "Hanrong Zhang",
+            "Muyao Xu",
+            "Xinle Yu",
+            "Chengze Li",
+            "Wei-Chieh Huang",
+            "Ziwei Ren",
+            "Yunhao Du",
+            "Zhixiang Shen",
+            "Xue Liu",
+            "Philip S. Yu",
+            "Zhen Wang"
+        ],
+        "relevance_score": 2,
+        "core_methodology": "Non-elitist evolutionary optimization for improving agent skills through iterative feedback and version management",
+        "data_sources": "Task execution records from various domains (e.g., software engineering, office work)",
+        "alpha_potential": "Potential theoretical applications in optimizing trading agent behaviors but no direct connection to financial markets",
+        "tags": [
+            "agent skills",
+            "evolutionary optimization",
+            "LLMs"
+        ],
+        "_low_priority": true
+    }
+]
