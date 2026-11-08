@@ -1,0 +1,82 @@
+[
+    {
+        "title": "SwarmEvolve: Latent Agent Swarms for Evolutionary Discovery and Optimization",
+        "summary": "LLM-guided evolutionary search uses AI agents to improve programs for mathematical and computational problems by iteratively refining solutions and combining high-scoring methods. However, the process is often slow because the LLM generates a long textual chain of thought for each round and must repeat this generation many times to maintain population diversity. We present SwarmEvolve, a framework in which hundreds of low-cost agents per round work in swarms, reason in latent space without decoding to text, and share information by passing KV caches. Each swarm studies the problem from a different angle. A novelty filter keeps the most distinct agent ideas by directly measuring the distances between the agents' hidden state vectors. Crossover of ideas happens naturally in latent space, as a summarizer agent receives the combined KV caches of all swarm members. On 21 problems in mathematical discovery and scientific computing, SwarmEvolve gets the highest average score and needs a median of only 3 to 8 minutes to reach the best scores that other state-of-the-art frameworks reach in 60 minutes. On several problems, SwarmEvolve with Qwen3 8B improves on the solutions that AlphaEvolve first found with frontier LLMs. Our work shows that agent swarms that communicate in latent space offer a fast, low-cost approach to program search for scientific problems.",
+        "url": "http://arxiv.org/abs/2611.08483v1",
+        "published_date": "2026-11-05T18:59:29+00:00",
+        "updated_date": "2026-11-05T18:59:29+00:00",
+        "categories": [
+            "cs.AI",
+            "cs.NE"
+        ],
+        "authors": [
+            "Qile Jiang",
+            "George Em Karniadakis"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "SwarmEvolve uses latent agent swarms for evolutionary discovery and optimization, where hundreds of low-cost agents work in swarms, reason in latent space, and share information via KV caches. A novelty filter selects distinct ideas by measuring distances between hidden state vectors, and crossover occurs naturally in latent space.",
+        "data_sources": "The paper does not specify financial data sources but focuses on mathematical and computational problems, which could be adapted to financial datasets for optimization tasks.",
+        "alpha_potential": "The methodology could be applied to optimize trading strategies, portfolio construction, or parameter tuning in quantitative finance by leveraging the swarm's ability to quickly explore and refine solutions in latent space.",
+        "tags": [
+            "agent swarms",
+            "latent space optimization",
+            "evolutionary algorithms"
+        ],
+        "title_cn": "SwarmEvolve：用于进化发现和优化的潜在代理群",
+        "summary_cn": "SwarmEvolve 提出了一种潜在代理群的框架，通过数百个低成本代理在潜在空间中协作和优化，快速发现和优化解决方案。该方法可应用于量化交易中的策略优化和组合构建，通过代理群的协同工作提高效率。"
+    },
+    {
+        "title": "Conformal Prediction for Time-Dependent PDEs",
+        "summary": "Uncertainty quantification is crucial in scientific machine learning, where models inform safety-critical tasks such as flood forecasting, financial risk management, and thermal control in machines. Conformal prediction provides distribution-free coverage guarantees, but in time-dependent settings common to physics and engineering, these guarantees can break down, leading to systematic undercoverage. We study this problem in the context of surrogate models for time-dependent physical systems described by partial differential equations. We prove that in a function space setting, distributions at arbitrarily close times can be mutually singular, making exact coverage guarantees impossible. We further show that in discretized settings, the total variation distance between distributions often saturates exponentially fast with the grid resolution, mandating restrictions on the spatial discretization to ensure coverage. Finally, for certain settings, we show how to use principled weighted conformal prediction to obtain finite-sample coverage guarantees over growing time horizons.",
+        "url": "http://arxiv.org/abs/2611.08409v1",
+        "published_date": "2026-11-05T18:15:42+00:00",
+        "updated_date": "2026-11-05T18:15:42+00:00",
+        "categories": [
+            "cs.LG",
+            "stat.ML"
+        ],
+        "authors": [
+            "Joshua Stiller",
+            "Annika Schneider",
+            "Eyke Hüllermeier"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Conformal prediction for time-dependent partial differential equations (PDEs) with focus on uncertainty quantification in surrogate models",
+        "data_sources": "Theoretical models of time-dependent physical systems (not financial data)",
+        "alpha_potential": "Potential theoretical framework for financial risk management applications, but requires significant adaptation to market data",
+        "tags": [
+            "uncertainty quantification",
+            "conformal prediction",
+            "PDEs",
+            "surrogate models"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "FedReason: Large Language Models as Weight-Space Meta-Aggregators for Heterogeneous Federated Learning",
+        "summary": "Federated learning servers combine client models with a fixed aggregation rule, and each rule in common use is designed for one kind of heterogeneity. We study whether a large language model (LLM) that inspects the client models can choose the rule itself, without any training on the server. In FedReason, the LLM is called every ten rounds. It analyses the weights by running code in a restricted server-side sandbox, sees only the printed results, may score a few candidates on a 500-image proxy set, and submits a short Python aggregation program. The server applies the program until the next call and falls back to FedAvg whenever its output is invalid. Full weight tensors never leave the server. We evaluated FedReason with Claude Opus 5.5 on CIFAR-10 and CIFAR-100 with ResNet-18 under Dirichlet label skew, width-heterogeneous sub-models and Byzantine clients, in 168 runs against 14 baselines. Across 12 paired label-skew runs it beat FedAvg by 1.26 percentage points on average (10 wins), and a control that spends the same per-round proxy budget on choosing among standard rules by 1.08 points. It was the strongest server-side rule on CIFAR-100 but did not beat SCAFFOLD, which changes client training. With three of ten clients malicious, it excluded all sign-flipping clients from the first round and stayed about one point below FLTrust without training a root model. Without proxy feedback, accuracy fell from 73.8% to 38.8% in one seed. A 60-round run cost 0.79 USD in API fees on average.",
+        "url": "http://arxiv.org/abs/2611.08383v1",
+        "published_date": "2026-11-05T18:00:58+00:00",
+        "updated_date": "2026-11-05T18:00:58+00:00",
+        "categories": [
+            "cs.CR",
+            "cs.AI"
+        ],
+        "authors": [
+            "Ali Mohammadi Ruzbahani",
+            "Abbas Yazdinejad",
+            "Hadis Karimipour"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Uses LLMs to dynamically select aggregation rules in federated learning by analyzing client model weights and performance on a small proxy dataset",
+        "data_sources": "CIFAR-10 and CIFAR-100 image datasets with ResNet-18 models under various heterogeneity conditions (label skew, model width differences, Byzantine clients)",
+        "alpha_potential": "Potential application in distributed model training for financial prediction models, but no direct trading signal generation demonstrated",
+        "tags": [
+            "federated learning",
+            "LLM",
+            "model aggregation",
+            "heterogeneous data"
+        ],
+        "_low_priority": true
+    }
+]
