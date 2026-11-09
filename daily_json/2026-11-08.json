@@ -1,0 +1,54 @@
+[
+    {
+        "title": "The Logic of Factor Portfolios: Boolean Rules, Interactions, and Trading Costs",
+        "summary": "Investors turn signals into holdings through decision rules: buy the top decile, hold stocks with high momentum and low volatility, exclude stocks that fail a screen. Many such rules are Boolean functions of threshold statements about signal ranks, and writing them this way shows both what a rule holds and how often it trades. A Walsh decomposition splits the return of any rule into exposures to individual signals and to interactions among signals; an intersection and a union of the same two screens, for example, have opposite interaction exposures. The same coefficients, together with the persistence of the underlying statements, determine turnover. Interactions are less persistent than their components, so rules that load on higher-order interactions trade more, and thresholds discard information, so at equal risk threshold implementations of interactions trade more than smooth ones. In U.S. stocks from 1973 to 2024, these predictions hold closely: predicted and realized persistence have correlations of at least 0.999, predicted turnover matches realized turnover with a slope of 1.02, and the same interactions are more persistent as products of ranks than as threshold rules. Trading costs rise with order, and because premia fall with order, 58% of single-signal portfolios have absolute premia above their quoted-spread costs over 1995-2024, against 24% of two-signal and 6% of three-signal interaction portfolios. Out of sample, interaction portfolios raise the Sharpe ratio of single-signal tangency portfolios, and over 1995-2024 they reject a six-factor model that conventional sorts on the same signals do not reject.",
+        "url": "http://arxiv.org/abs/2611.09834v1",
+        "published_date": "2026-11-06T18:17:58+00:00",
+        "updated_date": "2026-11-06T18:17:58+00:00",
+        "categories": [
+            "q-fin.PM",
+            "q-fin.GN"
+        ],
+        "authors": [
+            "Ziyao Wang",
+            "Svetlozar T. Rachev",
+            "Frank J. Fabozzi"
+        ],
+        "relevance_score": 8,
+        "core_methodology": "The paper introduces a framework for constructing factor portfolios using Boolean decision rules and analyzes their performance through Walsh decomposition, which decomposes returns into exposures to individual signals and their interactions. It also examines the relationship between interaction orders, trading costs, and portfolio turnover.",
+        "data_sources": "U.S. stocks from 1973 to 2024",
+        "alpha_potential": "The paper demonstrates that interaction portfolios can enhance the Sharpe ratio of single-signal tangency portfolios and identifies that higher-order interaction portfolios are less persistent and more costly to trade, which provides insights into optimizing factor-based strategies considering trading costs.",
+        "tags": [
+            "factor investing",
+            "portfolio optimization",
+            "trading costs",
+            "Boolean rules"
+        ],
+        "title_cn": "因子组合的逻辑：布尔规则、交互作用与交易成本",
+        "summary_cn": "该研究提出了一种基于布尔决策规则构建因子组合的框架，并通过Walsh分解分析组合收益的来源。研究发现高阶交互组合交易成本更高但持续性更低，且交互组合能提升单信号切线组合的夏普比率。这对考虑交易成本的因子策略优化具有实际指导意义。"
+    },
+    {
+        "title": "The Cost of Coverage: Conformalising Native Forecast Uncertainty for GB Wind Power",
+        "summary": "Uncertainty bands on wind forecasts help inform reserve sizing and commitments, but often fail to deliver their stated coverage. We apply conformal prediction to native bands to see what it adds and what it costs, comparing six forecasters, from ARIMA to a tabular foundation model, at two wind farms in Great Britain (GB) under operational conditions. We show that calibration repairs empirical marginal coverage with little or no Winkler Score penalty, but this apparent success conceals under-coverage in high winds. Calibrating by forecast wind regime turns marginal coverage into regime-level coverage, cutting day-ahead out-of-band volume in high winds by over 40% relative to pooled calibration while narrowing bands overall.",
+        "url": "http://arxiv.org/abs/2611.09815v1",
+        "published_date": "2026-11-06T18:02:38+00:00",
+        "updated_date": "2026-11-06T18:02:38+00:00",
+        "categories": [
+            "cs.LG",
+            "stat.AP"
+        ],
+        "authors": [
+            "Carl Somers"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Application of conformal prediction to improve uncertainty bands in wind power forecasts",
+        "data_sources": "Wind power generation data from two wind farms in Great Britain",
+        "alpha_potential": "Limited direct alpha potential, but methodology could be adapted for energy market trading strategies",
+        "tags": [
+            "conformal prediction",
+            "wind power forecasting",
+            "uncertainty quantification"
+        ],
+        "_low_priority": true
+    }
+]
