@@ -1,0 +1,109 @@
+[
+    {
+        "title": "Internalizing Investment Mandates: A Neurosymbolic RL Approach to Portfolio Allocation",
+        "summary": "Institutional portfolios operate under investment policy statements that specify asset allocation constraints, often conditioned on market regime information. Deep reinforcement learning has been shown to optimize financial performance but typically does not enforce rule compliance, making it unsuitable for real-world deployment. Existing neurosymbolic methods such as Probabilistic Logic Policy Gradient (PLPG) offer constraint-satisfying reinforcement learning (RL) via differentiable symbolic supervision but assume a finite, discrete action space. We present a PLPG-inspired continuous allocation method that estimates the probability that the policy's own executed action satisfies the investment mandate, using reparameterized Monte Carlo sampling, and adds it to the training objective. No post-hoc enforcement mechanism intercepts actions at inference time and compliance is learned by the agent. Audited directly on deterministic mean actions with no correction, the policy reduces violations of a six-rule regime-conditional mandate from 96-98% for unconstrained RL and 33.4% for a reward-penalty baseline to 4.8%, showing that a continuous-action neurosymbolic policy can substantially internalize a symbolic mandate.",
+        "url": "http://arxiv.org/abs/2611.17329v1",
+        "published_date": "2026-11-12T18:59:37+00:00",
+        "updated_date": "2026-11-12T18:59:37+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Zeynep Yıldız",
+            "Satchit Chatterji",
+            "Ercan Atam",
+            "Erman Acar"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces a continuous-action neurosymbolic reinforcement learning approach for portfolio allocation that enforces compliance with investment mandates. It extends Probabilistic Logic Policy Gradient (PLPG) to continuous action spaces using reparameterized Monte Carlo sampling to estimate the probability of mandate satisfaction, integrating this into the training objective.",
+        "data_sources": "The paper likely uses historical market data for portfolio optimization, though specific datasets are not mentioned in the abstract. The approach is designed to handle regime-conditional investment mandates, implying use of macroeconomic or market regime indicators.",
+        "alpha_potential": "The methodology addresses a critical gap in RL-based portfolio optimization by ensuring compliance with institutional investment constraints. This could enable deployment of RL strategies in regulated environments where mandate violations are unacceptable, potentially capturing alpha while maintaining rule compliance.",
+        "tags": [
+            "Reinforcement Learning",
+            "Portfolio Optimization",
+            "Neurosymbolic AI",
+            "Regime Detection"
+        ],
+        "title_cn": "内部化投资授权：一种基于神经符号强化学习的资产配置方法",
+        "summary_cn": "本研究提出了一种连续动作空间的神经符号强化学习方法，使投资组合策略能够学习遵守制度性投资授权约束。相比传统强化学习和奖励惩罚基线，该方法将授权违规率从96-98%和33.4%显著降低至4.8%，为合规要求的机构投资组合管理提供了实用的RL解决方案。"
+    },
+    {
+        "title": "Ballad: Bandit-Based LLM Routing for Automated Heuristic Discovery",
+        "summary": "Modern automated heuristic discovery (AHD) systems increasingly rival hand-crafted heuristics by leveraging Large Language Models (LLMs) to iteratively mutate and refine solutions. A natural assumption is that more powerful and more expensive models consistently yield better heuristics. We challenge this empirically: across multiple NP-hard combinatorial optimization problems, we find no consistent advantage for larger, costlier models. This raises a deeper question: given a pool of LLMs spanning frontier and freely hosted or open-weight models, how should one adaptively select which model to invoke at each step of the search? The challenge is non-trivial. The optimal LLM may shift over the course of a run, and because one LLM's output seeds the context for subsequent calls, each model's reward signal is non-stationary and entangled across the heuristic population, thus violating the independence assumptions of classical online decision-making settings. We address this through Ballad (Bandit-based LLM Routing for Automated Heuristic Discovery), an online bandit algorithm that learns to orchestrate a pool of LLMs into an ensemble that matches or exceeds what any soloist LLM achieves alone. This orchestration is powered by an LLM selection policy that favors rare, high-scoring heuristics over stable averages, a DAG-based credit propagation mechanism through the genealogy of the heuristic population, and discounting of stale observations to remain attuned to each model's current utility. Across five NP-hard combinatorial optimization problems and a pool of four models of varying capability and cost, Ballad not only matches the best individual LLM in hindsight but, in several cases, surpasses every individual model while reducing API cost by up to 65.6% relative to always using the strongest model.",
+        "url": "http://arxiv.org/abs/2611.17241v1",
+        "published_date": "2026-11-12T18:28:08+00:00",
+        "updated_date": "2026-11-12T18:28:08+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Samidha Verma",
+            "Ankit Anand",
+            "Sayan Ranu"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Bandit-based algorithm for dynamically selecting and orchestrating LLMs to optimize heuristic discovery in combinatorial problems",
+        "data_sources": "Simulated or theoretical combinatorial optimization problems (not market data)",
+        "alpha_potential": "The methodology could be adapted for portfolio optimization or trade execution routing where dynamic model selection based on performance could reduce costs and improve efficiency. The bandit approach is novel for managing LLM ensembles in financial applications.",
+        "tags": [
+            "LLM Orchestration",
+            "Bandit Algorithms",
+            "Combinatorial Optimization"
+        ],
+        "title_cn": "Ballad：基于多臂老虎机的语言模型路由技术用于自动启发式发现",
+        "summary_cn": "该研究提出了一种基于多臂老虎机的动态LLM选择算法，可在组合优化问题中自动选择最优模型组合。此方法可潜在应用于量化交易的策略优化、投资组合配置或交易执行路由，通过智能模型调度降低成本同时保持性能。"
+    },
+    {
+        "title": "Introducing Feedback Delays to Non-Delayed Adversarial MDPs: Optimal $\\sqrt S$ and $\\sqrt K$ Dependencies in Tabular and Linear AMDPs",
+        "summary": "We study regret minimization in episodic Adversarial Markov Decision Processes (AMDPs) with unknown transitions and bandit feedback. In tabular AMDPs with $S$ states, $A$ actions, and horizon $H$, the best known $K$-episode regret is $\\tilde O(HS\\sqrt{AK})$, whose $\\sqrt S$ gap to the $Ω(H\\sqrt{SAK})$ lower bound has long remained open. In linear AMDPs with $d$-dimensional features, after a five-year line of improvements starting from $K^{14/15}$, computationally efficient algorithms without a simulator or exploratory assumptions still only attain $\\tilde O(K^{3/4})$ regret.\n  A common challenge in both settings is to estimate the Q-function of a changing policy: past data comes from earlier policies that differ from (and are correlated with) the current one, while freezing the policy for future episodes worsens the dependency on $K$. We instead propose a general technique called introduced feedback delays: we estimate the Q-function of the policy using future episodes while still updating the policy, as if the feedback were delayed. While feedback delays are usually an obstacle imposed by the environment, here they are introduced voluntarily and, perhaps surprisingly, come at no extra cost. We develop Geometric Resampling with Rejection (GRR) to account for policy changes during the delay, and threshold the visitation probabilities to avoid long delays on rarely visited state-action pairs.\n  With this unified technique, our policy optimization algorithms achieve, with high probability, $\\tilde O(\\text{poly}(H)\\sqrt{SAK})$ regret in tabular AMDPs, resolving the open problem; and $\\tilde O(\\text{poly}(d,H)\\sqrt K)$ regret in linear AMDPs, giving the first efficient algorithm optimal in $K$. They also naturally extend to delayed AMDPs with a total feedback delay $\\mathfrak D$, yielding the first bounds optimal in $S$ and $\\mathfrak D$ (tabular) and in $K$ and $\\mathfrak D$ (linear).",
+        "url": "http://arxiv.org/abs/2611.17214v1",
+        "published_date": "2026-11-12T18:10:46+00:00",
+        "updated_date": "2026-11-12T18:10:46+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "stat.ML"
+        ],
+        "authors": [
+            "Aarush Kulkarni",
+            "Khang Nguyen",
+            "William Chang",
+            "Yan Dai"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Introduces feedback delays in Adversarial Markov Decision Processes (AMDPs) to improve regret minimization, using Geometric Resampling with Rejection (GRR) to account for policy changes during delays.",
+        "data_sources": "Theoretical study, no specific market data used.",
+        "alpha_potential": "Potential application in algorithmic trading for dynamic policy optimization under uncertainty, but requires significant adaptation to financial markets.",
+        "tags": [
+            "Reinforcement Learning",
+            "Regret Minimization",
+            "Adversarial MDPs"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Quantifying structural stability of transparent models for general insurance pricing",
+        "summary": "The short duration of general insurance contracts leads to rapid distributional shifts in the data, warranting regular model updates. This process may yield a post-update model that differs considerably from the pre-update model in both predictions and structure. Structural stability is upstream of predictive stability, yet existing structural stability metrics are mostly restricted to simple decision trees. Thus, we first introduce the notion of functional transparency, characterising models with a prediction function that can be expressed as a sum of univariate functions for main effects and bivariate functions for pairwise interactions. Then, we propose the Mean Squared Shape function distance, a metric to quantify the structural stability of functionally transparent models, which are particularly relevant in actuarial science. Using three public auto insurance datasets, we present a benchmark study to demonstrate the usefulness of our metric in identifying a stable and accurate transparent model. Generalised linear models with centred numerical covariates are stable, and explainable boosting machines (EBMs) offer a compromise between stability and performance. We also find that stabilisation strategies, such as sequential modelling and fixed hyperparameters, can substantially improve stability for both EBM and XGBoost models, with negligible impact on performance.",
+        "url": "http://arxiv.org/abs/2611.17308v1",
+        "published_date": "2026-11-12T18:56:54+00:00",
+        "updated_date": "2026-11-12T18:56:54+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.LG"
+        ],
+        "authors": [
+            "Félix Côté",
+            "Marie-Pier Côté"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Introduction of Mean Squared Shape function distance to quantify structural stability in functionally transparent models (sum of univariate and bivariate functions)",
+        "data_sources": "Three public auto insurance datasets",
+        "alpha_potential": "Limited direct applicability to trading; focuses on model stability in insurance pricing rather than financial markets",
+        "tags": [
+            "model stability",
+            "actuarial science",
+            "transparent models"
+        ],
+        "_low_priority": true
+    }
+]
