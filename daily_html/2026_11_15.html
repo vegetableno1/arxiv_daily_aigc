@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArXiv Quantitative Finance & AI Papers - November 15, 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.dev.js"></script>
+    <!-- Example using Font Awesome (replace with your preferred icon library if needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            /* New Palette: Light, Clean, Futuristic with Teal/Aqua accents */
+            --bg-color: #f8fafc; /* Tailwind slate-50 (Very Light Gray) */
+            --card-bg-color: #ffffff; /* White */
+            --text-color: #1e293b; /* Tailwind slate-800 (Dark Gray-Blue) */
+            --text-muted-color: #64748b; /* Tailwind slate-500 (Medium Gray-Blue) */
+            --header-color: #0f172a; /* Tailwind slate-900 (Very Dark Blue) */
+            --highlight-primary: #14b8a6; /* Tailwind teal-500 */
+            --highlight-secondary: #67e8f9; /* Tailwind cyan-300 */
+            --border-color: #e2e8f0; /* Tailwind slate-200 (Light Gray) */
+            --shadow-color: rgba(15, 23, 42, 0.08); /* Subtle shadow based on slate-900 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            line-height: 1.6;
+        }
+
+        .bento-grid {
+            display: grid;
+            gap: 1.5rem; /* Tailwind gap-6 */
+            grid-template-columns: 1fr; /* Force single column */
+            padding-bottom: 4rem; /* Add padding at the bottom */
+        }
+
+        .bento-item {
+            /* Apply semi-transparent white background and blur */
+            background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px); /* Safari prefix */
+            border-radius: 1rem; /* Slightly larger radius */
+            padding: 1.75rem; /* Slightly more padding */
+            border: 1px solid rgba(226, 232, 240, 0.5); /* Lighter border with transparency */
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease-out;
+            overflow: hidden; /* Ensure content doesn't overflow */
+            position: relative; /* For potential pseudo-elements */
+        }
+
+        /* Removed ::before pseudo-element for a cleaner look */
+
+
+        .bento-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px var(--shadow-color), 0 4px 8px rgba(15, 23, 42, 0.06); /* Adjusted hover shadow */
+        }
+
+        .paper-title {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            font-weight: 600; /* Tailwind font-semibold */
+            color: var(--highlight-primary); /* Use new primary highlight */
+            margin-bottom: 0.75rem; /* Tailwind mb-3 */
+            line-height: 1.4;
+        }
+
+        .paper-summary {
+            font-size: 0.875rem; /* Tailwind text-sm */
+            color: var(--text-muted-color);
+            margin-bottom: 1.25rem; /* Tailwind mb-5 */
+            line-height: 1.6;
+        }
+
+        .paper-link {
+            display: inline-flex; /* Use flex for icon alignment */
+            align-items: center;
+            font-size: 0.875rem; /* Tailwind text-sm */
+            font-weight: 600;
+            color: var(--highlight-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem; /* Add padding */
+            border-radius: 0.5rem; /* Slightly rounder */
+            background-color: rgba(20, 184, 166, 0.08); /* Subtle teal background */
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .paper-link i {
+            margin-right: 0.5rem; /* Tailwind mr-2 */
+            transition: transform 0.3s ease;
+        }
+
+        .paper-link:hover {
+            background-color: rgba(20, 184, 166, 0.15);
+            color: #0d9488; /* Darker teal on hover */
+            transform: translateY(-1px);
+        }
+        .paper-link:hover i {
+             transform: translateX(2px);
+        }
+
+        .paper-authors {
+            font-size: 0.75rem; /* Tailwind text-xs */
+            color: var(--text-muted-color);
+            margin-top: 1rem; /* Tailwind mt-4 */
+            font-style: italic;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem; /* Tailwind mb-12 */
+            padding-top: 3rem; /* Tailwind pt-12 */
+        }
+
+        .header h1 {
+            font-size: 2.5rem; /* Tailwind text-4xl or 5xl */
+            font-weight: 700; /* Tailwind font-bold */
+            color: var(--header-color);
+            letter-spacing: -0.025em; /* Tailwind tracking-tight */
+            margin-bottom: 0.5rem;
+            /* Optional: Add a subtle text gradient */
+            /* background: linear-gradient(90deg, var(--highlight-primary), var(--highlight-secondary)); */
+            /* -webkit-background-clip: text; */
+            /* -webkit-text-fill-color: transparent; */
+        }
+
+        .header p {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            color: var(--text-muted-color);
+            margin-top: 0.5rem; /* Tailwind mt-2 */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted-color);
+            font-size: 0.875rem; /* Tailwind text-sm */
+            padding-top: 2rem;
+            padding-bottom: 2rem; /* Tailwind py-8 */
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        /* Simple line graphic element (optional) */
+        .line-graphic {
+            height: 1px; /* Thinner line */
+            background: linear-gradient(90deg, rgba(20, 184, 166, 0), var(--highlight-primary), rgba(20, 184, 166, 0));
+            opacity: 0.6;
+            margin: 1.5rem 0; /* Adjust margin */
+        }
+
+        /* Framer Motion requires the script, styles enhance appearance */
+        [data-motion-element] {
+             /* Base styles for elements animated by Framer Motion */
+        }
+
+        .paper-tldr {
+            font-size: 0.95rem; /* Slightly bigger than summary */
+            color: #475569; /* Changed to Tailwind slate-600 (slightly darker than summary) */
+            margin-top: 0.75rem; /* Tailwind mt-3 */
+            margin-bottom: 0.75rem; /* Tailwind mb-2 */
+            /* font-style: italic; */
+            font-weight: bold;
+        }
+
+        .paper-rating {
+            margin-top: 1rem; /* Tailwind mt-4 */
+            margin-bottom: 1rem; /* Tailwind mb-4 */
+            color: #f59e0b; /* Tailwind amber-500 */
+        }
+
+        .paper-rating i {
+            margin-right: 0.125rem; /* Tailwind mr-0.5 */
+        }
+
+        /* Apply consistent star color to sub-ratings */
+        .paper-sub-ratings .rating-item i {
+            color: #f59e0b; /* Match overall rating star color (amber-500) */
+            margin-right: 0.125rem; /* Consistent spacing */
+        }
+
+    </style>
+</head>
+<body class="container mx-auto px-4 antialiased">
+
+    <motion.div
+        initial="{ opacity: 0, y: -30 }"
+        animate="{ opacity: 1, y: 0 }"
+        transition="{ duration: 0.6, ease: 'easeOut' }"
+        class="header"
+        data-motion-element
+    >
+        <h1>量化金融与 AI 每日论文</h1>
+        <p>每日筛选算法交易、量化金融与人工智能相关论文（来源：q-fin.PM, q-fin.TR, cs.LG, cs.AI, cs.CL）</p>
+        <p>2026年11月15日</p>
+        <div class="line-graphic mt-4 mb-8 mx-auto w-1/4"></div> <!-- Added line graphic -->
+    </motion.div>
+
+    <div class="bento-grid" id="paper-grid">
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.0, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Imitation Bootstrapped Multi-Agent Reinforcement Learning</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">基于模仿学习的多智能体强化学习框架</p>
+            
+            <p class="paper-summary">Demonstrations are an effective way to accelerate single-agent reinforcement learning (RL), but extending this idea to multi-agent reinforcement learning (MARL) is non-trivial as it is difficult and often impossible for a single person to teleoperate multiple agents simultaneously. Round-Robin Behavior Cloning (R2BC) addresses this by letting a single demonstrator control one agent at a time while the others execute their current policies. However, the resulting imitation policies are limited by the quality of the demonstrations. We propose Imitation Bootstrapped Multi-Agent Reinforcement Learning (IBMARL), a framework that extends Imitation Bootstrapped Reinforcement Learning (IBRL) to cooperative teams and uses R2BC to train the imitation policies. At each time step, every agent receives one action proposal from its imitation policy and one from its RL policy, and an ensemble of centralized critics selects among the per-agent combinations of the two. A gated imitation penalty, a soft Q-filtered behavior cloning loss, regularizes each RL policy toward its imitation policy only where the critics value the imitation action more, so that after training each agent executes its RL policy alone, without the centralized critics. On four cooperative multi-agent RL benchmarks, IBMARL surpasses its imitation policies $2.6$-$4.2\times$ faster than demonstration-based baselines on two tasks, is the only method to surpass it on the other two, and exceeds the demonstrator itself on two of the four. With real human demonstrations IBMARL still surpasses imitation learning alone, and does so more than twice as fast as the best baseline.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces IBMARL, a framework combining imitation learning and reinforcement learning in multi-agent settings. It uses round-robin behavior cloning to train imitation policies from demonstrations, and then combines these with RL policies through a centralized critic ensemble. The method includes a gated imitation penalty to regularize RL policies toward imitation policies where beneficial.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper does not specify financial market data, but the methodology could potentially be applied to financial data sources such as market prices, order flows, or alternative data relevant to multi-agent trading scenarios.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The framework could be valuable in quantitative trading by improving the training of trading agents (e.g., for market making or arbitrage strategies) through the combination of expert demonstrations and reinforcement learning. The ability to surpass demonstrator performance suggests potential for discovering novel trading strategies.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Multi-Agent RL
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Imitation Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Behavior Cloning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Ensemble Learning
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出IBMARL框架，结合模仿学习与强化学习优势于多智能体系统，可用于训练量化交易策略。其通过演示数据加速学习并最终超越示范者表现的特性，在开发和优化自营交易策略、套利策略等领域具有应用前景。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2611.18543v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Tony H. Zhang, Connor Mattson, Daniel S. Brown</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.05, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">ARCHER: From Rationale Imitation to Executable Reasoning in Small Language Models</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">ARCHER：从小型语言模型的理性模仿到可执行推理</p>
+            
+            <p class="paper-summary">Small language models are attractive for local, low-cost, and privacy-sensitive deployment, but they remain unreliable on mathematical reasoning tasks that require decomposition, exact computation, tool use, and verification. We introduce \textbf{ARCHER}: \textbf{A}ction-trace \textbf{R}einforcement for \textbf{C}alculator-grounded \textbf{H}ierarchical \textbf{E}xecutable \textbf{R}easoning, a two-stage framework for training small language models (SLMs) to produce executable and auditable reasoning trajectories. In the first stage, ARCHER compiles free-form chain-of-thought rationales into typed action traces containing reasoning steps, calculator calls, deterministic runtime observations, verification actions, and final answers. This shifts the supervision target from imitating explanatory text to learning a tool-grounded reasoning policy. In the second stage, ARCHER refines this policy through asymmetric hierarchical reinforcement learning, using grouped and conditionally gated trajectory rewards for answer correctness, tool grounding, process discipline, and trace alignment. Across five standard sub-10B backbones, ARCHER improves over the strongest tool-augmented baseline by 5.51 percentage points on macro-average across benchmark accuracies, including gains of 8.95 points on MATH-500 and 5.33 and 5.34 points on AIME-2024 and AIME-2025. Evaluations on two additional reasoning-specialized 7B backbones further show that executable grounding remains beneficial after reasoning-focused reinforcement learning or distillation. These results demonstrate that executable supervision and reward-guided behavioral refinement provide a general and effective training paradigm for compact mathematical reasoners.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> ARCHER is a two-stage framework for training small language models (SLMs) to produce executable and auditable reasoning trajectories. The first stage compiles free-form chain-of-thought rationales into typed action traces containing reasoning steps, calculator calls, deterministic runtime observations, verification actions, and final answers. The second stage refines this policy through asymmetric hierarchical reinforcement learning, using grouped and conditionally gated trajectory rewards for answer correctness, tool grounding, process discipline, and trace alignment.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The paper does not specify financial data sources but focuses on mathematical reasoning tasks, which could be adapted for financial calculations and quantitative modeling.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The methodology could be adapted for quantitative finance applications such as algorithmic trading strategies that require precise mathematical reasoning, tool use (e.g., calculators for financial metrics), and verification of results. The ability to produce executable and auditable reasoning trajectories could enhance the reliability of small language models in financial decision-making.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Reinforcement Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Small Language Models
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Mathematical Reasoning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Tool Use
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">ARCHER是一种两阶段框架，用于训练小型语言模型（SLMs）生成可执行和可审计的推理轨迹。该方法通过强化学习优化推理策略，适用于需要精确计算和验证的金融量化任务，如算法交易和财务建模。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2611.18494v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Dhruv Dixit, Khushi Patel, Congcong Xu, Min Song</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.1, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Elliptic Sampling: Optimal Interpolant Schedules for Gaussians and Beyond</h2>
+            
+            <p class="paper-summary">Generative modeling based on stochastic interpolants requires specifying two key choices: an interpolant schedule bridging the initial and target distributions, and an efficient discretization of the resulting probability-flow ODE. In this work, we introduce a new framework for joint schedule/discretization design based on the analyticity properties of the (complexified) ODE trajectories, which in turn ensure good numerical behavior. Our formulation can be solved exactly via conformal mapping, yielding a natural family of variance-preserving elliptic schedules, parametrized by Jacobi elliptic functions. Pairing an elliptic schedule with a tailored discretization, we obtain Zoloflow, a new sampling algorithm closely connected to Zolotarev's optimal rational function approximants. Crucially, both the elliptic schedule and Zoloflow explicitly incorporate the condition number $κ$ of the target distribution and reduce to the classical trig schedule in the limit $κ\rightarrow 1$. For Gaussian targets, Zoloflow achieves minimax optimality among all oblivious score-span algorithms, attaining total-variation error $\varepsilon$ using $Θ(\logκ\,\log(\sqrt d/\varepsilon))$ (exact) score queries. For the log-concave case, the elliptic schedule allows sampling with at most $\varepsilon$ 2-Wasserstein-error by requiring merely $\widetilde{O}(\sqrt{d} \, \mathrm{polylog}(κ, 1/\varepsilon))$ score evaluations. Complementing these theoretical results, we empirically evaluate the elliptic schedule on general (non-log-concave) target distributions, including detailed comparisons with alternative schedule proposals on both synthetic benchmarks and existing image generation datasets.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Introduces a new framework for joint schedule/discretization design in generative modeling based on stochastic interpolants, using elliptic schedules and Zoloflow algorithm for optimal sampling</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Synthetic benchmarks and existing image generation datasets (no financial data mentioned)</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Potential theoretical applications in generating synthetic financial time series or improving sampling in high-dimensional financial models, but no direct trading applications demonstrated</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    generative modeling
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    stochastic interpolants
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    sampling algorithms
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2611.18542v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Cole Becker, Taylan Kargin, Kimia Hassibi, Asuman Ozdaglar, Pablo A. Parrilo</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.15000000000000002, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">TradeGauntlet: Evaluating Compliance Controls for Autonomous Trading Agents</h2>
+            
+            <p class="paper-summary">Autonomous trading agents need controls that prevent problematic orders without making legitimate tasks impractical. We study this aspect of agentic compliance with TradeGauntlet, a replayable limit-order-book simulator that separates detection, prevention, and execution cost. In 1,680 simulated sessions with Claude Haiku 5.5 and Sonnet 5.5, all conduct alerts were self-matches. Gates eliminated those alerts by rejecting self-crossing orders, while the aggregate-gate condition reduced Sonnet's two-sided fills by about 15%. A conduct reminder reduced Sonnet's alert rate but reduced Haiku's fills without a detectable alert benefit. These results show why zero alerts alone do not establish an agent's compliance. Scripted probes and two search methods test weaknesses beyond those observed in the LLM runs. The searches find split-order schedules that evade the implemented conduct rules; a learned baseline catches all 2,400 tested searched episodes but also flags 15% of a large maker's sessions. Aggregate caps reduce the response-dependent gain unevenly, with smaller reductions when only near-touch depth affects prices. A response fitted to five Nasdaq stocks and a separate ABIDES experiment expose the dependence of these estimates on market assumptions. A distinct adversarial prompt elicited refusals from Sonnet in all 240 rounds, yielding no candidate strategies to evaluate. TradeGauntlet provides reproducible tests of controls around trading agents; the experiments do not establish legal compliance or real-market detection accuracy.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Replayable limit-order-book simulator for testing compliance controls in autonomous trading agents</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Simulated limit order book data, Nasdaq stocks (for response fitting)</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited direct alpha potential, but provides framework for testing compliance in trading agents which could prevent costly errors</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    autonomous agents
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    compliance
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    order book simulation
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    LLMs
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2611.18493v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Sandip Nandi, Aishwarya Bose, Apurba Bose, Soovadeep Bakshi</p>
+            
+        </motion.div>
+        
+    </div>
+
+    <footer class="footer">
+        生成时间：2026年11月16日 12:26:02 UTC | 量化金融与 AI 论文智能追踪系统
+    </footer>
+
+</body>
+</html>

@@ -1,0 +1,116 @@
+[
+    {
+        "title": "Imitation Bootstrapped Multi-Agent Reinforcement Learning",
+        "summary": "Demonstrations are an effective way to accelerate single-agent reinforcement learning (RL), but extending this idea to multi-agent reinforcement learning (MARL) is non-trivial as it is difficult and often impossible for a single person to teleoperate multiple agents simultaneously. Round-Robin Behavior Cloning (R2BC) addresses this by letting a single demonstrator control one agent at a time while the others execute their current policies. However, the resulting imitation policies are limited by the quality of the demonstrations. We propose Imitation Bootstrapped Multi-Agent Reinforcement Learning (IBMARL), a framework that extends Imitation Bootstrapped Reinforcement Learning (IBRL) to cooperative teams and uses R2BC to train the imitation policies. At each time step, every agent receives one action proposal from its imitation policy and one from its RL policy, and an ensemble of centralized critics selects among the per-agent combinations of the two. A gated imitation penalty, a soft Q-filtered behavior cloning loss, regularizes each RL policy toward its imitation policy only where the critics value the imitation action more, so that after training each agent executes its RL policy alone, without the centralized critics. On four cooperative multi-agent RL benchmarks, IBMARL surpasses its imitation policies $2.6$-$4.2\\times$ faster than demonstration-based baselines on two tasks, is the only method to surpass it on the other two, and exceeds the demonstrator itself on two of the four. With real human demonstrations IBMARL still surpasses imitation learning alone, and does so more than twice as fast as the best baseline.",
+        "url": "http://arxiv.org/abs/2611.18543v1",
+        "published_date": "2026-11-13T18:50:05+00:00",
+        "updated_date": "2026-11-13T18:50:05+00:00",
+        "categories": [
+            "cs.AI",
+            "cs.MA"
+        ],
+        "authors": [
+            "Tony H. Zhang",
+            "Connor Mattson",
+            "Daniel S. Brown"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper introduces IBMARL, a framework combining imitation learning and reinforcement learning in multi-agent settings. It uses round-robin behavior cloning to train imitation policies from demonstrations, and then combines these with RL policies through a centralized critic ensemble. The method includes a gated imitation penalty to regularize RL policies toward imitation policies where beneficial.",
+        "data_sources": "The paper does not specify financial market data, but the methodology could potentially be applied to financial data sources such as market prices, order flows, or alternative data relevant to multi-agent trading scenarios.",
+        "alpha_potential": "The framework could be valuable in quantitative trading by improving the training of trading agents (e.g., for market making or arbitrage strategies) through the combination of expert demonstrations and reinforcement learning. The ability to surpass demonstrator performance suggests potential for discovering novel trading strategies.",
+        "tags": [
+            "Multi-Agent RL",
+            "Imitation Learning",
+            "Behavior Cloning",
+            "Ensemble Learning"
+        ],
+        "title_cn": "基于模仿学习的多智能体强化学习框架",
+        "summary_cn": "该论文提出IBMARL框架，结合模仿学习与强化学习优势于多智能体系统，可用于训练量化交易策略。其通过演示数据加速学习并最终超越示范者表现的特性，在开发和优化自营交易策略、套利策略等领域具有应用前景。"
+    },
+    {
+        "title": "ARCHER: From Rationale Imitation to Executable Reasoning in Small Language Models",
+        "summary": "Small language models are attractive for local, low-cost, and privacy-sensitive deployment, but they remain unreliable on mathematical reasoning tasks that require decomposition, exact computation, tool use, and verification. We introduce \\textbf{ARCHER}: \\textbf{A}ction-trace \\textbf{R}einforcement for \\textbf{C}alculator-grounded \\textbf{H}ierarchical \\textbf{E}xecutable \\textbf{R}easoning, a two-stage framework for training small language models (SLMs) to produce executable and auditable reasoning trajectories. In the first stage, ARCHER compiles free-form chain-of-thought rationales into typed action traces containing reasoning steps, calculator calls, deterministic runtime observations, verification actions, and final answers. This shifts the supervision target from imitating explanatory text to learning a tool-grounded reasoning policy. In the second stage, ARCHER refines this policy through asymmetric hierarchical reinforcement learning, using grouped and conditionally gated trajectory rewards for answer correctness, tool grounding, process discipline, and trace alignment. Across five standard sub-10B backbones, ARCHER improves over the strongest tool-augmented baseline by 5.51 percentage points on macro-average across benchmark accuracies, including gains of 8.95 points on MATH-500 and 5.33 and 5.34 points on AIME-2024 and AIME-2025. Evaluations on two additional reasoning-specialized 7B backbones further show that executable grounding remains beneficial after reasoning-focused reinforcement learning or distillation. These results demonstrate that executable supervision and reward-guided behavioral refinement provide a general and effective training paradigm for compact mathematical reasoners.",
+        "url": "http://arxiv.org/abs/2611.18494v1",
+        "published_date": "2026-11-13T18:05:33+00:00",
+        "updated_date": "2026-11-13T18:05:33+00:00",
+        "categories": [
+            "cs.AI"
+        ],
+        "authors": [
+            "Dhruv Dixit",
+            "Khushi Patel",
+            "Congcong Xu",
+            "Min Song"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "ARCHER is a two-stage framework for training small language models (SLMs) to produce executable and auditable reasoning trajectories. The first stage compiles free-form chain-of-thought rationales into typed action traces containing reasoning steps, calculator calls, deterministic runtime observations, verification actions, and final answers. The second stage refines this policy through asymmetric hierarchical reinforcement learning, using grouped and conditionally gated trajectory rewards for answer correctness, tool grounding, process discipline, and trace alignment.",
+        "data_sources": "The paper does not specify financial data sources but focuses on mathematical reasoning tasks, which could be adapted for financial calculations and quantitative modeling.",
+        "alpha_potential": "The methodology could be adapted for quantitative finance applications such as algorithmic trading strategies that require precise mathematical reasoning, tool use (e.g., calculators for financial metrics), and verification of results. The ability to produce executable and auditable reasoning trajectories could enhance the reliability of small language models in financial decision-making.",
+        "tags": [
+            "Reinforcement Learning",
+            "Small Language Models",
+            "Mathematical Reasoning",
+            "Tool Use"
+        ],
+        "title_cn": "ARCHER：从小型语言模型的理性模仿到可执行推理",
+        "summary_cn": "ARCHER是一种两阶段框架，用于训练小型语言模型（SLMs）生成可执行和可审计的推理轨迹。该方法通过强化学习优化推理策略，适用于需要精确计算和验证的金融量化任务，如算法交易和财务建模。"
+    },
+    {
+        "title": "Elliptic Sampling: Optimal Interpolant Schedules for Gaussians and Beyond",
+        "summary": "Generative modeling based on stochastic interpolants requires specifying two key choices: an interpolant schedule bridging the initial and target distributions, and an efficient discretization of the resulting probability-flow ODE. In this work, we introduce a new framework for joint schedule/discretization design based on the analyticity properties of the (complexified) ODE trajectories, which in turn ensure good numerical behavior. Our formulation can be solved exactly via conformal mapping, yielding a natural family of variance-preserving elliptic schedules, parametrized by Jacobi elliptic functions. Pairing an elliptic schedule with a tailored discretization, we obtain Zoloflow, a new sampling algorithm closely connected to Zolotarev's optimal rational function approximants. Crucially, both the elliptic schedule and Zoloflow explicitly incorporate the condition number $κ$ of the target distribution and reduce to the classical trig schedule in the limit $κ\\rightarrow 1$. For Gaussian targets, Zoloflow achieves minimax optimality among all oblivious score-span algorithms, attaining total-variation error $\\varepsilon$ using $Θ(\\logκ\\,\\log(\\sqrt d/\\varepsilon))$ (exact) score queries. For the log-concave case, the elliptic schedule allows sampling with at most $\\varepsilon$ 2-Wasserstein-error by requiring merely $\\widetilde{O}(\\sqrt{d} \\, \\mathrm{polylog}(κ, 1/\\varepsilon))$ score evaluations. Complementing these theoretical results, we empirically evaluate the elliptic schedule on general (non-log-concave) target distributions, including detailed comparisons with alternative schedule proposals on both synthetic benchmarks and existing image generation datasets.",
+        "url": "http://arxiv.org/abs/2611.18542v1",
+        "published_date": "2026-11-13T18:49:36+00:00",
+        "updated_date": "2026-11-13T18:49:36+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.AI",
+            "cs.LG"
+        ],
+        "authors": [
+            "Cole Becker",
+            "Taylan Kargin",
+            "Kimia Hassibi",
+            "Asuman Ozdaglar",
+            "Pablo A. Parrilo"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Introduces a new framework for joint schedule/discretization design in generative modeling based on stochastic interpolants, using elliptic schedules and Zoloflow algorithm for optimal sampling",
+        "data_sources": "Synthetic benchmarks and existing image generation datasets (no financial data mentioned)",
+        "alpha_potential": "Potential theoretical applications in generating synthetic financial time series or improving sampling in high-dimensional financial models, but no direct trading applications demonstrated",
+        "tags": [
+            "generative modeling",
+            "stochastic interpolants",
+            "sampling algorithms"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "TradeGauntlet: Evaluating Compliance Controls for Autonomous Trading Agents",
+        "summary": "Autonomous trading agents need controls that prevent problematic orders without making legitimate tasks impractical. We study this aspect of agentic compliance with TradeGauntlet, a replayable limit-order-book simulator that separates detection, prevention, and execution cost. In 1,680 simulated sessions with Claude Haiku 5.5 and Sonnet 5.5, all conduct alerts were self-matches. Gates eliminated those alerts by rejecting self-crossing orders, while the aggregate-gate condition reduced Sonnet's two-sided fills by about 15%. A conduct reminder reduced Sonnet's alert rate but reduced Haiku's fills without a detectable alert benefit. These results show why zero alerts alone do not establish an agent's compliance. Scripted probes and two search methods test weaknesses beyond those observed in the LLM runs. The searches find split-order schedules that evade the implemented conduct rules; a learned baseline catches all 2,400 tested searched episodes but also flags 15% of a large maker's sessions. Aggregate caps reduce the response-dependent gain unevenly, with smaller reductions when only near-touch depth affects prices. A response fitted to five Nasdaq stocks and a separate ABIDES experiment expose the dependence of these estimates on market assumptions. A distinct adversarial prompt elicited refusals from Sonnet in all 240 rounds, yielding no candidate strategies to evaluate. TradeGauntlet provides reproducible tests of controls around trading agents; the experiments do not establish legal compliance or real-market detection accuracy.",
+        "url": "http://arxiv.org/abs/2611.18493v1",
+        "published_date": "2026-11-13T18:05:23+00:00",
+        "updated_date": "2026-11-13T18:05:23+00:00",
+        "categories": [
+            "cs.MA",
+            "cs.AI",
+            "cs.CE"
+        ],
+        "authors": [
+            "Sandip Nandi",
+            "Aishwarya Bose",
+            "Apurba Bose",
+            "Soovadeep Bakshi"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Replayable limit-order-book simulator for testing compliance controls in autonomous trading agents",
+        "data_sources": "Simulated limit order book data, Nasdaq stocks (for response fitting)",
+        "alpha_potential": "Limited direct alpha potential, but provides framework for testing compliance in trading agents which could prevent costly errors",
+        "tags": [
+            "autonomous agents",
+            "compliance",
+            "order book simulation",
+            "LLMs"
+        ],
+        "_low_priority": true
+    }
+]
