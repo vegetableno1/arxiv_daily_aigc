@@ -1,0 +1,56 @@
+[
+    {
+        "title": "Active Feature Acquisition by Distilling an Oracle Teacher",
+        "summary": "Acquiring every feature of an instance is often costly: a measurement can carry a monetary price, a time delay, or a privacy cost. Active Feature Acquisition (AFA) addresses this by learning a policy that decides, per instance, which features to acquire under a budget. Existing AFA methods train this policy by optimizing a self-constructed utility target rather than distilling an explicit teacher. We construct this teacher explicitly. At training time the label and the unobserved feature values are available, and together they determine the teacher in closed form: an oracle that ranks every candidate by its effect on the downstream predictor's error. OracleImitator distills this ranking into a deployable policy by soft-target imitation. Across multimodal medical diagnosis and the AFABench benchmark, OracleImitator matches or outperforms existing AFA methods across the budget range, recovering 90% of the attainable accuracy gain at under a quarter of the acquisition cost. Because the teacher is an explicit algorithmic object rather than an implicit optimization target, we can also measure directly how much of its ranking is recoverable by a policy restricted to what is visible at deployment.",
+        "url": "http://arxiv.org/abs/2611.26598v1",
+        "published_date": "2026-11-19T18:52:57+00:00",
+        "updated_date": "2026-11-19T18:52:57+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Yang Meng",
+            "Zixin Ding",
+            "Robert L. Grossman",
+            "Yuxin Chen"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "Active Feature Acquisition (AFA) with a teacher-student framework, where an oracle teacher ranks features based on their impact on prediction error, and a policy imitates this ranking under budget constraints.",
+        "data_sources": "Multimodal medical diagnosis and AFABench benchmark data, though the methodology could potentially be adapted to financial datasets where feature acquisition is costly (e.g., alternative data, high-frequency signals).",
+        "alpha_potential": "Practical for optimizing feature acquisition in trading strategies where data acquisition costs are high (e.g., satellite imagery, credit card data). Could improve cost-efficiency in signal generation by prioritizing the most impactful features.",
+        "tags": [
+            "Active Learning",
+            "Feature Selection",
+            "Budget Optimization"
+        ],
+        "title_cn": "通过蒸馏预言机教师的主动特征获取",
+        "summary_cn": "该论文提出了一种主动特征获取（AFA）方法，通过蒸馏预言机教师的特征排名来优化特征选择策略。在金融交易中，可应用于高成本数据（如另类数据）的获取优化，提升策略的成本效益。"
+    },
+    {
+        "title": "The Window Lever: Longer Observation Windows Outweigh the Observed Effects of Data, Capacity, and Architecture in Customer Behavior Forecasting",
+        "summary": "In our experiments on long-horizon customer-behavior forecasting, a longer observation window outweighed the observed effects of more data, more capacity and newer architectures. The window is the weeks of history a model sees before the week it forecasts from. Going from an 8- to a 16-week window adds a raw +0.070 to 0.107 log-space $R^2$ in every family at 1M. Matched test cohorts, which score the same customer-weeks at every window, show this raw comparison understates the gain in every family they cover. The direction holds on five public datasets, four spanning over a year (ridge and our transformer on all five). On our internal data, longer windows admit up to 10% more and colder training customers, which matching does not fix. Our design does not separate window length from calendar coverage, because every test anchor (the week a forecast is made from) falls in one eight-week band. On training-period anchors, the weekly ridge probe's gain persists outside the holiday season, keeping about 72% of it. We therefore report a robust positive association with longer windows and do not identify the magnitude of a calendar-independent history effect. Of four internally registered predictions, the only fully blind one failed. An activity-mixture model predicted +0.014 from 24 to 32 weeks; the weekly-aggregate probe returned -0.0004. For the sequence families, the other three levers are about an order of magnitude smaller, bounded and unresolved. Their observed effects are at most 0.006 between the nominal 1M and 10M tiers and 0.0052 among five sequence families at 16 weeks with clocks as built, both single-seed on the full test split, and 0.006 for capacity on three-seed means. These are observed intervals, not equivalence bounds. Our claim is the order-of-magnitude contrast between the window and those bounds. A team building on this class of data should start by lengthening the window.",
+        "url": "http://arxiv.org/abs/2611.26521v1",
+        "published_date": "2026-11-19T18:00:11+00:00",
+        "updated_date": "2026-11-19T18:00:11+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.IR"
+        ],
+        "authors": [
+            "Tara Sowrirajan",
+            "Yanqiao Wang"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "The paper focuses on the impact of longer observation windows in forecasting customer behavior, comparing different window lengths and their effects on model performance. The methodology includes using ridge regression and transformers on various datasets to evaluate the performance gains from extended observation periods.",
+        "data_sources": "The study uses five public datasets and internal data spanning over a year, focusing on customer-weekly behavior data.",
+        "alpha_potential": "This research has limited direct alpha potential for quantitative trading as it primarily addresses customer behavior forecasting rather than financial markets. However, the general concept of longer observation windows improving forecasting accuracy could be theoretically adapted to certain trading contexts, such as momentum strategies, but significant adaptation would be required.",
+        "tags": [
+            "observation windows",
+            "customer behavior forecasting",
+            "transformers",
+            "ridge regression"
+        ],
+        "_low_priority": true
+    }
+]
