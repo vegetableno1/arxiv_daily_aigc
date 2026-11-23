@@ -1,0 +1,83 @@
+[
+    {
+        "title": "Optimal Linear Regression Without a Variance",
+        "summary": "We study high-probability linear regression in the infinite variance regime, wherecthe regression noise has only a finite conditional $α$-moment $ν$ for some unknown $α\\in(1,2)$, and the covariates may only have finite moments up to a given order (e.g., 4th moment). We give a black-box reduction that converts finite-variance regression procedures into weak-moment procedures. The reduction is based on empirical residual pruning and is agnostic to the moment exponent, the noise scale, the covariance, and the design moment. Under a finite fourth-moment condition on the covariates, any finite-variance subroutine attaining the sub-Gaussian rate yields the following when the number of samples $n$ is above a suitably defined threshold: Without knowing $α$ or $ν$, we have with probability at least $1-δ$ that $ \\|\\widehatθ-θ^*\\|_Σ\n  \\lesssim_α\n  ν^{1/α}\n  \\big(\\frac{d+\\log(1/δ)}{n}\\big)^{\\frac{α-1}α}, $ where $d$ is the dimension, $Σ$ is the covariate covariance matrix, and $\\|v\\|_Σ:=(v^\\topΣv)^{1/2}$. We further prove a matching minimax lower bound that holds under the same conditions. The reduction is computationally efficient whenever the finite-variance subroutine is. We also obtain a distribution-free prediction guarantee under a bounded raw $α$-moment assumption on the response, and give an analogous $α$-agnostic reduction for mean estimation.",
+        "url": "http://arxiv.org/abs/2611.27983v1",
+        "published_date": "2026-11-20T18:58:45+00:00",
+        "updated_date": "2026-11-20T18:58:45+00:00",
+        "categories": [
+            "stat.ML",
+            "cs.AI",
+            "cs.IT",
+            "cs.LG"
+        ],
+        "authors": [
+            "Artin Tajdini",
+            "Jasper C. H. Lee",
+            "Jonathan Scarlett",
+            "Kevin Jamieson"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper presents a black-box reduction technique that converts finite-variance regression procedures into weak-moment procedures. It uses empirical residual pruning and is agnostic to the moment exponent, noise scale, covariance, and design moment. The methodology is particularly suited for high-probability linear regression in the infinite variance regime, where the noise has finite conditional α-moments.",
+        "data_sources": "The paper does not specify particular data sources but implies general applicability to any dataset with covariates having finite moments up to a given order (e.g., 4th moment), which can include financial time series data.",
+        "alpha_potential": "This methodology could be valuable in quantitative finance for modeling and predicting asset returns where the noise distribution has heavy tails or infinite variance, which is common in financial markets. The technique's robustness to unknown moment exponents and noise scales makes it potentially useful for portfolio optimization and risk management in volatile markets.",
+        "tags": [
+            "high-probability regression",
+            "weak-moment procedures",
+            "empirical residual pruning",
+            "heavy-tailed distributions"
+        ],
+        "title_cn": "无方差的最优线性回归",
+        "summary_cn": "本文研究无限方差情况下的高概率线性回归，通过经验残差修整将有限方差回归方法转化为弱矩方法。该方法无需知道噪声的矩指数和规模，可应用于金融时间序列预测和风险管理，特别是在市场波动性高且噪声分布具有厚尾特征时。"
+    },
+    {
+        "title": "A Methodologically Rigorous Benchmark of Linear Regression,RNN, and LSTM for S&P 500 Forecasting:Identifying Sources of Performance Inflation in Financial DeepLearning",
+        "summary": "This study examines one-day-ahead forecasting of the S&P 500 closing level using a 2006-2025 dataset that includes fundamental price data, macroeconomic indicators, and engineered technical features. We benchmark three model families, namely linear regression, vanilla recurrent neural networks (RNN), and long short-term memory networks (LSTM), within a unified preprocessing and chronological evaluation pipeline. A central contribution of this work is a methodological audit of common practices in the deep-learning-for-stock-prediction literature. We identify three sources of result inflation that frequently appear in published methodologies: wavelet-denoised evaluation targets, the absence of a naive persistence baseline, and best-of-N replicate reporting. We then re-evaluate all model families under a corrected protocol that controls for each. Performance is reported using root mean squared error, mean absolute percentage error, and the Pearson correlation coefficient, averaged across N = 30 independent replicates per configuration. We compare models on accuracy, stability across replicates, and architectural depth sensitivity, using the naive persistence forecast (predicting today's close as tomorrow's close) as a primary baseline against which all candidate models must demonstrate improvement.",
+        "url": "http://arxiv.org/abs/2611.27978v1",
+        "published_date": "2026-11-20T18:57:15+00:00",
+        "updated_date": "2026-11-20T18:57:15+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Hari Sitaula",
+            "Joseph Opitz"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper conducts a rigorous comparison of linear regression, vanilla RNNs, and LSTMs for one-day-ahead forecasting of the S&P 500 closing level. It introduces a methodological audit to identify and correct common sources of performance inflation in financial deep learning, such as wavelet-denoised evaluation targets and the absence of a naive persistence baseline. Performance is measured using RMSE, MAPE, and Pearson correlation across 30 independent replicates.",
+        "data_sources": "Dataset spans 2006-2025 and includes fundamental price data, macroeconomic indicators, and engineered technical features.",
+        "alpha_potential": "The study's corrected protocol and rigorous benchmarking framework could help identify reliable forecasting models that consistently outperform naive persistence. The focus on methodological pitfalls provides valuable insights for developing more robust trading signals.",
+        "tags": [
+            "S&P 500 Forecasting",
+            "Deep Learning Benchmark",
+            "Methodological Audit",
+            "Financial Time Series"
+        ],
+        "title_cn": "线性回归、RNN和LSTM在标普500预测中的严格基准对比：识别金融深度学习中的性能膨胀源",
+        "summary_cn": "本研究采用2006-2025年数据，对标普500收盘价进行一日预测，系统比较了线性回归、普通RNN和LSTM模型。通过修正文献中常见的三类性能膨胀问题（小波去噪评估目标、缺少朴素持续性基准、最优复制报告），建立了更可靠的评估框架。研究发现为开发稳健的量化交易信号提供了重要方法学参考。"
+    },
+    {
+        "title": "Ranking-Preserving Coreset Selection for Efficient Evolutionary Hyperparameter Optimization",
+        "summary": "Hyperparameter optimization (HPO) is essential for high predictive performance, but its computational cost becomes prohibitive when candidate configurations require repeated training on large datasets. This paper proposes a ranking-preserving coreset (RPC) selection framework for accelerating evolutionary HPO. The method constructs a compact coreset that preserves the relative ranking of hyperparameter configurations observed on the full training data. Coreset selection is formulated as an evolutionary optimization problem that maximizes Spearman rank correlation between full-data and subset-based configuration rankings while penalizing subset size. The selected coreset is then used for HPO with three evolutionary algorithms: Genetic Algorithm (GA), Cross-generational elitist Selection, Heterogeneous Recombination and Cataclysmic Mutation (CHC), and Particle Swarm Optimization (PSO). Experiments on seven tabular, two text, and two image benchmark datasets show that RPC substantially reduces HPO time while maintaining test accuracy comparable to full-dataset HPO across decision tree, text classification, and image classification tasks. Across datasets and optimizers, HPO-stage speedups range from approximately 1.14x to 8.80x, while the one-time coreset construction cost is accounted for separately through end-to-end runtime and break-even analysis. On 20 held-out configurations excluded from coreset construction, RPC achieves higher ranking correlation than same-size random sampling on 8 of 11 datasets (dataset-level Wilcoxon signed-rank test, p = 0.014). These results show that ranking preservation extends beyond the configurations used during selection. The one-time construction cost can be amortized when the coreset is reused across HPO runs.",
+        "url": "http://arxiv.org/abs/2611.27959v1",
+        "published_date": "2026-11-20T18:35:28+00:00",
+        "updated_date": "2026-11-20T18:35:28+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Mamoona Tasadduq",
+            "Maryam Bashir"
+        ],
+        "relevance_score": 3,
+        "core_methodology": "Evolutionary hyperparameter optimization with ranking-preserving coreset selection",
+        "data_sources": "Benchmark datasets (tabular, text, image)",
+        "alpha_potential": "Potential to reduce computational costs in ML model training, indirectly benefiting quantitative strategies requiring frequent retraining",
+        "tags": [
+            "Hyperparameter Optimization",
+            "Evolutionary Algorithms",
+            "Coreset Selection"
+        ],
+        "_low_priority": true
+    }
+]
