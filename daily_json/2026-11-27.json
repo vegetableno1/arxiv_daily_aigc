@@ -1,0 +1,140 @@
+[
+    {
+        "title": "From Prediction to Decision: Decision-Focused Fine-Tuning of Autoregressive Tabular Transformers for Cost-Sensitive Financial Events",
+        "summary": "Autoregressive transformers trained on tokenized tabular event streams are a simple and strong baseline for predicting financial events such as fraud. Yet institutions do not act on probabilities; they act on decisions whose consequences are asymmetric and heteroscedastic: the cost of a missed high-value fraud and that of a wrongly declined small purchase are not the same. The standard bridge is post-hoc Bayes-optimal thresholding of calibrated probabilities under a cost matrix. We ask whether fine-tuning the model to the decision objective can do better. We fine-tune the same pretrained model so that its restricted softmax over label tokens (already a distribution over business actions) maximizes expected utility under an institution-specified, amount-scaled cost matrix. Because the reward is a known function of (action, outcome, amount) and the outcome is observed in the data, the expected-utility objective and its gradient are available in closed form. This is example-dependent cost-sensitive learning whose per-example loss is linear in the predicted probability, with no sampling, critics, or advantage estimation. A KL anchor to the pretrained model and an auxiliary language-modeling term preserve calibration and the generative event model. A sampled, group-normalized (GRPO-style) variant provides the extension point to trajectory-level rewards.",
+        "url": "http://arxiv.org/abs/2611.34858v1",
+        "published_date": "2026-11-25T18:27:48+00:00",
+        "updated_date": "2026-11-25T18:27:48+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.AI"
+        ],
+        "authors": [
+            "Ashkan Golgoon",
+            "Giacomo Domeniconi",
+            "Samuel Atkins",
+            "Sergio Servantez",
+            "Zain Khandwala"
+        ],
+        "relevance_score": 8,
+        "core_methodology": "Autoregressive transformers trained on tabular event streams, fine-tuned with a decision-focused objective that maximizes expected utility under an institution-specified, amount-scaled cost matrix. The method includes a KL anchor to the pretrained model and an auxiliary language-modeling term to preserve calibration and the generative event model.",
+        "data_sources": "Financial event streams such as fraud transactions, likely including transactional data with features like amounts, timestamps, and other metadata.",
+        "alpha_potential": "The method's decision-focused fine-tuning can potentially improve trading and risk management strategies by embedding asymmetric costs, such as fraud detection, directly into the model. This can lead to better decision-making in scenarios with unequal costs, common in financial trading and risk management.",
+        "tags": [
+            "Decision-focused learning",
+            "Autoregressive Transformers",
+            "Cost-sensitive learning",
+            "Fraud detection"
+        ],
+        "title_cn": "从预测到决策：自回归表格转换器的决策导向微调用于成本敏感型金融事件",
+        "summary_cn": "该方法通过针对金融事件的决策目标微调自回归模型，在特定成本矩阵下最大化预期效用。它在不对称成本的金融交易和风险管理领域具有较高应用价值，能提升如欺诈检测等场景的决策质量。"
+    },
+    {
+        "title": "Provably Efficient Offline Discounted Reinforcement Learning under Recursive Entropic Risk",
+        "summary": "We study risk-sensitive reinforcement learning in finite discounted infinite-horizon Markov Decision Processes with recursive entropic risk measures (ERM), parameterized by $β\\neq 0$. We consider both risk-averse ($β>0$) and risk-seeking ($β<0$) settings. We consider the offline RL setting, where the agent is provided with a fixed dataset and wishes to learn a near-optimal policy using this dataset. We introduce a model-based algorithm, called ERM Value Iteration Lower Confidence Bound (ERM-VI-LCB) and derive a PAC-type bound on its sample complexity. We also establish a corresponding lower bound, demonstrating that exponential dependence on $|β|/(1-γ)$ asserted by the upper bound is unavoidable in the worst case. The presented bounds provide the first rigorous sample complexity guarantees for offline RL under recursive ERM across both risk-averse and risk-seeking regimes.",
+        "url": "http://arxiv.org/abs/2611.34840v1",
+        "published_date": "2026-11-25T18:18:53+00:00",
+        "updated_date": "2026-11-25T18:18:53+00:00",
+        "categories": [
+            "cs.LG",
+            "eess.SY",
+            "stat.ML"
+        ],
+        "authors": [
+            "Amirparsa Bahrami",
+            "Oliver Mortensen",
+            "Mohammad Sadegh Talebi"
+        ],
+        "relevance_score": 7,
+        "core_methodology": "The paper introduces a model-based algorithm, ERM Value Iteration Lower Confidence Bound (ERM-VI-LCB), for risk-sensitive reinforcement learning in finite discounted infinite-horizon Markov Decision Processes under recursive entropic risk measures. It provides PAC-type bounds on sample complexity for both risk-averse and risk-seeking settings.",
+        "data_sources": "The algorithm is designed for offline RL, meaning it operates on a fixed dataset provided to the agent, which could be historical market data or simulated trading environments.",
+        "alpha_potential": "The approach offers potential for developing risk-sensitive trading strategies that can adapt to varying risk appetites (averse or seeking), possibly uncovering alpha by optimizing under different risk measures not commonly used in traditional quant models.",
+        "tags": [
+            "Reinforcement Learning",
+            "Risk-Sensitive Optimization",
+            "Offline Learning",
+            "Entropic Risk Measures"
+        ],
+        "title_cn": "基于递归熵风险的可证明高效离线折扣强化学习",
+        "summary_cn": "该论文提出了一种基于模型的算法（ERM-VI-LCB），用于在递归熵风险度量下进行风险敏感的强化学习。它适用于历史数据集，可处理风险厌恶和风险寻求两种模式，为量化交易中风险自适应策略的开发提供了理论支持和方法框架。"
+    },
+    {
+        "title": "Gradient TD($λ$) for Non-Linear Function Approximation",
+        "summary": "Temporal difference (TD) learning is central to reinforcement learning. Many methods use semi-gradient TD, which may diverge, or develop algorithms with mean-squared Bellman or TD-error objectives that are difficult to analyze. Gradient TD algorithms overcome these challenges by using projection of the value function and present convergent off-policy algorithms. However, the algorithm for $λ$-return was limited to linear function approximation. Here, we extend the same to non-linear function approximation, which is desirable since many strong modern function approximators are complex and non-linear. Recent works have derived similar algorithms with a generalized projected Bellman error objective. Alternatively, we continue working with the projected Bellman error.",
+        "url": "http://arxiv.org/abs/2611.34826v1",
+        "published_date": "2026-11-25T18:08:06+00:00",
+        "updated_date": "2026-11-25T18:08:06+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Sujeet Lahane"
+        ],
+        "relevance_score": 6,
+        "core_methodology": "The paper extends Gradient TD(λ) algorithms to non-linear function approximation, which is crucial for modern complex approximators. This involves using projection of the value function to overcome divergence issues in traditional semi-gradient TD methods.",
+        "data_sources": "The abstract does not specify particular data sources, but the methodology is applicable to any time-series data, including financial market data.",
+        "alpha_potential": "The extended Gradient TD(λ) for non-linear function approximation can improve the accuracy of value function estimation in reinforcement learning, potentially leading to better trading signals or portfolio optimization strategies.",
+        "tags": [
+            "Reinforcement Learning",
+            "Non-linear Function Approximation",
+            "Temporal Difference Learning",
+            "Algorithmic Trading"
+        ],
+        "title_cn": "非线性函数逼近的梯度TD(λ)算法",
+        "summary_cn": "本文扩展了梯度TD(λ)算法，使其适用于非线性函数逼近，这对于现代复杂的函数逼近器尤为重要。该方法通过值函数的投影来避免传统半梯度TD方法的发散问题，可应用于金融时间序列数据，提高交易信号或投资组合优化的准确性。"
+    },
+    {
+        "title": "Put the World Back: Timestamps Matter in Time Series Reasoning",
+        "summary": "Large language models (LLMs) are increasingly applied to time series reasoning. However, current evaluations often give models events in chronological order and already matched to the time series. This makes it unclear whether models use timestamps to connect events with observations or simply take shortcuts. To expose this ambiguity, we reformulate time series reasoning from a world-to-series projection perspective, viewing timestamps as explicit indices that connect numerical observations and external events to shared world states. We identify three structures that timestamps can make explicit: temporal causal structure, time semantics, and event-series alignment. Building on this perspective, we develop a diagnostic protocol that distinguishes timestamp-grounded reasoning from correlational shortcuts, a distinction that accuracy-based benchmarks cannot make. Controlled interventions on 310 questions from two tasks show that high accuracy can persist when timestamps are replaced by relative offsets or removed, while breaking event-series alignment induces systematic failures. When context is pre-aligned, models barely need timestamps. When order is missing, they use dates to recall world knowledge. Without dates, they rely on correlational shortcuts and rarely notice incorrect timestamps. These findings show that high accuracy on pre-aligned, ordered inputs does not establish that a model uses timestamps to synchronize observations with the world. We release our code, model outputs, and trajectory labels at https://github.com/tingrui-huang/timestamps-matter.",
+        "url": "http://arxiv.org/abs/2611.34848v1",
+        "published_date": "2026-11-25T18:23:07+00:00",
+        "updated_date": "2026-11-25T18:23:07+00:00",
+        "categories": [
+            "cs.LG"
+        ],
+        "authors": [
+            "Tingrui Huang",
+            "Yuanyuan Deng",
+            "Qingren Yao",
+            "Joaquin Vanschoren",
+            "Mykola Pechenizkiy",
+            "Songgaojun Deng"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Diagnosing the role of timestamps in time series reasoning by LLMs through controlled interventions",
+        "data_sources": "Not explicitly mentioned, likely synthetic or generic time series data for testing",
+        "alpha_potential": "Limited direct alpha potential; mainly addresses model behavior rather than financial signal extraction",
+        "tags": [
+            "LLMs",
+            "Time Series Analysis",
+            "Model Diagnostics"
+        ],
+        "_low_priority": true
+    },
+    {
+        "title": "Deep Reinforcement Learning for Multi-UAV Data Harvesting Under Variable Team Sizes and Agent Loss",
+        "summary": "Collecting data from wireless sensors can be challenging when limited communication infrastructure prevents them from offloading their measurements. In such settings, unmanned aerial vehicles (UAVs) can exploit their mobility to harvest data locally, while coordinated UAV teams can provide efficient and redundant coverage of remote areas. Multi-agent reinforcement learning (MARL) enables such teams to learn decentralized coordination policies. However, training separate policies for different team and sensor populations is costly, and fixed-population policies may be vulnerable to agent failures. This work proposes F-MADDPG, a flexible variant of Multi-Agent Deep Deterministic Policy Gradient (MADDPG) that supports data harvesting with varying numbers of wireless sensors and UAVs. The framework also accommodates unexpected catastrophic failures that permanently remove agents during a mission. We compare F-MADDPG with a MADDPG baseline that uses multilayer perceptrons (MLPs) and evaluate training strategies based on team-size sampling and exposure to agent terminations. The results show that F-MADDPG learns across the evaluated population sizes, completes missions faster than the baseline on average, benefits from inverse-cardinality team-size sampling compared with uniform sampling, remains effective after permanent agent losses, and gains no consistent benefit from exposure to failures during training.",
+        "url": "http://arxiv.org/abs/2611.34818v1",
+        "published_date": "2026-11-25T18:03:00+00:00",
+        "updated_date": "2026-11-25T18:03:00+00:00",
+        "categories": [
+            "cs.LG",
+            "cs.DC"
+        ],
+        "authors": [
+            "Thiago de Souza Lamenza",
+            "Bruno José Olivieri de Souza",
+            "Markus Endler"
+        ],
+        "relevance_score": 4,
+        "core_methodology": "Multi-Agent Reinforcement Learning (MARL) with a flexible variant of MADDPG for dynamic team coordination",
+        "data_sources": "Wireless sensor networks and UAV-derived data (not financial market data)",
+        "alpha_potential": "Potential for adaptation to dynamic portfolio management or multi-agent trading systems, but requires significant modification",
+        "tags": [
+            "Reinforcement Learning",
+            "Multi-Agent Systems",
+            "Adaptive Algorithms"
+        ],
+        "_low_priority": true
+    }
+]

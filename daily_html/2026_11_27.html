@@ -1,0 +1,703 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ArXiv Quantitative Finance & AI Papers - November 27, 2026</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/framer-motion/10.16.4/framer-motion.dev.js"></script>
+    <!-- Example using Font Awesome (replace with your preferred icon library if needed) -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap');
+
+        :root {
+            /* New Palette: Light, Clean, Futuristic with Teal/Aqua accents */
+            --bg-color: #f8fafc; /* Tailwind slate-50 (Very Light Gray) */
+            --card-bg-color: #ffffff; /* White */
+            --text-color: #1e293b; /* Tailwind slate-800 (Dark Gray-Blue) */
+            --text-muted-color: #64748b; /* Tailwind slate-500 (Medium Gray-Blue) */
+            --header-color: #0f172a; /* Tailwind slate-900 (Very Dark Blue) */
+            --highlight-primary: #14b8a6; /* Tailwind teal-500 */
+            --highlight-secondary: #67e8f9; /* Tailwind cyan-300 */
+            --border-color: #e2e8f0; /* Tailwind slate-200 (Light Gray) */
+            --shadow-color: rgba(15, 23, 42, 0.08); /* Subtle shadow based on slate-900 */
+        }
+
+        body {
+            background-color: var(--bg-color);
+            color: var(--text-color);
+            font-family: 'Inter', sans-serif;
+            overflow-x: hidden; /* Prevent horizontal scroll */
+            line-height: 1.6;
+        }
+
+        .bento-grid {
+            display: grid;
+            gap: 1.5rem; /* Tailwind gap-6 */
+            grid-template-columns: 1fr; /* Force single column */
+            padding-bottom: 4rem; /* Add padding at the bottom */
+        }
+
+        .bento-item {
+            /* Apply semi-transparent white background and blur */
+            background-color: rgba(255, 255, 255, 0.7); /* White with 70% opacity */
+            backdrop-filter: blur(10px); /* Apply blur effect */
+            -webkit-backdrop-filter: blur(10px); /* Safari prefix */
+            border-radius: 1rem; /* Slightly larger radius */
+            padding: 1.75rem; /* Slightly more padding */
+            border: 1px solid rgba(226, 232, 240, 0.5); /* Lighter border with transparency */
+            box-shadow: 0 4px 12px var(--shadow-color);
+            transition: transform 0.3s ease-out, box-shadow 0.3s ease-out, background-color 0.3s ease-out;
+            overflow: hidden; /* Ensure content doesn't overflow */
+            position: relative; /* For potential pseudo-elements */
+        }
+
+        /* Removed ::before pseudo-element for a cleaner look */
+
+
+        .bento-item:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 10px 20px var(--shadow-color), 0 4px 8px rgba(15, 23, 42, 0.06); /* Adjusted hover shadow */
+        }
+
+        .paper-title {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            font-weight: 600; /* Tailwind font-semibold */
+            color: var(--highlight-primary); /* Use new primary highlight */
+            margin-bottom: 0.75rem; /* Tailwind mb-3 */
+            line-height: 1.4;
+        }
+
+        .paper-summary {
+            font-size: 0.875rem; /* Tailwind text-sm */
+            color: var(--text-muted-color);
+            margin-bottom: 1.25rem; /* Tailwind mb-5 */
+            line-height: 1.6;
+        }
+
+        .paper-link {
+            display: inline-flex; /* Use flex for icon alignment */
+            align-items: center;
+            font-size: 0.875rem; /* Tailwind text-sm */
+            font-weight: 600;
+            color: var(--highlight-primary);
+            text-decoration: none;
+            padding: 0.5rem 1rem; /* Add padding */
+            border-radius: 0.5rem; /* Slightly rounder */
+            background-color: rgba(20, 184, 166, 0.08); /* Subtle teal background */
+            border: 1px solid rgba(20, 184, 166, 0.2);
+            transition: background-color 0.3s ease, color 0.3s ease, transform 0.2s ease;
+        }
+
+        .paper-link i {
+            margin-right: 0.5rem; /* Tailwind mr-2 */
+            transition: transform 0.3s ease;
+        }
+
+        .paper-link:hover {
+            background-color: rgba(20, 184, 166, 0.15);
+            color: #0d9488; /* Darker teal on hover */
+            transform: translateY(-1px);
+        }
+        .paper-link:hover i {
+             transform: translateX(2px);
+        }
+
+        .paper-authors {
+            font-size: 0.75rem; /* Tailwind text-xs */
+            color: var(--text-muted-color);
+            margin-top: 1rem; /* Tailwind mt-4 */
+            font-style: italic;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 3rem; /* Tailwind mb-12 */
+            padding-top: 3rem; /* Tailwind pt-12 */
+        }
+
+        .header h1 {
+            font-size: 2.5rem; /* Tailwind text-4xl or 5xl */
+            font-weight: 700; /* Tailwind font-bold */
+            color: var(--header-color);
+            letter-spacing: -0.025em; /* Tailwind tracking-tight */
+            margin-bottom: 0.5rem;
+            /* Optional: Add a subtle text gradient */
+            /* background: linear-gradient(90deg, var(--highlight-primary), var(--highlight-secondary)); */
+            /* -webkit-background-clip: text; */
+            /* -webkit-text-fill-color: transparent; */
+        }
+
+        .header p {
+            font-size: 1.125rem; /* Tailwind text-lg */
+            color: var(--text-muted-color);
+            margin-top: 0.5rem; /* Tailwind mt-2 */
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .footer {
+            text-align: center;
+            color: var(--text-muted-color);
+            font-size: 0.875rem; /* Tailwind text-sm */
+            padding-top: 2rem;
+            padding-bottom: 2rem; /* Tailwind py-8 */
+            border-top: 1px solid var(--border-color);
+            margin-top: 4rem;
+        }
+
+        /* Simple line graphic element (optional) */
+        .line-graphic {
+            height: 1px; /* Thinner line */
+            background: linear-gradient(90deg, rgba(20, 184, 166, 0), var(--highlight-primary), rgba(20, 184, 166, 0));
+            opacity: 0.6;
+            margin: 1.5rem 0; /* Adjust margin */
+        }
+
+        /* Framer Motion requires the script, styles enhance appearance */
+        [data-motion-element] {
+             /* Base styles for elements animated by Framer Motion */
+        }
+
+        .paper-tldr {
+            font-size: 0.95rem; /* Slightly bigger than summary */
+            color: #475569; /* Changed to Tailwind slate-600 (slightly darker than summary) */
+            margin-top: 0.75rem; /* Tailwind mt-3 */
+            margin-bottom: 0.75rem; /* Tailwind mb-2 */
+            /* font-style: italic; */
+            font-weight: bold;
+        }
+
+        .paper-rating {
+            margin-top: 1rem; /* Tailwind mt-4 */
+            margin-bottom: 1rem; /* Tailwind mb-4 */
+            color: #f59e0b; /* Tailwind amber-500 */
+        }
+
+        .paper-rating i {
+            margin-right: 0.125rem; /* Tailwind mr-0.5 */
+        }
+
+        /* Apply consistent star color to sub-ratings */
+        .paper-sub-ratings .rating-item i {
+            color: #f59e0b; /* Match overall rating star color (amber-500) */
+            margin-right: 0.125rem; /* Consistent spacing */
+        }
+
+    </style>
+</head>
+<body class="container mx-auto px-4 antialiased">
+
+    <motion.div
+        initial="{ opacity: 0, y: -30 }"
+        animate="{ opacity: 1, y: 0 }"
+        transition="{ duration: 0.6, ease: 'easeOut' }"
+        class="header"
+        data-motion-element
+    >
+        <h1>量化金融与 AI 每日论文</h1>
+        <p>每日筛选算法交易、量化金融与人工智能相关论文（来源：q-fin.PM, q-fin.TR, cs.LG, cs.AI, cs.CL）</p>
+        <p>2026年11月27日</p>
+        <div class="line-graphic mt-4 mb-8 mx-auto w-1/4"></div> <!-- Added line graphic -->
+    </motion.div>
+
+    <div class="bento-grid" id="paper-grid">
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.0, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">From Prediction to Decision: Decision-Focused Fine-Tuning of Autoregressive Tabular Transformers for Cost-Sensitive Financial Events</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">从预测到决策：自回归表格转换器的决策导向微调用于成本敏感型金融事件</p>
+            
+            <p class="paper-summary">Autoregressive transformers trained on tokenized tabular event streams are a simple and strong baseline for predicting financial events such as fraud. Yet institutions do not act on probabilities; they act on decisions whose consequences are asymmetric and heteroscedastic: the cost of a missed high-value fraud and that of a wrongly declined small purchase are not the same. The standard bridge is post-hoc Bayes-optimal thresholding of calibrated probabilities under a cost matrix. We ask whether fine-tuning the model to the decision objective can do better. We fine-tune the same pretrained model so that its restricted softmax over label tokens (already a distribution over business actions) maximizes expected utility under an institution-specified, amount-scaled cost matrix. Because the reward is a known function of (action, outcome, amount) and the outcome is observed in the data, the expected-utility objective and its gradient are available in closed form. This is example-dependent cost-sensitive learning whose per-example loss is linear in the predicted probability, with no sampling, critics, or advantage estimation. A KL anchor to the pretrained model and an auxiliary language-modeling term preserve calibration and the generative event model. A sampled, group-normalized (GRPO-style) variant provides the extension point to trajectory-level rewards.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Autoregressive transformers trained on tabular event streams, fine-tuned with a decision-focused objective that maximizes expected utility under an institution-specified, amount-scaled cost matrix. The method includes a KL anchor to the pretrained model and an auxiliary language-modeling term to preserve calibration and the generative event model.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Financial event streams such as fraud transactions, likely including transactional data with features like amounts, timestamps, and other metadata.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The method's decision-focused fine-tuning can potentially improve trading and risk management strategies by embedding asymmetric costs, such as fraud detection, directly into the model. This can lead to better decision-making in scenarios with unequal costs, common in financial trading and risk management.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(8/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Decision-focused learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Autoregressive Transformers
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Cost-sensitive learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Fraud detection
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该方法通过针对金融事件的决策目标微调自回归模型，在特定成本矩阵下最大化预期效用。它在不对称成本的金融交易和风险管理领域具有较高应用价值，能提升如欺诈检测等场景的决策质量。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2611.34858v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Ashkan Golgoon, Giacomo Domeniconi, Samuel Atkins, Sergio Servantez, Zain Khandwala</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.05, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Provably Efficient Offline Discounted Reinforcement Learning under Recursive Entropic Risk</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">基于递归熵风险的可证明高效离线折扣强化学习</p>
+            
+            <p class="paper-summary">We study risk-sensitive reinforcement learning in finite discounted infinite-horizon Markov Decision Processes with recursive entropic risk measures (ERM), parameterized by $β\neq 0$. We consider both risk-averse ($β>0$) and risk-seeking ($β<0$) settings. We consider the offline RL setting, where the agent is provided with a fixed dataset and wishes to learn a near-optimal policy using this dataset. We introduce a model-based algorithm, called ERM Value Iteration Lower Confidence Bound (ERM-VI-LCB) and derive a PAC-type bound on its sample complexity. We also establish a corresponding lower bound, demonstrating that exponential dependence on $|β|/(1-γ)$ asserted by the upper bound is unavoidable in the worst case. The presented bounds provide the first rigorous sample complexity guarantees for offline RL under recursive ERM across both risk-averse and risk-seeking regimes.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper introduces a model-based algorithm, ERM Value Iteration Lower Confidence Bound (ERM-VI-LCB), for risk-sensitive reinforcement learning in finite discounted infinite-horizon Markov Decision Processes under recursive entropic risk measures. It provides PAC-type bounds on sample complexity for both risk-averse and risk-seeking settings.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The algorithm is designed for offline RL, meaning it operates on a fixed dataset provided to the agent, which could be historical market data or simulated trading environments.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The approach offers potential for developing risk-sensitive trading strategies that can adapt to varying risk appetites (averse or seeking), possibly uncovering alpha by optimizing under different risk measures not commonly used in traditional quant models.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star-half-alt"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(7/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Reinforcement Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Risk-Sensitive Optimization
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Offline Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Entropic Risk Measures
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">该论文提出了一种基于模型的算法（ERM-VI-LCB），用于在递归熵风险度量下进行风险敏感的强化学习。它适用于历史数据集，可处理风险厌恶和风险寻求两种模式，为量化交易中风险自适应策略的开发提供了理论支持和方法框架。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2611.34840v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Amirparsa Bahrami, Oliver Mortensen, Mohammad Sadegh Talebi</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.1, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Gradient TD($λ$) for Non-Linear Function Approximation</h2>
+            
+            <p class="paper-title" style="font-size: 1rem; color: var(--text-muted-color); margin-top: -0.5rem;">非线性函数逼近的梯度TD(λ)算法</p>
+            
+            <p class="paper-summary">Temporal difference (TD) learning is central to reinforcement learning. Many methods use semi-gradient TD, which may diverge, or develop algorithms with mean-squared Bellman or TD-error objectives that are difficult to analyze. Gradient TD algorithms overcome these challenges by using projection of the value function and present convergent off-policy algorithms. However, the algorithm for $λ$-return was limited to linear function approximation. Here, we extend the same to non-linear function approximation, which is desirable since many strong modern function approximators are complex and non-linear. Recent works have derived similar algorithms with a generalized projected Bellman error objective. Alternatively, we continue working with the projected Bellman error.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> The paper extends Gradient TD(λ) algorithms to non-linear function approximation, which is crucial for modern complex approximators. This involves using projection of the value function to overcome divergence issues in traditional semi-gradient TD methods.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> The abstract does not specify particular data sources, but the methodology is applicable to any time-series data, including financial market data.</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">The extended Gradient TD(λ) for non-linear function approximation can improve the accuracy of value function estimation in reinforcement learning, potentially leading to better trading signals or portfolio optimization strategies.</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(6/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Reinforcement Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Non-linear Function Approximation
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Temporal Difference Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Algorithmic Trading
+                </span>
+                
+            </div>
+            
+
+            
+            <div style="margin-top: 1rem; padding: 0.75rem; background-color: rgba(15, 23, 42, 0.03); border-radius: 0.5rem; border-top: 2px solid var(--highlight-secondary);">
+                <strong style="color: var(--text-muted-color); font-size: 0.85rem;">中文摘要</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: var(--text-color); font-size: 0.9rem; line-height: 1.6;">本文扩展了梯度TD(λ)算法，使其适用于非线性函数逼近，这对于现代复杂的函数逼近器尤为重要。该方法通过值函数的投影来避免传统半梯度TD方法的发散问题，可应用于金融时间序列数据，提高交易信号或投资组合优化的准确性。</p>
+            </div>
+            
+
+            <a href="http://arxiv.org/abs/2611.34826v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Sujeet Lahane</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.15000000000000002, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Put the World Back: Timestamps Matter in Time Series Reasoning</h2>
+            
+            <p class="paper-summary">Large language models (LLMs) are increasingly applied to time series reasoning. However, current evaluations often give models events in chronological order and already matched to the time series. This makes it unclear whether models use timestamps to connect events with observations or simply take shortcuts. To expose this ambiguity, we reformulate time series reasoning from a world-to-series projection perspective, viewing timestamps as explicit indices that connect numerical observations and external events to shared world states. We identify three structures that timestamps can make explicit: temporal causal structure, time semantics, and event-series alignment. Building on this perspective, we develop a diagnostic protocol that distinguishes timestamp-grounded reasoning from correlational shortcuts, a distinction that accuracy-based benchmarks cannot make. Controlled interventions on 310 questions from two tasks show that high accuracy can persist when timestamps are replaced by relative offsets or removed, while breaking event-series alignment induces systematic failures. When context is pre-aligned, models barely need timestamps. When order is missing, they use dates to recall world knowledge. Without dates, they rely on correlational shortcuts and rarely notice incorrect timestamps. These findings show that high accuracy on pre-aligned, ordered inputs does not establish that a model uses timestamps to synchronize observations with the world. We release our code, model outputs, and trajectory labels at https://github.com/tingrui-huang/timestamps-matter.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Diagnosing the role of timestamps in time series reasoning by LLMs through controlled interventions</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Not explicitly mentioned, likely synthetic or generic time series data for testing</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Limited direct alpha potential; mainly addresses model behavior rather than financial signal extraction</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    LLMs
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Time Series Analysis
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Model Diagnostics
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2611.34848v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Tingrui Huang, Yuanyuan Deng, Qingren Yao, Joaquin Vanschoren, Mykola Pechenizkiy, Songgaojun Deng</p>
+            
+        </motion.div>
+        
+        <motion.div
+            initial="{ opacity: 0, y: 50, scale: 0.9 }"
+            whileInView="{ opacity: 1, y: 0, scale: 1 }"
+            viewport="{ once: true, amount: 0.2 }" /* Trigger when 20% is visible */
+            transition="{ duration: 0.5, delay: 0.2, ease: 'easeOut' }"  
+            class="bento-item"
+            data-motion-element
+        >
+            <h2 class="paper-title">Deep Reinforcement Learning for Multi-UAV Data Harvesting Under Variable Team Sizes and Agent Loss</h2>
+            
+            <p class="paper-summary">Collecting data from wireless sensors can be challenging when limited communication infrastructure prevents them from offloading their measurements. In such settings, unmanned aerial vehicles (UAVs) can exploit their mobility to harvest data locally, while coordinated UAV teams can provide efficient and redundant coverage of remote areas. Multi-agent reinforcement learning (MARL) enables such teams to learn decentralized coordination policies. However, training separate policies for different team and sensor populations is costly, and fixed-population policies may be vulnerable to agent failures. This work proposes F-MADDPG, a flexible variant of Multi-Agent Deep Deterministic Policy Gradient (MADDPG) that supports data harvesting with varying numbers of wireless sensors and UAVs. The framework also accommodates unexpected catastrophic failures that permanently remove agents during a mission. We compare F-MADDPG with a MADDPG baseline that uses multilayer perceptrons (MLPs) and evaluate training strategies based on team-size sampling and exposure to agent terminations. The results show that F-MADDPG learns across the evaluated population sizes, completes missions faster than the baseline on average, benefits from inverse-cardinality team-size sampling compared with uniform sampling, remains effective after permanent agent losses, and gains no consistent benefit from exposure to failures during training.</p>
+
+            
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">核心方法：</strong>
+                <span style="color: var(--text-color);"> Multi-Agent Reinforcement Learning (MARL) with a flexible variant of MADDPG for dynamic team coordination</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 0.75rem;">
+                <strong style="color: var(--highlight-primary);">数据来源：</strong>
+                <span style="color: var(--text-color);"> Wireless sensor networks and UAV-derived data (not financial market data)</span>
+            </div>
+            
+
+            
+            <div style="margin-bottom: 1rem; padding: 0.75rem; background-color: rgba(20, 184, 166, 0.1); border-left: 3px solid var(--highlight-primary); border-radius: 0.375rem;">
+                <strong style="color: #0d9488; font-size: 0.95rem;">Alpha 潜力：</strong>
+                <p style="margin-top: 0.5rem; margin-bottom: 0; color: #0f766e; font-size: 0.9rem; line-height: 1.5;">Potential for adaptation to dynamic portfolio management or multi-agent trading systems, but requires significant modification</p>
+            </div>
+            
+
+            
+            <div class="paper-rating">
+                <span class="rating-label" style="color: #000; font-weight: bold;">交易相关性：</span>
+                
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="fas fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                    
+                        <i class="far fa-star"></i>
+                    
+                
+                <span class="text-xs text-gray-500 ml-1">(4/10)</span>
+            </div>
+            
+
+            
+            <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin: 1rem 0;">
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Reinforcement Learning
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Multi-Agent Systems
+                </span>
+                
+                <span style="display: inline-block; padding: 0.25rem 0.75rem; background-color: rgba(20, 184, 166, 0.15); color: #0d9488; font-size: 0.75rem; font-weight: 600; border-radius: 9999px; border: 1px solid rgba(20, 184, 166, 0.3);">
+                    Adaptive Algorithms
+                </span>
+                
+            </div>
+            
+
+            
+
+            <a href="http://arxiv.org/abs/2611.34818v1" target="_blank" class="paper-link">
+                <i class="fas fa-file-pdf mr-1"></i> 阅读论文 (PDF)
+            </a>
+            
+            <p class="paper-authors">作者：Thiago de Souza Lamenza, Bruno José Olivieri de Souza, Markus Endler</p>
+            
+        </motion.div>
+        
+    </div>
+
+    <footer class="footer">
+        生成时间：2026年11月28日 12:46:58 UTC | 量化金融与 AI 论文智能追踪系统
+    </footer>
+
+</body>
+</html>
